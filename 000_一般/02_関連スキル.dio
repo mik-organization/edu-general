@@ -1,0 +1,76 @@
+<mxfile host="65bd71144e">
+    <diagram id="mS1J8M6MoK42ycUKaJ3l" name="ページ1">
+        <mxGraphModel dx="1626" dy="804" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" background="#ffffff" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="22" value="【Web】" style="ellipse;whiteSpace=wrap;html=1;fillColor=#99FFFF;strokeColor=#009999;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="860" y="350" width="120" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="21" value="【ドキュメント作成】&lt;br&gt;Markdown&lt;br&gt;PlantUML&lt;br&gt;draw.io&lt;br&gt;excel、word、powerpoint&lt;br&gt;astah&lt;br&gt;：" style="ellipse;whiteSpace=wrap;html=1;fillColor=#99FFFF;strokeColor=#009999;fontColor=#000000;align=center;verticalAlign=middle;" vertex="1" parent="1">
+                    <mxGeometry x="905" y="110" width="240" height="150" as="geometry"/>
+                </mxCell>
+                <mxCell id="16" value="【ソース管理】&lt;br&gt;git&lt;br&gt;svn&lt;br&gt;：" style="ellipse;whiteSpace=wrap;html=1;fillColor=#99FFFF;strokeColor=#009999;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="390" y="416" width="140" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" value="" style="group" vertex="1" connectable="0" parent="1">
+                    <mxGeometry x="710" y="410" width="320" height="220" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="&lt;br&gt;&lt;br&gt;　　　　　【インフラ】" style="ellipse;whiteSpace=wrap;html=1;fillColor=#99FFFF;strokeColor=#009999;fontColor=#000000;align=left;verticalAlign=top;" vertex="1" parent="12">
+                    <mxGeometry width="320" height="220" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" value="" style="group" vertex="1" connectable="0" parent="12">
+                    <mxGeometry x="40" y="60" width="230" height="138" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="【実行環境構築】&lt;br&gt;Webサーバ&lt;br&gt;Linux&lt;br&gt;AWS&lt;br&gt;Docker&lt;br&gt;：" style="ellipse;whiteSpace=wrap;html=1;fillColor=#99FFFF;strokeColor=#009999;fontColor=#000000;" vertex="1" parent="11">
+                    <mxGeometry width="180" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="【ネットワーク】" style="ellipse;whiteSpace=wrap;html=1;fillColor=#99FFFF;strokeColor=#009999;fontColor=#000000;" vertex="1" parent="11">
+                    <mxGeometry x="110" y="72" width="120" height="66" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="【開発環境構築】&lt;br&gt;IDE&lt;br&gt;ライブラリ&lt;br&gt;ツール&lt;br&gt;：" style="ellipse;whiteSpace=wrap;html=1;fillColor=#99FFFF;strokeColor=#009999;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="400" y="290" width="190" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="【テスト】&lt;br&gt;テスト設計&lt;br&gt;：" style="ellipse;whiteSpace=wrap;html=1;fillColor=#99FFFF;strokeColor=#009999;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="580" y="506" width="170" height="104" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="【設計】&lt;br&gt;設計書作成&lt;br&gt;基本設計&lt;br&gt;詳細設計&lt;br&gt;機能設計&lt;br&gt;クラス設計&lt;br&gt;テーブル設計&lt;br&gt;UML&lt;br&gt;：" style="ellipse;whiteSpace=wrap;html=1;fillColor=#99FFFF;strokeColor=#009999;fontColor=#000000;align=center;verticalAlign=middle;" vertex="1" parent="1">
+                    <mxGeometry x="695" y="140" width="240" height="150" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="【SQL】" style="ellipse;whiteSpace=wrap;html=1;fillColor=#99FFFF;strokeColor=#009999;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="700" y="344" width="120" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" value="【DB環境構築】&lt;br&gt;Oracle&lt;br&gt;Postgresql&lt;br&gt;MySQL&lt;br&gt;：" style="ellipse;whiteSpace=wrap;html=1;fillColor=#99FFFF;strokeColor=#009999;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="590" y="270" width="160" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="2" value="【コーディング】&lt;br&gt;java&lt;br&gt;C#&lt;br&gt;python&lt;br&gt;：" style="ellipse;whiteSpace=wrap;html=1;fillColor=#99FFFF;strokeColor=#009999;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="520" y="370" width="220" height="160" as="geometry"/>
+                </mxCell>
+                <mxCell id="15" value="【要件定義】&lt;br&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#99FFFF;strokeColor=#009999;fontColor=#000000;align=center;verticalAlign=middle;" vertex="1" parent="1">
+                    <mxGeometry x="585" y="70" width="240" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="17" value="【各ツール】&lt;br&gt;Winmerge&lt;br&gt;clibor&lt;br&gt;rapture&lt;br&gt;Tera Term&lt;br&gt;：" style="ellipse;whiteSpace=wrap;html=1;fillColor=#99FFFF;strokeColor=#009999;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="80" y="230" width="220" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="18" value="【調査】&lt;br&gt;技術調査（ググる）&lt;br&gt;不具合調査&lt;br&gt;：" style="ellipse;whiteSpace=wrap;html=1;fillColor=#99FFFF;strokeColor=#009999;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="180" y="470" width="220" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="19" value="【英語（多言語）】&lt;br&gt;google翻訳&lt;br&gt;DeepL&lt;br&gt;：" style="ellipse;whiteSpace=wrap;html=1;fillColor=#99FFFF;strokeColor=#009999;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="170" y="350" width="220" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="20" value="【コミュニケーション】" style="ellipse;whiteSpace=wrap;html=1;fillColor=#99FFFF;strokeColor=#009999;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="40" y="120" width="220" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="23" value="【セキュリティ・認証】" style="ellipse;whiteSpace=wrap;html=1;fillColor=#99FFFF;strokeColor=#009999;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="410" y="510" width="160" height="81" as="geometry"/>
+                </mxCell>
+                <mxCell id="24" value="システム開発に関連するスキル" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#009999;fontFamily=Helvetica;fontSize=18;fontColor=#000000;fillColor=#FFFFFF;" vertex="1" parent="1">
+                    <mxGeometry x="20" y="30" width="270" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="25" value="【開発手法】&lt;br&gt;アジャイル&lt;br&gt;スクラム&lt;br&gt;ウォーターフォール&lt;br&gt;：" style="ellipse;whiteSpace=wrap;html=1;fillColor=#99FFFF;strokeColor=#009999;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="350" y="165" width="220" height="100" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
