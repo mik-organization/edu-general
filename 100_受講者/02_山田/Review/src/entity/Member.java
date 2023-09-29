@@ -1,4 +1,5 @@
-package entity;
+package entity; 
+//エンティティクラスは，データベースのテーブルのレコードをJavaのオブジェクトとして扱うためのクラス
 
 public class Member {
 	
@@ -12,7 +13,7 @@ public class Member {
 		this.id = id;
 		this.name = name;
 		this.email = email;
-	}
+	};
 
 	public int getId() {
 		return id;
@@ -36,7 +37,7 @@ public class Member {
 
 	public void setEmail(String email) {
 		this.email = email;
-	};
+	}
 	
 	
 
