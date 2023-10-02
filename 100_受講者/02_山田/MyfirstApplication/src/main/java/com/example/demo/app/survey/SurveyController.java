@@ -20,6 +20,7 @@ import com.example.demo.service.SurveyServiceImpl;
 
 @Controller
 @RequestMapping("/survey")
+
 public class SurveyController {
 	
 	@Autowired
