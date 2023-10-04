@@ -1,11 +1,17 @@
 package com.example.demo.app.inquiry;
 
+import org.hibernate.validator.constraints.Email;
+
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+
 public class InquiryForm {
-	
+	//@Sizeが機能していない
 	@Size(min = 1, max = 20, message = "Please input 20characters or less")
 	private String name;
 	
 	@NotNull
+	//@Emailが機能していない
 	@Email(message = "Invalid E-mail Format")
 	private String email;
 	

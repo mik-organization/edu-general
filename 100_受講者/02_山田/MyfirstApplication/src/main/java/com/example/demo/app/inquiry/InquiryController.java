@@ -20,8 +20,7 @@ public class InquiryController {
 			@ModelAttribute("complete") String complete) {
 		model.addAttribute("title","Inquiry Form");
 		return "inquiry/form";
-		
-	}
+	 }
 	
 	@PostMapping("/form")
 	public String formGoBack(InquiryForm InquiryForm, Model model) {
@@ -46,11 +45,12 @@ public class InquiryController {
 			    BindingResult result,
 			    Model model,
 			    RedirectAttributes redirectAttributes) {
-		if(result.hasErrors())
+		if(result.hasErrors()) {
 			model.addAttribute("title","InquiryForm");
 		return "inquiry/form";
 	}
 	redirectAttributes.addFlashAttribute("complete","Registered!");
+	
 	return "redirect:/inquiry/form";	
    }
 }

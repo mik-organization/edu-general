@@ -1,26 +1,51 @@
 package com.example.demo.app.survey;
 
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
-import com.example.demo.app.inquiry.NotNull;
-import com.example.demo.app.inquiry.Size;
 
-import lombok.Data;
 
-@Data
-public class SurveyForm{
+public class SurveyForm {
 
-    @Min(0)
-    @Max(150)
-    private int age;
-    
-    @Min(1)
-    @Max(5)
-    private int satisfaction;
+	@Min(0)
+	@Max(150)
+	private int age;
+
+	@Min(1)
+	@Max(5)
+	private int satisfaction;
 
 	@NotNull
-	@Size(min = 1, max = 200, message="Please input 200 characters or less")
-    private String comment;
+	@Size(min = 1, max = 200, message = "Please input 200 characters or less")
+	private String comment;
+
+	public SurveyForm() {
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	public int getSatisfaction() {
+		return satisfaction;
+	}
+
+	public void setSatisfaction(int satisfaction) {
+		this.satisfaction = satisfaction;
+	}
+
+	public String getComment() {
+		return comment;
+	}
+
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
 
 }
