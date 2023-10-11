@@ -19,11 +19,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 public class SampleController {
 
-//	private final JdbcTemplate jdbcTemplate;
+	private final JdbcTemplate jdbcTemplate;
 
-//	public SampleController(JdbcTemplate jdbcTemplate) {
-//		this.jdbcTemplate = jdbcTemplate;
-//	}
+//	@Autowired
+	public SampleController(JdbcTemplate jdbcTemplate) {
+		this.jdbcTemplate = jdbcTemplate;
+	}
 
 	// GETリクエストをURLとコントローラーのクラスまたはメソッドに紐づけるためのアノテーション
 	// 下記のようなメソッドの際につける
@@ -31,13 +32,13 @@ public class SampleController {
 	// ページの出力に対応するメソッド。このStringはHTMLのファイル名を返す
 	public String test(Model model) {
 		// SQL文を入力
-//		String sql = "SELECT id,  name, email" + "FROM inquiry WHERE id = 1";
-//		// 上の行で既にSQLを作っているので変数sqlを代入
-//		Map<String, Object> map = jdbcTemplate.queryForMap(sql);
+		String sql = "SELECT id,  name, email" + "FROM inquiry WHERE id = 1";
+		// 上の行で既にSQLを作っているので変数sqlを代入
+		Map<String, Object> map = jdbcTemplate.queryForMap(sql);
 //		// 引数がStringとオブジェトのものを選ぶ
 		model.addAttribute("title", "Inquiry Form");
-//		model.addAttribute("name", map.get("name"));
-//		model.addAttribute("email", map.get("email"));
+		model.addAttribute("name", map.get("name"));
+		model.addAttribute("email", map.get("email"));
 		return "test";
 
 	}

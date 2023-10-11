@@ -7,3 +7,4 @@
    created DATETIME NOT NULL,
    PRIMARY KEY(id)
 );
+
