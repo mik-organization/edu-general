@@ -21,7 +21,7 @@ public class SampleController {
 
 	private final JdbcTemplate jdbcTemplate;
 
-//	@Autowired
+	@Autowired
 	public SampleController(JdbcTemplate jdbcTemplate) {
 		this.jdbcTemplate = jdbcTemplate;
 	}
@@ -32,7 +32,7 @@ public class SampleController {
 	// ページの出力に対応するメソッド。このStringはHTMLのファイル名を返す
 	public String test(Model model) {
 		// SQL文を入力
-		String sql = "SELECT id,  name, email" + "FROM inquiry WHERE id = 1";
+		String sql = "SELECT id,  name, email " + "FROM inquiry WHERE id = 1";
 		// 上の行で既にSQLを作っているので変数sqlを代入
 		Map<String, Object> map = jdbcTemplate.queryForMap(sql);
 //		// 引数がStringとオブジェトのものを選ぶ
