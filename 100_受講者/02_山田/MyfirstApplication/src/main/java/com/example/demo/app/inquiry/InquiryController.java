@@ -15,9 +15,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class InquiryController {
 	
 	@GetMapping("/form")
-	public String form(InquiryForm InquiryForm, 
-			Model model,
-			@ModelAttribute("complete") String complete) {
+	public String form(InquiryForm inquiryForm, Model model) {
 		model.addAttribute("title","Inquiry Form");
 		return "inquiry/form";
 	 }
