@@ -13,42 +13,42 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Controller
 @RequestMapping("/inquiry")
 public class InquiryController {
-	
+
 	@GetMapping("/form")
-	public String form(InquiryForm inquiryForm, Model model) {
-		model.addAttribute("title","Inquiry Form");
+	public String form(InquiryForm inquiryForm, 
+			Model model,
+			@ModelAttribute("complete") String complete) {
+		model.addAttribute("title", "Inquiry Form");
 		return "inquiry/form";
-	 }
-	
+	}
+
 	@PostMapping("/form")
 	public String formGoBack(InquiryForm InquiryForm, Model model) {
-		model.addAttribute("title","Inquiry Form");
+		model.addAttribute("title", "Inquiry Form");
 		return "inquiry/form";
-		
+
 	}
+
 	@PostMapping("/confirm")
-	public String confirm(@Validated InquiryForm inquiryForm,
-			BindingResult result,
+	public String confirm(@Validated InquiryForm inquiryForm, 
+			BindingResult result, 
 			Model model) {
-		if(result.hasErrors()) {
-			model.addAttribute("title","Inquiry Form");
+		if (result.hasErrors()) {
+			model.addAttribute("title", "Inquiry Form");
 			return "inquiry/form";
 		}
-		model.addAttribute("title","confirm Page");
+		model.addAttribute("title", "confirm Page");
 		return "inquiry/confirm";
 	}
-	
+
 	@PostMapping("/complete")
-	public String complete(@Validated InquiryForm inquiryForm, 
-			    BindingResult result,
-			    Model model,
-			    RedirectAttributes redirectAttributes) {
-		if(result.hasErrors()) {
-			model.addAttribute("title","InquiryForm");
-		return "inquiry/form";
+	public String complete(@Validated InquiryForm inquiryForm, BindingResult result, Model model,
+			RedirectAttributes redirectAttributes) {
+		if (result.hasErrors()) {
+			model.addAttribute("title", "InquiryForm");
+			return "inquiry/form";
+		}
+		redirectAttributes.addFlashAttribute("complete", "Registered!");
+		return "redirect:/inquiry/form";
 	}
-	redirectAttributes.addFlashAttribute("complete","Registered!");
-	
-	return "redirect:/inquiry/form";	
-   }
 }
