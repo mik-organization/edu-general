@@ -28,7 +28,7 @@ public class InquiryController {
 		this.inquiryService = inquiryService;
 	}
 	
-	@GetMapping
+	@GetMapping("/")
 	public String index(Model model) {
 		List<Inquiry> list = inquiryService.getAll();
 		
