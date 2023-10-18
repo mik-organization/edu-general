@@ -20,29 +20,27 @@ import com.example.demo.service.InquiryService;
 @Controller
 @RequestMapping("/inquiry")
 public class InquiryController {
-	
+
 	private final InquiryService inquiryService;
-	
+
 	@Autowired
-	public InquiryController(InquiryService inquiryService) {		
+	public InquiryController(InquiryService inquiryService) {
 		this.inquiryService = inquiryService;
 	}
-	
+
 	@GetMapping("/")
 	public String index(Model model) {
 		List<Inquiry> list = inquiryService.getAll();
-		
+
 		model.addAttribute("inquiryList", list);
 		model.addAttribute("title", "Inquiry Index");
-		
-		return"inquiry/index";
-		
+
+		return "inquiry/index";
+
 	}
 
 	@GetMapping("/form")
-	public String form(InquiryForm inquiryForm, 
-			Model model,
-			@ModelAttribute("complete") String complete) {
+	public String form(InquiryForm inquiryForm, Model model, @ModelAttribute("complete") String complete) {
 		model.addAttribute("title", "Inquiry Form");
 		return "inquiry/form";
 	}
@@ -55,9 +53,7 @@ public class InquiryController {
 	}
 
 	@PostMapping("/confirm")
-	public String confirm(@Validated InquiryForm inquiryForm, 
-			BindingResult result, 
-			Model model) {
+	public String confirm(@Validated InquiryForm inquiryForm, BindingResult result, Model model) {
 		if (result.hasErrors()) {
 			model.addAttribute("title", "Inquiry Form");
 			return "inquiry/form";
@@ -67,21 +63,19 @@ public class InquiryController {
 	}
 
 	@PostMapping("/complete")
-	public String complete(@Validated InquiryForm inquiryForm, 
-			BindingResult result,
-			Model model,
+	public String complete(@Validated InquiryForm inquiryForm, BindingResult result, Model model,
 			RedirectAttributes redirectAttributes) {
 		if (result.hasErrors()) {
 			model.addAttribute("title", "InquiryForm");
 			return "inquiry/form";
 		}
-		
+
 		Inquiry inquiry = new Inquiry();
 		inquiry.setName(inquiryForm.getName());
 		inquiry.setEmail(inquiryForm.getEmail());
 		inquiry.setContents(inquiryForm.getContents());
 		inquiry.setCreated(LocalDateTime.now());
-		
+
 		inquiryService.save(inquiry);
 		redirectAttributes.addFlashAttribute("complete", "Registered!");
 		return "redirect:/inquiry/form";
