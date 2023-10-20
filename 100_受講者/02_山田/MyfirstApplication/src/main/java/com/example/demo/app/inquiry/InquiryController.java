@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -39,13 +40,16 @@ public class InquiryController {
 		inquiry.setEmail("sample4@example");
 		inquiry.setContents("Hello.");
 		
-		try {
-			inquiryService.update(inquiry);
-			} catch( InquiryNotFoundException e) {
-				model.addAttribute("message", e);
-				return "error/CustomPage";
-				
-			}
+		inquiryService.update(inquiry);
+		
+		/*
+		 * try { 
+		 * inquiryService.update(inquiry); 
+		 * } catch( InquiryNotFoundException e) {
+		 * model.addAttribute("message", e); 
+		 * return "error/CustomPage";
+		 * }
+		 */
 
 		model.addAttribute("inquiryList", list);
 		model.addAttribute("title", "Inquiry Index");
@@ -95,4 +99,11 @@ public class InquiryController {
 		redirectAttributes.addFlashAttribute("complete", "Registered!");
 		return "redirect:/inquiry/form";
 	}
+	/*
+	 * @ExceptionHandler(InquiryNotFoundException.class) public String
+	 * handleException(InquiryNotFoundException e, Model model) {
+	 * model.addAttribute("message" ,e); return "error/CustomPage"; 
+	 * }
+	 */
+	
 }

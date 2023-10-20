@@ -24,8 +24,8 @@ public class InquiryDaoImpl implements InquiryDao {
 
 	@Override
 	public void insertInquiry(Inquiry inquiry) {
-		jdbcTemplate.update("INSERT INTO inquiry(name, email, contents, created) VALUES(?, ?, ?, ?)", 
-				inquiry.getName(),inquiry.getEmail(), inquiry.getContents(), inquiry.getCreated());
+		jdbcTemplate.update("INSERT INTO inquiry(name, email, contents, created) VALUES(?, ?, ?, ?)", inquiry.getName(),
+				inquiry.getEmail(), inquiry.getContents(), inquiry.getCreated());
 
 	}
 
@@ -48,7 +48,7 @@ public class InquiryDaoImpl implements InquiryDao {
 
 	@Override
 	public int updateInquiry(Inquiry inquiry) {
-		return jdbcTemplate.update("UPDATE inquiry SET name = ? , email = ?, contents = ? WHERE id = ?" ,
+		return jdbcTemplate.update("UPDATE inquiry SET name = ? , email = ?, contents = ? WHERE id = ?",
 				inquiry.getName(), inquiry.getEmail(), inquiry.getContents(), inquiry.getId());
 	}
 

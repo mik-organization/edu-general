@@ -38,20 +38,20 @@ public class SurveyController {
 
 		model.addAttribute("surveyList", list);
 		model.addAttribute("average", average);
-		model.addAttribute("title", "Servey Index");
+		model.addAttribute("title", "Survey Index");
 
 		return "survey/index";
 	}
 
 	@GetMapping("/form")
 	public String form(SurveyForm surveyForm, Model model, @ModelAttribute("complete") String complete) {
-		model.addAttribute("title", "Servey Form");
+		model.addAttribute("title", "Survey Form");
 		return "survey/form";
 	}
 
 	@PostMapping("/form")
 	public String form(SurveyForm surveyForm, Model model) {
-		model.addAttribute("title", "Servey Form");
+		model.addAttribute("title", "Survey Form");
 		return "survey/form";
 	}
 
