@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import javax.validation.Valid;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -42,11 +43,11 @@ public class TaskController {
     public String task(TaskForm taskForm, Model model) {
 
     	//新規登録か更新かを判断する仕掛け
-    	taskForm.setNewTask(true);
+        taskForm.setNewTask(true);
 
         //Taskのリストを取得する
-    	List<Task> list = taskService.findAll();
- 
+        List<Task> list = taskService.findAll();
+
         model.addAttribute("list", list);
         model.addAttribute("title", "タスク一覧");
 
@@ -65,21 +66,18 @@ public class TaskController {
     	@Valid @ModelAttribute TaskForm taskForm,
         BindingResult result,
         Model model) {
-    	
-    	//TaskFormのデータをTaskに格納
-//    	Task task = new Task();
-//    	task.setUserId(1);
-//    	task.setTypeId(taskForm.getTypeId());
-//    	task.setTitle(taskForm.getTitle());
-//    	task.setDetail(taskForm.getDetail());
-//    	task.setDeadline(taskForm.getDeadline());   	
-    	
-    	Task task = makeTask(taskForm, 0);
+
+//      Task task = new Task();
+//      task.setUserId(1);
+//      task.setTypeId(taskForm.getTypeId());
+//      task.setTitle(taskForm.getTitle());
+//      task.setDetail(taskForm.getDetail());
+//      task.setDeadline(taskForm.getDeadline());
 
         if (!result.hasErrors()) {
-        
-        	//一件挿入後リダイレクト
-        	taskService.insert(task);
+        	//TaskFormのデータをTaskに格納
+        	Task task = makeTask(taskForm, 0);
+            taskService.insert(task);
             return "redirect:/task";
         } else {
             taskForm.setNewTask(true);
@@ -105,17 +103,17 @@ public class TaskController {
         Model model) {
 
     	//Taskを取得(Optionalでラップ)
-    	Optional<Task> taskOpt = taskService.getTask(id);
+        Optional<Task> taskOpt = taskService.getTask(id);
 
         //TaskFormへの詰め直し
-    	Optional<TaskForm> taskFormOpt = taskOpt.map(t -> makeTaskForm(t));
+        Optional<TaskForm> taskFormOpt = taskOpt.map(t -> makeTaskForm(t));
 
         //TaskFormがnullでなければ中身を取り出し
-    	if(taskFormOpt.isPresent()) {
-    		taskForm = taskFormOpt.get() ; 		
-    	}
+        if(taskFormOpt.isPresent()) {
+        	taskForm = taskFormOpt.get();
+        }
 
-        model.addAttribute("taskForm", "taskForm");
+        model.addAttribute("taskForm", taskForm);
         List<Task> list = taskService.findAll();
         model.addAttribute("list", list);
         model.addAttribute("taskId", id);
@@ -142,16 +140,16 @@ public class TaskController {
 
         if (!result.hasErrors()) {
         	//TaskFormのデータをTaskに格納
-        	Task task = makeTask(taskForm,taskId);
+        	Task task = makeTask(taskForm, taskId);
 
         	//更新処理、フラッシュスコープの使用、リダイレクト（個々の編集ページ）
         	taskService.update(task);
         	redirectAttributes.addFlashAttribute("complete", "変更が完了しました");
-        	return "redirect:/task/" + taskId;
-
+            return "redirect:/task/" + taskId;
         } else {
             model.addAttribute("taskForm", taskForm);
-            model.addAttribute("title", "タスク一覧");
+            model.addAttribute("title", "更新用フォーム");
+            model.addAttribute("taskId",taskId);
             return "task/index";
         }
     }
@@ -168,8 +166,7 @@ public class TaskController {
     	Model model) {
 
     	//タスクを一件削除しリダイレクト
-    	taskService.deleteById(id);
-
+        taskService.deleteById(id);
         return "redirect:/task";
     }
 
@@ -181,14 +178,15 @@ public class TaskController {
      * @return
      */
     //1-1　"/duplicate"に対してマッピングを行うアノテーションを記述する
+    @GetMapping("/duplicate")
     public String duplicate(
     	TaskForm taskForm,
     	//1-2　Requestパラメータから"taskId"の名前でint idを取得するようにする
-    	int id,
+    	@RequestParam("taskId") int id,
         Model model) {
 
     	//1-3　taskService.getTaskを用いてTaskを取得する
-        Optional<Task> taskOpt = null;
+        Optional<Task> taskOpt = taskService.getTask(id);
 
         //TaskFormへの詰め直し
         Optional<TaskForm> taskFormOpt = taskOpt.map(t -> makeTaskForm(t));
@@ -217,24 +215,24 @@ public class TaskController {
      * @return
      */
     //2-4 "/selectType"に対してマッピングを行うアノテーションを記述する
+    @GetMapping("/selectType")
     public String selectType(
     	TaskForm taskForm,
     	//2-5 Requestパラメータから"typeId"の名前でint idを取得するようにする
-    	int id,
+    	@RequestParam("typeId") int id,
         Model model) {
 
     	//新規登録か更新かを判断する仕掛け
         taskForm.setNewTask(true);
 
         //2-6 taskService.findByTypeを用いてTaskのリストを取得する
-        List<Task> list = null;
+        List<Task> list = taskService.findByType(id);
 
         model.addAttribute("list", list);
         model.addAttribute("title", "タスク一覧");
 
         return "task/index";
     }
-
 
     /**
      * TaskFormのデータをTaskに入れて返す
@@ -272,4 +270,6 @@ public class TaskController {
 
         return taskForm;
     }
+
+
 }

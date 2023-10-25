@@ -26,15 +26,12 @@ public class TaskServiceImpl implements TaskService {
 	@Override
 	public Optional<Task> getTask(int id) {
 
-		
-
 		//Optional<Task>一件を取得 idが無ければ例外発生　
 		try {
 			return dao.findById(id);
-					} catch (EmptyResultDataAccessException e) {
-						throw new TaskNotFoundException("指定されたタスクが存在しません");
-					}
-
+		} catch (EmptyResultDataAccessException e) {
+			throw new TaskNotFoundException("指定されたタスクが存在しません");
+		}
 	}
 
 	@Override
@@ -49,7 +46,6 @@ public class TaskServiceImpl implements TaskService {
 		if(dao.update(task) == 0) {
 			throw new TaskNotFoundException("更新するタスクが存在しません");
 		}
-
 	}
 
 	@Override
@@ -59,13 +55,11 @@ public class TaskServiceImpl implements TaskService {
 		if(dao.deleteById(id) == 0) {
 			throw new TaskNotFoundException("削除するタスクが存在しません");
 		}
-
-
 	}
 
 	@Override
 	public List<Task> findByType(int typeId) {
 		//2-3 typeIdを引数に指定してdaoのfindByType実行し、結果をreturnする
-		return null;
+		return dao.findByType(typeId);
 	}
 }

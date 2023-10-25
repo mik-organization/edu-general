@@ -28,13 +28,11 @@ public class TaskDaoImpl implements TaskDao {
 				+ "type, comment FROM task "
 				+ "INNER JOIN task_type ON task.type_id = task_type.id";
 
-		//削除してください
-
 		//タスク一覧をMapのListで取得
 		List<Map<String, Object>> resultList = jdbcTemplate.queryForList(sql);
 
 		//return用の空のListを用意
-		List<Task> list = new ArrayList<Task>();
+		List<Task> list = new ArrayList<>();
 
 		//二つのテーブルのデータをTaskにまとめる
 		for(Map<String, Object> result : resultList) {
@@ -51,8 +49,6 @@ public class TaskDaoImpl implements TaskDao {
 			type.setId((int)result.get("type_id"));
 			type.setType((String)result.get("type"));
 			type.setComment((String)result.get("comment"));
-
-			//TaskにTaskTypeをセット
 			task.setTaskType(type);
 
 			list.add(task);
@@ -66,8 +62,6 @@ public class TaskDaoImpl implements TaskDao {
 				+ "type, comment FROM task "
 				+ "INNER JOIN task_type ON task.type_id = task_type.id "
 				+ "WHERE task.id = ?";
-
-		//タスクを一件取得
 		Map<String, Object> result = jdbcTemplate.queryForMap(sql, id);
 
 		Task task = new Task();
@@ -83,8 +77,6 @@ public class TaskDaoImpl implements TaskDao {
 		type.setType((String)result.get("type"));
 		type.setComment((String)result.get("comment"));
 		task.setTaskType(type);
-
-		
 
 		//taskをOptionalでラップする
 		Optional<Task> taskOpt = Optional.ofNullable(task);
@@ -112,10 +104,13 @@ public class TaskDaoImpl implements TaskDao {
 	@Override
 	public List<Task> findByType(int typeId) {
 		//2-1 指定したtype_idと一致するタスクのリストを取得するためのSQLを記述する
-		String sql = null;
+		String sql = "SELECT task.id, user_id, type_id, title, detail, deadline, "
+				+ "type, comment FROM task "
+				+ "INNER JOIN task_type ON task.type_id = task_type.id "
+				+ "WHERE task.type_id = ?";
 
 		//2-2 SQLとtypeIdを渡し、タスク一覧をMapのListで取得する
-		List<Map<String, Object>> resultList = null;
+		List<Map<String, Object>> resultList = jdbcTemplate.queryForList(sql,typeId);
 
 		//return用の空のListを用意
 		List<Task> list = new ArrayList<>();
