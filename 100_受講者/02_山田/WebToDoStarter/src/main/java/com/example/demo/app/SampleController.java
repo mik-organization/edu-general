@@ -9,10 +9,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * ルートでアクセスしたときにtest.htmlを表示
  */
 @Controller
-@RequestMapping("/")
+@RequestMapping("/sample")
 public class SampleController {
 	
-	@GetMapping
+
+	@GetMapping("/test")
 	public String test() {
 		return "test";
 	}
