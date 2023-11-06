@@ -4,15 +4,15 @@
 * [x] 関連スキル
 * markdown
   * [x] 概要説明
-  * [ ] スタイルシート
-  * [ ] Imageをコピペ　Paste Image
+  * [x] スタイルシート
+  * [x] Imageをコピペ　Paste Image
 * git
   * [x] git概要説明（clone,add,commit,push,pull）
-  * [ ] posh-git
-  * [ ] winmergeでdiff
+  * [x] posh-git
+  * [x] winmergeでdiff
 * ツール類
-  * [ ] Clibor
-  * [ ] サクラエディタ
-  * [ ] rapture
+  * [x] Clibor
+  * [x] サクラエディタ
+  * [x] rapture
 
-   
+  
