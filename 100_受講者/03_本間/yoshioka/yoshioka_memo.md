@@ -9,7 +9,7 @@
 * git
   * [x] git概要説明（clone,add,commit,push,pull）
   * [x] posh-git
-  * [ ] winmergeでdiff
+  * [x] winmergeでdiff
 * ツール類
   * [x] Clibor
   * [x] サクラエディタ
