@@ -91,23 +91,20 @@ public class User implements Serializable {
 		DataSource ds = null;
 		PreparedStatement pst = null;
 		ResultSet rs = null;
-		String sql = null;
-		User u = null;
 
 		try {
 			InitialContext ic = new InitialContext();
 			ds = (DataSource) ic.lookup("java:comp/env/mariadb");
 			con = ds.getConnection();
 
-			sql = "select * from user where usr_id=? and password= password(?)";
+			String sql = "select * from user where usr_id=? and password= password(?)";
 			pst = con.prepareStatement(sql);
 			pst.setInt(1, usrId);
 			pst.setString(2, password);
 
 			rs = pst.executeQuery();
-
+			User u = new User();
 			if (rs.next()) {
-				u = new User();
 				u.setUsrId(rs.getInt("usr_id"));
 				u.setUsrName(rs.getString("usr_name"));
 				u.setPassword(rs.getString("password"));
@@ -136,27 +133,23 @@ public class User implements Serializable {
 	}
 
 	public static User getUser(int usrId) throws SQLException {
-		InitialContext ic = null;
 		Connection con = null;
 		DataSource ds = null;
 		PreparedStatement pst = null;
 		ResultSet rs = null;
-		String sql = null;
-		User u = null;
 
 		try {
-			ic = new InitialContext();
+			InitialContext ic = new InitialContext();
 			ds = (DataSource) ic.lookup("java:comp/env/mariadb");
 			con = ds.getConnection();
 
-			sql = "select * from user where usr_id=?";
+			String sql = "select * from user where usr_id=?";
 			pst = con.prepareStatement(sql);
 			pst.setInt(1, usrId);
 
 			rs = pst.executeQuery();
-
+			User u = new User();
 			if (rs.next()) {
-				u = new User();
 				u.setUsrId(rs.getInt("usr_id"));
 				u.setUsrName(rs.getString("usr_name"));
 				u.setPassword(rs.getString("password"));
