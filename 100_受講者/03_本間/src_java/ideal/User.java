@@ -87,7 +87,6 @@ public class User implements Serializable {
 	// ---↓各メソッド--- 独自例外（IdealException）は組み込めていません
 
 	public static User login(int usrId, String password) {
-		InitialContext ic = null;
 		Connection con = null;
 		DataSource ds = null;
 		PreparedStatement pst = null;
@@ -96,7 +95,7 @@ public class User implements Serializable {
 		User u = null;
 
 		try {
-			ic = new InitialContext();
+			InitialContext ic = new InitialContext();
 			ds = (DataSource) ic.lookup("java:comp/env/mariadb");
 			con = ds.getConnection();
 
