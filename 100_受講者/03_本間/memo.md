@@ -1,51 +1,31 @@
-# 本間研修メモ
-## Powershellで環境変数
+# 11/6 研修内容まとめ
+![Alt text](./images/image.png)
+↑ raptureで画像キャプチャして、Paste Imageの機能で貼り付け
 
-1. Pathの表示
+参考サイト
+[PCセットアップ](https://qiita.com/bonny_d/items/409d1c59fcc0c30f97ae)
 
-```powershell:powershell
-$ENV:Path
-```
+## 環境構築
 
-さらに、Splitメソッド を使って、出力結果を見やすく表示
-```powershell:powershell
-$ENV:Path.Split(";")
-```
-2. 環境変数に新しいパスを追加する
-- 先頭に追加
-```powershell:powershell
-$ENV:Path="追加したいパス;"+$ENV:Path
-```
-- 末尾に追加（これが使いやすそう）
-```powershell:powershell
-$ENV:Path+=";追加したいパス"
-```
-今は使わなそうだけど念のため、パスの削除と置換
-3. Replaceメソッドを使って、置換や一削除
-```powershell:powershell
-Set-Item ENV:Path $ENV:Path.Replace("置換前のパス;", "置換後のパス;")
-```
-```powershell:powershell
-Set-Item ENV:Path $ENV:Path.Replace("削除したいパス;", "")
-```
----
-## Powershellでjavaを実行
+ > - [x] スタイルシート
 
-[参考サイト](https://programming-tips.jp/archives/s/24/index.html)
+- VSCodeのmarkdownのプレビューにスタイルシートを適用して見やすくする
+> - [x] Imageをコピペ　Paste Image
 
-webサイトから openjdk をインストールして、Powershellでコンパイルして”Hello, world!”と表示させる
-ますは`New-Item Main.java`と入力して"Main.java"という名前のファイルを作成して、`code .\Main.java`と入力してvscodeに以下貼り付け。
+- 拡張機能をインストールしてコピペで自動にタグが貼り付けられるようにする
+> - [x] posh-git
 
-```java:Main.java
-public class Main {
-    public static void main(String[] args) {
-        System.out.println("Hello, world!");
-    }
-}
-```
-（↑ ファイル名とシンタックスハイライトが入らない。なんで？）
+- .gitconfigファイルに Posh-git を有効化して見やすくプロンプトをカスタマイズする
+> - [x] winmergeでdiff
 
-次に、Powershellから、`javac Main.java`と入力して、コンパイルされた .class 実行形式のファイルを作成
-最後に、`java Main`と入力して実行（拡張子の .class は除く）
+-  powershell から git windiff コマンドで変更前と変更後の差分の確認するときに使う
+> - [x] Clibor
 
-`Hello, world!`
+- ctrl を2回押して起動。クリップボードの有効活用 　
+> - [x] サクラエディタ
+
+- メモ帳から乗り換え。ハイライトなどコード変種作業に使いやすい
+> - [x] rapture
+
+- 画像キャプチャ。バグやエラーの画像をキャプチャして報告するなど。
+
