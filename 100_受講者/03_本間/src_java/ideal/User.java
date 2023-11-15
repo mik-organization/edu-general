@@ -91,6 +91,7 @@ public class User implements Serializable {
 		DataSource ds = null;
 		PreparedStatement pst = null;
 		ResultSet rs = null;
+		User u = new User();
 
 		try {
 			InitialContext ic = new InitialContext();
@@ -103,7 +104,6 @@ public class User implements Serializable {
 			pst.setString(2, password);
 
 			rs = pst.executeQuery();
-			User u = new User();
 			if (rs.next()) {
 				u.setUsrId(rs.getInt("usr_id"));
 				u.setUsrName(rs.getString("usr_name"));
@@ -137,6 +137,7 @@ public class User implements Serializable {
 		DataSource ds = null;
 		PreparedStatement pst = null;
 		ResultSet rs = null;
+		User u = new User();
 
 		try {
 			InitialContext ic = new InitialContext();
@@ -148,7 +149,6 @@ public class User implements Serializable {
 			pst.setInt(1, usrId);
 
 			rs = pst.executeQuery();
-			User u = new User();
 			if (rs.next()) {
 				u.setUsrId(rs.getInt("usr_id"));
 				u.setUsrName(rs.getString("usr_name"));
@@ -160,7 +160,6 @@ public class User implements Serializable {
 				u = null;
 			}
 		} catch (Exception e) {
-			System.out.println("SQL= " + sql);
 			e.printStackTrace();
 		} finally {
 			try {
@@ -179,19 +178,17 @@ public class User implements Serializable {
 	}
 
 	public static User insert(User user) {
-		InitialContext ic = null;
 		Connection con = null;
-		DataSource ds = null;
 		PreparedStatement pst = null;
 		ResultSet rs = null;
-		String sql = null;
 		User u = user;
+
 		try {
-			ic = new InitialContext();
-			ds = (DataSource) ic.lookup("java:comp/env/mariadb");
+			InitialContext ic = new InitialContext();
+			DataSource ds = (DataSource) ic.lookup("java:comp/env/mariadb");
 			con = ds.getConnection();
 
-			sql = "INSERT INTO user VALUES( DEFAULT,?,?,?,?,?.?)";
+			String sql = "INSERT INTO user VALUES( DEFAULT,?,?,?,?,?.?)";
 
 			pst = con.prepareStatement(sql);
 			pst.setString(1, u.getUsrName());
@@ -213,7 +210,6 @@ public class User implements Serializable {
 			}
 
 		} catch (Exception e) {
-			System.out.println("SQL= " + sql);
 			e.printStackTrace();
 		} finally {
 			try {
@@ -231,20 +227,16 @@ public class User implements Serializable {
 	}
 
 	public static User update(User user) {
-		InitialContext ic = null;
 		Connection con = null;
-		DataSource ds = null;
 		PreparedStatement pst = null;
-		ResultSet rs = null;
-		String sql = null;
 		User u = user;
 
 		try {
-			ic = new InitialContext();
-			ds = (DataSource) ic.lookup("java:comp/env/mariadb");
+			InitialContext ic = new InitialContext();
+			DataSource ds = (DataSource) ic.lookup("java:comp/env/mariadb");
 			con = ds.getConnection();
 
-			sql = "update user set usr_name = ?, password = ?, address = ?, phone = ?, mail = ?, exp = ?";
+			String sql = "update user set usr_name = ?, password = ?, address = ?, phone = ?, mail = ?, exp = ?";
 			pst = con.prepareStatement(sql);
 
 			pst.setString(1, u.getUsrName());
@@ -257,12 +249,9 @@ public class User implements Serializable {
 			pst.executeUpdate();
 
 		} catch (Exception e) {
-			System.out.println("SQL= " + sql);
 			e.printStackTrace();
 		} finally {
 			try {
-				if (rs != null)
-					rs.close();
 				if (pst != null)
 					pst.close();
 				if (con != null)
@@ -275,20 +264,16 @@ public class User implements Serializable {
 	}
 
 	public static void delete(User user) {
-		InitialContext ic = null;
 		Connection con = null;
-		DataSource ds = null;
 		PreparedStatement pst = null;
-		ResultSet rs = null;
-		String sql = null;
 		User u = user;
 	
 		try {
-			ic = new InitialContext();
-			ds = (DataSource) ic.lookup("java:comp/env/mariadb");
+			InitialContext ic = new InitialContext();
+			DataSource ds = (DataSource) ic.lookup("java:comp/env/mariadb");
 			con = ds.getConnection();
 	
-			sql = "delete from reserve where usr_id = ?";
+			String sql = "delete from reserve where usr_id = ?";
 			pst = con.prepareStatement(sql);
 			pst.setInt(1, u.getUsrId());
 	
@@ -300,12 +285,9 @@ public class User implements Serializable {
 			pst.executeUpdate();
 	
 		} catch (Exception e) {
-			System.out.println("SQL= " + sql);
 			e.printStackTrace();
 		} finally {
 			try {
-				if (rs != null)
-					rs.close();
 				if (pst != null)
 					pst.close();
 				if (con != null)
