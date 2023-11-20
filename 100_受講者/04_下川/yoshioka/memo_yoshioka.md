@@ -1,7 +1,7 @@
 # 参考サイト
 * [PCセットアップ](https://qiita.com/bonny_d/items/409d1c59fcc0c30f97ae)
 # チェックリスト
-* [ ] 関連スキル
+* [x] 関連スキル
 * markdown
   * [ ] 概要説明
   * [ ] スタイルシート
