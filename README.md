@@ -5,6 +5,7 @@
   * 最新版をダウンロード
   * exe、インストーラどちらでもOK
 * clibor https://chigusa-web.com/clibor/
+* rapture https://www.vector.co.jp/soft/dl/win95/art/se386376.html
 ## Git for Windowsをインストール
 * ここからダウンロード、インストール https://gitforwindows.org/ 
   * 基本的にデフォルトのままでOK
