@@ -1,6 +1,9 @@
 # 学習・環境構築
 ## Git for Windowsをインストール
 * ここからダウンロード、インストール https://gitforwindows.org/ 
+  * 基本的にデフォルトのままでOK
+  * 下記は[Run Git from the Windows Command Prompt]を選択
+![Alt text](image.png)
 * インストール後、powershellを起動し、以下のコマンドを実行
 ```powershell
 > git
