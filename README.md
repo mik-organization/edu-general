@@ -1,4 +1,10 @@
 # 学習・環境構築
+## 下記をダウンロード、インストール
+* Visual Studio Code https://code.visualstudio.com/download
+* サクラエディタ https://sakura-editor.github.io/
+  * 最新版をダウンロード
+  * exe、インストーラどちらでもOK
+* clibor https://chigusa-web.com/clibor/
 ## Git for Windowsをインストール
 * ここからダウンロード、インストール https://gitforwindows.org/ 
   * 基本的にデフォルトのままでOK
