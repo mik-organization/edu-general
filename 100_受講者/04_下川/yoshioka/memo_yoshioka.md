@@ -8,15 +8,15 @@ password: mik-s.work3
 # チェックリスト
 * [x] 関連スキル
 * markdown
-  * [ ] 概要説明
+  * [x] 概要説明
   * [ ] スタイルシート
-  * [ ] Imageをコピペ　Paste Image
+  * [x] Imageをコピペ　Paste Image
 * git
-  * [ ] git概要説明（clone,add,commit,push,pull）
+  * [x] git概要説明（clone,add,commit,push,pull）
   * [ ] posh-git
   * [ ] winmergeでdiff
 * ツール類
-  * [ ] Clibor
+  * [x] Clibor
   * [ ] サクラエディタ
   * [ ] rapture
 * UMLとか作図とか
