@@ -79,7 +79,7 @@ VS Marketplace リンク: https://marketplace.visualstudio.com/items?itemName=mu
 ### PowerShellで独自のエイリアスやショートカットを作成する
 * https://qiita.com/bonny_d/items/a2f3a3ac59304609e42a
 ### posh-git
-https://qiita.com/bonny_d/items/409d1c59fcc0c30f97ae#powershell%E3%81%A7%E3%81%AEgit%E3%81%AE%E4%BD%BF%E7%94%A8%E3%82%92%E4%BE%BF%E5%88%A9%E3%81%AB%E3%81%99%E3%82%8B
+* https://qiita.com/bonny_d/items/409d1c59fcc0c30f97ae#powershell%E3%81%A7%E3%81%AEgit%E3%81%AE%E4%BD%BF%E7%94%A8%E3%82%92%E4%BE%BF%E5%88%A9%E3%81%AB%E3%81%99%E3%82%8B
 
 ## VSCode 拡張機能 
   * 名前: Draw.io Integration 
@@ -95,7 +95,6 @@ VS Marketplace リンク: https://marketplace.visualstudio.com/items?itemName=le
   https://marketplace.visualstudio.com/items?itemName=jebbs.plantuml
 
 ## 業務に必要 
-* Git for Windows https://gitforwindows.org/ 
 * WinMerge https://winmergejp.bitbucket.io/ 
 
 # アカウント作成 
