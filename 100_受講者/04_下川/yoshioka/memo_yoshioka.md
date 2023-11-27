@@ -13,11 +13,11 @@ password: mik-s.work3
   * [x] Imageをコピペ　Paste Image
 * git
   * [x] git概要説明（clone,add,commit,push,pull）
-  * [ ] posh-git
+  * [x] posh-git
   * [ ] winmergeでdiff
 * ツール類
   * [x] Clibor
-  * [ ] サクラエディタ
+  * [x] サクラエディタ
   * [ ] rapture
 * UMLとか作図とか
   * [ ] drawio
