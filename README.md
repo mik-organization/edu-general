@@ -6,6 +6,11 @@
   * C:\Users\[各ユーザ名]\Documents\work
 ## 下記をダウンロード、インストール
 * Visual Studio Code https://code.visualstudio.com/download
+  * 下記日本語化拡張機能もインストール
+  * 名前: Japanese Language Pack for Visual Studio Code 
+ID: MS-CEINTL.vscode-language-pack-ja 
+VS Marketplace リンク: https://marketplace.visualstudio.com/items?itemName=MS-CEINTL.vscode-language-pack-ja 
+
 * サクラエディタ https://sakura-editor.github.io/
   * 最新版をダウンロード
   * exe、インストーラどちらでもOK
@@ -63,13 +68,20 @@ VS Marketplace リンク: https://marketplace.visualstudio.com/items?itemName=mu
   * 基本的に研修期間は無いが、個人情報とかお客様に関連する情報は記述NG
 * 吉岡のQiitaアカウントは下記です。不都合無ければフォローしてください。
   * https://qiita.com/bonny_d
-  
-## テキストエディタ 
-* Visual Studio Code https://code.visualstudio.com/download 
-以下拡張機能
-  * 名前: Japanese Language Pack for Visual Studio Code 
-ID: MS-CEINTL.vscode-language-pack-ja 
-VS Marketplace リンク: https://marketplace.visualstudio.com/items?itemName=MS-CEINTL.vscode-language-pack-ja 
+
+## PowerShell を利用して作業効率UP
+### PowerShell とは
+* Windows に標準で搭載されているコマンドプロンプトのようなもの
+* ただし、コマンドプロンプトよりも機能が豊富
+* 例えば、コマンドプロンプトでは、コピー＆ペーストができないが、PowerShell ではできる
+* また、コマンドプロンプトでは、コマンドの履歴を確認することができないが、PowerShell ではできる
+* その他、様々な機能があるので、興味があれば調べてみてください。
+### PowerShellで独自のエイリアスやショートカットを作成する
+* https://qiita.com/bonny_d/items/a2f3a3ac59304609e42a
+### posh-git
+* https://qiita.com/bonny_d/items/409d1c59fcc0c30f97ae#powershell%E3%81%A7%E3%81%AEgit%E3%81%AE%E4%BD%BF%E7%94%A8%E3%82%92%E4%BE%BF%E5%88%A9%E3%81%AB%E3%81%99%E3%82%8B
+
+## VSCode 拡張機能 
   * 名前: Draw.io Integration 
 ID: hediet.vscode-drawio 
 VS Marketplace リンク: https://marketplace.visualstudio.com/items?itemName=hediet.vscode-drawio 
@@ -83,7 +95,6 @@ VS Marketplace リンク: https://marketplace.visualstudio.com/items?itemName=le
   https://marketplace.visualstudio.com/items?itemName=jebbs.plantuml
 
 ## 業務に必要 
-* Git for Windows https://gitforwindows.org/ 
 * WinMerge https://winmergejp.bitbucket.io/ 
 
 # アカウント作成 
