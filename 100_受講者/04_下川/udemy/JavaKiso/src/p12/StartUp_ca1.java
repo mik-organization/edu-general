@@ -3,7 +3,7 @@
 
 package p12;
 
-public class StartUp01_catch {
+public class StartUp_ca1 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
