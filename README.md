@@ -94,6 +94,12 @@ VS Marketplace リンク: https://marketplace.visualstudio.com/items?itemName=le
 * PlantUML
   https://marketplace.visualstudio.com/items?itemName=jebbs.plantuml
 
+## Markdownにスタイルシートをあてる
+* https://qiita.com/bonny_d/items/409d1c59fcc0c30f97ae#markdown%E3%81%AE%E3%83%97%E3%83%AC%E3%83%93%E3%83%A5%E3%83%BC%E3%81%AB%E3%82%B9%E3%82%BF%E3%82%A4%E3%83%AB%E3%82%B7%E3%83%BC%E3%83%88%E3%82%92%E3%81%82%E3%81%A6%E3%82%8B
+* winmergeでgit diff
+https://qiita.com/bonny_d/items/409d1c59fcc0c30f97ae#winmerge%E3%81%A7diff%E3%81%AE%E8%A1%A8%E7%A4%BA%E3%83%9E%E3%83%BC%E3%82%B8%E3%81%A7%E3%81%8D%E3%82%8B%E3%82%88%E3%81%86%E3%81%AB
+
+
 ## 業務に必要 
 * WinMerge https://winmergejp.bitbucket.io/ 
 
