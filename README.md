@@ -4,6 +4,9 @@
   * C:\Users\[各ユーザ名]\Documents\tools
 * 作業フォルダは下記にしましょう
   * C:\Users\[各ユーザ名]\Documents\work
+* 会社のメールアドレスで、GitHubアカウントを作成しましょう　
+  https://github.co.jp/ 
+
 ## 下記をダウンロード、インストール
 * Visual Studio Code https://code.visualstudio.com/download
   * 下記日本語化拡張機能もインストール
@@ -36,6 +39,10 @@ git : 用語 'git' は、コマンドレット、関数、スクリプト ファ
 
 
 ## git、github概要
+* gitとは？
+  * 分散型バージョン管理システム
+  * バージョン管理システムとは、ファイルの変更履歴を管理するシステム
+  * 分散型とは、リモートリポジトリとローカルリポジトリの2つのリポジトリを持つこと
 * リポジトリとは？
   * 保管庫。ソース等のファイル、成果物を保管する場所。
 * gitのコマンドは全て、git xxxx という形式で実行する。
@@ -62,12 +69,15 @@ VS Marketplace リンク: https://marketplace.visualstudio.com/items?itemName=mu
 * Markdownとは、文法について等々、ググって調べてみましょう。
 ## Qiita
 * Qiitaアカウントを作成しましょう。
+https://qiita.com/ 
 * 記事の投稿について
   * 公開して問題の内容のものは、公開でOK
   * 特定のUdemyの講義に紐づくようなものは限定公開
   * 基本的に研修期間は無いが、個人情報とかお客様に関連する情報は記述NG
 * 吉岡のQiitaアカウントは下記です。不都合無ければフォローしてください。
   * https://qiita.com/bonny_d
+* Qiitaに備忘録の記事を作成し、日々学んだことをまとめて行きましょう。
+まずはジャンル気にせず記入し、ある程度量が増えたら、随時カテゴリ分けしていきましょう。
 
 ## PowerShell を利用して作業効率UP
 ### PowerShell とは
@@ -101,10 +111,6 @@ VS Marketplace リンク: https://marketplace.visualstudio.com/items?itemName=le
 * WinMergeをインストール https://winmergejp.bitbucket.io/ 
 * https://qiita.com/bonny_d/items/409d1c59fcc0c30f97ae#winmerge%E3%81%A7diff%E3%81%AE%E8%A1%A8%E7%A4%BA%E3%83%9E%E3%83%BC%E3%82%B8%E3%81%A7%E3%81%8D%E3%82%8B%E3%82%88%E3%81%86%E3%81%AB
 
-
-# アカウント作成 
-* Qiita　https://qiita.com/ 
-* GitHub　https://github.co.jp/ 
 
 # 統合開発環境（IDE）インストール 
 ## java

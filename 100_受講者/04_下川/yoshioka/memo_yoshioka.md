@@ -27,9 +27,15 @@ mik-learning3@mik-s.work/mik-s.work3
 * UMLとか作図とか
   * [ ] drawio
   * [ ] PlantUML
-  
+* java
+  * [x] 警告の対応方法について
+  * [x] コメントの書き方について
+
+
 # TODO
+# その他
 ## java コードレビュー
-* C:\Users\USER\Documents\work\git\mik\edu-task-apps\02_java\shoplist
-* C:\Users\USER\Documents\work\git\mik\edu-general\100_受講者\04_下川\udemy\JavaKiso\src\vo
-* C:\Users\USER\Documents\work\git\mik\edu-general\100_受講者\04_下川\udemy\JavaKiso\src\p14
+* 下記を軽く確認したが、内容的にリファクタリングしにくいため、リファクタリングは一旦中止。
+  * C:\Users\USER\Documents\work\git\mik\edu-task-apps\02_java\shoplist
+  * C:\Users\USER\Documents\work\git\mik\edu-general\100_受講者\04_下川\udemy\JavaKiso\src\vo
+  * C:\Users\USER\Documents\work\git\mik\edu-general\100_受講者\04_下川\udemy\JavaKiso\src\p14
