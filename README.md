@@ -71,7 +71,7 @@ VS Marketplace リンク: https://marketplace.visualstudio.com/items?itemName=mu
 * Qiitaアカウントを作成しましょう。
 https://qiita.com/ 
 * 記事の投稿について
-  * 公開して問題の内容のものは、公開でOK
+  * 公開して問題の無い内容のものは、公開でOK
   * 特定のUdemyの講義に紐づくようなものは限定公開
   * 基本的に研修期間は無いが、個人情報とかお客様に関連する情報は記述NG
 * 吉岡のQiitaアカウントは下記です。不都合無ければフォローしてください。
