@@ -14,11 +14,11 @@
 	<th>id</th><th>年齢</th><th>満足度</th><th>コメント</th><th>datetime</th>
 </tr>
 <tr th:each="survey : ${surveyList}">
-	<td th:text="${survey.id}"></td>
-	<td th:text="${survey.age}"></td>
-	<td th:text="${survey.satisfaction}"></td>
-	<td th:text="${survey.comment}"></td>
-	<td th:text="${survey.created}"></td>
+	<td th:text="${survey.id}">1</td>
+	<td th:text="${survey.age}">age</td>
+	<td th:text="${survey.satisfaction}">satisfaction</td>
+	<td th:text="${survey.comment}">comment</td>
+	<td th:text="${survey.created}">created</td>
 </tr>
 </table>
 </body>

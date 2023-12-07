@@ -12,16 +12,17 @@ public class Inquiry {
 	private String contents;
 	private LocalDateTime created;
 	
-	public Inquiry() {}
-	
-	public Inquiry(int id, String name, String email, String contents, LocalDateTime created) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.email = email;
-		this.contents = contents;
-		this.created = created;
+	public Inquiry() {
 	}
+	
+//	public Inquiry(int id, String name, String email, String contents, LocalDateTime created) {
+//		super();
+//		this.id = id;
+//		this.name = name;
+//		this.email = email;
+//		this.contents = contents;
+//		this.created = created;
+//	}
 
 
 	public int getId() {
