@@ -115,10 +115,11 @@ VS Marketplace リンク: https://marketplace.visualstudio.com/items?itemName=le
 * データベースとは？
   * データを蓄積するための仕組み
   * データベースには、様々な種類がある
-    * Oracle、SQL Server、PostgreSQL、MySQL、SQLite、Access、Excel、CSV、JSON、XML、などなど
+    * Oracle、SQL Server、PostgreSQL、MySQL、SQLite、Accessなどなど
 * SQLとは？
   * データベースに対して、操作を行う言語
   * データベースやスキーマの作成、データの登録、更新、削除、検索等を行う
+  * 作成：create、登録：insert、更新：update、削除：delete、検索：select
 
 * データベース、スキーマ等の階層構造イメージ
 ![データベース、スキーマ等の階層構造イメージ](000_一般/04_データベース/db.png)
