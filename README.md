@@ -71,7 +71,7 @@ VS Marketplace リンク: https://marketplace.visualstudio.com/items?itemName=mu
 * Qiitaアカウントを作成しましょう。
 https://qiita.com/ 
 * 記事の投稿について
-  * 公開して問題の内容のものは、公開でOK
+  * 公開して問題の無い内容のものは、公開でOK
   * 特定のUdemyの講義に紐づくようなものは限定公開
   * 基本的に研修期間は無いが、個人情報とかお客様に関連する情報は記述NG
 * 吉岡のQiitaアカウントは下記です。不都合無ければフォローしてください。
@@ -111,6 +111,18 @@ VS Marketplace リンク: https://marketplace.visualstudio.com/items?itemName=le
 * WinMergeをインストール https://winmergejp.bitbucket.io/ 
 * https://qiita.com/bonny_d/items/409d1c59fcc0c30f97ae#winmerge%E3%81%A7diff%E3%81%AE%E8%A1%A8%E7%A4%BA%E3%83%9E%E3%83%BC%E3%82%B8%E3%81%A7%E3%81%8D%E3%82%8B%E3%82%88%E3%81%86%E3%81%AB
 
+## データベース、SQLについて
+* データベースとは？
+  * データを蓄積するための仕組み
+  * データベースには、様々な種類がある
+    * Oracle、SQL Server、PostgreSQL、MySQL、SQLite、Accessなどなど
+* SQLとは？
+  * データベースに対して、操作を行う言語
+  * データベースやスキーマの作成、データの登録、更新、削除、検索等を行う
+  * 作成：create、登録：insert、更新：update、削除：delete、検索：select
+
+* データベース、スキーマ等の階層構造イメージ
+![データベース、スキーマ等の階層構造イメージ](000_一般/04_データベース/db.png)
 
 # 統合開発環境（IDE）インストール 
 ## java
