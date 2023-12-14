@@ -9,7 +9,7 @@ CREATE TABLE users(
   age INT,
   phone_number CHAR(13), -- 固定長
   message TEXT
-)
+);
 
 # テーブル一覧を表示
 SHOW TABLES;
@@ -27,9 +27,9 @@ CREATE TABLE users(
   id INT PRIMARY KEY, -- idカラムINT型
   name VARCHAR(10), -- 名前、可変長文字列
   age INT,
-  phone_number CHAR(13), -- 固定長
+  phone_number CHAR(13), -- 固定長文字列
   message TEXT
-)
+);
 
 DESCRIBE users;
 
