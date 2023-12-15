@@ -31,8 +31,8 @@ mik-learning3@mik-s.work/mik-s.work3
   * [x] 警告の対応方法について
   * [x] コメントの書き方について
 * github
-  * [ ] issue
-  * [ ] プルリク
+  * [x] issue
+  * [x] プルリク
 
 
 
