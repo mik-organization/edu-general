@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.InitBinder;
 
+import com.example.demo.service.InquiryNotFoundException;
+
 /*
  全てのControllerで共通処理を定義*/
 @ControllerAdvice
@@ -28,10 +30,10 @@ public class WebMvcControllerAdvice {
 		return "error/CustomPage";
 	}
 	
-//	@ExceptionHandler(InquiryNotFoundException.class)
-//	public String handleException(InquiryNotFoundException e,Model model) {
-//		model.addAttribute("message", e);
-//		return "error/CustomPage";
-//	}
-   
+	 @ExceptionHandler(InquiryNotFoundException.class)
+      public String handleException(InquiryNotFoundException e, Model model) {
+    	model.addAttribute("messagee",e);
+    	return "error/CustomPage";
+     }
+	
 }

@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.dao.InquiryDao;
 import com.example.demo.entity.Inquiry;
-import com.example.demo.repository.InquiryDao;
 
 @Service
 public class InquiryServiceImpl implements InquiryService {
@@ -35,5 +35,13 @@ public class InquiryServiceImpl implements InquiryService {
 	@Override
 	public List<Inquiry> getAll() {
 		return dao.getAll();
+	}
+
+	@Override
+	public void update(Inquiry inquiry) {
+		if(dao.updateInquiry(inquiry) == 0) {
+			throw new InquiryNotFoundException("can't find the same ID");
+		}
+		
 	}
 }

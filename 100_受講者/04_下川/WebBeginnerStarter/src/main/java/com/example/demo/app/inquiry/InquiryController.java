@@ -8,12 +8,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.demo.entity.Inquiry;
+import com.example.demo.service.InquiryNotFoundException;
 import com.example.demo.service.InquiryService;
 
 @Controller
@@ -31,16 +33,31 @@ public class InquiryController {
 	public String index(Model model) {
 		List<Inquiry> list = inquiryService.getAll();
 		
+//		Inquiry inquiry = new Inquiry();
+//		inquiry.setId(4);
+//		inquiry.setName("Jamie");
+//		inquiry.setEmail("sample@example.com");
+//		inquiry.setContents("Hello.");
+//		
+//		inquiryService.update(inquiry);
+//		
+//		try {
+//			inquiryService.update(inquiry);
+//		} catch (InquiryNotFoundException e) {
+//			model.addAttribute("message",e);
+//			return "error/CustomPage";
+//		}
+		
 		model.addAttribute("inquiryList",list);
 		model.addAttribute("title","Inquiry Index");
 		
-		return "inquiry/index";
+		return "inquiry/index_boot";
 	}
 
 	@GetMapping("/form")
 	public String form(InquiryForm inquiryForm,Model model) {
 		model.addAttribute("title", "Inquiry Form");
-		return "inquiry/form";
+		return "inquiry/form_boot";
 	}
 
 	@PostMapping("/confirm")
@@ -49,10 +66,10 @@ public class InquiryController {
 			Model model) {
 		if(result.hasErrors()) {
 			model.addAttribute("title", "Inquiry Form");
-		    return "inquiry/form";
+		    return "inquiry/form_boot";
 	}
 	model.addAttribute("title", "Confirm Page");
-	return "inquiry/confirm";
+	return "inquiry/confirm_boot";
 	}
 	
     @PostMapping("/complete")
@@ -62,7 +79,7 @@ public class InquiryController {
 			RedirectAttributes redirectAttributes) {
 		if(result.hasErrors()) {
     	    model.addAttribute("title", "InquiryForm");
-    	    return "inquiry/form";
+    	    return "inquiry/form_boot";
     	}
 		
 		Inquiry inquiry = new Inquiry();
@@ -75,10 +92,11 @@ public class InquiryController {
 		redirectAttributes.addFlashAttribute("complete", "Registered!");
 		return "redirect:/inquiry/form";
 		}
-
-//	private Object now() {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
+    
+//    @ExceptionHandler(InquiryNotFoundException.class)
+//     public String handleException(InquiryNotFoundException e, Model model) {
+//    	model.addAttribute("messagee",e);
+//		return "error/CustomPage";
+//    }
 
 }

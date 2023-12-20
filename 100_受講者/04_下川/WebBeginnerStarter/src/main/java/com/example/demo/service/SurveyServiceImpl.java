@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.example.demo.dao.SurveyDao;
 import com.example.demo.entity.Survey;
-import com.example.demo.repository.SurveyDao;
 
 @Service
 public class SurveyServiceImpl implements SurveyService {
