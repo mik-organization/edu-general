@@ -19,14 +19,15 @@ public class InquiryForm{
 		this.contents = contents;
 	}
 
-	@Size(min = 1, max = 20, message="Please input 20 characters or less")
+    @NotNull(message = "お名前を入力してください。")
+	@Size(min = 1, max = 20, message = "20文字以内で入力してください。")
     private String name;
     
-    @NotNull
-    @Email(message = "Invalid E-mail Format")
+    @NotNull(message = "E-mailアドレスを入力してください。")
+    @Email(message = "E-mailアドレスの形式で入力してください。")
     private String email;
 
-    @NotNull
+    @NotNull(message = "お問い合わせ内容を入力してください。")
     private String contents;
 
 	public String getName() {

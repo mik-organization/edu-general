@@ -8,14 +8,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.demo.entity.Inquiry;
-import com.example.demo.service.InquiryNotFoundException;
 import com.example.demo.service.InquiryService;
 
 @Controller
@@ -54,8 +53,16 @@ public class InquiryController {
 		return "inquiry/index_boot";
 	}
 
-	@GetMapping("/form")
-	public String form(InquiryForm inquiryForm,Model model) {
+	@GetMapping("/form") 
+	public String form(InquiryForm inquiryForm,
+			Model model,
+			@ModelAttribute("complete") String complete) {
+		model.addAttribute("title", "Inquiry Form");
+		return "inquiry/form_boot";
+	}
+	
+	@PostMapping("/form")
+	public String formGoBack(InquiryForm inquiryForm,Model model) {
 		model.addAttribute("title", "Inquiry Form");
 		return "inquiry/form_boot";
 	}
@@ -68,7 +75,7 @@ public class InquiryController {
 			model.addAttribute("title", "Inquiry Form");
 		    return "inquiry/form_boot";
 	}
-	model.addAttribute("title", "Confirm Page");
+	model.addAttribute("title", "入力内容確認ページ");
 	return "inquiry/confirm_boot";
 	}
 	
@@ -78,7 +85,7 @@ public class InquiryController {
 			Model model,
 			RedirectAttributes redirectAttributes) {
 		if(result.hasErrors()) {
-    	    model.addAttribute("title", "InquiryForm");
+    	    model.addAttribute("title", "お問合せフォーム");
     	    return "inquiry/form_boot";
     	}
 		
@@ -89,7 +96,7 @@ public class InquiryController {
 		inquiry.setCreated(LocalDateTime.now());
 		
 		inquiryService.save(inquiry);
-		redirectAttributes.addFlashAttribute("complete", "Registered!");
+		redirectAttributes.addFlashAttribute("complete", "送信が完了しました！");
 		return "redirect:/inquiry/form";
 		}
     

@@ -34,7 +34,7 @@ public class SurveyController {
 		Model model) {
 	if(result.hasErrors()) {
 		model.addAttribute("title", "Survey Form");
-		return "survey/confirm";
+		return "survey/form";
 	}
 	model.addAttribute("title", "Confirm Page");
 	return "survey/confirm";
