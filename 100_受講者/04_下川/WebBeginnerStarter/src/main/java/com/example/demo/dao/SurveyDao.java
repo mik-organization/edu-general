@@ -10,4 +10,6 @@ public interface SurveyDao {
 
 	List<Survey> getAll();
 
+	int updateSurvey(Survey survey);
+
 }

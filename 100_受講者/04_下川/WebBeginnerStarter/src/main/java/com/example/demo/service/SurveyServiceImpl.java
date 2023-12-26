@@ -13,8 +13,7 @@ public class SurveyServiceImpl implements SurveyService {
 
 	private final SurveyDao dao;
 
-	@Autowired
-	SurveyServiceImpl(SurveyDao dao){
+	@Autowired SurveyServiceImpl(SurveyDao dao){
 		this.dao = dao;
 	}
 
@@ -26,9 +25,16 @@ public class SurveyServiceImpl implements SurveyService {
 	@Override
 	public List<Survey> getAll() {
 		if(dao.getAll().isEmpty()) {
-			throw new InquiryNotFoundException("SQL error");
+			throw new SurveyNotFoundException("SQL error");
 		}
 		return dao.getAll();
 	}
 
+	@Override
+	public void update(Survey survey) {
+		if(dao.updateSurvey(survey) == 0) {
+			throw new SurveyNotFoundException("can't find the same ID");
+	}
+
+}
 }
