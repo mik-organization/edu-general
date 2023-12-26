@@ -25,7 +25,7 @@
 
       <div class="starter-template">
         <h1 th:text="${title}">Bootstrap starter template</h1>
-        <p class="lead"> お問合せフォームへようこそ。<br>お問合せ内容をご入力ください。</p>
+        <p class="lead"> アンケートフォームへようこそ。<br>ぜひご感想をお待ちしております。</p>
       </div>
       
 
@@ -42,7 +42,7 @@
 	  </div>
 	  <div class="text-danger mb-4" th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></div>
 	  <div class="form-group">
-	    <label for="satisfaction">メール</label>
+	    <label for="satisfaction">満足度</label>
 	    <input type="text" name="satisfaction" class="form-control" id="satisfaction"  th:value="*{satisfaction}">
 	  </div>
 	  <div class="text-danger mb-4" th:if="${#fields.hasErrors('satisfaction')}" th:errors="*{satisfaction}"></div>

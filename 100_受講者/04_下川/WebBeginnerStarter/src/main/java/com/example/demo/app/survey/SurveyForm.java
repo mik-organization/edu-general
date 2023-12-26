@@ -6,6 +6,14 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 public class SurveyForm{
+	
+	public SurveyForm() {}
+
+    public SurveyForm(int age, int satisfaction, String comment) {
+		this.age = age;
+		this.satisfaction = satisfaction;
+		this.comment = comment;
+	}
 
 	@Min(0)
 	@Max(150)
@@ -15,17 +23,9 @@ public class SurveyForm{
     @Max(5)
     private int satisfaction;
 
-    @NotNull
-    @Size(min = 1,max = 200, message = "Please input 200 characters or less")
+    @NotNull(message = "コメントを入力してください。")
+    @Size(min = 1,max = 200, message = "1字以上200字以内で入力してください。")
     private String comment;
-
-	public SurveyForm() {}
-
-    public SurveyForm(int age, int satisfaction, String comment) {
-		this.age = age;
-		this.satisfaction = satisfaction;
-		this.comment = comment;
-	}
 
 
 	public int getAge() {

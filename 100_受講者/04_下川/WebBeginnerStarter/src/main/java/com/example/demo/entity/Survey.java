@@ -40,8 +40,8 @@ public class Survey {
 		return satisfaction;
 	}
 
-	public void setSatisfaction(int satisfaction) {
-		this.satisfaction = satisfaction;
+	public void setSatisfaction(int i) {
+		this.satisfaction = i;
 	}
 
 	public String getComment() {

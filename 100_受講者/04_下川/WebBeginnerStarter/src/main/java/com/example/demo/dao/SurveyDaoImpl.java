@@ -25,14 +25,14 @@ public class SurveyDaoImpl implements SurveyDao {
 
 	@Override
 	public void insertSurvey(Survey survey) {
-		jdbcTemplate.update("INSERT INTO inquiry(name, email, contents, created) VALUES(?,?,?,?)",
+		jdbcTemplate.update("INSERT INTO survey(age, satisfaction, comment, created) VALUES(?,?,?,?)",
 				survey.getAge(), survey.getSatisfaction(), survey.getComment(), survey.getCreated());
 
 	}
 
 	@Override
 	public List<Survey> getAll() {
-		String sql = "SELECT id, name, email,contents,created FROM survey";
+		String sql = "SELECT id, age, satisfaction,comment,created FROM survey";
 		List<Map<String,Object>> resultList = jdbcTemplate.queryForList(sql);
 		List<Survey> list = new ArrayList<Survey>();
 		for(Map<String, Object> result : resultList) {
