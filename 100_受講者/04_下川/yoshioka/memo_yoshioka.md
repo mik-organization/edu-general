@@ -33,6 +33,10 @@ mik-learning3@mik-s.work/mik-s.work3
 * github
   * [x] issue
   * [x] プルリク
+* DB
+  * [ ]postgresqlの導入
+* A5MK2とは
+  * 
 
 
 
