@@ -26,7 +26,7 @@ mik-learning3@mik-s.work/mik-s.work3
   * [x] rapture
 * UMLとか作図とか
   * [ ] drawio
-  * [ ] PlantUML
+  * [x] PlantUML
 * java
   * [x] 警告の対応方法について
   * [x] コメントの書き方について
@@ -34,9 +34,9 @@ mik-learning3@mik-s.work/mik-s.work3
   * [x] issue
   * [x] プルリク
 * DB
-  * [ ]postgresqlの導入
-* A5MK2とは
-  * 
+  * [x] postgresqlの導入
+  * [x] A5MK2
+  
 
 
 
