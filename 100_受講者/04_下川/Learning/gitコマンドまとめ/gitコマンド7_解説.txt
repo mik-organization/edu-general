@@ -1,0 +1,339 @@
+C:\Users\k-shi
+ [shimokawa-main +40 ~13 -0 !]cd C:\Users\k-shi\Documents\work\git\edu-general
+C:\..\git\edu-general
+ [main ≡]git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+C:\..\git\edu-general
+ [main ≡]cd ..
+C:\..cuments\work\git
+ [shimokawa-main +40 ~13 -0 !]ls
+
+
+    ディレクトリ: C:\Users\k-shi\Documents\work\git
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        2023/12/06     17:06                edu-general
+d-----        2023/12/10     15:57                edu-task-apps
+
+
+C:\..cuments\work\git
+ [shimokawa-main +40 ~13 -0 !]cd .\edu-task-apps\
+C:\..it\edu-task-apps
+ [shimokawa-main +0 ~0 -11 !]ii .
+C:\..it\edu-task-apps
+ [shimokawa-main +0 ~0 -11 !]git status
+On branch shimokawa-main
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        deleted:    helloSpring/.gitignore
+        deleted:    helloSpring/build.gradle
+        deleted:    helloSpring/gradle/wrapper/gradle-wrapper.jar
+        deleted:    helloSpring/gradle/wrapper/gradle-wrapper.properties
+        deleted:    helloSpring/gradlew
+        deleted:    helloSpring/gradlew.bat
+        deleted:    helloSpring/settings.gradle
+        deleted:    helloSpring/src/main/java/com/example/demo/HelloSpringApplication.java
+        deleted:    helloSpring/src/main/java/com/example/demo/controller/HelloController.java
+        deleted:    helloSpring/src/main/resources/application.properties
+        deleted:    helloSpring/src/test/java/com/example/demo/HelloSpringApplicationTests.java
+
+no changes added to commit (use "git add" and/or "git commit -a")
+C:\..it\edu-task-apps
+ [shimokawa-main +0 ~0 -11 !]git add .
+C:\..it\edu-task-apps
+ [shimokawa-main +0 ~0 -11 ~]git commit -m "UP"
+[shimokawa-main 9c90d23] UP
+ 11 files changed, 464 deletions(-)
+ delete mode 100644 helloSpring/.gitignore
+ delete mode 100644 helloSpring/build.gradle
+ delete mode 100644 helloSpring/gradle/wrapper/gradle-wrapper.jar
+ delete mode 100644 helloSpring/gradle/wrapper/gradle-wrapper.properties
+ delete mode 100644 helloSpring/gradlew
+ delete mode 100644 helloSpring/gradlew.bat
+ delete mode 100644 helloSpring/settings.gradle
+ delete mode 100644 helloSpring/src/main/java/com/example/demo/HelloSpringApplication.java
+ delete mode 100644 helloSpring/src/main/java/com/example/demo/controller/HelloController.java
+ delete mode 100644 helloSpring/src/main/resources/application.properties
+ delete mode 100644 helloSpring/src/test/java/com/example/demo/HelloSpringApplicationTests.java
+C:\..it\edu-task-apps
+ [shimokawa-main]git push
+fatal: The current branch shimokawa-main has no upstream branch.
+To push the current branch and set the remote as upstream, use
+
+    git push --set-upstream origin shimokawa-main
+
+To have this happen automatically for branches without a tracking
+upstream, see 'push.autoSetupRemote' in 'git help config'.
+
+C:\..it\edu-task-apps
+ [shimokawa-main]
+C:\..it\edu-task-apps
+ [shimokawa-main]git fetch origin shimokawa-issue1
+remote: Enumerating objects: 5, done.
+remote: Counting objects: 100% (5/5), done.
+remote: Compressing objects: 100% (1/1), done.
+remote: Total 4 (delta 1), reused 4 (delta 1), pack-reused 0
+Unpacking objects: 100% (4/4), 289 bytes | 2.00 KiB/s, done.
+From https://github.com/mik-organization/edu-task-apps
+ * branch            shimokawa-issue1 -> FETCH_HEAD
+ * [new branch]      shimokawa-issue1 -> origin/shimokawa-issue1
+C:\..it\edu-task-apps
+ [shimokawa-main]git checkout shimokawa-issue1
+Switched to a new branch 'shimokawa-issue1'
+branch 'shimokawa-issue1' set up to track 'origin/shimokawa-issue1'.
+C:\..it\edu-task-apps
+ [shimokawa-issue1 ≡]git checktou shimokawa-main
+git: 'checktou' is not a git command. See 'git --help'.
+
+The most similar command is
+        checkout
+C:\..it\edu-task-apps
+ [shimokawa-issue1 ≡]git checkout shimokawa-main
+Switched to branch 'shimokawa-main'
+C:\..it\edu-task-apps
+ [shimokawa-main]git checkout shimokawa-issue1
+Switched to branch 'shimokawa-issue1'
+Your branch is up to date with 'origin/shimokawa-issue1'.
+C:\..it\edu-task-apps
+ [shimokawa-issue1 ≡]cd ..
+C:\..cuments\work\git
+> ls
+
+
+    ディレクトリ: C:\Users\k-shi\Documents\work\git
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        2023/12/06     17:06                edu-general
+d-----        2023/12/11     10:32                edu-task-apps
+
+
+C:\..cuments\work\git
+> cd ..
+C:\..i\Documents\work
+> cd ..
+C:\..\k-shi\Documents
+> cd ..
+C:\Users\k-shi
+> git
+usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]
+           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]
+           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--bare]
+           [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]
+           [--config-env=<name>=<envvar>] <command> [<args>]
+
+These are common Git commands used in various situations:
+
+start a working area (see also: git help tutorial)
+   clone     Clone a repository into a new directory
+   init      Create an empty Git repository or reinitialize an existing one
+
+work on the current change (see also: git help everyday)
+   add       Add file contents to the index
+   mv        Move or rename a file, a directory, or a symlink
+   restore   Restore working tree files
+   rm        Remove files from the working tree and from the index
+
+examine the history and state (see also: git help revisions)
+   bisect    Use binary search to find the commit that introduced a bug
+   diff      Show changes between commits, commit and working tree, etc
+   grep      Print lines matching a pattern
+   log       Show commit logs
+   show      Show various types of objects
+   status    Show the working tree status
+
+grow, mark and tweak your common history
+   branch    List, create, or delete branches
+   commit    Record changes to the repository
+   merge     Join two or more development histories together
+   rebase    Reapply commits on top of another base tip
+   reset     Reset current HEAD to the specified state
+   switch    Switch branches
+   tag       Create, list, delete or verify a tag object signed with GPG
+
+collaborate (see also: git help workflows)
+   fetch     Download objects and refs from another repository
+   pull      Fetch from and integrate with another repository or a local branch
+   push      Update remote refs along with associated objects
+
+'git help -a' and 'git help -g' list available subcommands and some
+concept guides. See 'git help <command>' or 'git help <concept>'
+to read about a specific subcommand or concept.
+See 'git help git' for an overview of the system.
+C:\Users\k-shi
+> git status
+fatal: not a git repository (or any of the parent directories): .git
+C:\Users\k-shi
+> cd C:\Users\k-shi\Documents\work\git\edu-general
+C:\..\git\edu-general
+ [main ≡]cd ..
+C:\..cuments\work\git
+> cd .\edu-task-apps\
+C:\..it\edu-task-apps
+ [shimokawa-issue1 ≡]touche aaa.txt
+touche : 用語 'touche' は、コマンドレット、関数、スクリプト ファイル、または操作可能なプログラムの名前として認識されま
+せん。名前が正しく記述されていることを確認し、パスが含まれている場合はそのパスが正しいことを確認してから、再試行してく
+ださい。
+発生場所 行:1 文字:1
++ touche aaa.txt
++ ~~~~~~
+    + CategoryInfo          : ObjectNotFound: (touche:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+C:\..it\edu-task-apps
+ [shimokawa-issue1 ≡]touch aaa.txt
+C:\..it\edu-task-apps
+ [shimokawa-issue1 ≡ +1 ~0 -0 !]git add .
+C:\..it\edu-task-apps
+ [shimokawa-issue1 ≡ +1 ~0 -0 ~]git commit -m "up"
+[shimokawa-issue1 86fa54c] up
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 aaa.txt
+C:\..it\edu-task-apps
+ [shimokawa-issue1 ↑1]git checkout shimokawa-main
+Switched to branch 'shimokawa-main'
+C:\..it\edu-task-apps
+ [shimokawa-main]git checkout shimokawa-issue1
+Switched to branch 'shimokawa-issue1'
+Your branch is ahead of 'origin/shimokawa-issue1' by 1 commit.
+  (use "git push" to publish your local commits)
+C:\..it\edu-task-apps
+ [shimokawa-issue1 ↑1]git push
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 268 bytes | 33.00 KiB/s, done.
+Total 3 (delta 1), reused 1 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/mik-organization/edu-task-apps.git
+   99a7340..86fa54c  shimokawa-issue1 -> shimokawa-issue1
+C:\..it\edu-task-apps
+ [shimokawa-issue1 ≡]
+C:\..it\edu-task-apps
+ [shimokawa-issue1 ≡ +0 ~0 -1 !]git add .
+C:\..it\edu-task-apps
+ [shimokawa-issue1 ≡ +0 ~0 -1 ~]git commit -m "up"
+[shimokawa-issue1 b850245] up
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ delete mode 100644 aaa.txt
+C:\..it\edu-task-apps
+ [shimokawa-issue1 ↑1]git push
+Enumerating objects: 3, done.
+Counting objects: 100% (3/3), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (2/2), 218 bytes | 218.00 KiB/s, done.
+Total 2 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/mik-organization/edu-task-apps.git
+   86fa54c..b850245  shimokawa-issue1 -> shimokawa-issue1
+C:\..it\edu-task-apps
+ [shimokawa-issue1 ≡]ls
+
+
+    ディレクトリ: C:\Users\k-shi\Documents\work\git\edu-task-apps
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        2023/11/28     14:29                .vs
+d-----        2023/11/28     14:29                01_csharp
+d-----        2023/11/28     14:39                02_java
+d-----        2023/12/11     10:52                99_tmp
+d-----        2023/12/11     10:52                helloSpring
+-a----        2023/11/28     14:29           6148 .DS_Store
+-a----        2023/11/28     14:29             58 README.md
+
+
+C:\..it\edu-task-apps
+ [shimokawa-issue1 ≡]cd .\99_tmp\
+C:\..task-apps\99_tmp
+ [shimokawa-issue1 ≡]ls
+
+
+    ディレクトリ: C:\Users\k-shi\Documents\work\git\edu-task-apps\99_tmp
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        2023/12/11     10:52              0 helloSpring.md
+
+
+C:\..task-apps\99_tmp
+ [shimokawa-issue1 ≡]cat .\helloSpring.md
+C:\..task-apps\99_tmp
+ [shimokawa-issue1 ≡]cd ..
+C:\..it\edu-task-apps
+ [shimokawa-issue1 ≡]git windiff
+C:\..it\edu-task-apps
+ [shimokawa-issue1 ≡]git windiff shimkawa-main
+fatal: ambiguous argument 'shimkawa-main': unknown revision or path not in the working tree.
+Use '--' to separate paths from revisions, like this:
+'git <command> [<revision>...] -- [<file>...]'
+error: error occurred running diff --raw
+C:\..it\edu-task-apps
+ [shimokawa-issue1 ≡]git windiff shimokawa-main
+C:\..it\edu-task-apps
+ [shimokawa-issue1 ≡]git checkout shimokawa-main
+Switched to branch 'shimokawa-main'
+C:\..it\edu-task-apps
+ [shimokawa-main]git pull
+From https://github.com/mik-organization/edu-task-apps
+   20d7131..99a7340  shimokawa-main -> origin/shimokawa-main
+There is no tracking information for the current branch.
+Please specify which branch you want to merge with.
+See git-pull(1) for details.
+
+    git pull <remote> <branch>
+
+If you wish to set tracking information for this branch you can do so with:
+
+    git branch --set-upstream-to=origin/<branch> shimokawa-main
+
+C:\..it\edu-task-apps
+ [shimokawa-main]git pull ^C
+C:\..it\edu-task-apps
+ [shimokawa-main]git branch --set-upstream-to=origin/shimokawa-main shimokawa-main
+branch 'shimokawa-main' set up to track 'origin/shimokawa-main'.
+C:\..it\edu-task-apps
+ [shimokawa-main ↓1 ↑1]git pull
+Merge made by the 'ort' strategy.
+ 99_tmp/helloSpring.md | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 99_tmp/helloSpring.md
+C:\..it\edu-task-apps
+ [shimokawa-main ↑2]git push
+Enumerating objects: 6, done.
+Counting objects: 100% (6/6), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (4/4), 500 bytes | 500.00 KiB/s, done.
+Total 4 (delta 2), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+To https://github.com/mik-organization/edu-task-apps.git
+   99a7340..20f78e9  shimokawa-main -> shimokawa-main
+C:\..it\edu-task-apps
+ [shimokawa-main ≡]git checkout shimokawa-issue1
+Switched to branch 'shimokawa-issue1'
+Your branch is up to date with 'origin/shimokawa-issue1'.
+C:\..it\edu-task-apps
+ [shimokawa-issue1 ≡]git pull
+Already up to date.
+C:\..it\edu-task-apps
+ [shimokawa-issue1 ≡]git windiff shimoakawa-main
+fatal: ambiguous argument 'shimoakawa-main': unknown revision or path not in the working tree.
+Use '--' to separate paths from revisions, like this:
+'git <command> [<revision>...] -- [<file>...]'
+error: error occurred running diff --raw
+C:\..it\edu-task-apps
+ [shimokawa-issue1 ≡]git windiff shimokawa-main
+C:\..it\edu-task-apps
+ [shimokawa-issue1 ≡]

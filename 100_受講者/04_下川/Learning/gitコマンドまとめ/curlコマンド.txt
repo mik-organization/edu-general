@@ -1,0 +1,70 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+                                                                                                                        新機能と改善のために最新の PowerShell をインストールしてください!https://aka.ms/PSWindows                                                                                                                                                       パーソナル プロファイルとシステム プロファイルの読み込みにかかった時間は 541 ミリ秒です。                               C:\Users\k-shi
+> curl http://localhost:8080
+curl : リモート サーバーに接続できません。
+発生場所 行:1 文字:1
++ curl http://localhost:8080
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (System.Net.HttpWebRequest:HttpWebRequest) [Invoke-WebRequest]、WebExce
+    ption
+    + FullyQualifiedErrorId : WebCmdletWebResponseException,Microsoft.PowerShell.Commands.InvokeWebRequestCommand
+
+C:\Users\k-shi
+> curl http://localhost:8080/test
+curl : リモート サーバーに接続できません。
+発生場所 行:1 文字:1
++ curl http://localhost:8080/test
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (System.Net.HttpWebRequest:HttpWebRequest) [Invoke-WebRequest]、WebExce
+    ption
+    + FullyQualifiedErrorId : WebCmdletWebResponseException,Microsoft.PowerShell.Commands.InvokeWebRequestCommand
+
+C:\Users\k-shi
+> curl http://localhost:8080                                                                                                                                                                                                                                                                                                                                            StatusCode        : 200                                                                                                 StatusDescription :
+Content           : hello
+RawContent        : HTTP/1.1 200
+                    Keep-Alive: timeout=60
+                    Connection: keep-alive
+                    Content-Length: 5
+                    Content-Type: text/plain;charset=UTF-8
+                    Date: Thu, 28 Dec 2023 05:22:40 GMT
+
+                    hello
+Forms             : {}
+Headers           : {[Keep-Alive, timeout=60], [Connection, keep-alive], [Content-Length, 5], [Content-Type, text/plain
+                    ;charset=UTF-8]...}
+Images            : {}
+InputFields       : {}
+Links             : {}
+ParsedHtml        : mshtml.HTMLDocumentClass
+RawContentLength  : 5
+
+
+
+C:\Users\k-shi
+> curl http://localhost:8080/test
+
+
+StatusCode        : 200
+StatusDescription :
+Content           : test api
+RawContent        : HTTP/1.1 200
+                    Content-Length: 8
+                    Content-Type: text/plain;charset=UTF-8
+                    Date: Thu, 28 Dec 2023 05:23:02 GMT
+
+                    test api
+Forms             : {}
+Headers           : {[Content-Length, 8], [Content-Type, text/plain;charset=UTF-8], [Date, Thu, 28 Dec 2023 05:23:02 GM
+                    T]}
+Images            : {}
+InputFields       : {}
+Links             : {}
+ParsedHtml        : mshtml.HTMLDocumentClass
+RawContentLength  : 8
+
+
+
+C:\Users\k-shi
+>

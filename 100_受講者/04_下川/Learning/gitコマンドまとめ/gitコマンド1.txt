@@ -1,0 +1,289 @@
+PS C:\Users\k-shi> cd C:\Users\k-shi\Documents\work\git\edu-general\100_受講者\04_下川\udemy
+PS C:\Users\k-shi\Documents\work\git\edu-general\100_受講者\04_下川\udemy> git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        ./
+        "../../../Markdown\343\202\265\343\203\263\343\203\227\343\203\253.md"
+
+nothing added to commit but untracked files present (use "git add" to track)
+PS C:\Users\k-shi\Documents\work\git\edu-general\100_受講者\04_下川\udemy> cd ..
+PS C:\Users\k-shi\Documents\work\git\edu-general\100_受講者\04_下川> git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        udemy/
+        "../../Markdown\343\202\265\343\203\263\343\203\227\343\203\253.md"
+
+nothing added to commit but untracked files present (use "git add" to track)
+PS C:\Users\k-shi\Documents\work\git\edu-general\100_受講者\04_下川> git add .
+PS C:\Users\k-shi\Documents\work\git\edu-general\100_受講者\04_下川> git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   udemy/JavaKiso/src/Sample01.java
+        new file:   udemy/JavaKiso/src/Sample02.java
+        new file:   udemy/JavaKiso/src/Sample03.java
+        new file:   udemy/JavaKiso/src/Sample04.java
+        new file:   udemy/JavaKiso/src/Sample05.java
+        new file:   udemy/JavaKiso/src/Sample06.java
+        new file:   udemy/JavaKiso/src/Sample07.java
+        new file:   udemy/JavaKiso/src/Sample08.java
+        new file:   udemy/JavaKiso/src/Sample09.java
+        new file:   udemy/JavaKiso/src/Sample10.java
+        new file:   udemy/JavaKiso/src/Sample11.java
+        new file:   udemy/JavaKiso/src/Sample12.java
+        new file:   udemy/JavaKiso/src/Sample13.java
+        new file:   udemy/JavaKiso/src/Sample14.java
+        new file:   udemy/JavaKiso/src/Sample15.java
+        new file:   udemy/JavaKiso/src/Sample16.java
+        new file:   udemy/JavaKiso/src/Sample17.java
+        new file:   udemy/JavaKiso/src/Sample18.java
+        new file:   udemy/JavaKiso/src/Sample19.java
+        new file:   udemy/JavaKiso/src/Sample20.java
+        new file:   udemy/JavaKiso/src/Sample21.java
+        new file:   udemy/JavaKiso/src/Sample22.java
+        new file:   udemy/JavaKiso/src/Sample23.java
+        new file:   udemy/JavaKiso/src/Sample24.java
+        new file:   udemy/JavaKiso/src/p01/Sample01.java
+        new file:   udemy/JavaKiso/src/p01/Sample02.java
+        new file:   udemy/JavaKiso/src/p01/Sample03.java
+        new file:   udemy/JavaKiso/src/p01/Sample04.java
+        new file:   udemy/JavaKiso/src/p02/Human.java
+        new file:   udemy/JavaKiso/src/p02/StartUp.java
+        new file:   udemy/JavaKiso/src/p03/Human.java
+        new file:   udemy/JavaKiso/src/p03/StartUp.java
+        new file:   udemy/JavaKiso/src/p03/Test.java
+        new file:   udemy/JavaKiso/src/p04/Human.java
+        new file:   udemy/JavaKiso/src/p04/StartUp.java
+        new file:   udemy/JavaKiso/src/p05/Product.java
+        new file:   udemy/JavaKiso/src/p05/StartUp.java
+        new file:   udemy/JavaKiso/src/p06/Human.java
+        new file:   udemy/JavaKiso/src/p06/StartUp.java
+        new file:   udemy/JavaKiso/src/p07/Mobile.java
+        new file:   udemy/JavaKiso/src/p07/StartUp.java
+        new file:   udemy/JavaKiso/src/p07/TV.java
+        new file:   udemy/JavaKiso/src/p08/Human.java
+        new file:   udemy/JavaKiso/src/p08/Sato.java
+        new file:   udemy/JavaKiso/src/p08/StartUp.java
+        new file:   udemy/JavaKiso/src/p08/Yamada.java
+        new file:   udemy/JavaKiso/src/p09/Human.java
+        new file:   udemy/JavaKiso/src/p09/Sato.java
+        new file:   udemy/JavaKiso/src/p09/StartUp.java
+        new file:   udemy/JavaKiso/src/p09/Yamada.java
+        new file:   udemy/JavaKiso/src/p10/Human.java
+        new file:   udemy/JavaKiso/src/p10/Sato.java
+        new file:   udemy/JavaKiso/src/p10/StartUp.java
+        new file:   udemy/JavaKiso/src/p10/Yamada.java
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        "../../Markdown\343\202\265\343\203\263\343\203\227\343\203\253.md"
+
+PS C:\Users\k-shi\Documents\work\git\edu-general\100_受講者\04_下川> git commit -m "コミットコメント"
+Author identity unknown
+
+*** Please tell me who you are.
+
+Run
+
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+
+to set your account's default identity.
+Omit --global to set the identity only in this repository.
+
+fatal: unable to auto-detect email address (got 'k-shi@DESKTOP-UEA0LFO.(none)')
+PS C:\Users\k-shi\Documents\work\git\edu-general\100_受講者\04_下川> git config --global user.email "kawashimo2751@icloud.com"
+PS C:\Users\k-shi\Documents\work\git\edu-general\100_受講者\04_下川> git config --global user.name "kotone1998"
+PS C:\Users\k-shi\Documents\work\git\edu-general\100_受講者\04_下川> git config --global
+usage: git config [<options>]
+
+Config file location
+    --global              use global config file
+    --system              use system config file
+    --local               use repository config file
+    --worktree            use per-worktree config file
+    -f, --file <file>     use given config file
+    --blob <blob-id>      read config from given blob object
+
+Action
+    --get                 get value: name [value-pattern]
+    --get-all             get all values: key [value-pattern]
+    --get-regexp          get values for regexp: name-regex [value-pattern]
+    --get-urlmatch        get value specific for the URL: section[.var] URL
+    --replace-all         replace all matching variables: name value [value-pattern]
+    --add                 add a new variable: name value
+    --unset               remove a variable: name [value-pattern]
+    --unset-all           remove all matches: name [value-pattern]
+    --rename-section      rename section: old-name new-name
+    --remove-section      remove a section: name
+    -l, --list            list all
+    --fixed-value         use string equality when comparing values to 'value-pattern'
+    -e, --edit            open an editor
+    --get-color           find the color configured: slot [default]
+    --get-colorbool       find the color setting: slot [stdout-is-tty]
+
+Type
+    -t, --type <type>     value is given this type
+    --bool                value is "true" or "false"
+    --int                 value is decimal number
+    --bool-or-int         value is --bool or --int
+    --bool-or-str         value is --bool or string
+    --path                value is a path (file or directory name)
+    --expiry-date         value is an expiry date
+
+Other
+    -z, --null            terminate values with NUL byte
+    --name-only           show variable names only
+    --includes            respect include directives on lookup
+    --show-origin         show origin of config (file, standard input, blob, command line)
+    --show-scope          show scope of config (worktree, local, global, system, command)
+    --default <value>     with --get, use default value when missing entry
+
+PS C:\Users\k-shi\Documents\work\git\edu-general\100_受講者\04_下川> git config --global user
+error: key does not contain a section: user
+PS C:\Users\k-shi\Documents\work\git\edu-general\100_受講者\04_下川> git config --global user.email
+kawashimo2751@icloud.com
+PS C:\Users\k-shi\Documents\work\git\edu-general\100_受講者\04_下川> git config --global use.name
+PS C:\Users\k-shi\Documents\work\git\edu-general\100_受講者\04_下川> git config --global user.name
+kotone1998
+PS C:\Users\k-shi\Documents\work\git\edu-general\100_受講者\04_下川> git commit -m "コミットコメント"
+[main 702ca2b] コミットコメント
+ 54 files changed, 919 insertions(+)
+ create mode 100644 "100_\345\217\227\350\254\233\350\200\205/04_\344\270\213\345\267\235/udemy/JavaKiso/src/Sample01.java"
+ create mode 100644 "100_\345\217\227\350\254\233\350\200\205/04_\344\270\213\345\267\235/udemy/JavaKiso/src/Sample02.java"
+ create mode 100644 "100_\345\217\227\350\254\233\350\200\205/04_\344\270\213\345\267\235/udemy/JavaKiso/src/Sample03.java"
+ create mode 100644 "100_\345\217\227\350\254\233\350\200\205/04_\344\270\213\345\267\235/udemy/JavaKiso/src/Sample04.java"
+ create mode 100644 "100_\345\217\227\350\254\233\350\200\205/04_\344\270\213\345\267\235/udemy/JavaKiso/src/Sample05.java"
+ create mode 100644 "100_\345\217\227\350\254\233\350\200\205/04_\344\270\213\345\267\235/udemy/JavaKiso/src/Sample06.java"
+ create mode 100644 "100_\345\217\227\350\254\233\350\200\205/04_\344\270\213\345\267\235/udemy/JavaKiso/src/Sample07.java"
+ create mode 100644 "100_\345\217\227\350\254\233\350\200\205/04_\344\270\213\345\267\235/udemy/JavaKiso/src/Sample08.java"
+ create mode 100644 "100_\345\217\227\350\254\233\350\200\205/04_\344\270\213\345\267\235/udemy/JavaKiso/src/Sample09.java"
+ create mode 100644 "100_\345\217\227\350\254\233\350\200\205/04_\344\270\213\345\267\235/udemy/JavaKiso/src/Sample10.java"
+ create mode 100644 "100_\345\217\227\350\254\233\350\200\205/04_\344\270\213\345\267\235/udemy/JavaKiso/src/Sample11.java"
+ create mode 100644 "100_\345\217\227\350\254\233\350\200\205/04_\344\270\213\345\267\235/udemy/JavaKiso/src/Sample12.java"
+ create mode 100644 "100_\345\217\227\350\254\233\350\200\205/04_\344\270\213\345\267\235/udemy/JavaKiso/src/Sample13.java"
+ create mode 100644 "100_\345\217\227\350\254\233\350\200\205/04_\344\270\213\345\267\235/udemy/JavaKiso/src/Sample14.java"
+ create mode 100644 "100_\345\217\227\350\254\233\350\200\205/04_\344\270\213\345\267\235/udemy/JavaKiso/src/Sample15.java"
+ create mode 100644 "100_\345\217\227\350\254\233\350\200\205/04_\344\270\213\345\267\235/udemy/JavaKiso/src/Sample16.java"
+ create mode 100644 "100_\345\217\227\350\254\233\350\200\205/04_\344\270\213\345\267\235/udemy/JavaKiso/src/Sample17.java"
+ create mode 100644 "100_\345\217\227\350\254\233\350\200\205/04_\344\270\213\345\267\235/udemy/JavaKiso/src/Sample18.java"
+ create mode 100644 "100_\345\217\227\350\254\233\350\200\205/04_\344\270\213\345\267\235/udemy/JavaKiso/src/Sample19.java"
+ create mode 100644 "100_\345\217\227\350\254\233\350\200\205/04_\344\270\213\345\267\235/udemy/JavaKiso/src/Sample20.java"
+ create mode 100644 "100_\345\217\227\350\254\233\350\200\205/04_\344\270\213\345\267\235/udemy/JavaKiso/src/Sample21.java"
+ create mode 100644 "100_\345\217\227\350\254\233\350\200\205/04_\344\270\213\345\267\235/udemy/JavaKiso/src/Sample22.java"
+ create mode 100644 "100_\345\217\227\350\254\233\350\200\205/04_\344\270\213\345\267\235/udemy/JavaKiso/src/Sample23.java"
+ create mode 100644 "100_\345\217\227\350\254\233\350\200\205/04_\344\270\213\345\267\235/udemy/JavaKiso/src/Sample24.java"
+ create mode 100644 "100_\345\217\227\350\254\233\350\200\205/04_\344\270\213\345\267\235/udemy/JavaKiso/src/p01/Sample01.java"
+ create mode 100644 "100_\345\217\227\350\254\233\350\200\205/04_\344\270\213\345\267\235/udemy/JavaKiso/src/p01/Sample02.java"
+ create mode 100644 "100_\345\217\227\350\254\233\350\200\205/04_\344\270\213\345\267\235/udemy/JavaKiso/src/p01/Sample03.java"
+ create mode 100644 "100_\345\217\227\350\254\233\350\200\205/04_\344\270\213\345\267\235/udemy/JavaKiso/src/p01/Sample04.java"
+ create mode 100644 "100_\345\217\227\350\254\233\350\200\205/04_\344\270\213\345\267\235/udemy/JavaKiso/src/p02/Human.java"
+ create mode 100644 "100_\345\217\227\350\254\233\350\200\205/04_\344\270\213\345\267\235/udemy/JavaKiso/src/p02/StartUp.java"
+ create mode 100644 "100_\345\217\227\350\254\233\350\200\205/04_\344\270\213\345\267\235/udemy/JavaKiso/src/p03/Human.java"
+ create mode 100644 "100_\345\217\227\350\254\233\350\200\205/04_\344\270\213\345\267\235/udemy/JavaKiso/src/p03/StartUp.java"
+ create mode 100644 "100_\345\217\227\350\254\233\350\200\205/04_\344\270\213\345\267\235/udemy/JavaKiso/src/p03/Test.java"
+ create mode 100644 "100_\345\217\227\350\254\233\350\200\205/04_\344\270\213\345\267\235/udemy/JavaKiso/src/p04/Human.java"
+ create mode 100644 "100_\345\217\227\350\254\233\350\200\205/04_\344\270\213\345\267\235/udemy/JavaKiso/src/p04/StartUp.java"
+ create mode 100644 "100_\345\217\227\350\254\233\350\200\205/04_\344\270\213\345\267\235/udemy/JavaKiso/src/p05/Product.java"
+ create mode 100644 "100_\345\217\227\350\254\233\350\200\205/04_\344\270\213\345\267\235/udemy/JavaKiso/src/p05/StartUp.java"
+ create mode 100644 "100_\345\217\227\350\254\233\350\200\205/04_\344\270\213\345\267\235/udemy/JavaKiso/src/p06/Human.java"
+ create mode 100644 "100_\345\217\227\350\254\233\350\200\205/04_\344\270\213\345\267\235/udemy/JavaKiso/src/p06/StartUp.java"
+ create mode 100644 "100_\345\217\227\350\254\233\350\200\205/04_\344\270\213\345\267\235/udemy/JavaKiso/src/p07/Mobile.java"
+ create mode 100644 "100_\345\217\227\350\254\233\350\200\205/04_\344\270\213\345\267\235/udemy/JavaKiso/src/p07/StartUp.java"
+ create mode 100644 "100_\345\217\227\350\254\233\350\200\205/04_\344\270\213\345\267\235/udemy/JavaKiso/src/p07/TV.java"
+ create mode 100644 "100_\345\217\227\350\254\233\350\200\205/04_\344\270\213\345\267\235/udemy/JavaKiso/src/p08/Human.java"
+ create mode 100644 "100_\345\217\227\350\254\233\350\200\205/04_\344\270\213\345\267\235/udemy/JavaKiso/src/p08/Sato.java"
+ create mode 100644 "100_\345\217\227\350\254\233\350\200\205/04_\344\270\213\345\267\235/udemy/JavaKiso/src/p08/StartUp.java"
+ create mode 100644 "100_\345\217\227\350\254\233\350\200\205/04_\344\270\213\345\267\235/udemy/JavaKiso/src/p08/Yamada.java"
+ create mode 100644 "100_\345\217\227\350\254\233\350\200\205/04_\344\270\213\345\267\235/udemy/JavaKiso/src/p09/Human.java"
+ create mode 100644 "100_\345\217\227\350\254\233\350\200\205/04_\344\270\213\345\267\235/udemy/JavaKiso/src/p09/Sato.java"
+ create mode 100644 "100_\345\217\227\350\254\233\350\200\205/04_\344\270\213\345\267\235/udemy/JavaKiso/src/p09/StartUp.java"
+ create mode 100644 "100_\345\217\227\350\254\233\350\200\205/04_\344\270\213\345\267\235/udemy/JavaKiso/src/p09/Yamada.java"
+ create mode 100644 "100_\345\217\227\350\254\233\350\200\205/04_\344\270\213\345\267\235/udemy/JavaKiso/src/p10/Human.java"
+ create mode 100644 "100_\345\217\227\350\254\233\350\200\205/04_\344\270\213\345\267\235/udemy/JavaKiso/src/p10/Sato.java"
+ create mode 100644 "100_\345\217\227\350\254\233\350\200\205/04_\344\270\213\345\267\235/udemy/JavaKiso/src/p10/StartUp.java"
+ create mode 100644 "100_\345\217\227\350\254\233\350\200\205/04_\344\270\213\345\267\235/udemy/JavaKiso/src/p10/Yamada.java"
+PS C:\Users\k-shi\Documents\work\git\edu-general\100_受講者\04_下川> git status
+On branch main
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        "../../Markdown\343\202\265\343\203\263\343\203\227\343\203\253.md"
+
+nothing added to commit but untracked files present (use "git add" to track)
+PS C:\Users\k-shi\Documents\work\git\edu-general\100_受講者\04_下川>
+
+
+To https://github.com/mik-organization/edu-general.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'https://github.com/mik-organization/edu-general.git'
+hint: Updates were rejected because the remote contains work that you do not
+hint: have locally. This is usually caused by another repository pushing to
+hint: the same ref. If you want to integrate the remote changes, use
+hint: 'git pull' before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+
+
+
+PS C:\Users\k-shi\Documents\work\git\edu-general\100_受講者\04_下川> git push
+To https://github.com/mik-organization/edu-general.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'https://github.com/mik-organization/edu-general.git'
+hint: Updates were rejected because the remote contains work that you do not
+hint: have locally. This is usually caused by another repository pushing to
+hint: the same ref. If you want to integrate the remote changes, use
+hint: 'git pull' before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+PS C:\Users\k-shi\Documents\work\git\edu-general\100_受講者\04_下川>
+PS C:\Users\k-shi\Documents\work\git\edu-general\100_受講者\04_下川> git add .
+PS C:\Users\k-shi\Documents\work\git\edu-general\100_受講者\04_下川> git status
+On branch main
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   "Markdown\343\202\265\343\203\263\343\203\227\343\203\253.md"
+
+PS C:\Users\k-shi\Documents\work\git\edu-general\100_受講者\04_下川> git commit -m "up"
+[main fbb36be] up
+ 1 file changed, 60 insertions(+)
+ create mode 100644 "100_\345\217\227\350\254\233\350\200\205/04_\344\270\213\345\267\235/Markdown\343\202\265\343\203\263\343\203\227\343\203\253.md"
+PS C:\Users\k-shi\Documents\work\git\edu-general\100_受講者\04_下川> git pull
+remote: Enumerating objects: 42, done.
+remote: Counting objects: 100% (42/42), done.
+remote: Compressing objects: 100% (17/17), done.
+remote: Total 34 (delta 15), reused 32 (delta 13), pack-reused 0
+Unpacking objects: 100% (34/34), 92.79 KiB | 27.00 KiB/s, done.
+From https://github.com/mik-organization/edu-general
+   b11554b..60f5079  main       -> origin/main
+Merge made by the 'ort' strategy.
+ .../00_\344\270\200\350\210\254.md"                |  11 ++-
+ "000_\344\270\200\350\210\254/03_git/git.dio"      |  97 +++++++++++++++++++++
+ "000_\344\270\200\350\210\254/03_git/git.png"      | Bin 0 -> 107792 bytes
+ .../yoshioka/memo_yoshioka.md"                     |   7 +-
+ README.md                                          |  55 ++++++------
+ 5 files changed, 133 insertions(+), 37 deletions(-)
+ create mode 100644 "000_\344\270\200\350\210\254/03_git/git.dio"
+ create mode 100644 "000_\344\270\200\350\210\254/03_git/git.png"
+PS C:\Users\k-shi\Documents\work\git\edu-general\100_受講者\04_下川> git push
+Enumerating objects: 86, done.
+Counting objects: 100% (86/86), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (78/78), done.
+Writing objects: 100% (80/80), 13.56 KiB | 1.51 MiB/s, done.
+Total 80 (delta 26), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (26/26), completed with 3 local objects.
+To https://github.com/mik-organization/edu-general.git
+   60f5079..73e33c8  main -> main
+PS C:\Users\k-shi\Documents\work\git\edu-general\100_受講者\04_下川>
