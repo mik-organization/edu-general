@@ -1,1 +1,23 @@
-teut
+コマンドプロンプトに自分の場所を教える　cd
+cd C:\Users\user\Documents\work\edu-general
+
+◇githubに上げたいデータを指定する　add　ピリオドはすべてのファイルをしていする場合
+git add .
+
+addしたものを確認する　status
+git status
+
+◇githubにあげるためにパッケージする
+git commit -a
+
+コメントを必ず入れるため
+
+コメント入れた後
+Escを押した後に:wqを入力後にEnter
+
+◇githubへ送り出す　push
+git push
+
+
+コマンドプロンプト
+・fatal はエラーみたいな感じ
