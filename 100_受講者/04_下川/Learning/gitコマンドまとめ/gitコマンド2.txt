@@ -1,0 +1,224 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+新機能と改善のために最新の PowerShell をインストールしてください!https://aka.ms/PSWindows
+
+パーソナル プロファイルとシステム プロファイルの読み込みにかかった時間は 4154 ミリ秒です。
+C:\Users\k-shi
+ [master +32 ~0 -0 !]cd C:\Users\k-shi\Documents\work\git
+C:\..cuments\work\git
+ [master +32 ~0 -0 !]git clone
+fatal: You must specify a repository to clone.
+
+usage: git clone [<options>] [--] <repo> [<dir>]
+
+    -v, --verbose         be more verbose
+    -q, --quiet           be more quiet
+    --progress            force progress reporting
+    --reject-shallow      don't clone shallow repository
+    -n, --no-checkout     don't create a checkout
+    --bare                create a bare repository
+    --mirror              create a mirror repository (implies bare)
+    -l, --local           to clone from a local repository
+    --no-hardlinks        don't use local hardlinks, always copy
+    -s, --shared          setup as shared repository
+    --recurse-submodules[=<pathspec>]
+                          initialize submodules in the clone
+    --recursive ...       alias of --recurse-submodules
+    -j, --jobs <n>        number of submodules cloned in parallel
+    --template <template-directory>
+                          directory from which templates will be used
+    --reference <repo>    reference repository
+    --reference-if-able <repo>
+                          reference repository
+    --dissociate          use --reference only while cloning
+    -o, --origin <name>   use <name> instead of 'origin' to track upstream
+    -b, --branch <branch> checkout <branch> instead of the remote's HEAD
+    -u, --upload-pack <path>
+                          path to git-upload-pack on the remote
+    --depth <depth>       create a shallow clone of that depth
+    --shallow-since <time>
+                          create a shallow clone since a specific time
+    --shallow-exclude <revision>
+                          deepen history of shallow clone, excluding rev
+    --single-branch       clone only one branch, HEAD or --branch
+    --no-tags             don't clone any tags, and make later fetches not to follow them
+    --shallow-submodules  any cloned submodules will be shallow
+    --separate-git-dir <gitdir>
+                          separate git dir from working tree
+    -c, --config <key=value>
+                          set config inside the new repository
+    --server-option <server-specific>
+                          option to transmit
+    -4, --ipv4            use IPv4 addresses only
+    -6, --ipv6            use IPv6 addresses only
+    --filter <args>       object filtering
+    --also-filter-submodules
+                          apply partial clone filters to submodules
+    --remote-submodules   any cloned submodules will use their remote-tracking branch
+    --sparse              initialize sparse-checkout file to include only files at root
+    --bundle-uri <uri>    a URI for downloading bundles before fetching from origin remote
+
+C:\..cuments\work\git
+ [master +32 ~0 -0 !]git clone https://github.com/mik-organization/edu-task-apps.git
+Cloning into 'edu-task-apps'...
+remote: Enumerating objects: 397, done.
+remote: Counting objects: 100% (397/397), done.
+remote: Compressing objects: 100% (275/275), done.
+remote: Total 397 (delta 121), reused 320 (delta 65), pack-reused 0Receiving objects:  88% (350/397)
+Receiving objects: 100% (397/397), 483.94 KiB | 4.32 MiB/s, done.
+Resolving deltas: 100% (121/121), done.
+C:\..cuments\work\git
+ [master +32 ~0 -0 !]git branch shimokawa-main
+fatal: not a valid object name: 'master'
+C:\..cuments\work\git
+ [master +32 ~0 -0 !]git checkout shimokawa-main
+error: pathspec 'shimokawa-main' did not match any file(s) known to git
+C:\..cuments\work\git
+ [master +32 ~0 -0 !]git checkout -b shimokawa-main
+Switched to a new branch 'shimokawa-main'
+C:\..cuments\work\git
+ [shimokawa-main +32 ~0 -0 !]git status
+warning: could not open directory 'AppData/Local/Application Data/': Permission denied
+warning: could not open directory 'Application Data/': Permission denied
+warning: could not open directory 'Cookies/': Permission denied
+warning: could not open directory 'Local Settings/': Permission denied
+warning: could not open directory 'My Documents/': Permission denied
+warning: could not open directory 'NetHood/': Permission denied
+warning: could not open directory 'PrintHood/': Permission denied
+warning: could not open directory 'Recent/': Permission denied
+warning: could not open directory 'SendTo/': Permission denied
+warning: could not open directory 'Templates/': Permission denied
+warning: could not open directory 'スタート メニュー/': Permission denied
+On branch shimokawa-main
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        ../../../.cache/
+        ../../../.config/
+        ../../../.crossnote/
+        ../../../.eclipse/
+        ../../../.gitconfig
+        ../../../.p2/
+        ../../../.vscode/
+        ../../../3D Objects/
+        ../../../AppData/
+        ../../../Contacts/
+        ../../../Desktop/
+        ../../
+        ../../../Downloads/
+        ../../../Favorites/
+        ../../../IntelGraphicsProfiles/
+        ../../../Links/
+        ../../../Music/
+        ../../../NTUSER.DAT
+        ../../../NTUSER.DAT{56042e85-8ae6-11ee-8410-9fec05c40738}.TM.blf
+        ../../../NTUSER.DAT{56042e85-8ae6-11ee-8410-9fec05c40738}.TMContainer00000000000000000001.regtrans-ms
+        ../../../NTUSER.DAT{56042e85-8ae6-11ee-8410-9fec05c40738}.TMContainer00000000000000000002.regtrans-ms
+        ../../../OneDrive/
+        ../../../Pictures/
+        ../../../Saved Games/
+        ../../../Searches/
+        ../../../Videos/
+        ../../../eclipse-workspace/
+        ../../../eclipse/
+        ../../../git/
+        ../../../ntuser.dat.LOG1
+        ../../../ntuser.dat.LOG2
+        ../../../ntuser.ini
+
+nothing added to commit but untracked files present (use "git add" to track)
+C:\..cuments\work\git
+ [shimokawa-main +32 ~0 -0 !]git add .
+warning: adding embedded git repository: Documents/work/git/edu-general
+hint: You've added another git repository inside your current repository.
+hint: Clones of the outer repository will not contain the contents of
+hint: the embedded repository and will not know how to obtain it.
+hint: If you meant to add a submodule, use:
+hint:
+hint:   git submodule add <url> Documents/work/git/edu-general
+hint:
+hint: If you added this path by mistake, you can remove it from the
+hint: index with:
+hint:
+hint:   git rm --cached Documents/work/git/edu-general
+hint:
+hint: See "git help submodule" for more information.
+warning: adding embedded git repository: Documents/work/git/edu-task-apps
+C:\..cuments\work\git
+ [shimokawa-main +2 ~0 -0 | +33 ~0 -0 !]cd
+C:\..cuments\work\git
+ [shimokawa-main +2 ~0 -0 | +33 ~0 -0 !]git add
+Nothing specified, nothing added.
+hint: Maybe you wanted to say 'git add .'?
+hint: Turn this message off by running
+hint: "git config advice.addEmptyPathspec false"
+C:\..cuments\work\git
+ [shimokawa-main +2 ~0 -0 | +33 ~0 -0 !]git add .
+C:\..cuments\work\git
+ [shimokawa-main +2 ~0 -0 | +33 ~0 -0 !]git commit -m "UP"
+[shimokawa-main (root-commit) fc59adf] UP
+ 2 files changed, 2 insertions(+)
+ create mode 160000 Documents/work/git/edu-general
+ create mode 160000 Documents/work/git/edu-task-apps
+C:\..cuments\work\git
+ [shimokawa-main +33 ~0 -0 !]git push
+fatal: No configured push destination.
+Either specify the URL from the command-line or configure a remote repository using
+
+    git remote add <name> <url>
+
+and then push using the remote name
+
+    git push <name>
+
+C:\..cuments\work\git
+ [shimokawa-main +33 ~0 -0 !]git pull
+There is no tracking information for the current branch.
+Please specify which branch you want to merge with.
+See git-pull(1) for details.
+
+    git pull <remote> <branch>
+
+If you wish to set tracking information for this branch you can do so with:
+
+    git branch --set-upstream-to=<remote>/<branch> shimokawa-main
+
+C:\..cuments\work\git
+ [shimokawa-main +33 ~0 -0 !]git add .
+C:\..cuments\work\git
+ [shimokawa-main +34 ~0 -0 !]cd C:\Users\k-shi\Documents\work\git\edu-task-apps
+C:\..it\edu-task-apps
+ [main ≡ +1 ~0 -0 !]git add .
+C:\..it\edu-task-apps
+ [main ≡ +2 ~0 -0 ~]git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   02_java/shoplist/main.java
+        new file:   02_java/shoplist/shoplist.java
+
+C:\..it\edu-task-apps
+ [main ≡ +2 ~0 -0 ~]git commit -m "UP"
+[main 74d7e55] UP
+ 2 files changed, 131 insertions(+)
+ create mode 100644 02_java/shoplist/main.java
+ create mode 100644 02_java/shoplist/shoplist.java
+C:\..it\edu-task-apps
+ [main ↑1]git push
+Enumerating objects: 8, done.
+Counting objects: 100% (8/8), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (6/6), done.
+Writing objects: 100% (6/6), 1.88 KiB | 1.88 MiB/s, done.
+Total 6 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/mik-organization/edu-task-apps.git
+   a6d6e12..74d7e55  main -> main
+C:\..it\edu-task-apps
+ [main ≡]
+fwd-i-search: _
