@@ -8,6 +8,7 @@ addしたものを確認する　status
 git status
 
 ◇githubにあげるためにパッケージする
+git commit -m コメントを入れる
 git commit -a
 
 コメントを必ず入れるため
