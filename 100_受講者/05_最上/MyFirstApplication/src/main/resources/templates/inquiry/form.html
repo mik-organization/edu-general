@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title th:text="${title}">Insert title here</title>
+</head>
+<body>
+<h1 th:text="${title}">title</h1>
+<h2 th:text="${complete}"></h2>
+<form method="post" action="#"  th:action="@{/inquiry/confirm}" th:object="${inquiryForm}">	<!-- th:objectでinquiryFormをまるごと持ってくる -->
+	<lable for="name">Name：</lable>
+	<input id="name" name="name" type="text" th:value="*{name}"><br><!-- th:value や th:fieldで表示 -->
+	<div th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+	<lable for="email">Email：</lable>
+	<input id="email" name="email" type="text" th:value="*{email}"><br>
+	<div th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+	<lable for="contents">Datail：</lable>
+	<textarea name="contents"  id="contents" row ="3" cols="4"  th:field="*{contents}"></textarea><br>
+	<div th:if="${#fields.hasErrors('contents')}" th:errors="*{contents}"></div>
+	<input type="submit" value="Confirm">
+</form>
+</body>
+</html>
