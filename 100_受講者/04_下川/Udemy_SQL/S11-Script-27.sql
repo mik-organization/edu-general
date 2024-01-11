@@ -1,5 +1,5 @@
-# 副問い合わせ1
--- 副問い合わせ→SELECT文をFROMやWHEREの中などに記述して、SELECTの結果を別の処理に用いるSQL文
+# 44.45.46.副問い合わせ
+-- SELECT文をFROMやWHEREの中などに記述して、SELECTの結果を別の処理に用いるSQL文
 -- メインクエリ(主問い合わせ)→メインのSELECT文
 -- サブクエリ(副問い合わせ)→メインのSELECT文以外のSELECT文
 

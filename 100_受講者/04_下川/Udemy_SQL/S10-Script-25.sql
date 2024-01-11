@@ -1,4 +1,6 @@
-# HAVING
+# 42.HAVING
+-- 集計結果の絞り込み
+
 SELECT department,AVG(salary) FROM employees
 GROUP BY department
 HAVING AVG(salary) > 3980000;
