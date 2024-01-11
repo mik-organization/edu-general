@@ -10,8 +10,9 @@ public class SurveyForm {
 	//@Size(min=0,max=150,message="must be less than or eqaul to 150")
 	@Min(0)
 	@Max(150)
-	@NotNull
+	@NotNull(message="値を入力してください。")
 	private int age;
+	//typeMismatch.java.lang.int="null は許可されていません";
 	
 	//@Size(min=1,max=5,message="must be less than or eqaul to 5")
 	@Min(1)
