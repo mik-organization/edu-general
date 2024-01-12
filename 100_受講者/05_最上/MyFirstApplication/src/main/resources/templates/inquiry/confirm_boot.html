@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="utf-8">
@@ -7,7 +6,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../../../favicon.ico">
 
-    <title th:text="${title}">Starter Template for Bootstrap</title>
+    <title>Starter Template for Bootstrap</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
@@ -25,29 +24,28 @@
         <h1 th:text="${title}">Bootstrap starter template</h1>
         <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
       </div>
-      
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th scope="col">id</th>
-      <th scope="col">name</th>
-      <th scope="col">email</th>
-      <th scope="col">contents</th>
-      <th scope="col">datetime</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr th:each="inquiry : ${inquiryList}">
-      <td  scope="row" th:text="${inquiry.id}">1</td>
-      <td th:text="${inquiry.name}">name</td>
-      <td th:text="${inquiry.email}">email</td>
-      <td th:text="${inquiry.contents}">contents</td>
-      <td th:text="${inquiry.created}">created</td>
-    </tr>
 
-  </tbody>
-</table>
-
+<div th:object="${inquiryForm}">
+<div class="mb-5">
+<ul class="list-group">
+  <li th:text="*{name}"class="list-group-item">Dapibus ac facilisis in</li>
+  <li th:text="*{email}"class="list-group-item">Morbi leo risus</li>
+  <li th:text="*{contents}"class="list-group-item">Porta ac consectetur ac</li>
+</ul>
+</div>
+<form method="post" action="#" th:action="@{/inquiry/form}">
+	<input type="hidden" name="name" th:value="*{name}">
+	<input type="hidden" name="email" th:value="*{email}">
+	<input type="hidden" name="contents" th:value="*{contents}">
+	<button type="submit" class="btn btn-secondary">Go Back</button>
+</form>
+<form method="post" action="#" th:action="@{/inquiry/complete}">
+	<input type="hidden" name="name" th:value="*{name}">
+	<input type="hidden" name="email" th:value="*{email}">
+	<input type="hidden" name="contents" th:value="*{contents}">
+	<button type="submit" class="btn btn-primary">Complete</button>
+</form>
+</div>
 
     </main><!-- /.container -->
 
