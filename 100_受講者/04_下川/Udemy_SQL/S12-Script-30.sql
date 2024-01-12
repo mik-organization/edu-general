@@ -1,4 +1,4 @@
-# NULLとEXISTS
+# 50.NULLとEXISTS
 
 # EXISTS(NULLが存在する場合)
 SELECT * FROM customers AS c1

@@ -1,4 +1,6 @@
-# テーブル名に別名を付けて参照する
+# 43.テーブル名に別名を付けて参照する
+
+
 SHOW DATABASES;
 
 CREATE DATABASE day_10_14_db;
