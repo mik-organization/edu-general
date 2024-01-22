@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.spring.edu_app2.exception.UserNotFoundException;
+import com.spring.edu_app2.exception.CategoryNotFoundException;
 import com.spring.edu_app2.model.Category;
 import com.spring.edu_app2.service.CategoryService;
 
@@ -27,7 +27,7 @@ public class CategoryController {
 	
 	@GetMapping("/categorys/{categoryId}")
 	public Category getcategory(@PathVariable("categoryId") Long categoryId) {
-		return categoryService.getCategory(categoryId).orElseThrow(() -> new UserNotFoundException(categoryId));
+		return categoryService.getCategory(categoryId).orElseThrow(() -> new CategoryNotFoundException(categoryId));
 	}
 	
 	@PostMapping("/categorys")

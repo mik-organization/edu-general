@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.spring.edu_app2.exception.UserNotFoundException;
+import com.spring.edu_app2.exception.TaskNotFoundException;
 import com.spring.edu_app2.model.Task;
 import com.spring.edu_app2.service.TaskService;
 
@@ -28,7 +28,7 @@ public class TaskController {
 	
 	@GetMapping("/tasks/{tasksId}")
 	public Task getTask(@PathVariable("tasksId") Long tasksId) {
-		return taskService.getTask(tasksId).orElseThrow(() -> new UserNotFoundException(tasksId));
+		return taskService.getTask(tasksId).orElseThrow(() -> new TaskNotFoundException(tasksId));
 	}
 	
 	@PostMapping("/tasks")
