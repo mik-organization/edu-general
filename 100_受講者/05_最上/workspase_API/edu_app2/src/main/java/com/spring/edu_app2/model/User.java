@@ -2,6 +2,8 @@ package com.spring.edu_app2.model;
 
 import java.time.LocalDateTime;
 
+import org.hibernate.annotations.UpdateTimestamp;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -16,6 +18,10 @@ public class User {
 	private String userName;
 	private String password;
 	private String email;
+	//@CreatedDate
+	//@LastModifiedDate
+	//@CreationTimestamp
+	@UpdateTimestamp
 	private LocalDateTime updated;	//LocalDateTime
 
 	public User() {

@@ -2,6 +2,8 @@ package com.spring.edu_app2.model;
 
 import java.time.LocalDateTime;
 
+import org.hibernate.annotations.UpdateTimestamp;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,6 +16,8 @@ public class Category {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long categoryId;
 	private String categoryName;
+	//@CreationTimestamp
+	@UpdateTimestamp
 	private LocalDateTime updated;
 
 	public Category() {
