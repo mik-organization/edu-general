@@ -29,7 +29,7 @@ public class SurveyController {
 		this.surveyService = surveyService;
 	}
 	
-	@GetMapping("/")
+	@GetMapping
 	public String index(Model model) {
 		List<Survey> list = surveyService.getAll();
 		
