@@ -13,8 +13,9 @@ let obj = {
 }
 
 function minus(obj, val) {
-    let prop1 = obj.prop1;
-    prop1 = prop1 - val;
+    //let prop1 = obj.prop1;
+    //prop1 = prop1 - val;
+    obj.prop1 = obj.prop1 - val;
 }
 
 minus(obj, 1);
@@ -31,8 +32,10 @@ console.log(obj.prop1);
 
 
 function double(obj) {
-    let { prop1 } = obj;
-    prop1 = prop1 * 2;
+    // let { prop1 } = obj;
+    // prop1 = prop1 * 2;
+    obj.prop1 = obj.prop1 * 2;
+
 }
 
 double(obj);
@@ -57,7 +60,8 @@ function fn({ prop2 }) {
     return { prop2: prop };
 }
 obj = fn(obj);
-// console.log(obj.prop2.prop3);
+//3
+console.log(obj.prop2.prop3);
 
 /**
  * 問題４：
@@ -69,4 +73,5 @@ function through (obj) {
 }
 
 const obj2 = through(obj);
-// console.log(obj === obj2);
+//true
+console.log(obj === obj2);
