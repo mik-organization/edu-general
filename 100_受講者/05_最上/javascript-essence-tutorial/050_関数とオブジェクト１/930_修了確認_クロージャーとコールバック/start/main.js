@@ -9,8 +9,10 @@
  * 
  */
 function hello(name) {
-  
-}
+    return function(){
+    console.log('Hello ' + name);
+    }
+}  
 
 /**
  * 実行文は以下の通りです。

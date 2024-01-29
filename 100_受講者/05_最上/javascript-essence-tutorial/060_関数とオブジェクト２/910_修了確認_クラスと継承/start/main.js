@@ -43,6 +43,77 @@
  * login failed <- loginで失敗した場合
  */
 
+ /*模範解答
+ class User{
+  constructor(name) {
+    this.name = name;
+    this.redirectTo = '/';
+  }
+  login(){
+    console.log(`User: ${this.name}`);
+    return true;
+  }
+  checkRoll(){
+    console.log('you have normal roll');
+    return true;
+  }
+  redirect(){
+    console.log(`redirect : ${this.redirectTo}`);
+    return true;
+  }
+ }
+ class AdminUser extends User{
+  constructor(name) {
+    super(name);
+    this.redirectTo = '/admin';
+  }
+  checkRoll(){
+    console.log('you have admin roll');
+    return true;
+  }
+}
+*/
+
+ class User {
+  constructor(name) {
+    this.name = name;
+  }
+  login(){
+    console.log('User:' + this.name);
+    return true;
+  }
+  checkRoll(){
+    console.log('you have normal roll');
+    return true;
+  }
+  redirect(){
+    console.log('redirect :/');
+    return true;
+  }
+ }
+
+ class AdminUser {
+  constructor(name) {
+    this.name = name;
+  }
+
+  login(){
+    console.log('User:' + this.name);
+    return true;
+  }
+  checkRoll(){
+    console.log('you have admin roll');
+    return true;
+  }
+  redirect(){
+    console.log('redirect :/admin');
+    return true;
+  }
+
+ }
+
+
+
 function loginController(user) {
   if (user.login()
     && user.checkRoll()
@@ -52,3 +123,6 @@ function loginController(user) {
     console.log('login failed');
   }
 }
+
+loginController(new User('Bob'));
+loginController(new AdminUser('Bob'));
