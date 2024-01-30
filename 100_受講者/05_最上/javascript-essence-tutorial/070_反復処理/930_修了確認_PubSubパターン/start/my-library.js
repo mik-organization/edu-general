@@ -39,6 +39,34 @@
  * customFn3
  * 
  */
+//eventStackを外部の影響を受けないように即時関数にする()
+const events = (function(){
+	const eventStack = new Map();
+
+	return{
+		on(type,fn){
+			const fnStack = eventStack.get(type) || new Set();	//eventStack.get(tyep)でundefindかどうか判断
+			fnStack.add(fn);	//Setで渡された引数を登録(add)していく
+			eventStack.set(type,fnStack);	//1つのトリガーに対して複数の関数を登録
+		},
+		off(type,fn){
+			const fnStack = eventStack.get(type);
+			if(fnStack && fnStack.has(fn)){
+				fnStack.delete(fn);
+			}
+		},
+		emit(type){
+			const fnStack = eventStack.get(type);
+			if(fnStack){
+				for(const fn of fnStack){
+					fn();
+				}
+			}
+
+		}
+	}
+
+})();
 
 class MyLibrary {
 	constructor() {
@@ -48,7 +76,6 @@ class MyLibrary {
 		
 		events.emit('afterInit');
 	}
-	method() {
-		// do something
-	}
+
+
 }

@@ -25,36 +25,65 @@
  */
 
 class Calculator {
-	constructor(num) {
-		this.num = num;
+	constructor() {
+		this.num = null;
+		this._operator;
 	}
 	set(num) {
-		return this.num;
+		
+		if(this.num === null){
+			this.num = num;
+		}else{
+			this._operator(this.num,num);
 		}
+
+		return this;
+		}
+
 	plus() {
-		console.log(this.num + num);
-		return this.num;
+		this._operator =function(num1,num2){
+			const result = num1 + num2;
+			this._equal(result);
 		}
+		return this;
+	}
+
 	minus() {
-		console.log(this.num + num);
-		return this.num;
+		this._operator =function(num1,num2){
+			const result = num1 - num2;
+			this._equal(result);
 		}
+		return this;
+	}	
+
 	mutiply() {
-		console.log(this.num + num);
-		return this.num;
+		this._operator =function(num1,num2){
+			const result = num1 * num2;
+			this._equal(result);
 		}
+		return this;
+	}
+
 	divide() {
-		console.log(this.num + num);
-		return this.num;
-		}	
+		this._operator =function(num1,num2){
+			const result = num1 / num2;
+			this._equal(result);
+		}
+		return this;
+	}
+	
+	_equal(result){
+		this.num = result;	
+		console.log(result);
+	}
 
 }
 
 const calc = new Calculator();
 
 calc.set(10)
-	.minus()
-	.set(3)
+	 .minus()
+	 .set(3)
 	.mutiply()
 	.set(6)
 	.divide()
