@@ -30,8 +30,63 @@
  * 
  * ※await/asyncで記述してみてください。
  */
+/*
+async function myFetch(fileName) {
+	const response = await fetch(`../json/${fileName}`);
+	const json = await response.json();
+    console.log(`--${json.name}'s timeline--`);
+	return json.id;
+}
+
+async function friendsOf(id) {
+	const response = await fetch(`../json/friendsOf${id}.json`);
+	const json = await response.json();
+	for(const id of json.friendIds){
+		const responseUser = await fetch(`../json/user${id}.json`);
+		const friend = await responseUser.json();
+		
+		const responseMs = await fetch(`../json/message${friend.latestMsgId}.json`);
+		const message = await responseMs.json();
+	
+		console.log(`${friend.name} says: ${message.message}`);
+    }
+}
+
+myFetch('user1.json').then(function (val){
+	friendsOf(val);
+  })
+*/
+
+//模範解答
 async function myFetch(fileName) {
 	const response = await fetch(`../json/${fileName}`);
 	const json = await response.json();
 	return json;
 }
+
+(async function(){
+	const me = await myFetch('user1.json');
+	console.log(`--${me.name}'s timeline--`);
+
+	const friendList = await myFetch(`friendsOf${me.id}.json`);
+	
+	const friendIds = new Set();
+	for(const id of friendList.friendIds){
+		friendIds.add(myFetch(`user${id}.json`));
+	}
+	const friends = await Promise.all(friendIds);
+
+	const msgIds = new Set();
+	for(const friend of friends){
+		msgIds.add(myFetch(`message${friend.latestMsgId}.json`));
+	}
+	const msgs = await Promise.all(msgIds);
+
+	for(const friend of friends){
+		for(const msg of msgs){
+			if(friend.id === msg.userId){
+				console.log(`${friend.name}says: ${msg.message}`);
+			}
+		}
+	}
+})();

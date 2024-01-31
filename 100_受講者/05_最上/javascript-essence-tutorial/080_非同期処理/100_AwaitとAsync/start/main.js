@@ -7,14 +7,33 @@ function sleep(val) {
   });
 }
 
-sleep(0).then(function(val) {
-  return sleep(val);
-}).then(function(val) {
-  return sleep(val);
-}).then(function(val) {
-  return sleep(val);
-}).then(function(val) {
-  return sleep(val);
-}).then(function(val) {
-  return sleep(val);
-})
+// awaitを使うとnew Promise内のresolveで渡された引数(val)が変数valに代入される
+async function init(){
+  let val = await sleep(0);
+  val = await sleep(val);
+  val = await sleep(val);
+  val = await sleep(val);
+  val = await sleep(val);
+  throw new Error();
+  return val;
+}
+
+init().then(function(val){
+  console.log('hello' + val)
+}).catch(function(e){
+  console.error(e);
+});
+
+// console.log(init());
+
+// sleep(0).then(function(val) {
+//   return sleep(val);
+// }).then(function(val) {
+//   return sleep(val);
+// }).then(function(val) {
+//   return sleep(val);
+// }).then(function(val) {
+//   return sleep(val);
+// }).then(function(val) {
+//   return sleep(val);
+// })
