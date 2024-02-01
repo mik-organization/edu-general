@@ -10,6 +10,8 @@
  * 
  * *1:pushはチェーンメソッドとしてつなげられるように実装してみてください。
  */
+
+
 class MyArray extends Array {
 	constructor(...args) {
 		super(...args)
@@ -19,6 +21,51 @@ class MyArray extends Array {
 		console.log(`%c ${label}`, 'color: blue; font-weight: 600;', this);
 		return this;
 	}
+
+	push(val){
+		super.push(val);
+		// console.log(this);
+		return this;
+	}
+
+	forEach(callback){
+		for(let i = 0 ; i < this.length; i++){
+			callback(this[i], i, this);
+			}
+		}
+
+	map(callback){
+		const newInstance = new MyArray();
+		for(let i = 0 ; i < this.length; i++){
+			const result = callback(this[i], i, this);
+			newInstance.push(result);
+			}
+		return newInstance;
+		}
+	
+	
+	filter(callback){
+	const newInstance = new MyArray();
+		for(let i = 0 ; i < this.length; i++){
+			if(callback(this[i], i, this)){
+				newInstance.push(this[i]);
+			}
+			}
+		return newInstance;
+		}
+	
+
+	reduce(callback, accu){
+		const tmpArry = [...this];
+		if(accu === undefined){
+			accu = tmpArry.shift();
+		}
+		for(let i = 0 ; i < tmpArry.length; i++){
+			accu = callback(accu,tmpArry[i])
+		
+			}
+		return accu;
+		}
 }
 
 function double(v, i, obj) {
@@ -27,10 +74,15 @@ function double(v, i, obj) {
 
 const original = new MyArray(1, 2, 3, 4);
 
+// original.push(6)
 const result = original
-	.map(double)
+// .forEach(function(v, i, arry){
+// 	console.log(v, i, arry)
+
+// })
+.map(double)
 	.push(5)
-	.filter(function (v, i) {
+	.filter(function (v, i) {	//2以上
 		return v > 2;
 	})
 	.reduce(function(accu, curr) {

@@ -16,8 +16,43 @@
  */
 const KEY = 'test-data';
 
-// console.log('init', pxy);
-// pxy.name = 'Tom';
-// console.log('change', pxy);
-// pxy.name = 'Sun';
-// console.log('change2', pxy);
+class DataSource{
+   static getLocal(KEY){
+        console.log('get from local');
+        const result =  localStorage.getItem(KEY);
+        return JSON.parse(result);
+    }
+
+    static setLocal(KEY,target){
+        console.log('set to local');
+        const json = JSON.stringify(target);
+        localStorage.setItem(KEY,json);
+    }
+}
+
+// function getLocal(KEY){
+//     const result =  localStorage.getItem(KEY);
+//     return JSON.parse(result);
+// }
+
+const targetObj = DataSource.getLocal(KEY) || {};
+
+const pxy = new Proxy(targetObj,{
+     set(target, prop, value, receiver){
+        const result = Reflect.set(target, prop, value, receiver);
+        
+        DataSource.setLocal(KEY,target);
+        // const json = JSON.stringify(target);
+        // localStorage.setItem(KEY,json);
+
+        return result;
+     }
+    });
+
+
+
+console.log('init', pxy);
+pxy.name = 'Tom';
+console.log('change', pxy);
+pxy.name = 'Tim';
+console.log('change2', pxy);
