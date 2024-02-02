@@ -1,7 +1,8 @@
 <script type="module">
     import { reactive, effect } from './reactive.js';
     const obj1 = reactive({
-        a: 0
+        a: 0,
+        b: 0
     });
     const obj2 = reactive({
         a: 0
@@ -11,6 +12,10 @@
         console.log('effect 1', obj1.a);
     });
     
+    effect(() => {
+        console.log('effect 3', obj1.b);
+    });
+
     effect(() => {
         console.log('effect 2', obj2.a);
     });

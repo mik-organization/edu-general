@@ -18,9 +18,13 @@ function reactive(target) {
 
 let activeEffect = null;
 function effect(fn) {
-  activeEffect = fn;
-  activeEffect();
-  activeEffect = null;
+  try{
+    activeEffect = fn;
+    activeEffect();
+    return activeEffect;
+  }finally{
+    activeEffect = null;
+  }
 }
 
 const targetMap = new WeakMap();
@@ -56,4 +60,18 @@ function trigger(target, key) {
   }
   deps.forEach(effect => effect());
 }
-export { effect, trigger, reactive };
+
+function computed(getter){
+  let computed ;
+  const runner = effect(getter);
+
+  computed = {
+    get value(){
+      const value = runner();
+      console.log('%c[compted:refresh]', 'background: purple; color: white;', value);
+      return value;
+    }
+  }
+  return computed;
+}
+export { effect, trigger, reactive,computed };
