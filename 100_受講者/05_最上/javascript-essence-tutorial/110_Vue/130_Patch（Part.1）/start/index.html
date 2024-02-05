@@ -5,8 +5,26 @@
     <div id="app"></div>
 
     <script type="module">
-        
+        import { creteVNode, patch } from './renderer.js';
+        import { nodeOps } from './nodeOps.js';
+
+        const container = nodeOps.qs('#app');
+        const prevVNode = creteVNode();
+        const nextVNode1 = creteVNode('div', {class: 'green'}, [
+            creteVNode('div', {class: 'green'},'hello')
+        ]);
+        const nextVNode2 = creteVNode('div', {class: 'green'}, [
+            creteVNode('div', {class: 'green'},'bye')
+        ]);
+        patch(prevVNode, nextVNode1, container);   
+        patch(nextVNode1, nextVNode2, container);
+
     </script>
+    <style>
+        .green {
+            color:green;
+        }
+    </style>
 </body>
 
 </html>

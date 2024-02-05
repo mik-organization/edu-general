@@ -23,9 +23,12 @@ function patch(n1, n2, container) {
 
     if(prevProp !== nextProp) {
       if(key.startsWith('on')) {
-        nodeOps.on(el, key.substring(2).toLowerCase(), () => {
-          nextProp();
-        });
+        if(!prevProp 
+            || (prevProp.toString() !== nextProp.toString())){
+          nodeOps.on(el, key.substring(2).toLowerCase(), () => {
+            nextProp();
+          });
+        }       
       } else {
         nodeOps.setAttr(el, key, nextProp);
       }
