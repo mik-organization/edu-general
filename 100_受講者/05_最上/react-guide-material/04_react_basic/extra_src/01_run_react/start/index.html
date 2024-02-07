@@ -1,9 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-   
+    <script src="/libs/react.development.js"></script>
+    <script src="/libs/react-dom.development.js"></script>
+    <script src="/libs/babel-standalone.js"></script>
 </head>
 <body>
-    
+    <div id="app"></div>
+    <script type="text/babel">
+        const appEl = document.querySelector('#app');
+        const root = ReactDOM.createRoot(appEl);    //ReactDOMというライブラリからrootを作る
+        root.render(<h1>こんにちは</h1>);  //記述した内容が<div id="app"></div>内に入り表示される
+
+        //18以前は下記のように書いていたが今は非推奨
+        // ReactDOM.render(<h1>こんにちは</h1>, appEl);
+    </script>
 </body>
 </html>
