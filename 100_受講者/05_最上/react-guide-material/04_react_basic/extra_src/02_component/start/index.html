@@ -10,7 +10,20 @@
     <script type="text/babel">
         const appEl = document.querySelector('#app');
         const root = ReactDOM.createRoot(appEl);
-        root.render(<h1>こんにちは</h1>);
+        // function Example(){
+        //     return <h1>こんにちは</h1>;
+        // }
+
+        //コンポーネントをアロー関数で書いた場合
+        const Example2 = () => {    
+            return (                 //  戻り値が複数行になった場合は()で括る
+                <div>               
+                <h1>Hello</h1>;
+                </div>
+                )
+        }
+        // root.render(<Example/>);
+        root.render(<Example2/>);
     </script>
 </body>
 </html>

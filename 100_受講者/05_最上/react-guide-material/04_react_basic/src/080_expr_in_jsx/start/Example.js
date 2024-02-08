@@ -1,5 +1,12 @@
-import Child from "./components/Child";
+import Child from "./components/Child.js";
+import Expression from "./components/Expression.js";
 
-const Example = () => <Child />;
+//<></> <fragment></fragment>と同じこと
+const Example = () => (
+    <>
+    <Child />
+    <Expression />
+    </>
+)
 
 export default Example;
