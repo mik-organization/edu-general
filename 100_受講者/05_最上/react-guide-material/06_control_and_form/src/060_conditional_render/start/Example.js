@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const Example = () => {
-  const animals = ["Dog", "Cat", "Rat"];
+  const animals = ["Dog", "Cat",null , "Rat"];
 
   const [filterVal, setFilterVal] = useState("");
 
@@ -15,13 +15,34 @@ const Example = () => {
       <ul>
         {animals
           .filter((animal) => {
-            const isMatch = animal.indexOf(filterVal) !== -1;
-            console.log(animal.indexOf(filterVal));
+            const animalStr = animal ?? "";
+            const isMatch = animalStr.indexOf(filterVal) !== -1;
+        
             return isMatch;
           })
-          .map((animal) => (
-            <li key={animal}>{animal}</li>
-          ))}
+          .map((animal) => {
+            return <li key = {animal} >{
+              //if文
+              // if(animal === "Dog"){
+              //   return <li key = {animal} >{animal + "★"}</li>
+              // }else{
+              //  return <li key = {animal} >{animal}</li>
+              // }
+              //3項演算子
+              // animal +(animal === "Dog" 
+              // ? "★" 
+              // : "" )}</li> 
+              //&&
+              animal ?? "null,undefindでした。"
+              }{animal === "Dog" && "★" }</li> 
+              //??(Null合体演算子)
+              //A ?? B
+              //A null undefind
+            
+           
+          }
+            
+        )}
       </ul>
     </>
   );
