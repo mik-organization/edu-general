@@ -1,5 +1,12 @@
 import { useState } from "react";
 import Toast from "./components/Toast";
+import { createPortal } from "react-dom";
+
+const ToastPortal = ({ children }) => {
+  const target = document.querySelector('.container.start')
+  console.log(target)
+  return createPortal(children, target)
+}
 
 const Example = () => {
   const [toastOpen, setToastOpen] = useState(false);
@@ -20,11 +27,15 @@ const Example = () => {
       >
         トーストを表示する
       </button>
-      {toastOpen && (
+      {toastOpen &&
+       (
+        <ToastPortal>
+
           <Toast
             visible={toastOpen}
             handleCloseClick={() => setToastOpen(false)}
-          />
+            />
+        </ToastPortal>
       )}
     </div>
   );

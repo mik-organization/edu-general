@@ -14,11 +14,17 @@ import Modal from "./components/Modal";
 モーダル、ポップアップ、トーストは使用の代表例です。
 */
 
+const ModalPortal = ({ children }) => {
+  const target = document.querySelector('.container.start')
+  console.log(target);
+  return createPortal(children, target)
+}
+
 const Example = () => {
   const [modalOpen, setModalOpen] = useState(false);
   return (
-    <div>
-      <div className="container start"></div>
+    <div onClick={()=> console.log('空のdiv')}>
+      <div className="container start" onClick={()=> console.log('container')}></div>
 
       <button
         type="button"
@@ -27,7 +33,12 @@ const Example = () => {
       >
         モーダルを表示する
       </button>
-      {modalOpen && <Modal handleCloseClick={() => setModalOpen(false)} />}
+      {modalOpen && 
+      (
+        <ModalPortal>
+          <Modal handleCloseClick={() => setModalOpen(false)} />
+        </ModalPortal>
+      )}
     </div>
   );
 };
