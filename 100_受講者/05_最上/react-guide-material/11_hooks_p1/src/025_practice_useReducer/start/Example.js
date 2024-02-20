@@ -1,8 +1,26 @@
-import { useReducer } from "react";
+import { useState, useReducer } from "react";
 
 const CALC_OPTIONS = ["add", "minus", "divide", "multiply"];
 
-const reducer = () => {}
+const reducer = (prev, opt ) => {
+  console.log(prev);
+  console.log(opt);
+switch (opt) {
+  case "add":
+    return  prev.a + prev.b;
+  case "minus":
+    return prev.a - prev.b;
+  case "divide":
+    return prev.a * prev.b;
+  case "multiply":
+    return prev.a / prev.b;
+}
+switch (prev) {
+  case "a":
+    return prev.a;
+  case "b":
+    return prev.b;
+}}
 
 const Example = () => {
   const initState = {
@@ -12,20 +30,26 @@ const Example = () => {
   };
 
   const [state, dispatch] = useReducer(reducer, initState);
+  // const [num, numDispatch] = useReducer(numReducer, initState);
+ 
 
-  const calculate = (e) => {
-    
+  const calculate = (state) => {
+    console.log(state.target.value)
+    dispatch(state.target.value);
   };
 
-  const numChangeHandler = (e) => {
-    
-  }
+  const numChangeHandler = ({num, name}) => {
+    console.log(num)
+    console.log(name)
+    dispatch(num);
+   
+  };
 
   return (
     <>
     <h3>練習問題</h3>
     <p>useReducerを使って完成コードと同じ機能を作成してください。</p>
-      {/* <div>
+      <div>
         a:
         <input
           type="number"
@@ -44,8 +68,9 @@ const Example = () => {
         />
       </div>
       <select value={state.type} onChange={calculate}>
+        {CALC_OPTIONS.map(opt => <option key={opt} value={opt}>{opt}</option>)}
       </select>
-      <h1>結果：{state.result}</h1> */}
+      <h1>結果：{state.result}</h1>
     </>
   );
 };
