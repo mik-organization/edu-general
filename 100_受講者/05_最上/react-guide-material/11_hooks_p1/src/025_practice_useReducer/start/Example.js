@@ -1,27 +1,23 @@
-import { useState, useReducer } from "react";
+import { useReducer } from "react";
 
 const CALC_OPTIONS = ["add", "minus", "divide", "multiply"];
 
-const reducer = (prev, opt ) => {
-  console.log(prev);
-  console.log(opt);
-switch (opt) {
-  case "add":
-    return  prev.a + prev.b;
-  case "minus":
-    return prev.a - prev.b;
-  case "divide":
-    return prev.a * prev.b;
-  case "multiply":
-    return prev.a / prev.b;
+const reducer = (state, {type, payload}) => {
+  switch (type) {
+    case "change":
+      return {...state, [payload.name]: payload.value};
+    case "add":
+      return {...state, result: state.a + state.b};
+    case "minus":
+      return {...state, result: state.a - state.b};
+    case "divide":
+      return {...state, result: state.a / state.b};
+    case "multiply":
+      return {...state, result: state.a * state.b};
+    default :
+      throw new Error("不明なタイプです。")
+  }
 }
-switch (prev) {
-  case "a":
-    return prev.a;
-  case "b":
-    return prev.b;
-}}
-
 const Example = () => {
   const initState = {
     a: 1,
@@ -30,25 +26,20 @@ const Example = () => {
   };
 
   const [state, dispatch] = useReducer(reducer, initState);
-  // const [num, numDispatch] = useReducer(numReducer, initState);
- 
 
-  const calculate = (state) => {
-    console.log(state.target.value)
-    dispatch(state.target.value);
+  const calculate = (e) => {
+    dispatch({type: e.target.value});
   };
 
-  const numChangeHandler = ({num, name}) => {
-    console.log(num)
-    console.log(name)
-    dispatch(num);
-   
+  const numChangeHandler = (e) => {
+    dispatch({type:'change', payload: {name: e.target.name, value: parseInt(e.target.value)}});
+
   };
 
   return (
     <>
-    <h3>練習問題</h3>
-    <p>useReducerを使って完成コードと同じ機能を作成してください。</p>
+      <h3>練習問題</h3>
+      <p>useReducerを使って完成コードと同じ機能を作成してください。</p>
       <div>
         a:
         <input
@@ -68,7 +59,11 @@ const Example = () => {
         />
       </div>
       <select value={state.type} onChange={calculate}>
-        {CALC_OPTIONS.map(opt => <option key={opt} value={opt}>{opt}</option>)}
+        {CALC_OPTIONS.map((type) => {
+          return (
+            <option key={type} value={type}>{type}</option>
+          )
+        })}
       </select>
       <h1>結果：{state.result}</h1>
     </>

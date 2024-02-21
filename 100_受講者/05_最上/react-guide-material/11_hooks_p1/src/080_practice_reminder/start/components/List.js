@@ -1,17 +1,16 @@
-const List = ({todos, deleteTodo}) => {
-    const complete = (id) => {
-        deleteTodo(id)
-    }
+import Item from "./Item"
+import {useTodos, useDispatchTodos } from "../context/TodoContext";
+
+const List = () => {
+
+    const todos = useTodos();
+    const dispatch = useDispatchTodos();
+  
     return (
         <div>
-            {todos.map(todo => {
-                return (
-                    <div key={todo.id}>
-                        <button onClick={() => complete(todo.id)}>完了</button>
-                        <span>{todo.content}</span>
-                    </div>
-                )
-            })}
+            {todos.map(todo =>(
+            <Item todo={todo}  key={todo.id}/>
+            ))}
         </div>
     );
 }
