@@ -7,18 +7,21 @@ const todosList = [
   {
     id: 1,
     content: "店予約する",
+    editing: false,
   },
   {
     id: 2,
     content: "卵買う",
+    editing: false,
   },
   {
     id: 3,
     content: "郵便出す",
+    editing: false,
   },
 ];
-const todoReducer = (todos, action)=>{
 
+const todoReducer = (todos, action)=>{
   switch(action.type){
     case 'todo/add':
       return [...todos, action.todo]
@@ -27,7 +30,7 @@ const todoReducer = (todos, action)=>{
         return todo.id !== action.todo.id;
        });
     case 'todo/update':
-      return  todosList.map(_todo => { 
+      return  todos.map(_todo => { 
         return _todo.id === action.todo.id ? {..._todo, ...action.todo } : {..._todo}
      });
     default:

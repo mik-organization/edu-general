@@ -1,25 +1,20 @@
 import { useState } from "react";
-import { useTodos, useDispatchTodos } from "../context/TodoContext";
+import { useDispatchTodos } from "../context/TodoContext";
 
 const Item = ({todo}) => {
-
     const [editingContent, setEditingContent ] = useState(todo.content);
-
-    const state = useTodos();
     const dispatch = useDispatchTodos();
-
-  
 
     const changeContent = (e) => setEditingContent(e.target.value);
     
     const toggleEditMode = () => {
-        const newTodo = {...todo, edoting: !todo.edting};
+        const newTodo = {...todo, editing: !todo.edting};
         dispatch({type:'todo/update',todo: newTodo})
     }
 
     const confirmContent = (e) => {
-        e.preventDefalut();
-        const newTodo = {...todo, edoting: !todo.edting ,content: editingContent};
+        e.preventDefault();
+        const newTodo = {...todo, editing: !todo.editing ,content: editingContent};
         dispatch({type:'todo/update',todo: newTodo})
     }
     const complete = (todo) => {
@@ -27,22 +22,17 @@ const Item = ({todo}) => {
     }
     return (
         <div key={todo.id}>
+        <button onClick={() => complete(todo)}>完了</button>
         <form onSubmit={confirmContent} style={{display: 'inline'}}>
-
-            <button onClick={() => complete(todo)}>完了</button>
-            {
-                todo.edting ? (
-                    <input tyoe="text"
+            {todo.editing ? (
+                <input type="text"
                     value={editingContent}
                     onChange={changeContent} />
                     ) : (
-                        <span onDoubleClick={toggleEditMode}>{todo.content}</span>
-                        )
-                        
-                    }
+                    <span onDoubleClick={toggleEditMode}>{todo.content}</span>
+                    )
+            }
         </form>
-            
-              
         </div>
     )
 }

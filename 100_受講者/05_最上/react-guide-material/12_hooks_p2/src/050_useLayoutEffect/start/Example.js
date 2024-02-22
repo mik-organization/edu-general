@@ -1,4 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useLayoutEffect } from "react";
+import Random from "./Random"
+
 const Example = () => {
   const [isDisp, setIsDisp] = useState(true);
 
@@ -36,11 +38,23 @@ const Timer = () => {
     }
   }, [time]);
 
+  // useEffectよりも先に実行される(useEffectは上から順に実行される)
+  useLayoutEffect(() => {
+    const _time = parseInt(window.localStorage.getItem('time-key'));
+
+    if(!isNaN(_time)){
+      setTime(_time);
+    }
+  },[])
+
   return (
-    <h3>
-      <time>{time}</time>
-      <span>秒経過</span>
-    </h3>
+    <>
+      <h3>
+        <time>{time}</time>
+        <span>秒経過</span>
+      </h3>
+      <Random />
+    </>
     );
 };
 

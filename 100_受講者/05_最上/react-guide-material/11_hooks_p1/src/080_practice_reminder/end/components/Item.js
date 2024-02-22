@@ -8,7 +8,7 @@ const Item = ({ todo }) => {
   const changeContent = (e) => setEditingContent(e.target.value);
 
   const toggleEditMode = () => {
-    const newTodo = { ...todo, editing: !todo.editing };
+    const newTodo = { ...todo, editing: !todo.edting };
     dispatch({ type: 'todo/update', todo: newTodo });
   };
 
