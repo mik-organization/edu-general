@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import Child from "./Child";
 
 const Example = () => {
@@ -7,9 +7,14 @@ const Example = () => {
   const [countA, setCountA] = useState(0);
   const [countB, setCountB] = useState(0);
 
-  const clickHandler = () => {
+  const clickHandler = useCallback(() => {
     setCountB((pre) => pre + 1);
-  }
+  }, []);
+  // const clickHandler2 = () => {
+  //   setCountB((pre) => pre + 1);
+  // }
+  
+  // console.log(Object.is(clickHandler, clickHandler2))
 
   return (
     <div className="parent">

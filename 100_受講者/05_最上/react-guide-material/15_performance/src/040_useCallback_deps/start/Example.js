@@ -8,8 +8,8 @@ const Example = () => {
   const [countB, setCountB] = useState(0);
 
   const clickHandler = useCallback(() => {
-    setCountB((pre) => pre + 1);
-  }, [])
+    setCountB(countB + 1);
+  }, [countB, countA])
 
   return (
     <div className="parent">

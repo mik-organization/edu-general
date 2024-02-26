@@ -10,12 +10,18 @@ class Example extends Component {
         <p>下記の数値をクリック！</p>
         <hr />
         <h4>同じError Boundary内のコンポーネント</h4>
-        <BuggyCounter />
-        <BuggyCounter />
+        <ErrorBoundary>
+          <BuggyCounter />
+          <BuggyCounter />
+        </ErrorBoundary>
         <hr />
         <h4>異なるError Boundary内のコンポーネント</h4>
-        <BuggyCounter />
-        <BuggyCounter />
+        <ErrorBoundary>
+         <BuggyCounter />
+        </ErrorBoundary>
+        <ErrorBoundary>
+         <BuggyCounter />
+        </ErrorBoundary>
       </div>
     );
   }
