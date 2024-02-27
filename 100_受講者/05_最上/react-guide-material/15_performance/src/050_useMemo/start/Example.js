@@ -7,6 +7,7 @@ const Example = () => {
   const [countB, setCountB] = useState(0);
 
   const clickHandler = useCallback(() => {
+    console.log('countB', countB);
     setCountB(countB + 1);
   },[countB]);
   
