@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { navList } from "../../data/nav";
+import { navList } from  "../../data/nav.js";
 
 export default function Header() {
   return (
