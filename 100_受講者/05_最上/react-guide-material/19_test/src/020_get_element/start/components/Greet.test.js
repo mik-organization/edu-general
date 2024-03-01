@@ -28,6 +28,6 @@ it(' should have h1 tag ', () => {
     // debug(elByLabel);
 
     const elByPlaceholder = screen.getByPlaceholderText('氏名')
-    debug(elByPlaceholder);
+    // debug(elByPlaceholder);
 })
 

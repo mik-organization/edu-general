@@ -5,8 +5,13 @@ const GetUserData = ({ url }) => {
   const [userData, setUserData] = useState(null);
 
   useEffect(() => {
-    axios.get(url).then((response) => setUserData(response.data));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    axios.get(url).then((response) =>{
+
+      console.log(response)
+      setUserData(response.data)
+      });
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+     
   }, []);
 
   return (

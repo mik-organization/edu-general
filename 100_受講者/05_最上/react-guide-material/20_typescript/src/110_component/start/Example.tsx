@@ -1,5 +1,7 @@
-const Example = () => {
-    // 練習
+import Hello from "./Hello";
+
+const Example: React.FC = () => {
+    return <Hello />
 };
 
 export default Example;
