@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title th:text="${title}">Insert title here</title>
+</head>
+<body>
+<h1　th:text="${title}">新規登録</h1>
+<form  method="post" th:object="${recordForm}">
+	<lable for="bathName">施設名：</lable>
+	<input id="bathName" name="bathName" type="text" th:value="*{bathName}">
+	
+	<lable for="genreName">ジャンル：</lable>
+	<select　id="genreName"  name="genreId" th:value="*{genreId}">
+	<option th:each="genre : ${genreName}" th:value="${genre.genreId}" th:text="${genre.genreName}" th:selected="${genre.genreId} == *{genreId}"></option>
+	</select><br/>
+	
+	<span class="rate-wrap">評価：<span class="num" th:value="*{reviewId}"　>3.5</span></span><br/>
+	
+	<lable for="recordDate">訪れた日：</lable>
+	<input id="recordDate" name="recordDate" type="text" th:value="*{recordDate}"><br/>
+	
+	<lable for="address">住所：</lable>
+	<input id="address" name="address" type="text" th:value="*{address}">
+	
+	<lable for="areaName">地域：</lable>
+	<select　id="areaName"  name="areaId" th:value="*{areaId}">
+	<option th:each="area : ${areaName}" th:value="${area.areaId}" th:text="${area.areaName}" th:selected="${genre.genreId} == *{genreId}"></option>
+	</select><br/>
+	
+	<lable for="openTime">開店時間：</lable>
+	<input id="openTime" name="openTime" type="text" th:value="*{openTime}"><br/>
+	<lable for="closeTime">閉店時間：</lable>
+	<input id="closeTime" name="closeTime" type="text" th:value="*{closeTime}"><br/>
+	<lable for="price">料金：</lable>
+	<input id="price" name="price" type="text" th:value="*{price}"><br/>
+	<lable for="tel">TEL：</lable>
+	<input id="tel" name="tel" type="text" th:value="*{tel}"><br/>
+	<lable for="roten">露天風呂：</lable>
+	<input id="roten"  type="checkbox" th:value="*{roten}">
+	<lable for="sauna">サウナ：</lable>
+	<input id="sauna"  type="checkbox" th:value="*{sauna}"><br/>
+	<lable for="comment">感想：</lable>
+	<textarea rows="" cols="" id="comment"  th:field="*{comment}" ></textarea><br/>
+	<input type="submit" value="登録">
+</form>
+
+</body>
+</html>
