@@ -8,15 +8,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.example.demo.entity.Bath;
 import com.example.demo.entity.BathInfo;
 
 @Repository
-public class RecordDaoImpl implements RecordDao {
+public class TopPageDaoImpl implements TopPageDao {
 	
 	private final JdbcTemplate jdbcTemplate;
 	
 	@Autowired
-	public RecordDaoImpl(JdbcTemplate jdbcTemplate) {
+	public TopPageDaoImpl(JdbcTemplate jdbcTemplate) {
 		this.jdbcTemplate = jdbcTemplate;
 	};
 
@@ -27,12 +28,15 @@ public class RecordDaoImpl implements RecordDao {
 	}
 
 	@Override
-	public List<BathInfo> getAll() {
+	public List<BathInfo> getTopBath() {
 		String sql = "SELECT bathInfoId, bathName, address, openTime, closeTime, price, tel, roten, sauna FROM bathInfo";
+		
 		List<Map<String, Object>> resultList = jdbcTemplate.queryForList(sql);
 		List<BathInfo> list = new ArrayList<BathInfo>();
+		
 		for(Map<String, Object> result : resultList) {
 			BathInfo bathInfo = new BathInfo();
+			
 			bathInfo.setBathInfoId((int)result.get("bathInfoId"));
 			bathInfo.setBathName((String)result.get("bathName"));
 			bathInfo.setOpenTime((int)result.get("openTime"));
@@ -40,7 +44,7 @@ public class RecordDaoImpl implements RecordDao {
 			bathInfo.setPrice((int)result.get("price"));
 			bathInfo.setTel((int)result.get("tel"));
 			bathInfo.setRoten((boolean)result.get("roten"));
-			bathInfo.setSauna((boolean)result.get("sauna"));
+			bathInfo.setSauna((boolean)result.get("sauna"));	
 			list.add(bathInfo);
 		}
 		return list;

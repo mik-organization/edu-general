@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title th:text="${title}">Insert title here</title>
+</head>
+<body>
+<h1 th:text="${title}">title</h1>
+<table>
+	<form method="post" th:action="@{/top/addBathInfo}">
+	 <input type="submit" value="登録">
+	</form>
+	
+	<form method="get" th:action="@{/top/search}">
+	<lable for="keyWord"></lable>
+	<input id="keyWord" name="keyWord" type="text"  th:value="${keyWord}">
+	<input type="submit" value="検索">
+	</form>
+	<tr>
+		<th>id</th><th>name</th><th>email</th><th>contents</th><th>datetime</th>
+	</tr>
+	<tr th:each="bathInfo:${bathList}">		<!-- Entityクラスのinquiry -->
+		<td th:text = "${bathInfo.bathInfoId}">1</td>
+		<td th:text = "${bathInfo.bathName}">name</td>
+		<td th:text = "${bathInfo.openTime}">email</td>
+		<td th:text = "${bathInfo.closeTime}">contents</td>
+		<td th:text = "${bathInfo.price}">created</td>
+		<td th:text = "${bathInfo.tel}">created</td>
+		<td th:text = "${bathInfo.roten}">created</td>
+		<td th:text = "${bathInfo.sauna}">created</td>
+		
+	</tr>
+	
+</table>
+</body>
+</html>

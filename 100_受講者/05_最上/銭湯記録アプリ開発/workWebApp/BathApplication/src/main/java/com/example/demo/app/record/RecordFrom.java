@@ -1,5 +1,7 @@
 package com.example.demo.app.record;
 
+//import jakarta.validation.constraints.NotNull;
+
 public class RecordFrom {
 
 	private String bathName;
@@ -51,13 +53,13 @@ public class RecordFrom {
 	public void setTel(int tel) {
 		this.tel = tel;
 	}
-	public boolean isRoten() {
+	public boolean getIsRoten() {
 		return roten;
 	}
 	public void setRoten(boolean roten) {
 		this.roten = roten;
 	}
-	public boolean isSauna() {
+	public boolean getIsSauna() {
 		return sauna;
 	}
 	public void setSauna(boolean sauna) {

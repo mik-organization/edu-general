@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title th:text="${title}">Insert title here</title>
+</head>
+<body>
+<h1 th:text="${title}">title</h1>
+<div th:object="${recordForm}">
+<p th:text="${bathName}"></p>
+<!--<p th:text="${recordDate}"></p>-->
+<p th:text="${address}"></p>
+<p th:text="${openTime}"></p>
+<p th:text="${closeTime}"></p>
+<p th:text="${price}"></p>
+<p th:text="${tel}"></p>
+<p th:text="${roten}"></p>
+<p th:text="${sauna}"></p>
+<form method="post" action="#" th:action="@{/top/addBathInfo}">
+	<input type="hidden" name="bathName" th:value="${bathName}">
+<!--	<input type="hidden" name="recordDate" th:value="${recordDate}"> -->
+	<input type="hidden" name="address" th:value="${address}">
+	<input type="hidden" name="openTime" th:value="${openTime}">
+	<input type="hidden" name="closeTime" th:value="${closeTime}">
+	<input type="hidden" name="price" th:value="${price}">
+	<input type="hidden" name="tel" th:value="${tel}">
+	<input type="hidden" name="roten" th:value="${roten}">
+	<input type="hidden" name="sauna" th:value="${sauna}">
+	<input type="submit" value="Go Back">	
+</form>
+<form method="post" action="#" th:action="@{/top/complete}">
+	<input type="hidden" name="bathName" th:value="${bathName}">
+<!--<input type="hidden" name="recordDate" th:value="${recordDate}"> -->
+	<input type="hidden" name="address" th:value="${address}">
+	<input type="hidden" name="openTime" th:value="${openTime}">
+	<input type="hidden" name="closeTime" th:value="${closeTime}">
+	<input type="hidden" name="price" th:value="${price}">
+	<input type="hidden" name="tel" th:value="${tel}">
+	<input type="hidden" name="roten" th:value="${roten}">
+	<input type="hidden" name="sauna" th:value="${sauna}">
+	<input type="submit" value="Complete">	
+</form>
+</div>
+</body>
+</html>

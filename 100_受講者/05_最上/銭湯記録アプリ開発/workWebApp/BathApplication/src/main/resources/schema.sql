@@ -87,3 +87,10 @@ create table if not exists comment
 	FOREIGN KEY(bathInfoId) REFERENCES bathInfo(bathInfoId)
 );
 
+--SearchWord(検索ワード)--
+create table if not exists searchWord
+(
+	searchWordId INT NOT NULL AUTO_INCREMENT,
+	searchWord VARCHAR(100) NOT NULL
+	PRIMARY KEY(searchWordId)
+)

@@ -29,3 +29,5 @@ INSERT INTO comment(
 	comment, reviewId, bathInfoId, recordDate)
 	VALUES('露天風呂が広くて開放感があった', 9, 1, '2020-07-07')
 
+	--SearchWord(検索ワード)--
+INSERT INTO searchWord(searchWord)VALUES('広い')
