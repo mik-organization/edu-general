@@ -25,10 +25,15 @@ public class TopController {
 	
 	@GetMapping
 	public String index(Model model) {
-		List<BathInfo> list = topPageService.getTopBath();
+		List<BathInfo> list = topPageService.getTopBathAll();
 		model.addAttribute("bathList",list);
 		model.addAttribute("title","top page");
 		
 		return "top/index";
 	}
+	
+//	@GetMapping("/bath/{id}")
+//	public String getBath(RecordFrom recordForm)
+	
+	
 }

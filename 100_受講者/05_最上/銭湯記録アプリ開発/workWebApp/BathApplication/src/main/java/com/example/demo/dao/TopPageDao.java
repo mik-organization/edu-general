@@ -1,13 +1,15 @@
 package com.example.demo.dao;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.example.demo.entity.BathInfo;
+import com.example.demo.entity.BathIntegrationEntitiy;
 
 public interface TopPageDao {
 	
-	void createBathInfo(BathInfo bathInfo);
+	List<BathInfo> getTopBathAll();
 	
-	List<BathInfo> getTopBath();
-
+	Optional<BathIntegrationEntitiy> getTopBath(int id);
+	
 }

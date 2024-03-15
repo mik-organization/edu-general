@@ -3,12 +3,14 @@ package com.example.demo.dao;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.example.demo.entity.BathInfo;
+import com.example.demo.entity.BathIntegrationEntitiy;
 
 @Repository
 public class RecordDaoImpl implements RecordDao {
@@ -45,5 +47,64 @@ public class RecordDaoImpl implements RecordDao {
 		}
 		return list;
 	}
+	
+
+	
+	//TopPageから施設名、住所をタップした時
+	@Override
+	public Optional<BathIntegrationEntitiy> getTopBath(int id){
+		String sql = "SELECT bathIntegrationEntitiyId, bathName, address,openTime, closeTime, price, tel, roten, sauna, bathInfoId FROM bathIntegrationEntitiy WHERE infoId = ?";
+			
+		Map<String, Object> result = jdbcTemplate.queryForMap(sql, id);
+			
+			BathIntegrationEntitiy bathInte = new BathIntegrationEntitiy();
+			bathInte.setBathIntegrationEntitiyId((int)result.get("bathIntegrationEntitiyId"));
+			bathInte.setBathName((String)result.get("bathName"));
+			bathInte.setAddress((String)result.get("address"));
+			bathInte.setOpenTime((int)result.get("openTime"));
+			bathInte.setCloseTime((int)result.get("closeTime"));
+			bathInte.setPrice((int)result.get("price"));
+			bathInte.setTel((int)result.get("tel"));
+			bathInte.setRoten((boolean)result.get("roten"));
+			bathInte.setSauna((boolean)result.get("sauna"));	
+			bathInte.setBathInfoId((int)result.get("bathInfoId"));
+			
+			Optional<BathIntegrationEntitiy> bathOpt = Optional.ofNullable(bathInte);
+			
+			return  bathOpt;
+		}
+	
+	@Override
+	public void insert(BathIntegrationEntitiy bathIntegrationEntitiy) {
+		jdbcTemplate.update("INSERT INTO bathIntegrationEntitiy("
+				+ "	bathInfoId,bathName, address, openTime, closeTime, price, tel, roten, sauna, bathId, genreId, areaId, comments)"
+				+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", 
+				bathIntegrationEntitiy.getBathInfoId(),
+				bathIntegrationEntitiy.getBathName(),
+				bathIntegrationEntitiy.getAddress(),
+				bathIntegrationEntitiy.getOpenTime(),
+				bathIntegrationEntitiy.getCloseTime(),
+				bathIntegrationEntitiy.getPrice(),
+				bathIntegrationEntitiy.getTel(),
+				bathIntegrationEntitiy.isRoten(),
+				bathIntegrationEntitiy.isSauna(),
+				bathIntegrationEntitiy.getBathId(),
+				bathIntegrationEntitiy.getGenreId(),
+				bathIntegrationEntitiy.getAreaId(),
+				bathIntegrationEntitiy.getComments(),
+				bathIntegrationEntitiy.getBathInfoId()
+				);			
+	}
+	
+	@Override
+	public int editBathInfo(BathIntegrationEntitiy bathInfo) {
+		return jdbcTemplate.update("UPDATE bathInfo SET bathName = ?, address = ?, openTime = ?, closeTime = ?, price = ?, tel = ?, roten = ?, sauna = ?",
+				bathInfo.getBathName(),bathInfo.getAddress(),bathInfo.getOpenTime(),bathInfo.getCloseTime(),bathInfo.getPrice(),bathInfo.getTel()); 
+	}
+	@Override
+	public int delBathInfo(int id){
+		return jdbcTemplate.update("DELET FROM bathInfo	WHERE id = ?" ,id);
+	}
+	
 
 }

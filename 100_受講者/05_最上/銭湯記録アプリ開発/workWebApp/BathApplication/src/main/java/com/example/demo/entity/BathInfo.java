@@ -11,6 +11,8 @@ public class BathInfo {
 	private boolean roten;
 	private boolean sauna;
 	
+	private Bath bath;
+	
 	public BathInfo() {
 	}
 
@@ -84,6 +86,14 @@ public class BathInfo {
 
 	public void setSauna(boolean sauna) {
 		this.sauna = sauna;
+	}
+
+	public Bath getBath() {
+		return bath;
+	}
+
+	public void setBath(Bath bath) {
+		this.bath = bath;
 	}
 	
 	

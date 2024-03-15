@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title th:text="${title}">Insert title here</title>
+</head>
+<body>
+<h1　th:text="${title}">編集</h1>
+<form  method="post" action="#"  th:action="@{/top/getBath}" th:object="${recordForm}" >
+	<lable for="bathName">施設名：</lable>
+	<input id="bathName" name="bathName" type="text"  th:value="*{bathName}">
+	<input  th:if="${bathInfoId}" type="hidden" name="bathInfoId" th:value="${bathInfoId}">
+	<input type="submit" value="登録">
+
+</form>
+</body>
+</html>

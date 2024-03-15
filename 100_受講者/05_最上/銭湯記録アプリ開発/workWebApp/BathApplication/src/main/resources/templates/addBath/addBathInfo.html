@@ -6,6 +6,10 @@
 </head>
 <body>
 <h1　th:text="${title}">新規登録</h1>
+
+<form  method="GET" action="#"  th:action="@{/top}">
+	<input type="submit" value="TOP">
+</form>
 <form  method="post" action="#"  th:action="@{/top/getBath}"  >
 	<lable for="bathName">施設名：</lable>
 	<input id="bathName" name="bathName" type="text"  th:value="${bathName}">

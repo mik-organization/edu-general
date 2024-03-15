@@ -17,17 +17,14 @@
 	<input type="submit" value="検索">
 	</form>
 	<tr>
-		<th>id</th><th>name</th><th>email</th><th>contents</th><th>datetime</th>
+		<th>name</th><th>住所</th><th>評価</th>
 	</tr>
-	<tr th:each="bathInfo:${bathList}">		<!-- Entityクラスのinquiry -->
-		<td th:text = "${bathInfo.bathInfoId}">1</td>
-		<td th:text = "${bathInfo.bathName}">name</td>
-		<td th:text = "${bathInfo.openTime}">email</td>
-		<td th:text = "${bathInfo.closeTime}">contents</td>
-		<td th:text = "${bathInfo.price}">created</td>
-		<td th:text = "${bathInfo.tel}">created</td>
-		<td th:text = "${bathInfo.roten}">created</td>
-		<td th:text = "${bathInfo.sauna}">created</td>
+	<tr th:each="bathInfo:${bathList}">
+		
+		<td ><a th:href="@{/top/update/{id}(id=${bathInfo.bathInfoId})}"><span th:text = "${bathInfo.bathName}" >name</span></a></td>
+		<td ><a th:href="@{/top/update/{id}(id=${bathInfo.bathInfoId})}"><span th:text = "${bathInfo.address}">住所</span></a></td>
+		<td th:text = "${bathInfo.bath.reviewAverage}">評価</td>
+		
 		
 	</tr>
 	

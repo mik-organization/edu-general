@@ -91,6 +91,6 @@ create table if not exists comment
 create table if not exists searchWord
 (
 	searchWordId INT NOT NULL AUTO_INCREMENT,
-	searchWord VARCHAR(100) NOT NULL
+	searchWord VARCHAR(100) NOT NULL,
 	PRIMARY KEY(searchWordId)
 )

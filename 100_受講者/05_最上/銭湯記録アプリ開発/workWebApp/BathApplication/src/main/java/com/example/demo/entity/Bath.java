@@ -50,5 +50,4 @@ public class Bath {
 		this.reviewAverage = reviewAverage;
 	}
 	
-	
 }

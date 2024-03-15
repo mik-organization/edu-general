@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.example.demo.dao.RecordDao;
 import com.example.demo.dao.TopPageDao;
 import com.example.demo.entity.BathInfo;
+import com.example.demo.entity.BathIntegrationEntitiy;
 
 @Service
 public class TopPageServiceImpl implements TopPageService {
@@ -17,16 +19,14 @@ public class TopPageServiceImpl implements TopPageService {
 	@Autowired TopPageServiceImpl(TopPageDao dao){
 		this.dao = dao;
 	}
-	
-//	@Override
-//	public void createBathInfo(BathInfo bathInfo) {
-//		dao.createBathInfo(bathInfo);
-//
-//	}
 
 	@Override
-	public List<BathInfo> getTopBath() {
-		return dao.getTopBath();
-	}
-
+	public List<BathInfo> getTopBathAll() {
+		return dao.getTopBathAll();
+	};
+	
+	@Override
+	public Optional<BathIntegrationEntitiy> getTopBath(int id){
+		return dao.getTopBath(id);
+	};
 }

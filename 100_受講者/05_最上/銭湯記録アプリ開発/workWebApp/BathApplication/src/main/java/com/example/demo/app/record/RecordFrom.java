@@ -1,9 +1,13 @@
 package com.example.demo.app.record;
 
+import java.util.List;
+
 //import jakarta.validation.constraints.NotNull;
 
 public class RecordFrom {
 
+	private int bathIntegrationEntitiyId;
+	private int bathInfoId;
 	private String bathName;
 	private String address;
 	private int openTime;
@@ -12,11 +16,42 @@ public class RecordFrom {
 	private int tel;
 	private boolean roten;
 	private boolean sauna;
+	private int bathId;
+	private int genreId;
+	private int areaId;
+	private List<String> comments;
 	
 	
 	public RecordFrom() {
+		this.bathIntegrationEntitiyId = bathIntegrationEntitiyId;
+		this.bathInfoId = bathInfoId;
+		this.bathName = bathName;
+		this.address = address;
+		this.openTime = openTime;
+		this.closeTime = closeTime;
+		this.price = price;
+		this.tel = tel;
+		this.roten = roten;
+		this.sauna = sauna;
+		this.bathId = bathId;
+		this.genreId = genreId;
+		this.areaId = areaId;
+		this.comments = comments;
 	}
 	
+	
+	public int getBathIntegrationEntitiyId() {
+		return bathIntegrationEntitiyId;
+	}
+	public void setBathIntegrationEntitiyId(int bathIntegrationEntitiyId) {
+		this.bathIntegrationEntitiyId = bathIntegrationEntitiyId;
+	}
+	public int getBathInfoId() {
+		return bathInfoId;
+	}
+	public void setBathInfoId(int bathInfoId) {
+		this.bathInfoId = bathInfoId;
+	}
 	public String getBathName() {
 		return bathName;
 	}
@@ -64,6 +99,30 @@ public class RecordFrom {
 	}
 	public void setSauna(boolean sauna) {
 		this.sauna = sauna;
+	}
+	public int getBathId() {
+		return bathId;
+	}
+	public void setBathId(int bathId) {
+		this.bathId = bathId;
+	}
+	public int getGenreId() {
+		return genreId;
+	}
+	public void setGenreId(int genreId) {
+		this.genreId = genreId;
+	}
+	public int getAreaId() {
+		return areaId;
+	}
+	public void setAreaId(int areaId) {
+		this.areaId = areaId;
+	}
+	public List<String> getComments() {
+		return comments;
+	}
+	public void setComments(List<String> comments) {
+		this.comments = comments;
 	}
 	
 	

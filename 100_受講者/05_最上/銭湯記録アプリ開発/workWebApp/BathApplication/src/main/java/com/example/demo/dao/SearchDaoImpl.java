@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import com.example.demo.entity.Bath;
 import com.example.demo.entity.BathInfo;
 import com.example.demo.entity.BathIntegrationEntitiy;
+import com.example.demo.entity.SearchWord;
 
 @Repository
 public class SearchDaoImpl implements SearchDao {
@@ -24,14 +25,16 @@ public class SearchDaoImpl implements SearchDao {
 
 
 	@Override
-	public List<BathIntegrationEntitiy> fetchBath() {
+	public List<BathIntegrationEntitiy> fetchBath(SearchWord searchWord) {
+		System.out.println(searchWord);
+		
 		String sql = "SELECT bathInfoId, bathName, address, openTime, closeTime, price, tel, roten, sauna FROM bathIntegrationEntitiy";
 		
 		List<Map<String, Object>> resultList = jdbcTemplate.queryForList(sql);
-		List<BathInfo> list = new ArrayList<BathInfo>();
+		List<BathIntegrationEntitiy> list = new ArrayList<BathIntegrationEntitiy>();
 		
 		for(Map<String, Object> result : resultList) {
-			BathInfo bathInfo = new BathInfo();
+			BathIntegrationEntitiy bathInfo = new BathIntegrationEntitiy();
 			
 			bathInfo.setBathInfoId((int)result.get("bathInfoId"));
 			bathInfo.setBathName((String)result.get("bathName"));
