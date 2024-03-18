@@ -21,8 +21,8 @@
 	</tr>
 	<tr th:each="bathInfo:${bathList}">
 		
-		<td ><a th:href="@{/top/update/{id}(id=${bathInfo.bathInfoId})}"><span th:text = "${bathInfo.bathName}" >name</span></a></td>
-		<td ><a th:href="@{/top/update/{id}(id=${bathInfo.bathInfoId})}"><span th:text = "${bathInfo.address}">住所</span></a></td>
+		<td ><a th:href="@{/top/bath/{id}(id=${bathInfo.bathInfoId})}"><span th:text = "${bathInfo.bathName}" >name</span></a></td>
+		<td ><a th:href="@{/top/bath/{id}(id=${bathInfo.bathInfoId})}"><span th:text = "${bathInfo.address}">住所</span></a></td>
 		<td th:text = "${bathInfo.bath.reviewAverage}">評価</td>
 		
 		

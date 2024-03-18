@@ -16,7 +16,7 @@ public class BathIntegrationEntitiy {
 	private int bathId;
 	private int genreId;
 	private int areaId;
-	private List<String>comments;
+	private String comments;
 	
 	public BathIntegrationEntitiy() {
 	}
@@ -125,12 +125,12 @@ public class BathIntegrationEntitiy {
 		this.areaId = areaId;
 	}
 
-	public List<String> getComments() {
+	public String getComments() {
 		return comments;
 	}
 
-	public void setComments(List<String> comments) {
-		this.comments = comments;
+	public void setComments(String string) {
+		this.comments = string;
 	}
 	
 	

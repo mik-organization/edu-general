@@ -9,8 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.example.demo.entity.Bath;
 import com.example.demo.entity.BathInfo;
 import com.example.demo.entity.BathIntegrationEntitiy;
+import com.example.demo.entity.Comment;
 
 @Repository
 public class RecordDaoImpl implements RecordDao {
@@ -29,12 +31,12 @@ public class RecordDaoImpl implements RecordDao {
 	}
 
 	@Override
-	public List<BathInfo> getAll() {
+	public List<BathIntegrationEntitiy> getAll() {
 		String sql = "SELECT bathInfoId, bathName, address, openTime, closeTime, price, tel, roten, sauna FROM bathInfo";
 		List<Map<String, Object>> resultList = jdbcTemplate.queryForList(sql);
-		List<BathInfo> list = new ArrayList<BathInfo>();
+		List<BathIntegrationEntitiy> list = new ArrayList<BathIntegrationEntitiy>();
 		for(Map<String, Object> result : resultList) {
-			BathInfo bathInfo = new BathInfo();
+			BathIntegrationEntitiy bathInfo = new BathIntegrationEntitiy();
 			bathInfo.setBathInfoId((int)result.get("bathInfoId"));
 			bathInfo.setBathName((String)result.get("bathName"));
 			bathInfo.setOpenTime((int)result.get("openTime"));
@@ -74,27 +76,72 @@ public class RecordDaoImpl implements RecordDao {
 			return  bathOpt;
 		}
 	
+	
 	@Override
-	public void insert(BathIntegrationEntitiy bathIntegrationEntitiy) {
-		jdbcTemplate.update("INSERT INTO bathIntegrationEntitiy("
-				+ "	bathInfoId,bathName, address, openTime, closeTime, price, tel, roten, sauna, bathId, genreId, areaId, comments)"
-				+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", 
-				bathIntegrationEntitiy.getBathInfoId(),
-				bathIntegrationEntitiy.getBathName(),
-				bathIntegrationEntitiy.getAddress(),
-				bathIntegrationEntitiy.getOpenTime(),
-				bathIntegrationEntitiy.getCloseTime(),
-				bathIntegrationEntitiy.getPrice(),
-				bathIntegrationEntitiy.getTel(),
-				bathIntegrationEntitiy.isRoten(),
-				bathIntegrationEntitiy.isSauna(),
-				bathIntegrationEntitiy.getBathId(),
-				bathIntegrationEntitiy.getGenreId(),
-				bathIntegrationEntitiy.getAreaId(),
-				bathIntegrationEntitiy.getComments(),
-				bathIntegrationEntitiy.getBathInfoId()
-				);			
+	public void insert(BathInfo bathInfo,Bath bath,
+			BathIntegrationEntitiy bathIntegrationEntitiy, Comment comment) {
+				
+		jdbcTemplate.update("INSERT INTO bathInfo("
+				+ " bathName, address, openTime, closeTime, price, tel, roten, sauna)"
+				+ "	VALUES(?, ?, ?, ?, ?, ?, ?,?)",
+//				bathInfo.getBathInfoId(),
+				bathInfo.getBathName(),
+				bathInfo.getAddress(),
+				bathInfo.getOpenTime(),
+				bathInfo.getCloseTime(),
+				bathInfo.getPrice(),
+				bathInfo.getTel(),
+				bathInfo.isRoten(),
+				bathInfo.isSauna());		        
+		
+		System.out.println("●●"+bathInfo.getBathInfoId());
+		
+		
+		jdbcTemplate.update("INSERT INTO comment("
+				+"comment, reviewId,bathInfoId, recordDate)"
+				+"VALUES(?, ?, ?, ?)",
+				comment.getComment(),
+				comment.getReviewId(),
+				bathInfo.getBathInfoId(),
+				comment.getRecordDate());
+		
+		System.out.println("2●●"+bathInfo.getBathInfoId());
+		
+		
+		jdbcTemplate.update("INSERT INTO bath "
+				+"(bathInfoId, genreId, areaId, reviewAverage)"
+				+"VALUES(?, ?, ?, ?)",
+				bathInfo.getBathInfoId(),
+				bath.getGenreId(),
+				bath.getAreaId(),
+				bath.getReviewAverage());
+		
+		
+//		return bathInfo.getBathInfoId();
+//		jdbcTemplate.update("UPDATE comment SET bathInfoId = ?", bathInfo.getBathInfoId());
 	}
+	
+//	@Override
+//	public void insert(BathIntegrationEntitiy bathIntegrationEntitiy) {
+//		jdbcTemplate.update("INSERT INTO bathIntegrationEntitiy("
+//				+ "	bathInfoId,bathName, address, openTime, closeTime, price, tel, roten, sauna, bathId, genreId, areaId, comments)"
+//				+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", 
+//				bathIntegrationEntitiy.getBathInfoId(),
+//				bathIntegrationEntitiy.getBathName(),
+//				bathIntegrationEntitiy.getAddress(),
+//				bathIntegrationEntitiy.getOpenTime(),
+//				bathIntegrationEntitiy.getCloseTime(),
+//				bathIntegrationEntitiy.getPrice(),
+//				bathIntegrationEntitiy.getTel(),
+//				bathIntegrationEntitiy.isRoten(),
+//				bathIntegrationEntitiy.isSauna(),
+//				bathIntegrationEntitiy.getBathId(),
+//				bathIntegrationEntitiy.getGenreId(),
+//				bathIntegrationEntitiy.getAreaId(),
+//				bathIntegrationEntitiy.getComments(),
+//				bathIntegrationEntitiy.getBathInfoId()
+//				);			
+//	}
 	
 	@Override
 	public int editBathInfo(BathIntegrationEntitiy bathInfo) {

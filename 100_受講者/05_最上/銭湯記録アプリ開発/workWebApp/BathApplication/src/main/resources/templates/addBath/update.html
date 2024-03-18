@@ -5,11 +5,57 @@
 <title th:text="${title}">Insert title here</title>
 </head>
 <body>
+<form  method="GET" action="#"  th:action="@{/top}">
+	<input type="submit" value="TOP">
+</form>
 <h1　th:text="${title}">編集</h1>
-<form  method="post" action="#"  th:action="@{/top/getBath}" th:object="${recordForm}" >
+
+<form  method="POST" th:action="@{top/addBath/update}" 
+th:object="${recordForm}" >
+	
 	<lable for="bathName">施設名：</lable>
 	<input id="bathName" name="bathName" type="text"  th:value="*{bathName}">
-	<input  th:if="${bathInfoId}" type="hidden" name="bathInfoId" th:value="${bathInfoId}">
+<!--	
+	<lable for="genreName">ジャンル：</lable>
+	<select　id="genreName"  name="genreId" th:value="*{genreId}">
+	<option th:each="genre : ${genreName}" th:value="${genre.genreId}" th:text="${genre.genreName}" th:selected="${genre.genreId} == *{genreId}"></option>
+	</select><br/>
+
+	<span class="rate-wrap">評価：<span class="num" th:value="*{reviewId}"　>3.5</span></span><br/>
+		
+	<lable for="recordDate">訪れた日：</lable>
+	<input id="recordDate" name="recordDate" type="text" th:value="*{recordDate}"><br/>
+ -->
+	
+	<lable for="address">場所：</lable>
+	<input id="address" name="address" type="text"  th:value="*{address}"><br/>
+	
+<!--	
+	<lable for="areaName">地域：</lable>
+	<select　id="areaName"  name="areaId" th:value="*{areaId}">
+	<option th:each="area : ${areaName}" th:value="${area.areaId}" th:text="${area.areaName}" th:selected="${genre.genreId} == *{genreId}"></option>
+	</select><br/>
+ -->
+ 
+	<lable for="openTime">開店：</lable>
+	<input id="openTime" name="openTime" type="text"  th:value="*{openTime}">
+	<lable for="closeTime">閉店：</lable>
+	<input id="closeTime" name="closeTime" type="text"  th:value="*{closeTime}">
+	<lable for="price">料金：</lable>
+	<input id="price" name="price" type="text" th:value="*{price}"><br/>
+	<lable for="tel">TEL：</lable>
+	<input id="tel" name="tel" type="text" th:value="*{tel}"><br/>
+<!--
+	<lable for="roten">露天風呂：</lable>
+	<input id="roten"  type="checkbox" th:value="*{roten}">
+	<lable for="sauna">サウナ：</lable>
+	<input id="sauna"  type="checkbox" th:value="*{sauna}"><br/>
+-->	
+	<!-- 	
+	<lable for="comment">感想：</lable>
+	<textarea rows="" cols="" id="comment"  th:field="*{comment}" ></textarea><br/>
+ 	-->
+ 	<input type="hidden" name="bathInfoId" th:value="${bathInfoId}">
 	<input type="submit" value="登録">
 
 </form>

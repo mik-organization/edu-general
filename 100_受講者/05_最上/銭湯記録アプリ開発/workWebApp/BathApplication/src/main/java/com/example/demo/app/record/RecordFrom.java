@@ -1,5 +1,6 @@
 package com.example.demo.app.record;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 //import jakarta.validation.constraints.NotNull;
@@ -19,7 +20,9 @@ public class RecordFrom {
 	private int bathId;
 	private int genreId;
 	private int areaId;
-	private List<String> comments;
+	private String comments;
+	private int reviewId;
+	private LocalDateTime recordDate;
 	
 	
 	public RecordFrom() {
@@ -37,6 +40,8 @@ public class RecordFrom {
 		this.genreId = genreId;
 		this.areaId = areaId;
 		this.comments = comments;
+		this.reviewId = reviewId;
+		this.recordDate = recordDate;
 	}
 	
 	
@@ -118,12 +123,26 @@ public class RecordFrom {
 	public void setAreaId(int areaId) {
 		this.areaId = areaId;
 	}
-	public List<String> getComments() {
+	public String getComments() {
 		return comments;
 	}
-	public void setComments(List<String> comments) {
+	public void setComments(String comments) {
 		this.comments = comments;
 	}
 	
+	public int getReviewId() {
+		return reviewId;
+	}
+	public void setReviewId(int reviewId) {
+		this.reviewId = reviewId;
+	}
+
+	public LocalDateTime getRecordDate() {
+		return recordDate;
+	}
+
+	public void setRecordDate(LocalDateTime recordDate) {
+		this.recordDate = recordDate;
+	}
 	
 }

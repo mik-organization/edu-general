@@ -7,8 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.dao.RecordDao;
+import com.example.demo.entity.Bath;
 import com.example.demo.entity.BathInfo;
 import com.example.demo.entity.BathIntegrationEntitiy;
+import com.example.demo.entity.Comment;
 
 @Service
 public class RecordServiceImpl implements RecordService {
@@ -26,9 +28,10 @@ public class RecordServiceImpl implements RecordService {
 	}
 
 	@Override
-	public List<BathInfo> getAll() {
+	public List<BathIntegrationEntitiy> getAll() {
 		return dao.getAll();
 	}
+	
 	
 	@Override
 	public Optional<BathIntegrationEntitiy> getTopBath(int id){
@@ -36,9 +39,15 @@ public class RecordServiceImpl implements RecordService {
 	};
 	
 	@Override
-	public void insert(BathIntegrationEntitiy bathIntegrationEntitiy) {
-		dao.insert(bathIntegrationEntitiy);
+	public void insert(BathInfo bathInfo,Bath bath,
+			BathIntegrationEntitiy bathIntegrationEntitiy, Comment comment) {
+		dao.insert(bathInfo, bath, bathIntegrationEntitiy, comment);
 	}
+	
+//	@Override
+//	public void insert(BathIntegrationEntitiy bathIntegrationEntitiy) {
+//		dao.insert(bathIntegrationEntitiy);
+//	}
 	
 	@Override
 	public void editBathInfo(BathIntegrationEntitiy bathIntegrationEntitiy) {};

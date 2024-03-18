@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title th:text="${title}">Insert title here</title>
+</head>
+<body>
+<form  method="GET" action="#"  th:action="@{/top}">
+	<input type="submit" value="TOP">
+</form>
+
+<form th:each="bath:${bathList}" method="GET" 
+ th:action="@{'update/'+${bath.bathIntegrationEntitiyId}}">
+	<input type="submit" value="編集">
+
+		<span th:text = "${bath.genreId}" >ジャンル：</span><h1 th:text="${bath.bathName}">施設名</h1>
+<!--	<span th:text = "${bath.reviewId}" >評価：</span> -->
+<!--	<span th:text = "${bath.recordDate}" >訪れた日：</span> -->
+		<span th:text = "${bath.address}">場所：</span>
+		<span th:text = "${bath.areaId}" >地域：</span><br/>
+		<span th:text = "${bath.openTime}" >開店：</span>
+		<span th:text = "${bath.closeTime}" >開店：</span><br/>
+		<span th:text = "${bath.price}" >価格：</span><br/>
+		<span th:text = "${bath.tel}" >tel：</span><br/>
+		<span th:text = "${bath.roten}" >露天：</span><br/>
+		<span th:text = "${bath.sauna}" >サウナ：</span><br/>
+<!-- 	<span th:text = "${bath.comment}" >感想：</span> -->
+
+	
+</form>
+</body>
+</html>

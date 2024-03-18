@@ -58,7 +58,8 @@ public class TopPageDaoImpl implements TopPageDao {
 	
 	//TopPageから施設名、住所をタップした時
 	public Optional<BathIntegrationEntitiy> getTopBath(int id){
-		String sql = "SELECT bathIntegrationEntitiyId, bathName, address,openTime, closeTime, price, tel, roten, sauna, bathInfoId FROM bathIntegrationEntitiy WHERE infoId = ?";
+		System.out.println("■■■来たやつ"+id);
+		String sql = "SELECT bathIntegrationEntitiyId, bathName, address,openTime, closeTime, price, tel, roten, sauna, genreId, areaId, comments, bathInfoId FROM bathIntegrationEntitiy WHERE bathinfoId = ?";
 		
 		Map<String, Object> result = jdbcTemplate.queryForMap(sql, id);
 		
@@ -71,7 +72,10 @@ public class TopPageDaoImpl implements TopPageDao {
 		bathInte.setPrice((int)result.get("price"));
 		bathInte.setTel((int)result.get("tel"));
 		bathInte.setRoten((boolean)result.get("roten"));
-		bathInte.setSauna((boolean)result.get("sauna"));	
+		bathInte.setSauna((boolean)result.get("sauna"));
+		bathInte.setGenreId((int)result.get("genreId"));
+		bathInte.setAreaId((int)result.get("areaId"));
+//		bathInte.setComments((String)result.get("comments"));
 		bathInte.setBathInfoId((int)result.get("bathInfoId"));
 		
 		Optional<BathIntegrationEntitiy> bathOpt = Optional.ofNullable(bathInte);
