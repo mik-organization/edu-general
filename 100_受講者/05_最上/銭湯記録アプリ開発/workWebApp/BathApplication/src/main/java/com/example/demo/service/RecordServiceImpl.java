@@ -38,19 +38,21 @@ public class RecordServiceImpl implements RecordService {
 		return dao.getTopBath(id);
 	};
 	
-	@Override
-	public void insert(BathInfo bathInfo,Bath bath,
-			BathIntegrationEntitiy bathIntegrationEntitiy, Comment comment) {
-		dao.insert(bathInfo, bath, bathIntegrationEntitiy, comment);
-	}
-	
 //	@Override
-//	public void insert(BathIntegrationEntitiy bathIntegrationEntitiy) {
-//		dao.insert(bathIntegrationEntitiy);
+//	public void insert(BathInfo bathInfo,Bath bath,
+//			BathIntegrationEntitiy bathIntegrationEntitiy, Comment comment) {
+//		dao.insert(bathInfo, bath, bathIntegrationEntitiy, comment);
 //	}
 	
 	@Override
-	public void editBathInfo(BathIntegrationEntitiy bathIntegrationEntitiy) {};
+	public void insert(BathIntegrationEntitiy bathIntegrationEntitiy) {
+		dao.insert(bathIntegrationEntitiy);
+	}
+	
+	@Override
+	public void editBathInfo(BathIntegrationEntitiy bathIntegrationEntitiy) {
+		dao.editBathInfo(bathIntegrationEntitiy);
+	};
 	
 	@Override
 	public void delBathInfo(int id) {};

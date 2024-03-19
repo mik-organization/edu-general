@@ -8,7 +8,7 @@ import com.example.demo.entity.BathIntegrationEntitiy;
 
 public interface TopPageService {
 	
-	List<BathInfo> getTopBathAll();
+	List<BathIntegrationEntitiy> getTopBathAll();
 	
 	Optional<BathIntegrationEntitiy> getTopBath(int id);
 

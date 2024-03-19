@@ -21,7 +21,7 @@ public class TopPageServiceImpl implements TopPageService {
 	}
 
 	@Override
-	public List<BathInfo> getTopBathAll() {
+	public List<BathIntegrationEntitiy> getTopBathAll() {
 		return dao.getTopBathAll();
 	};
 	

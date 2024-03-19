@@ -29,16 +29,25 @@ public class TopController {
 	
 	@GetMapping
 	public String index(Model model) {
-		List<BathInfo> list = topPageService.getTopBathAll();
+		List<BathIntegrationEntitiy> list = topPageService.getTopBathAll();
 		model.addAttribute("bathList",list);
 		model.addAttribute("title","top page");
 		
 		return "top/index";
 	}
+//	@GetMapping
+//	public String index(Model model) {
+//		List<BathInfo> list = topPageService.getTopBathAll();
+//		model.addAttribute("bathList",list);
+//		model.addAttribute("title","top page");
+//		
+//		return "top/index";
+//	}
 	
 	@GetMapping("/bath/{id}")
 	public String getbath( Model model,@PathVariable("id") int id
 			) {
+		System.out.println("○○："+id);
 		Optional<BathIntegrationEntitiy> list = topPageService.getTopBath(id);
 		model.addAttribute("bathList",list.get());
 		model.addAttribute("title","温泉");

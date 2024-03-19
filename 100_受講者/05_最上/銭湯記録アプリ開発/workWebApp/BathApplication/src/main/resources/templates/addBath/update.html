@@ -10,7 +10,7 @@
 </form>
 <h1　th:text="${title}">編集</h1>
 
-<form  method="POST" th:action="@{top/addBath/update}" 
+<form  method="post" th:action="@{/top/addBath/update}"
 th:object="${recordForm}" >
 	
 	<lable for="bathName">施設名：</lable>
@@ -51,12 +51,12 @@ th:object="${recordForm}" >
 	<lable for="sauna">サウナ：</lable>
 	<input id="sauna"  type="checkbox" th:value="*{sauna}"><br/>
 -->	
-	<!-- 	
-	<lable for="comment">感想：</lable>
-	<textarea rows="" cols="" id="comment"  th:field="*{comment}" ></textarea><br/>
- 	-->
+
+	<label for="comments">感想：</label>
+	<textarea rows="" cols="" id="comments"  th:field="*{comments}" ></textarea><br/>
+ 
  	<input type="hidden" name="bathInfoId" th:value="${bathInfoId}">
-	<input type="submit" value="登録">
+	<input type="submit"  value="登録">
 
 </form>
 </body>

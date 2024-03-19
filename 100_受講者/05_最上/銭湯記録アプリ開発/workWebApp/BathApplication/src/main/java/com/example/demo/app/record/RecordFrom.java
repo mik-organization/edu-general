@@ -1,5 +1,6 @@
 package com.example.demo.app.record;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -22,7 +23,9 @@ public class RecordFrom {
 	private int areaId;
 	private String comments;
 	private int reviewId;
-	private LocalDateTime recordDate;
+	private LocalDate recordDate;
+	
+	private List<String>commentList;
 	
 	
 	public RecordFrom() {
@@ -42,6 +45,7 @@ public class RecordFrom {
 		this.comments = comments;
 		this.reviewId = reviewId;
 		this.recordDate = recordDate;
+		this.commentList = commentList;
 	}
 	
 	
@@ -137,12 +141,24 @@ public class RecordFrom {
 		this.reviewId = reviewId;
 	}
 
-	public LocalDateTime getRecordDate() {
+	public LocalDate getRecordDate() {
 		return recordDate;
 	}
 
-	public void setRecordDate(LocalDateTime recordDate) {
+	public void setRecordDate(LocalDate recordDate) {
 		this.recordDate = recordDate;
 	}
+
+
+	public List<String> getCommentList() {
+		return commentList;
+	}
+
+
+	public void setCommentList(List<String> commentList) {
+		this.commentList = commentList;
+	}
+	
+	
 	
 }

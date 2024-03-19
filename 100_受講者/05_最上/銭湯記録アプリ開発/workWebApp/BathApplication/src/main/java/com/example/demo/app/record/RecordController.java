@@ -1,5 +1,6 @@
 package com.example.demo.app.record;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -94,19 +95,18 @@ public class RecordController {
 		@Validated @ModelAttribute RecordFrom recordForm,
 		BindingResult result, Model model){
 		
-		BathInfo bathInfo = makeBathInfo(recordForm,0);
-		Bath bath = makeBath(recordForm,0);
+//		BathInfo bathInfo = makeBathInfo(recordForm,0);
+//		Bath bath = makeBath(recordForm,0);
 		BathIntegrationEntitiy bathIntegrationEntitiy = makeBathtegrationEntitiy(recordForm,0);
-		Comment comment =  makeComment(recordForm,0);
+//		Comment comment =  makeComment(recordForm,0);
 //		BathIntegrationEntitiy bathIntegrationEntitiy = makeBathInfo(recordForm, 0);
 
-		recordService.insert(bathInfo, bath, bathIntegrationEntitiy, comment);
+//		recordService.insert(bathInfo, bath, bathIntegrationEntitiy, comment);
+		recordService.insert(bathIntegrationEntitiy);
 
-//		topPageService.getTopBath(id);
-//		System.out.println("▲▲"+id);
-		return "top/bath";
+		return "redirect:/top";
 	}
-
+	
 	@GetMapping("/bath/update/{id}")
 	public String updateBathInfo(RecordFrom recordForm,@PathVariable("id") int id,
 			Model model) {
@@ -137,7 +137,8 @@ public class RecordController {
 		BathIntegrationEntitiy bathIntegrationEntitiy = makeBathtegrationEntitiy(recordForm, bathInfoId);
 		
 		recordService.editBathInfo(bathIntegrationEntitiy);
-		return "bath/"+bathInfoId;
+		
+		return "redirect:/top";
 		
 	};
 	
@@ -185,28 +186,28 @@ public class RecordController {
 		return bath;
 	}
 	
-	private Comment makeComment(RecordFrom recordForm, int commentId) {
-		
-		Comment comment = new Comment();
-		
-		if(commentId != 0) {
-			comment.setBathInfoId(commentId) ;
-		}
-
-		comment.setBathInfoId(recordForm.getBathInfoId());
-		comment.setComment(recordForm.getComments());
-		comment.setReviewId(recordForm.getReviewId());
-		comment.setRecordDate(recordForm.getRecordDate());
-		
-		return comment;
-	}
+//	private Comment makeComment(RecordFrom recordForm, int commentId) {
+//		
+//		Comment comment = new Comment();
+//		
+//		if(commentId != 0) {
+//			comment.setBathInfoId(commentId) ;
+//		}
+//
+//		comment.setBathInfoId(recordForm.getBathInfoId());
+//		comment.setComment(recordForm.getComments());
+//		comment.setReviewId(recordForm.getReviewId());
+//		comment.setRecordDate(recordForm.getRecordDate());
+//		
+//		return comment;
+//	}
 		
 	private BathIntegrationEntitiy makeBathtegrationEntitiy(RecordFrom recordForm ,int bathtegrationEntitiyId) {
 		
 		BathIntegrationEntitiy bathIntegrationEntitiy = new BathIntegrationEntitiy();
-		
+		System.out.println("make:"+bathtegrationEntitiyId);
 		if(bathtegrationEntitiyId != 0) {
-			bathIntegrationEntitiy.setBathInfoId(bathtegrationEntitiyId) ;
+			bathIntegrationEntitiy.setBathIntegrationEntitiyId(bathtegrationEntitiyId) ;
 		}
 		
 //		bathIntegrationEntitiy.setBathIntegrationEntitiyId(recordForm.getBathIntegrationEntitiyId());
@@ -222,7 +223,7 @@ public class RecordController {
 		bathIntegrationEntitiy.setBathId(recordForm.getBathId());
 		bathIntegrationEntitiy.setGenreId(recordForm.getGenreId());
 		bathIntegrationEntitiy.setAreaId(recordForm.getAreaId());
-		bathIntegrationEntitiy.setComments(recordForm.getComments());
+		bathIntegrationEntitiy.setComments(recordForm.getCommentList());
 		
 		return bathIntegrationEntitiy;
 	}

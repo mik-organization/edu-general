@@ -5,16 +5,12 @@
 <title th:text="${title}">Insert title here</title>
 </head>
 <body>
-<form  method="GET" action="#"  th:action="@{/top}">
-	<input type="submit" value="TOP">
-</form>
-
 <form th:each="bath:${bathList}" method="GET" 
  th:action="@{'update/'+${bath.bathIntegrationEntitiyId}}">
 	<input type="submit" value="編集">
 		
 		<p th:text = "${bath.genreId}" >ジャンル：</p><h1 th:text="${bath.bathName}">施設名</h1><br/>
-<!-- 		評価：<span th:text = "${bath.comment.reviewId}" ></span><br/>		-->
+<!-- 		評価：<span th:text = "${bath.comment.reviewId}" ></span><br/> -->
 <!-- 		訪れた日：<span th:text = "${bath.comment.recordDate}" ></span><br/> -->
 		場所：<span th:text = "${bath.address}"></span>
 		地域：<span th:text = "${bath.areaId}" >地域：</span><br/>
@@ -24,9 +20,10 @@
 		TEL：<span th:text = "${bath.tel}" ></span><br/>
 		露天風呂：<span th:text = "${bath.roten}" ></span><br/>
 		サウナ：<span th:text = "${bath.sauna}" ></span><br/>
-	 	感想：<span th:text = "${bath.comments}" ></span>
+<!-- 	 	感想：<span th:text = "${bath.comments}" ></span> -->
 
 	
 </form>
+
 </body>
 </html>

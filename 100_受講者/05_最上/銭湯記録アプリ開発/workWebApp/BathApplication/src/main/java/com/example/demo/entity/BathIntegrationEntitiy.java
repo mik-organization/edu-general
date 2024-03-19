@@ -16,7 +16,10 @@ public class BathIntegrationEntitiy {
 	private int bathId;
 	private int genreId;
 	private int areaId;
-	private String comments;
+	private List<String> comments;
+	
+	private Bath bath;
+	private Comment comment;
 	
 	public BathIntegrationEntitiy() {
 	}
@@ -125,12 +128,29 @@ public class BathIntegrationEntitiy {
 		this.areaId = areaId;
 	}
 
-	public String getComments() {
+	public List<String> getComments() {
 		return comments;
 	}
 
-	public void setComments(String string) {
+	public void setComments(List<String> string) {
 		this.comments = string;
+	}
+
+	public Comment getComment() {
+		return comment;
+	}
+
+	
+	public Bath getBath() {
+		return bath;
+	}
+
+	public void setBath(Bath bath) {
+		this.bath = bath;
+	}
+
+	public void setComment(Comment comment) {
+		this.comment = comment;
 	}
 	
 	

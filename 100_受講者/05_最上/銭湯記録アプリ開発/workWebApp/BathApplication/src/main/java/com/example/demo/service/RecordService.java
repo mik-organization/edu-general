@@ -16,10 +16,10 @@ public interface RecordService {
 	
 	Optional<BathIntegrationEntitiy> getTopBath(int id);
 	
-	void insert (BathInfo bathInfo,Bath bath,
-			BathIntegrationEntitiy bathIntegrationEntitiy, Comment comment);
+//	void insert (BathInfo bathInfo,Bath bath,
+//			BathIntegrationEntitiy bathIntegrationEntitiy, Comment comment);
 	
-//	void insert(BathIntegrationEntitiy bathIntegrationEntitiy);
+	void insert(BathIntegrationEntitiy bathIntegrationEntitiy);
 	
 	void editBathInfo(BathIntegrationEntitiy bathIntegrationEntitiy);
 	

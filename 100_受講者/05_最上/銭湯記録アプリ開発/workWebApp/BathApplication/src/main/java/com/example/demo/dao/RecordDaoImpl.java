@@ -77,56 +77,72 @@ public class RecordDaoImpl implements RecordDao {
 		}
 	
 	
-	@Override
-	public void insert(BathInfo bathInfo,Bath bath,
-			BathIntegrationEntitiy bathIntegrationEntitiy, Comment comment) {
-				
-		jdbcTemplate.update("INSERT INTO bathInfo("
-				+ " bathName, address, openTime, closeTime, price, tel, roten, sauna)"
-				+ "	VALUES(?, ?, ?, ?, ?, ?, ?,?)",
-//				bathInfo.getBathInfoId(),
-				bathInfo.getBathName(),
-				bathInfo.getAddress(),
-				bathInfo.getOpenTime(),
-				bathInfo.getCloseTime(),
-				bathInfo.getPrice(),
-				bathInfo.getTel(),
-				bathInfo.isRoten(),
-				bathInfo.isSauna());		        
-		
-		System.out.println("●●"+bathInfo.getBathInfoId());
-		
-		
-		jdbcTemplate.update("INSERT INTO comment("
-				+"comment, reviewId,bathInfoId, recordDate)"
-				+"VALUES(?, ?, ?, ?)",
-				comment.getComment(),
-				comment.getReviewId(),
-				bathInfo.getBathInfoId(),
-				comment.getRecordDate());
-		
-		System.out.println("2●●"+bathInfo.getBathInfoId());
-		
-		
-		jdbcTemplate.update("INSERT INTO bath "
-				+"(bathInfoId, genreId, areaId, reviewAverage)"
-				+"VALUES(?, ?, ?, ?)",
-				bathInfo.getBathInfoId(),
-				bath.getGenreId(),
-				bath.getAreaId(),
-				bath.getReviewAverage());
-		
-		
-//		return bathInfo.getBathInfoId();
-//		jdbcTemplate.update("UPDATE comment SET bathInfoId = ?", bathInfo.getBathInfoId());
-	}
-	
 //	@Override
-//	public void insert(BathIntegrationEntitiy bathIntegrationEntitiy) {
-//		jdbcTemplate.update("INSERT INTO bathIntegrationEntitiy("
-//				+ "	bathInfoId,bathName, address, openTime, closeTime, price, tel, roten, sauna, bathId, genreId, areaId, comments)"
-//				+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", 
+//	public void insert(BathInfo bathInfo,Bath bath,
+//			BathIntegrationEntitiy bathIntegrationEntitiy, Comment comment) {
+//		
+//		jdbcTemplate.update("INSERT INTO bathInfo("
+//				+ " bathName, address, openTime, closeTime, price, tel, roten, sauna)"
+//				+ "	VALUES(?, ?, ?, ?, ?, ?, ?,?)",
+////				bathInfo.getBathInfoId(),
+//				bathInfo.getBathName(),
+//				bathInfo.getAddress(),
+//				bathInfo.getOpenTime(),
+//				bathInfo.getCloseTime(),
+//				bathInfo.getPrice(),
+//				bathInfo.getTel(),
+//				bathInfo.isRoten(),
+//				bathInfo.isSauna());		        
+//				
+//		System.out.println("●●"+bathInfo.getBathInfoId());
+//		jdbcTemplate.update("UPDATE comment SET bathInfoId = ?", bathInfo.getBathInfoId());
+//		
+//		jdbcTemplate.update("INSERT INTO comment("
+//				+"comment, reviewId,bathInfoId, recordDate)"
+//				+"VALUES(?, ?, ?, ?)",
+//				comment.getComment(),
+//				comment.getReviewId(),
+//				comment.getBathInfoId(),
+//				comment.getRecordDate());
+//		
+//		System.out.println("2●●"+bathInfo.getBathInfoId());
+//		
+//		
+//		jdbcTemplate.update("INSERT INTO bath "
+//				+"(bathInfoId, genreId, areaId, reviewAverage)"
+//				+"VALUES(?, ?, ?, ?)",
+//				bathInfo.getBathInfoId(),
+//				bath.getGenreId(),
+//				bath.getAreaId(),
+//				bath.getReviewAverage());
+//		
+//		
+
+//		jdbcTemplate.update("UPDATE comment SET bathInfoId = ?", bathInfo.getBathInfoId());
+//	}
+	
+	@Override
+	public void insert(BathIntegrationEntitiy bathIntegrationEntitiy) {
+		jdbcTemplate.update("INSERT INTO bathIntegrationEntitiy("
+				+ "	bathName, address, openTime, closeTime, price, tel, roten, sauna, genreId, areaId, comments)"
+				+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", 
 //				bathIntegrationEntitiy.getBathInfoId(),
+				bathIntegrationEntitiy.getBathName(),
+				bathIntegrationEntitiy.getAddress(),
+				bathIntegrationEntitiy.getOpenTime(),
+				bathIntegrationEntitiy.getCloseTime(),
+				bathIntegrationEntitiy.getPrice(),
+				bathIntegrationEntitiy.getTel(),
+				bathIntegrationEntitiy.isRoten(),
+				bathIntegrationEntitiy.isSauna(),
+//				bathIntegrationEntitiy.getBathId(),
+				bathIntegrationEntitiy.getGenreId(),
+				bathIntegrationEntitiy.getAreaId(),
+				bathIntegrationEntitiy.getComments()
+				);
+
+//		jdbcTemplate.update("UPDATE bathInfo SET bathInfoId =?, bathName = ?, address = ?, openTime = ?, closeTime = ?, price = ?, tel = ?, roten = ?, sauna = ?",
+//				bathIntegrationEntitiy.getBathIntegrationEntitiyId(),
 //				bathIntegrationEntitiy.getBathName(),
 //				bathIntegrationEntitiy.getAddress(),
 //				bathIntegrationEntitiy.getOpenTime(),
@@ -134,19 +150,23 @@ public class RecordDaoImpl implements RecordDao {
 //				bathIntegrationEntitiy.getPrice(),
 //				bathIntegrationEntitiy.getTel(),
 //				bathIntegrationEntitiy.isRoten(),
-//				bathIntegrationEntitiy.isSauna(),
-//				bathIntegrationEntitiy.getBathId(),
-//				bathIntegrationEntitiy.getGenreId(),
-//				bathIntegrationEntitiy.getAreaId(),
-//				bathIntegrationEntitiy.getComments(),
-//				bathIntegrationEntitiy.getBathInfoId()
-//				);			
-//	}
+//				bathIntegrationEntitiy.isSauna()
+//				); 
+	}
 	
 	@Override
 	public int editBathInfo(BathIntegrationEntitiy bathInfo) {
-		return jdbcTemplate.update("UPDATE bathInfo SET bathName = ?, address = ?, openTime = ?, closeTime = ?, price = ?, tel = ?, roten = ?, sauna = ?",
-				bathInfo.getBathName(),bathInfo.getAddress(),bathInfo.getOpenTime(),bathInfo.getCloseTime(),bathInfo.getPrice(),bathInfo.getTel()); 
+		System.out.println("UPDATE:"+bathInfo.getBathIntegrationEntitiyId());
+		return jdbcTemplate.update("UPDATE bathIntegrationEntitiy SET bathName = ?, address = ?, openTime = ?, closeTime = ?, price = ?, tel = ?, roten = ?, sauna = ? WHERE bathIntegrationEntitiyId = ?",
+				bathInfo.getBathName(),
+				bathInfo.getAddress(),
+				bathInfo.getOpenTime(),
+				bathInfo.getCloseTime(),
+				bathInfo.getPrice(),
+				bathInfo.getTel(),
+				bathInfo.isRoten(),
+				bathInfo.isSauna(), 
+				bathInfo.getBathIntegrationEntitiyId()); 
 	}
 	@Override
 	public int delBathInfo(int id){

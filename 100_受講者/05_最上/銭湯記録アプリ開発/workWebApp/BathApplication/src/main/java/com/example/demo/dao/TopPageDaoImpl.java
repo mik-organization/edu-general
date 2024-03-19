@@ -1,5 +1,8 @@
 package com.example.demo.dao;
 
+import java.sql.Date;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -12,6 +15,7 @@ import org.springframework.stereotype.Repository;
 import com.example.demo.entity.Bath;
 import com.example.demo.entity.BathInfo;
 import com.example.demo.entity.BathIntegrationEntitiy;
+import com.example.demo.entity.Comment;
 
 @Repository
 public class TopPageDaoImpl implements TopPageDao {
@@ -25,17 +29,17 @@ public class TopPageDaoImpl implements TopPageDao {
 
 	//TopPage表示
 	@Override
-	public List<BathInfo> getTopBathAll() {
+	public List<BathIntegrationEntitiy> getTopBathAll() {
 //		String sql = "SELECT bathInfoId, bathName, address, openTime, closeTime, price, tel, roten, sauna FROM bathInfo";
-		String sql = "SELECT bathInfo.bathInfoId, bathInfo.bathName, address, bath.reviewAverage FROM bathInfo INNER JOIN bath ON bathInfo.bathInfoId = bath.bathInfoId";
+		String sql = "SELECT BathIntegrationEntitiyId, BathIntegrationEntitiy.bathName, address FROM BathIntegrationEntitiy";
 		
 		List<Map<String, Object>> resultList = jdbcTemplate.queryForList(sql);
 		
-		List<BathInfo> list = new ArrayList<BathInfo>();
+		List<BathIntegrationEntitiy> list = new ArrayList<BathIntegrationEntitiy>();
 		
 		for(Map<String, Object> result : resultList) {
-			BathInfo bathInfo = new BathInfo();
-			bathInfo.setBathInfoId((int)result.get("bathInfoId"));
+			BathIntegrationEntitiy bathInfo = new BathIntegrationEntitiy();
+			bathInfo.setBathIntegrationEntitiyId((int)result.get("bathIntegrationEntitiyId"));
 			bathInfo.setBathName((String)result.get("bathName"));
 			bathInfo.setAddress((String)result.get("address"));
 //			bathInfo.setOpenTime((int)result.get("openTime"));
@@ -45,10 +49,10 @@ public class TopPageDaoImpl implements TopPageDao {
 //			bathInfo.setRoten((boolean)result.get("roten"));
 //			bathInfo.setSauna((boolean)result.get("sauna"));	
 					
-			Bath bath = new Bath();
-			bath.setReviewAverage((double)result.get("reviewAverage"));
+//			Bath bath = new Bath();
+//			bath.setReviewAverage((double)result.get("reviewAverage"));
 			
-			bathInfo.setBath(bath);
+//			bathInfo.setBath(bath);
 			
 			list.add(bathInfo);
 		}
@@ -59,7 +63,10 @@ public class TopPageDaoImpl implements TopPageDao {
 	//TopPageから施設名、住所をタップした時
 	public Optional<BathIntegrationEntitiy> getTopBath(int id){
 		System.out.println("■■■来たやつ"+id);
-		String sql = "SELECT bathIntegrationEntitiyId, bathName, address,openTime, closeTime, price, tel, roten, sauna, genreId, areaId, comments, bathInfoId FROM bathIntegrationEntitiy WHERE bathinfoId = ?";
+		String sql = "SELECT bathIntegrationEntitiyId, bathName, address,openTime, closeTime, price, tel, roten, sauna, genreId, areaId, comments, bathInfoId FROM bathIntegrationEntitiy WHERE bathIntegrationEntitiyId = ?";
+//		String sql = "SELECT bathIntegrationEntitiyId, bathName, address,openTime, closeTime, price, tel, roten, sauna, genreId, areaId, comments, bathIntegrationEntitiy.bathInfoId, reviewId,recordDate FROM bathIntegrationEntitiy"
+//				+ "INNER JOIN comment ON bathIntegrationEntitiy.bathinfoId = comment.bathinfoId"
+//				+ " WHERE bathIntegrationEntitiy.bathinfoId = ?";
 		
 		Map<String, Object> result = jdbcTemplate.queryForMap(sql, id);
 		
@@ -75,8 +82,19 @@ public class TopPageDaoImpl implements TopPageDao {
 		bathInte.setSauna((boolean)result.get("sauna"));
 		bathInte.setGenreId((int)result.get("genreId"));
 		bathInte.setAreaId((int)result.get("areaId"));
+		
+		List<String> commentsList = new ArrayList<>();
+		commentsList.add((String)result.get("comments")); // ここでString型のコメントをリストに追加
+		bathInte.setComments(commentsList);
+		
 //		bathInte.setComments((String)result.get("comments"));
-		bathInte.setBathInfoId((int)result.get("bathInfoId"));
+//		bathInte.setBathInfoId((int)result.get("bathInfoId"));
+		
+//		Comment comment = new Comment();
+//		comment.setReviewId((int)result.get("reviewId"));
+//		comment.setRecordDate(((Date)result.get("recordDate")).toLocalDate());
+//		
+//		bathInte.setComment(comment);
 		
 		Optional<BathIntegrationEntitiy> bathOpt = Optional.ofNullable(bathInte);
 		

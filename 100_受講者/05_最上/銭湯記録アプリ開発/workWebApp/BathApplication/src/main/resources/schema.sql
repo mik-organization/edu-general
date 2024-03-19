@@ -54,7 +54,7 @@ create table if not exists bath
 create table if not exists bathIntegrationEntitiy
 (
 	bathIntegrationEntitiyId INT NOT NULL AUTO_INCREMENT,
-	bathInfoId INT NOT NULL,
+	bathInfoId INT ,
 	bathName VARCHAR(20) NOT NULL,
 	address VARCHAR(100) NOT NULL,
 	openTime INT,
@@ -63,7 +63,7 @@ create table if not exists bathIntegrationEntitiy
 	tel INT,
 	roten BOOLEAN,
 	sauna BOOLEAN,
-	bathId INT NOT NULL,
+	bathId INT,
 	genreId INT NOT NULL,
 	areaId INT NOT NULL,
 	comments VARCHAR(500),
