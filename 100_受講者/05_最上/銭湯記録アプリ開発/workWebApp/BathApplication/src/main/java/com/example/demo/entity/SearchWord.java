@@ -2,7 +2,7 @@ package com.example.demo.entity;
 
 public class SearchWord {
 	private int searchWordId;
-	private double searchWord;
+	private String searchWord;
 	
 	public SearchWord() {
 		super();
@@ -16,11 +16,11 @@ public class SearchWord {
 		this.searchWordId = searchWordId;
 	}
 
-	public double getSearchWord() {
+	public String getSearchWord() {
 		return searchWord;
 	}
 
-	public void setSearchWord(double searchWord) {
+	public void setSearchWord(String searchWord) {
 		this.searchWord = searchWord;
 	}
 	

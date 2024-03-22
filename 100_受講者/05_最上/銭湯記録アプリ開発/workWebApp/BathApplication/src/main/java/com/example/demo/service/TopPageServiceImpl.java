@@ -10,6 +10,7 @@ import com.example.demo.dao.RecordDao;
 import com.example.demo.dao.TopPageDao;
 import com.example.demo.entity.BathInfo;
 import com.example.demo.entity.BathIntegrationEntitiy;
+import com.example.demo.entity.SearchWord;
 
 @Service
 public class TopPageServiceImpl implements TopPageService {
@@ -28,5 +29,10 @@ public class TopPageServiceImpl implements TopPageService {
 	@Override
 	public Optional<BathIntegrationEntitiy> getTopBath(int id){
 		return dao.getTopBath(id);
+	};
+	
+	@Override
+	public List<BathIntegrationEntitiy> getSearchBath(String arg){
+		return dao.getSearchBath(arg);
 	};
 }

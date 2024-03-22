@@ -2,6 +2,7 @@ package com.example.demo.dao;
 
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +17,7 @@ import com.example.demo.entity.Bath;
 import com.example.demo.entity.BathInfo;
 import com.example.demo.entity.BathIntegrationEntitiy;
 import com.example.demo.entity.Comment;
+import com.example.demo.entity.SearchWord;
 
 @Repository
 public class TopPageDaoImpl implements TopPageDao {
@@ -30,8 +32,7 @@ public class TopPageDaoImpl implements TopPageDao {
 	//TopPage表示
 	@Override
 	public List<BathIntegrationEntitiy> getTopBathAll() {
-//		String sql = "SELECT bathInfoId, bathName, address, openTime, closeTime, price, tel, roten, sauna FROM bathInfo";
-		String sql = "SELECT BathIntegrationEntitiyId, BathIntegrationEntitiy.bathName, address FROM BathIntegrationEntitiy";
+		String sql = "SELECT BathIntegrationEntitiyId, BathIntegrationEntitiy.bathName, address, reviewId FROM BathIntegrationEntitiy";
 		
 		List<Map<String, Object>> resultList = jdbcTemplate.queryForList(sql);
 		
@@ -42,17 +43,7 @@ public class TopPageDaoImpl implements TopPageDao {
 			bathInfo.setBathIntegrationEntitiyId((int)result.get("bathIntegrationEntitiyId"));
 			bathInfo.setBathName((String)result.get("bathName"));
 			bathInfo.setAddress((String)result.get("address"));
-//			bathInfo.setOpenTime((int)result.get("openTime"));
-//			bathInfo.setCloseTime((int)result.get("closeTime"));
-//			bathInfo.setPrice((int)result.get("price"));
-//			bathInfo.setTel((int)result.get("tel"));
-//			bathInfo.setRoten((boolean)result.get("roten"));
-//			bathInfo.setSauna((boolean)result.get("sauna"));	
-					
-//			Bath bath = new Bath();
-//			bath.setReviewAverage((double)result.get("reviewAverage"));
-			
-//			bathInfo.setBath(bath);
+			bathInfo.setReviewId((int)result.get("reviewId"));
 			
 			list.add(bathInfo);
 		}
@@ -61,12 +52,10 @@ public class TopPageDaoImpl implements TopPageDao {
 
 	
 	//TopPageから施設名、住所をタップした時
+	@SuppressWarnings("unchecked")
 	public Optional<BathIntegrationEntitiy> getTopBath(int id){
-		System.out.println("■■■来たやつ"+id);
-		String sql = "SELECT bathIntegrationEntitiyId, bathName, address,openTime, closeTime, price, tel, roten, sauna, genreId, areaId, comments, bathInfoId FROM bathIntegrationEntitiy WHERE bathIntegrationEntitiyId = ?";
-//		String sql = "SELECT bathIntegrationEntitiyId, bathName, address,openTime, closeTime, price, tel, roten, sauna, genreId, areaId, comments, bathIntegrationEntitiy.bathInfoId, reviewId,recordDate FROM bathIntegrationEntitiy"
-//				+ "INNER JOIN comment ON bathIntegrationEntitiy.bathinfoId = comment.bathinfoId"
-//				+ " WHERE bathIntegrationEntitiy.bathinfoId = ?";
+		String sql = "SELECT bathIntegrationEntitiyId, bathName, address,openTime, closeTime, price, tel, roten, sauna, genreId, areaId, comments, reviewId,recordDate "
+				+ " FROM bathIntegrationEntitiy WHERE bathIntegrationEntitiyId = ?";
 		
 		Map<String, Object> result = jdbcTemplate.queryForMap(sql, id);
 		
@@ -77,28 +66,54 @@ public class TopPageDaoImpl implements TopPageDao {
 		bathInte.setOpenTime((int)result.get("openTime"));
 		bathInte.setCloseTime((int)result.get("closeTime"));
 		bathInte.setPrice((int)result.get("price"));
-		bathInte.setTel((int)result.get("tel"));
+		bathInte.setTel((String)result.get("tel"));
 		bathInte.setRoten((boolean)result.get("roten"));
 		bathInte.setSauna((boolean)result.get("sauna"));
 		bathInte.setGenreId((int)result.get("genreId"));
 		bathInte.setAreaId((int)result.get("areaId"));
+		bathInte.setComments((List<String>) result.get("comments"));
+		bathInte.setReviewId((int)result.get("reviewId"));
+		bathInte.setRecordDate(((Date) result.get("recordDate")));
 		
-		List<String> commentsList = new ArrayList<>();
-		commentsList.add((String)result.get("comments")); // ここでString型のコメントをリストに追加
-		bathInte.setComments(commentsList);
-		
-//		bathInte.setComments((String)result.get("comments"));
-//		bathInte.setBathInfoId((int)result.get("bathInfoId"));
-		
-//		Comment comment = new Comment();
-//		comment.setReviewId((int)result.get("reviewId"));
-//		comment.setRecordDate(((Date)result.get("recordDate")).toLocalDate());
-//		
-//		bathInte.setComment(comment);
+//		List<String> commentsList = new ArrayList<>();
+//		commentsList.add((String)result.get("comments")); // ここでString型のコメントをリストに追加
+//		bathInte.setComments(commentsList);
 		
 		Optional<BathIntegrationEntitiy> bathOpt = Optional.ofNullable(bathInte);
 		
 		return  bathOpt;
 	}
+	
+	//TopPageから検索
+	public List<BathIntegrationEntitiy> getSearchBath(String arg){
+		String keyWord = arg;
+		String sql = "SELECT * FROM bathIntegrationEntitiy INNER JOIN comment USING(bathInfoId)"
+				+"WHERE bathIntegrationEntitiy.bathName LIKE '%"+keyWord+"%'"
+				+"OR bathIntegrationEntitiy.address LIKE '%"+keyWord+"%'"
+				+"OR comment.comment LIKE '%"+keyWord+"%'";
+		
+		List<Map<String, Object>> resultList = jdbcTemplate.queryForList(sql);
+		
+		List<BathIntegrationEntitiy> list = new ArrayList<BathIntegrationEntitiy>();
+		
+		for(Map<String, Object> result : resultList) {
+			BathIntegrationEntitiy bathInfo = new BathIntegrationEntitiy();
+			bathInfo.setBathIntegrationEntitiyId((int)result.get("bathIntegrationEntitiyId"));
+			bathInfo.setBathName((String)result.get("bathName"));
+			bathInfo.setAddress((String)result.get("address"));
+			bathInfo.setReviewId((int)result.get("reviewId"));
+			
+			list.add(bathInfo);
+		}
+		return list;
+		}
+//		
+//		List<String> commentsList = new ArrayList<>();
+//		commentsList.add((String)result.get("comments")); // ここでString型のコメントをリストに追加
+//		bathInte.setComments(commentsList);
+		
+//		Optional<BathIntegrationEntitiy> bathOpt = Optional.ofNullable(bathInte);
+//		
+//		return  bathOpt;
 	
 }

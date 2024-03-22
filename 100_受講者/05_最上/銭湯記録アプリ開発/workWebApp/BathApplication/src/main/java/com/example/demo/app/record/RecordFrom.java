@@ -1,5 +1,6 @@
 package com.example.demo.app.record;
 
+import java.sql.Date;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -15,7 +16,7 @@ public class RecordFrom {
 	private int openTime;
 	private int closeTime;
 	private int price;
-	private int tel;
+	private String tel;
 	private boolean roten;
 	private boolean sauna;
 	private int bathId;
@@ -23,7 +24,7 @@ public class RecordFrom {
 	private int areaId;
 	private String comments;
 	private int reviewId;
-	private LocalDate recordDate;
+	private Date recordDate;
 	
 	private List<String>commentList;
 	
@@ -91,10 +92,10 @@ public class RecordFrom {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-	public int getTel() {
+	public String getTel() {
 		return tel;
 	}
-	public void setTel(int tel) {
+	public void setTel(String tel) {
 		this.tel = tel;
 	}
 	public boolean getIsRoten() {
@@ -141,11 +142,11 @@ public class RecordFrom {
 		this.reviewId = reviewId;
 	}
 
-	public LocalDate getRecordDate() {
+	public Date getRecordDate() {
 		return recordDate;
 	}
 
-	public void setRecordDate(LocalDate recordDate) {
+	public void setRecordDate(Date recordDate) {
 		this.recordDate = recordDate;
 	}
 

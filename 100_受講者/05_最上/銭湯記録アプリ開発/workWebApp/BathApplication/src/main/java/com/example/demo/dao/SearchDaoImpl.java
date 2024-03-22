@@ -41,7 +41,7 @@ public class SearchDaoImpl implements SearchDao {
 			bathInfo.setOpenTime((int)result.get("openTime"));
 			bathInfo.setCloseTime((int)result.get("closeTime"));
 			bathInfo.setPrice((int)result.get("price"));
-			bathInfo.setTel((int)result.get("tel"));
+			bathInfo.setTel((String)result.get("tel"));
 			bathInfo.setRoten((boolean)result.get("roten"));
 			bathInfo.setSauna((boolean)result.get("sauna"));	
 			list.add(bathInfo);

@@ -16,9 +16,6 @@ public interface RecordDao {
 		
 	Optional<BathIntegrationEntitiy> getTopBath(int id);
 		
-//	void insert (BathInfo bathInfo,Bath bath,
-//			BathIntegrationEntitiy bathIntegrationEntitiy, Comment comment);
-	
 	void insert (BathIntegrationEntitiy bathIntegrationEntitiy);
 
 	int editBathInfo(BathIntegrationEntitiy bathIntegrationEntitiy);

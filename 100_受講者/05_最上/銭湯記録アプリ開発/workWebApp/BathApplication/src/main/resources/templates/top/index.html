@@ -11,10 +11,33 @@
 	 <input type="submit" value="登録">
 	</form>
 	
-	<form method="get" th:action="@{/top/search}">
-	<lable for="keyWord"></lable>
+	<form method="post" th:action="@{/top/search}">
+	<label for="keyWord"></label>
 	<input id="keyWord" name="keyWord" type="text"  th:value="${keyWord}">
 	<input type="submit" value="検索">
+	</form>
+	
+	<form method="post" th:action="@{/top/choice}">
+		<label for="areaId">地域：</label>
+ 		<select id="areaId"  name="areaId" >
+			<option value=1 >札幌市内</option>
+			<option value=2 >道央</option>
+			<option value=3 >道北</option>
+			<option value=4 >道東</option>
+			<option value=5 >道南</option>
+			<option value=6 >北海道外</option>
+		</select>
+		<label for="areaId">価格：</label>
+ 		<select id="areaId"  name="areaId" >
+			<option value=1 >札幌市内</option>
+			<option value=2 >道央</option>
+			<option value=3 >道北</option>
+			<option value=4 >道東</option>
+			<option value=5 >道南</option>
+			<option value=6 >北海道外</option>
+		</select>
+		<input type="submit" value="リセット">
+		<input type="submit" value="絞り込み">
 	</form>
 	<tr>
 		<th>name</th><th>住所</th><th>評価</th>
@@ -23,7 +46,7 @@
 		
 		<td ><a th:href="@{/top/bath/{id}(id=${bathInfo.bathIntegrationEntitiyId})}"><span th:text = "${bathInfo.bathName}" >name</span></a></td>
 		<td ><a th:href="@{/top/bath/{id}(id=${bathInfo.bathIntegrationEntitiyId})}"><span th:text = "${bathInfo.address}">住所</span></a></td>
-<!-- 		<td th:text = "${bathInfo.bath.reviewAverage}">評価</td> -->
+ 		<td th:text = "${bathInfo.reviewId}">評価</td>
 		
 		
 	</tr>

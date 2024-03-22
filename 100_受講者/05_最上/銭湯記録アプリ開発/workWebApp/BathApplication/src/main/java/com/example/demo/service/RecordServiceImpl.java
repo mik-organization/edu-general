@@ -38,12 +38,6 @@ public class RecordServiceImpl implements RecordService {
 		return dao.getTopBath(id);
 	};
 	
-//	@Override
-//	public void insert(BathInfo bathInfo,Bath bath,
-//			BathIntegrationEntitiy bathIntegrationEntitiy, Comment comment) {
-//		dao.insert(bathInfo, bath, bathIntegrationEntitiy, comment);
-//	}
-	
 	@Override
 	public void insert(BathIntegrationEntitiy bathIntegrationEntitiy) {
 		dao.insert(bathIntegrationEntitiy);
@@ -55,6 +49,8 @@ public class RecordServiceImpl implements RecordService {
 	};
 	
 	@Override
-	public void delBathInfo(int id) {};
+	public void delBathInfo(int id) {
+		dao.delBathInfo(id);
+	};
 
 }

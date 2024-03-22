@@ -31,15 +31,17 @@
  -->
  <label for="reviewId">評価：</label>
  <select id="reviewId"  name="reviewId" >
-		<option value=1 >0.5</option>
-		<option value=2 >1.0</option>
-		<option value=3 >1.5</option>
-		<option value=4 >2.0</option>
-		<option value=5 >3.0</option>
-		<option value=6 >3.5</option>
-		<option value=7 >4.0</option>
-		<option value=8 >4.5</option>
-		<option value=9 >5.0</option>
+ 		<option value=1 >0.0</option>
+		<option value=2 >0.5</option>
+		<option value=3 >1.0</option>
+		<option value=4 >1.5</option>
+		<option value=5 >2.0</option>
+		<option value=6 >2.5</option>
+		<option value=7 >3.0</option>
+		<option value=8 >3.5</option>
+		<option value=9 >4.0</option>
+		<option value=10 >4.5</option>
+		<option value=11 >5.0</option>
 	</select><br/>
 	<input type="hidden" name="reviewId" th:value="${reviewId}">
  
@@ -54,7 +56,7 @@
 	<input id="address" name="address" type="text" th:value="${address}">
 
 
- <label for="areaId">評価：</label>
+ <label for="areaId">地域：</label>
  <select id="areaId"  name="areaId" >
 		<option value=1 >札幌市内</option>
 		<option value=2 >道央</option>
@@ -81,9 +83,9 @@
 	<label for="tel">TEL：</label>
 	<input id="tel" name="tel" type="text" th:value="${tel}"><br/>
 	<label for="roten">露天風呂：</label>
-	<input id="roten"  type="checkbox" th:value="${roten}">
+	<input id="roten"  type="checkbox" name="roten" th:checked="${roten}" >
 	<label for="sauna">サウナ：</label>
-	<input id="sauna"  type="checkbox" th:value="${sauna}"><br/>
+	<input id="sauna"  type="checkbox" name="sauna" th:checked="${sauna}"><br/>
 
 	<label for="comments">感想：</label>
 	<textarea rows=5 cols=10 id="comments" name="comments" th:value="${comments}" ></textarea><br/>

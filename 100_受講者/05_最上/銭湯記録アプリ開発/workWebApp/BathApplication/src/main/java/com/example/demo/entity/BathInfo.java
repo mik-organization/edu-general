@@ -7,7 +7,7 @@ public class BathInfo {
 	private int openTime;
 	private int closeTime;
 	private int price;
-	private int tel;
+	private String tel;
 	private boolean roten;
 	private boolean sauna;
 	
@@ -64,11 +64,11 @@ public class BathInfo {
 		this.price = price;
 	}
 
-	public int getTel() {
+	public String getTel() {
 		return tel;
 	}
 
-	public void setTel(int tel) {
+	public void setTel(String tel) {
 		this.tel = tel;
 	}
 
@@ -95,6 +95,8 @@ public class BathInfo {
 	public void setBath(Bath bath) {
 		this.bath = bath;
 	}
+
+
 	
 	
 }

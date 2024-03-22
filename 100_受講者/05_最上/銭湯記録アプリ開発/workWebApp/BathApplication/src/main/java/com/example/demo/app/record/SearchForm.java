@@ -4,6 +4,7 @@ public class SearchForm {
 	private String searchWord;
 
 	public SearchForm() {
+		this.searchWord =searchWord;
 	}
 
 	public String getSearchWord() {

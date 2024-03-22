@@ -1,7 +1,9 @@
 package com.example.demo.entity;
 
+import java.sql.Date;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -11,7 +13,7 @@ public class Comment {
 	private int reviewId;
 	private int bathInfoId;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private LocalDate recordDate;
+	private Date recordDate;
 	
 	public Comment() {
 	}
@@ -48,11 +50,11 @@ public class Comment {
 		this.bathInfoId = bathInfoId;
 	}
 
-	public LocalDate getRecordDate() {
+	public Date getRecordDate() {
 		return recordDate;
 	}
 
-	public void setRecordDate(LocalDate recordDate) {
+	public void setRecordDate(Date recordDate) {
 		this.recordDate = recordDate;
 	}
 

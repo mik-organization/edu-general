@@ -7,10 +7,10 @@ create table if not exists bathInfo
 	openTime INT,
 	closeTime  INT,
 	price INT,
-	tel INT,
+	tel VARCHAR(20),
 	roten BOOLEAN,
-	sauna BOOLEAN,
-	PRIMARY KEY(bathInfoId)
+	sauna BOOLEAN
+--	PRIMARY KEY(bathInfoId)
 );
 --Genre(ジャンル)--
 create table if not exists genre
@@ -40,12 +40,12 @@ create table if not exists review
 create table if not exists bath
 (
 	bathId INT NOT NULL AUTO_INCREMENT,
-	bathInfoId INT NOT NULL,
+	bathInfoId INT NOT NULL AUTO_INCREMENT,
 	genreId INT NOT NULL,--
 	areaId INT NOT NULL,
 	reviewAverage DOUBLE NOT NULL,
-	PRIMARY KEY(bathId),
-	FOREIGN KEY(bathInfoId) REFERENCES bathInfo(bathInfoId),
+--	PRIMARY KEY(bathId),
+--	FOREIGN KEY(bathInfoId) REFERENCES bathInfo(bathInfoId),
 	FOREIGN KEY(genreId) REFERENCES genre(genreId),
 	FOREIGN KEY(areaId) REFERENCES area(areaId)
 );
@@ -54,22 +54,24 @@ create table if not exists bath
 create table if not exists bathIntegrationEntitiy
 (
 	bathIntegrationEntitiyId INT NOT NULL AUTO_INCREMENT,
-	bathInfoId INT ,
+	bathInfoId INT NOT NULL AUTO_INCREMENT,
 	bathName VARCHAR(20) NOT NULL,
 	address VARCHAR(100) NOT NULL,
 	openTime INT,
 	closeTime  INT,
 	price INT,
-	tel INT,
+	tel  VARCHAR(20),
 	roten BOOLEAN,
 	sauna BOOLEAN,
-	bathId INT,
+	bathId  INT NOT NULL AUTO_INCREMENT,
 	genreId INT NOT NULL,
 	areaId INT NOT NULL,
-	comments VARCHAR(500),
+	comments JAVA_OBJECT,
+	reviewId INT NOT NULL,
+	recordDate DATE,
 	PRIMARY KEY(bathIntegrationEntitiyId),
-	FOREIGN KEY(bathInfoId) REFERENCES bathInfo(bathInfoId),
-	FOREIGN KEY(bathId) REFERENCES bath(bathId),
+--	FOREIGN KEY(bathInfoId) REFERENCES bathInfo(bathInfoId),
+--	FOREIGN KEY(bathId) REFERENCES bath(bathId),
 	FOREIGN KEY(genreId) REFERENCES genre(genreId),
 	FOREIGN KEY(areaId) REFERENCES area(areaId)
 );
@@ -78,13 +80,13 @@ create table if not exists bathIntegrationEntitiy
 create table if not exists comment
 (
 	commentId INT NOT NULL AUTO_INCREMENT,
-	comment VARCHAR(500) NOT NULL,
+	comment  VARCHAR(200) NOT NULL,
 	reviewId INT NOT NULL,
-	bathInfoId INT NOT NULL,
+	bathInfoId INT NOT NULL AUTO_INCREMENT,
 	recordDate DATE,
-	PRIMARY KEY(commentId),
-	FOREIGN KEY(reviewId) REFERENCES review(reviewId),
-	FOREIGN KEY(bathInfoId) REFERENCES bathInfo(bathInfoId)
+--	PRIMARY KEY(commentId),
+	FOREIGN KEY(reviewId) REFERENCES review(reviewId)
+--	FOREIGN KEY(bathInfoId) REFERENCES bathInfo(bathInfoId)
 );
 
 --SearchWord(検索ワード)--

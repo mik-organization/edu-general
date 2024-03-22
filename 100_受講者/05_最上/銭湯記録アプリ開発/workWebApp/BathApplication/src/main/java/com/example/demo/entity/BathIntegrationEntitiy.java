@@ -1,6 +1,9 @@
 package com.example.demo.entity;
 
+import java.sql.Date;
 import java.util.List;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 public class BathIntegrationEntitiy {
 	private int bathIntegrationEntitiyId;
@@ -10,13 +13,16 @@ public class BathIntegrationEntitiy {
 	private int openTime;
 	private int closeTime;
 	private int price;
-	private int tel;
+	private String tel;
 	private boolean roten;
 	private boolean sauna;
 	private int bathId;
 	private int genreId;
 	private int areaId;
 	private List<String> comments;
+	private int reviewId;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date recordDate;
 	
 	private Bath bath;
 	private Comment comment;
@@ -80,11 +86,11 @@ public class BathIntegrationEntitiy {
 		this.price = price;
 	}
 
-	public int getTel() {
+	public String getTel() {
 		return tel;
 	}
 
-	public void setTel(int tel) {
+	public void setTel(String tel) {
 		this.tel = tel;
 	}
 
@@ -135,12 +141,23 @@ public class BathIntegrationEntitiy {
 	public void setComments(List<String> string) {
 		this.comments = string;
 	}
-
-	public Comment getComment() {
-		return comment;
+	
+	public int getReviewId() {
+		return reviewId;
 	}
 
-	
+	public void setReviewId(int reviewId) {
+		this.reviewId = reviewId;
+	}
+
+	public Date getRecordDate() {
+		return recordDate;
+	}
+
+	public void setRecordDate(Date date) {
+		this.recordDate = date;
+	}
+
 	public Bath getBath() {
 		return bath;
 	}
@@ -148,10 +165,15 @@ public class BathIntegrationEntitiy {
 	public void setBath(Bath bath) {
 		this.bath = bath;
 	}
-
+	
+	public Comment getComment() {
+		return comment;
+	}
+	
 	public void setComment(Comment comment) {
 		this.comment = comment;
 	}
+
 	
 	
 	

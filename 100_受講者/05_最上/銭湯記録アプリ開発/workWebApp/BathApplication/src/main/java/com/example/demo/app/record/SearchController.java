@@ -26,15 +26,15 @@ public class SearchController {
 		this.searchService = searchService;
 	}
 	
-	@GetMapping("/search")
-	public String search(@Validated SearchForm searchForm,
-	BindingResult result, Model model) {
-		SearchWord searchWord = new SearchWord();
-		searchWord.setSearchWord(searchWord.getSearchWord());
-		
-		searchService.fetchBath(searchWord);
-		model.addAttribute("title", "検索結果");
-		return "top/index";
-	}
-	
+//	@GetMapping("/search")
+//	public String search(@Validated SearchForm searchForm,
+//	BindingResult result, Model model) {
+//		SearchWord searchWord = new SearchWord();
+//		searchWord.setSearchWord(searchWord.getSearchWord());
+//		
+//		searchService.fetchBath(searchWord);
+//		model.addAttribute("title", "検索結果");
+//		return "top/index";
+//	}
+//	
 }
