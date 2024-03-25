@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import java.util.List;
+
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +11,7 @@ import com.example.demo.dao.RecordDao;
 import com.example.demo.dao.TopPageDao;
 import com.example.demo.entity.BathInfo;
 import com.example.demo.entity.BathIntegrationEntitiy;
-import com.example.demo.entity.SearchWord;
+import com.example.demo.entity.Comment;
 
 @Service
 public class TopPageServiceImpl implements TopPageService {
@@ -30,9 +31,18 @@ public class TopPageServiceImpl implements TopPageService {
 	public Optional<BathIntegrationEntitiy> getTopBath(int id){
 		return dao.getTopBath(id);
 	};
+	@Override
+	public List<Comment> getCommentList(int id){
+		return dao.getCommentList(id);
+	};
 	
 	@Override
 	public List<BathIntegrationEntitiy> getSearchBath(String arg){
 		return dao.getSearchBath(arg);
+	};
+	
+	@Override
+	public List<BathIntegrationEntitiy> getChoiceBath(int areaId, int price, int genreId, int reviewId){
+		return dao.getChoiceBath(areaId, price, genreId, reviewId);
 	};
 }

@@ -1,10 +1,6 @@
 package com.example.demo.entity;
 
 import java.sql.Date;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.List;
-
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class Comment {

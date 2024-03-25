@@ -52,5 +52,9 @@ public class RecordServiceImpl implements RecordService {
 	public void delBathInfo(int id) {
 		dao.delBathInfo(id);
 	};
-
+	
+	@Override
+	public void updateExComment(BathIntegrationEntitiy bathIntegrationEntitiy) {
+		dao.updateExComment(bathIntegrationEntitiy);
+	};
 }

@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.entity.BathInfo;
 import com.example.demo.entity.BathIntegrationEntitiy;
-import com.example.demo.entity.SearchWord;
+import com.example.demo.entity.Comment;
 import com.example.demo.service.RecordService;
 import com.example.demo.service.TopPageService;
 
@@ -45,14 +45,17 @@ public class TopController {
 	public String getbath( Model model,@PathVariable("id") int id
 			) {
 		Optional<BathIntegrationEntitiy> list = topPageService.getTopBath(id);
+		List<Comment> commentlist = topPageService.getCommentList(id);
 		model.addAttribute("bathList",list.get());
+		model.addAttribute("commentlist",commentlist);
 		model.addAttribute("title","温泉");
 		
 		return "top/bath";
 	}
 	
+	//検索
 	@PostMapping("/search")
-	public String search(@Validated @ModelAttribute SearchForm searchForm,
+	public String search(
 			BindingResult result, Model model ,
 			@ModelAttribute("keyWord") String arg) {
 		System.out.println("msg:" + arg);
@@ -64,4 +67,20 @@ public class TopController {
 		return "top/search";
 	}
 	
+	//絞り込み
+	@PostMapping("/choice")
+	public String choice(
+			BindingResult result, Model model ,
+			@ModelAttribute("areaId") int areaId,
+			@ModelAttribute("price") int price,
+			@ModelAttribute("genreId") int genreId,
+			@ModelAttribute("reviewId") int reviewId
+			) {
+		
+		List<BathIntegrationEntitiy> list = topPageService.getChoiceBath(areaId, price, genreId, reviewId);
+		model.addAttribute("bathList",list);
+		model.addAttribute("title","絞り込み結果");
+		
+		return "top/choice";
+	}
 }

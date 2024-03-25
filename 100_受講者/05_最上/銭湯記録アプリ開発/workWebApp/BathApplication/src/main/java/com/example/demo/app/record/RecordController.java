@@ -137,15 +137,27 @@ public class RecordController {
 		
 	};
 	
-	//
+	//削除
 	@PostMapping("/deleteBathInfo")
 	public String deleteBathInfo(@RequestParam("bathInfoId")int id, Model model) {
 		recordService.delBathInfo(id);
 		return "redirect:/top";
 	}
 
+	//コメント追加
+	@PostMapping("/updateExComment")
+	public String updateExComment(@Validated @ModelAttribute RecordFrom recordForm,
+			BindingResult result, @RequestParam("bathInfoId")int bathInfoId ){
+		
+		BathIntegrationEntitiy bathIntegrationEntitiy = makeComment(recordForm, bathInfoId);
+		
+		recordService.updateExComment(bathIntegrationEntitiy);
+		
+		return "redirect:/top";
+		
+	};
+	
 	private BathIntegrationEntitiy makeBathtegrationEntitiy(RecordFrom recordForm ,int bathtegrationEntitiyId) {
-		System.out.println("uuuuuu:"+bathtegrationEntitiyId);
 		BathIntegrationEntitiy bathIntegrationEntitiy = new BathIntegrationEntitiy();
 		if(bathtegrationEntitiyId != 0) {
 			bathIntegrationEntitiy.setBathIntegrationEntitiyId(bathtegrationEntitiyId) ;
@@ -164,13 +176,12 @@ public class RecordController {
 		bathIntegrationEntitiy.setBathId(recordForm.getBathId());
 		bathIntegrationEntitiy.setGenreId(recordForm.getGenreId());
 		bathIntegrationEntitiy.setAreaId(recordForm.getAreaId());
-		List<String> commentList = new ArrayList<>();
-		commentList.add(recordForm.getComments());
-		bathIntegrationEntitiy.setComments(commentList);
+//		List<String> commentList = new ArrayList<>();
+//		commentList.add(recordForm.getComments());
+		bathIntegrationEntitiy.setComments(recordForm.getComments());
 		bathIntegrationEntitiy.setReviewId(recordForm.getReviewId());
 		bathIntegrationEntitiy.setRecordDate(recordForm.getRecordDate());
 		
-		System.out.println("komennto@@@@@"+recordForm.getComments());
 		return bathIntegrationEntitiy;
 	}
 	
@@ -188,11 +199,27 @@ public class RecordController {
 		recordFrom.setSauna(bathInfo.isSauna());
 		recordFrom.setGenreId(bathInfo.getGenreId());
 		recordFrom.setAreaId(bathInfo.getAreaId());
-		recordFrom.setCommentList(bathInfo.getComments());
+		recordFrom.setComments(bathInfo.getComments());
 		recordFrom.setReviewId(bathInfo.getReviewId());
 		recordFrom.setRecordDate(bathInfo.getRecordDate());
 		
 		return recordFrom;
+	}
+	
+	//コメントの追加
+	private BathIntegrationEntitiy makeComment(RecordFrom recordForm ,int bathtegrationEntitiyId) {
+		BathIntegrationEntitiy bathIntegrationEntitiy = new BathIntegrationEntitiy();
+		
+		bathIntegrationEntitiy.setBathIntegrationEntitiyId(bathtegrationEntitiyId) ;
+		bathIntegrationEntitiy.setBathInfoId(recordForm.getBathInfoId());
+//		List<String> commentList = new ArrayList<>();
+//		commentList.add(recordForm.getComments());
+		bathIntegrationEntitiy.setComments(recordForm.getComments());
+		bathIntegrationEntitiy.setReviewId(recordForm.getReviewId());
+		bathIntegrationEntitiy.setRecordDate(recordForm.getRecordDate());
+		System.out.println("komennto@@@@@"+recordForm.getComments());
+		
+		return bathIntegrationEntitiy;
 	}
 }
 	

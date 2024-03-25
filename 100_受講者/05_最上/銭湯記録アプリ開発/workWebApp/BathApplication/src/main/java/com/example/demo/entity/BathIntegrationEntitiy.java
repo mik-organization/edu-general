@@ -1,6 +1,7 @@
 package com.example.demo.entity;
 
 import java.sql.Date;
+
 import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -19,7 +20,7 @@ public class BathIntegrationEntitiy {
 	private int bathId;
 	private int genreId;
 	private int areaId;
-	private List<String> comments;
+	private String comments;
 	private int reviewId;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date recordDate;
@@ -134,11 +135,11 @@ public class BathIntegrationEntitiy {
 		this.areaId = areaId;
 	}
 
-	public List<String> getComments() {
+	public String getComments() {
 		return comments;
 	}
 
-	public void setComments(List<String> string) {
+	public void setComments(String string) {
 		this.comments = string;
 	}
 	

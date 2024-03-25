@@ -23,7 +23,37 @@
 		TEL：<span th:text = "${bath.tel}" ></span><br/>
 		露天風呂：<span th:text = "${bath.roten}" ></span><br/>
 		サウナ：<span th:text = "${bath.sauna}" ></span><br/>
-	 	感想：<span th:text = "${bath.comments}" ></span>
+
+</div>
+	<div th:each="comm:${commentlist}" >	
+	 	感想：<span th:text="${comm.comment}" >感想：</span>
+	</div>
+</form> 
+<br/>
+<br/>
+<div th:each="bath:${bathList}" >
+<form method="POST"   th:action="@{/top/updateExComment}">
+	リピートした時<br/>
+	<label for="reviewId">評価：</label>
+ <select id="reviewId"  name="reviewId" >
+ 		<option value=1 >0.0</option>
+		<option value=2 >0.5</option>
+		<option value=3 >1.0</option>
+		<option value=4 >1.5</option>
+		<option value=5 >2.0</option>
+		<option value=6 >2.5</option>
+		<option value=7 >3.0</option>
+		<option value=8 >3.5</option>
+		<option value=9 >4.0</option>
+		<option value=10 >4.5</option>
+		<option value=11 >5.0</option>
+	</select><br/>
+	<label for="recordDate">訪れた日：</label>
+	<input id="recordDate" name="recordDate" type="date" th:value="${recordDate}"><br/>
+	<label for="comments">感想追加：</label>
+	<textarea rows=5 cols=20 id="comments" name="comments" th:value="${comments}" ></textarea><br/>
+	<input type="submit" value="追加">
+	<input type="hidden" name="bathInfoId" th:value="${bath.bathIntegrationEntitiyId}">
 </form>
 	<form method="POST"  th:action="@{/top/deleteBathInfo}">
 		<input type="submit" value="削除">

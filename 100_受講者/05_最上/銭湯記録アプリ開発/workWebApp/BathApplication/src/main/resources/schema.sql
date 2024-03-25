@@ -66,7 +66,7 @@ create table if not exists bathIntegrationEntitiy
 	bathId  INT NOT NULL AUTO_INCREMENT,
 	genreId INT NOT NULL,
 	areaId INT NOT NULL,
-	comments JAVA_OBJECT,
+	comments  VARCHAR(100),
 	reviewId INT NOT NULL,
 	recordDate DATE,
 	PRIMARY KEY(bathIntegrationEntitiyId),

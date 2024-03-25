@@ -18,8 +18,9 @@ public interface RecordDao {
 		
 	void insert (BathIntegrationEntitiy bathIntegrationEntitiy);
 
-	int editBathInfo(BathIntegrationEntitiy bathIntegrationEntitiy);
+	void editBathInfo(BathIntegrationEntitiy bathIntegrationEntitiy);
 	
 	int delBathInfo(int id);
 
+	void updateExComment(BathIntegrationEntitiy bathIntegrationEntitiy);
 }
