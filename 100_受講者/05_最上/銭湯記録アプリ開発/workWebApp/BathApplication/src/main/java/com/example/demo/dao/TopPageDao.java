@@ -14,7 +14,7 @@ public interface TopPageDao {
 	
 	Optional<BathIntegrationEntitiy> getTopBath(int id);
 	
-	List<Comment> getCommentList(int id);
+//	List<Comment> getCommentList(int id);
 	
 	List<BathIntegrationEntitiy> getSearchBath(String arg);
 	

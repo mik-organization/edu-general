@@ -25,6 +25,8 @@ public class RecordFrom {
 	private String comments;
 	private int reviewId;
 	private Date recordDate;
+	private double reviewValue;
+	private double reviewAverage;
 	
 	private List<String>commentList;
 	
@@ -148,6 +150,25 @@ public class RecordFrom {
 
 	public void setRecordDate(Date recordDate) {
 		this.recordDate = recordDate;
+	}
+
+	public double getReviewValue() {
+		return reviewValue;
+	}
+
+
+	public void setReviewValue(double reviewValue) {
+		this.reviewValue = reviewValue;
+	}
+
+
+	public double getReviewAverage() {
+		return reviewAverage;
+	}
+
+
+	public void setReviewAverage(double reviewAverage) {
+		this.reviewAverage = reviewAverage;
 	}
 
 

@@ -6,7 +6,7 @@
 </head>
 <body>
 <h1 th:text="${title}">title</h1>
-<table>
+
 	<form method="post" th:action="@{/top/addBathInfo}">
 	 <input type="submit" value="登録">
 	</form>
@@ -39,33 +39,24 @@
 		<input type="reset" value="リセット">
 		<br>
 		<label for="genreId">ジャンル：</label>
-	<select id="genreId"  name="genreId" >
+		<select id="genreId"  name="genreId" >
 		<option value=0 th:selected="${genreId} == 0" >--</option>
 		<option value=1 th:selected="${genreId} == 1" >旅館</option>
 		<option value=2 th:selected="${genreId} == 2" >ホテル</option>
 		<option value=3 th:selected="${genreId} == 3" >銭湯</option>
 		<option value=4 th:selected="${genreId} == 4" >スーパー銭湯</option>
 		<option value=5 th:selected="${genreId} == 5" >秘湯</option>
-	</select>
+		</select>
 	 <label for="reviewId">評価：</label>
- <select id="reviewId"  name="reviewId" >
+ 		<select id="reviewId"  name="reviewId" >
 		<option value=0 th:selected="${reviewId} == 0" >--</option>
- 		<option value=1 th:selected="${reviewId} == 1" >0.0</option>
-		<option value=2 th:selected="${reviewId} == 2" >0.5</option>
-		<option value=3 th:selected="${reviewId} == 3" >1.0</option>
-		<option value=4 th:selected="${reviewId} == 4" >1.5</option>
-		<option value=5 th:selected="${reviewId} == 5" >2.0</option>
-		<option value=6 th:selected="${reviewId} == 6" >2.5</option>
-		<option value=7 th:selected="${reviewId} == 7" >3.0</option>
-		<option value=8 th:selected="${reviewId} == 8" >3.5</option>
-		<option value=9 th:selected="${reviewId} == 9" >4.0</option>
-		<option value=10 th:selected="${reviewId} == 10" >4.5</option>
-		<option value=11 th:selected="${reviewId} == 11" >5.0</option>
-	</select>
-	<input type="hidden" name="reviewId" th:value="${reviewId}">
-	
+ 		<option value=1 th:selected="${reviewId} == 1" >～1.0</option>
+		<option value=2 th:selected="${reviewId} == 2" >～3.0</option>
+		<option value=3 th:selected="${reviewId} == 3" >～5.0</option>
+		</select>
 		<input type="submit" value="絞り込み">
 	</form>
+<table>
 	<tr>
 		<th>name</th><th>住所</th><th>評価</th>
 	</tr>
@@ -73,7 +64,7 @@
 		
 		<td ><a th:href="@{/top/bath/{id}(id=${bathInfo.bathIntegrationEntitiyId})}"><span th:text = "${bathInfo.bathName}" >name</span></a></td>
 		<td ><a th:href="@{/top/bath/{id}(id=${bathInfo.bathIntegrationEntitiyId})}"><span th:text = "${bathInfo.address}">住所</span></a></td>
- 		<td th:text = "${bathInfo.reviewId}">評価</td>
+ 		<td th:text = "${bathInfo.reviewAverage}">評価</td>
 		
 		
 	</tr>

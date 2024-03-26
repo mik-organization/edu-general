@@ -22,6 +22,8 @@ public class BathIntegrationEntitiy {
 	private int areaId;
 	private String comments;
 	private int reviewId;
+	private double reviewValue;
+	private double reviewAverage;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date recordDate;
 	
@@ -149,6 +151,24 @@ public class BathIntegrationEntitiy {
 
 	public void setReviewId(int reviewId) {
 		this.reviewId = reviewId;
+	}
+	
+	public double getReviewValue() {
+		return reviewValue;
+	}
+
+
+	public void setReviewValue(double reviewValue) {
+		this.reviewValue = reviewValue;
+	}
+
+
+	public double getReviewAverage() {
+		return reviewAverage;
+	}
+
+	public void setReviewAverage(double reviewAverage) {
+		this.reviewAverage = reviewAverage;
 	}
 
 	public Date getRecordDate() {

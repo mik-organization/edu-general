@@ -31,10 +31,10 @@ public class TopPageServiceImpl implements TopPageService {
 	public Optional<BathIntegrationEntitiy> getTopBath(int id){
 		return dao.getTopBath(id);
 	};
-	@Override
-	public List<Comment> getCommentList(int id){
-		return dao.getCommentList(id);
-	};
+//	@Override
+//	public List<Comment> getCommentList(int id){
+//		return dao.getCommentList(id);
+//	};
 	
 	@Override
 	public List<BathIntegrationEntitiy> getSearchBath(String arg){

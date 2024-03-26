@@ -41,7 +41,7 @@ create table if not exists bath
 (
 	bathId INT NOT NULL AUTO_INCREMENT,
 	bathInfoId INT NOT NULL AUTO_INCREMENT,
-	genreId INT NOT NULL,--
+	genreId INT NOT NULL,
 	areaId INT NOT NULL,
 	reviewAverage DOUBLE NOT NULL,
 --	PRIMARY KEY(bathId),
@@ -67,7 +67,8 @@ create table if not exists bathIntegrationEntitiy
 	genreId INT NOT NULL,
 	areaId INT NOT NULL,
 	comments  VARCHAR(100),
-	reviewId INT NOT NULL,
+	reviewValue DOUBLE,
+	reviewAverage DOUBLE,
 	recordDate DATE,
 	PRIMARY KEY(bathIntegrationEntitiyId),
 --	FOREIGN KEY(bathInfoId) REFERENCES bathInfo(bathInfoId),
@@ -80,19 +81,12 @@ create table if not exists bathIntegrationEntitiy
 create table if not exists comment
 (
 	commentId INT NOT NULL AUTO_INCREMENT,
-	comment  VARCHAR(200) NOT NULL,
-	reviewId INT NOT NULL,
+	comment  VARCHAR(200),
+	reviewValue DOUBLE NOT NULL,
 	bathInfoId INT NOT NULL AUTO_INCREMENT,
-	recordDate DATE,
+	recordDate DATE
 --	PRIMARY KEY(commentId),
-	FOREIGN KEY(reviewId) REFERENCES review(reviewId)
+--	FOREIGN KEY(reviewId) REFERENCES review(reviewId)
 --	FOREIGN KEY(bathInfoId) REFERENCES bathInfo(bathInfoId)
 );
 
---SearchWord(検索ワード)--
-create table if not exists searchWord
-(
-	searchWordId INT NOT NULL AUTO_INCREMENT,
-	searchWord VARCHAR(100) NOT NULL,
-	PRIMARY KEY(searchWordId)
-)

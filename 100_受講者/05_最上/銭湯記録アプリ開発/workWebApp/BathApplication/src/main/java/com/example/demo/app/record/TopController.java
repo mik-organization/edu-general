@@ -45,9 +45,9 @@ public class TopController {
 	public String getbath( Model model,@PathVariable("id") int id
 			) {
 		Optional<BathIntegrationEntitiy> list = topPageService.getTopBath(id);
-		List<Comment> commentlist = topPageService.getCommentList(id);
+//		List<Comment> commentlist = topPageService.getCommentList(id);
 		model.addAttribute("bathList",list.get());
-		model.addAttribute("commentlist",commentlist);
+//		model.addAttribute("commentlist",commentlist);
 		model.addAttribute("title","温泉");
 		
 		return "top/bath";
@@ -55,8 +55,7 @@ public class TopController {
 	
 	//検索
 	@PostMapping("/search")
-	public String search(
-			BindingResult result, Model model ,
+	public String search( Model model ,
 			@ModelAttribute("keyWord") String arg) {
 		System.out.println("msg:" + arg);
 		
@@ -69,8 +68,7 @@ public class TopController {
 	
 	//絞り込み
 	@PostMapping("/choice")
-	public String choice(
-			BindingResult result, Model model ,
+	public String choice( Model model ,
 			@ModelAttribute("areaId") int areaId,
 			@ModelAttribute("price") int price,
 			@ModelAttribute("genreId") int genreId,

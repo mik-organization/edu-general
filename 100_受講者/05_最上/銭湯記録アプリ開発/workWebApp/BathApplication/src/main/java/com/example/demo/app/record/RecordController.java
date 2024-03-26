@@ -1,6 +1,5 @@
 package com.example.demo.app.record;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -11,16 +10,13 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.example.demo.entity.Bath;
 import com.example.demo.entity.BathInfo;
 import com.example.demo.entity.BathIntegrationEntitiy;
-import com.example.demo.entity.Comment;
 import com.example.demo.service.RecordService;
 import com.example.demo.service.TopPageService;
 
@@ -36,7 +32,8 @@ public class RecordController {
 		this.recordService = recordService;
 		this.topPageService = topPageService;
 	}
-
+	
+	//新規登録画面を表示
 	@GetMapping("/addBathInfo")
 	public String addBthInfo(@ModelAttribute RecordFrom recordForm, Model model
 			) {
@@ -50,45 +47,6 @@ public class RecordController {
 		model.addAttribute("title", "新規登録");
 		return "addBath/addBathInfo";
 	}
-//	
-//	@PostMapping("/confirm")
-//	public String confirm(@Validated RecordFrom recordForm,
-//			BindingResult result, Model model) {
-//		if(result.hasErrors()) {
-//			model.addAttribute("title", "新規登録");
-//			return "addBath/addBathInfo";
-//		}
-//		model.addAttribute("title", "Confirm Page");
-//		return "addBath/bathInfo";
-//	}
-//	
-	
-		
-	
-	@PostMapping("/getBath")
-	public String getBath(@Validated RecordFrom recordForm,
-			BindingResult result, Model model) {
-		if(result.hasErrors()) {
-			model.addAttribute("title", "新規登録");
-			return "addBath/addBathInfo";
-		}
-		BathInfo bathInfo = new BathInfo();
-		bathInfo.setBathName(recordForm.getBathName());
-		bathInfo.setAddress(recordForm.getAddress());
-		bathInfo.setOpenTime(recordForm.getOpenTime());
-		bathInfo.setCloseTime(recordForm.getCloseTime());
-		bathInfo.setPrice(recordForm.getPrice());
-		bathInfo.setTel(recordForm.getTel());
-		bathInfo.setRoten(recordForm.getIsRoten());
-		bathInfo.setSauna(recordForm.getIsSauna());
-		
-		recordService.createBathInfo(bathInfo);
-				
-		model.addAttribute("title", "温泉");
-		
-		return "addBath/bathInfo";
-	}
-	
 	
 	@PostMapping("/insert")
 	public String insert(
@@ -107,6 +65,7 @@ public class RecordController {
 			Model model) {
 		
 		Optional<BathIntegrationEntitiy> bathOpt = topPageService.getTopBath(id);
+//		List<Comment> commentlist = topPageService.getCommentList(id);
 		
 		Optional<RecordFrom> recoFromOpt = bathOpt.map(t -> makeRecordFrom(t));
 		
@@ -176,12 +135,12 @@ public class RecordController {
 		bathIntegrationEntitiy.setBathId(recordForm.getBathId());
 		bathIntegrationEntitiy.setGenreId(recordForm.getGenreId());
 		bathIntegrationEntitiy.setAreaId(recordForm.getAreaId());
-//		List<String> commentList = new ArrayList<>();
-//		commentList.add(recordForm.getComments());
 		bathIntegrationEntitiy.setComments(recordForm.getComments());
 		bathIntegrationEntitiy.setReviewId(recordForm.getReviewId());
+		bathIntegrationEntitiy.setReviewValue(recordForm.getReviewValue());
 		bathIntegrationEntitiy.setRecordDate(recordForm.getRecordDate());
 		
+		System.out.println("comment:::::"+recordForm.getComments());
 		return bathIntegrationEntitiy;
 	}
 	
@@ -201,8 +160,9 @@ public class RecordController {
 		recordFrom.setAreaId(bathInfo.getAreaId());
 		recordFrom.setComments(bathInfo.getComments());
 		recordFrom.setReviewId(bathInfo.getReviewId());
+		recordFrom.setReviewValue(bathInfo.getReviewValue());
 		recordFrom.setRecordDate(bathInfo.getRecordDate());
-		
+		System.out.println("comment:::::"+bathInfo.getComments());
 		return recordFrom;
 	}
 	
@@ -215,7 +175,7 @@ public class RecordController {
 //		List<String> commentList = new ArrayList<>();
 //		commentList.add(recordForm.getComments());
 		bathIntegrationEntitiy.setComments(recordForm.getComments());
-		bathIntegrationEntitiy.setReviewId(recordForm.getReviewId());
+		bathIntegrationEntitiy.setReviewValue(recordForm.getReviewValue());
 		bathIntegrationEntitiy.setRecordDate(recordForm.getRecordDate());
 		System.out.println("komennto@@@@@"+recordForm.getComments());
 		

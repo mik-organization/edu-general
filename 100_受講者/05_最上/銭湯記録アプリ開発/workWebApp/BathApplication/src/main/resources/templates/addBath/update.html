@@ -57,22 +57,21 @@ th:object="${recordForm}" >
 	<input type="hidden" name="areaId" th:value="${areaId}">
  <br/>
  
-	<lable for="openTime">開店：</lable>
+	<label for="openTime">開店：</label>
 	<input id="openTime" name="openTime" type="text"  th:value="*{openTime}">
-	<lable for="closeTime">閉店：</lable>
+	<label for="closeTime">閉店：</label>
 	<input id="closeTime" name="closeTime" type="text"  th:value="*{closeTime}"><br/>
-	<lable for="price">料金：</lable>
+	<label for="price">料金：</label>
 	<input id="price" name="price" type="text" th:value="*{price}"><br/>
-	<lable for="tel">TEL：</lable>
+	<label for="tel">TEL：</label>
 	<input id="tel" name="tel" type="text" th:value="*{tel}"><br/>
 	<label for="roten">露天風呂：</label>
 	<input id="roten"  type="checkbox" name="roten" th:checked="${roten}" >
 	<label for="sauna">サウナ：</label>
 	<input id="sauna"  type="checkbox" name="sauna" th:checked="${sauna}"><br/>
-
 	<label for="comments">感想：</label>
-	<textarea rows="" cols="" id="comments"  th:field="*{comments}" ></textarea><br/>
- 
+   	<textarea rows="5" name="comments" th:value="*{comments}">[[*{comments}]]</textarea>
+	<br>
  	<input type="hidden" name="bathInfoId" th:value="${bathInfoId}">
 	<input type="submit"  value="登録">
 

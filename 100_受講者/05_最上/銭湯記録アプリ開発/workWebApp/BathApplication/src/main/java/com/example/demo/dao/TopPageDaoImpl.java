@@ -31,7 +31,7 @@ public class TopPageDaoImpl implements TopPageDao {
 	//TopPage表示
 	@Override
 	public List<BathIntegrationEntitiy> getTopBathAll() {
-		String sql = "SELECT BathIntegrationEntitiyId, BathIntegrationEntitiy.bathName, address, reviewId FROM BathIntegrationEntitiy";
+		String sql = "SELECT BathIntegrationEntitiyId, bathName, address, reviewAverage FROM BathIntegrationEntitiy";
 		
 		List<Map<String, Object>> resultList = jdbcTemplate.queryForList(sql);
 		
@@ -42,7 +42,7 @@ public class TopPageDaoImpl implements TopPageDao {
 			bathInfo.setBathIntegrationEntitiyId((int)result.get("bathIntegrationEntitiyId"));
 			bathInfo.setBathName((String)result.get("bathName"));
 			bathInfo.setAddress((String)result.get("address"));
-			bathInfo.setReviewId((int)result.get("reviewId"));
+			bathInfo.setReviewAverage((double)result.get("reviewAverage"));
 			
 			list.add(bathInfo);
 		}
@@ -51,9 +51,8 @@ public class TopPageDaoImpl implements TopPageDao {
 
 	
 	//TopPageから施設名、住所をタップした時
-	@SuppressWarnings("unchecked")
 	public Optional<BathIntegrationEntitiy> getTopBath(int id){
-		String sql = "SELECT bathIntegrationEntitiyId, bathName, address,openTime, closeTime, price, tel, roten, sauna, genreId, areaId, comments, reviewId,recordDate "
+		String sql = "SELECT bathIntegrationEntitiyId, bathName, address,openTime, closeTime, price, tel, roten, sauna, genreId, areaId, comments, reviewAverage,recordDate "
 				+ " FROM bathIntegrationEntitiy WHERE bathIntegrationEntitiyId = ?";
 		
 		Map<String, Object> result = jdbcTemplate.queryForMap(sql, id);
@@ -70,8 +69,9 @@ public class TopPageDaoImpl implements TopPageDao {
 		bathInte.setSauna((boolean)result.get("sauna"));
 		bathInte.setGenreId((int)result.get("genreId"));
 		bathInte.setAreaId((int)result.get("areaId"));
+		bathInte.setComments((String)result.get("comments"));
 //		bathInte.setComments((List<String>) result.get("comments"));
-		bathInte.setReviewId((int)result.get("reviewId"));
+		bathInte.setReviewAverage((double)result.get("reviewAverage"));
 		bathInte.setRecordDate(((Date) result.get("recordDate")));
 		
 //		List<String> commentsList = new ArrayList<>();
@@ -83,31 +83,31 @@ public class TopPageDaoImpl implements TopPageDao {
 		return  bathOpt;
 	}
 	
-	public List<Comment> getCommentList(int id){
-		String sql = "SELECT comment FROM comment WHERE commentId = "+id;
-		System.out.println("iddddddd:"+id);
-		
-		List<Map<String, Object>> resultList = jdbcTemplate.queryForList(sql);
-		
-		List<Comment> commentlist = new ArrayList<Comment>();
-		
-		for(Map<String, Object> result : resultList) {
-			Comment comment = new Comment();
-			comment.setComment((String)result.get("comment"));
-			
-			commentlist.add(comment);
-		}
-		return commentlist;
-		
-	}
+//	public List<Comment> getCommentList(int id){
+//		String sql = "SELECT comment, recordDate FROM comment WHERE bathInfoId = "+id;
+//		System.out.println("iddddddd:"+id);
+//		
+//		List<Map<String, Object>> resultList = jdbcTemplate.queryForList(sql);
+//		
+//		List<Comment> commentlist = new ArrayList<Comment>();
+//		
+//		for(Map<String, Object> result : resultList) {
+//			Comment comment = new Comment();
+//			comment.setComment((String)result.get("comment"));
+//			comment.setRecordDate((Date)result.get("recordDate"));
+//			commentlist.add(comment);
+//		}
+//		return commentlist;
+//		
+//	}
 	
 	//TopPageから検索
 	public List<BathIntegrationEntitiy> getSearchBath(String arg){
 		String keyWord = arg;
-		String sql = "SELECT * FROM bathIntegrationEntitiy INNER JOIN comment USING(bathInfoId)"
+		String sql = "SELECT * FROM bathIntegrationEntitiy "
 				+"WHERE bathIntegrationEntitiy.bathName LIKE '%"+keyWord+"%'"
 				+"OR bathIntegrationEntitiy.address LIKE '%"+keyWord+"%'"
-				+"OR comment.comment LIKE '%"+keyWord+"%'";
+				+"OR comments LIKE '%"+keyWord+"%'";
 		
 		List<Map<String, Object>> resultList = jdbcTemplate.queryForList(sql);
 		
@@ -118,7 +118,7 @@ public class TopPageDaoImpl implements TopPageDao {
 			bathInfo.setBathIntegrationEntitiyId((int)result.get("bathIntegrationEntitiyId"));
 			bathInfo.setBathName((String)result.get("bathName"));
 			bathInfo.setAddress((String)result.get("address"));
-			bathInfo.setReviewId((int)result.get("reviewId"));
+			bathInfo.setReviewAverage((double)result.get("reviewAverage"));
 			
 			list.add(bathInfo);
 		}
@@ -138,42 +138,119 @@ public class TopPageDaoImpl implements TopPageDao {
 			//(地域〇,ジャンル〇)
 			if(genreId != 0) {
 			
-				//(地域〇,ジャンル〇,評価〇)★★★
-				if(reviewId != 0) {
+				//(地域〇,ジャンル〇,評価1)★★★
+				if(reviewId == 1) {
+					
 					switch (price){
 					case 0:
 						sql = "SELECT * FROM bathIntegrationEntitiy "
 							+"WHERE areaId = "+areaId
 							+"AND genreId = "+genreId
-							+"AND reviewId = "+reviewId;
+							+"AND reviewAverage <1.0";
 						break;
 					case 1:
 						sql = "SELECT * FROM bathIntegrationEntitiy "
 							+"WHERE areaId = "+areaId
 							+"AND price <= 500"
 							+"AND genreId = "+genreId
-							+"AND reviewId = "+reviewId;
+							+"AND reviewAverage <1.0";
 						break;
 					case 2:
 						sql = "SELECT * FROM bathIntegrationEntitiy "
 								+"WHERE areaId = "+areaId
 								+"AND price BETWEEN 501 AND 999"
 								+"AND genreId = "+genreId
-								+"AND reviewId = "+reviewId;
+								+"AND reviewAverage <1.0";
 						break;
 					case 3:
 						sql = "SELECT * FROM bathIntegrationEntitiy "
 								+"WHERE areaId = "+areaId
 								+"AND price BETWEEN 1000 AND 1499"
 								+"AND genreId = "+genreId
-								+"AND reviewId = "+reviewId;
+								+"AND reviewAverage <1.0";
 						break;
 					case 4:
 						sql = "SELECT * FROM bathIntegrationEntitiy "
 								+"WHERE areaId = "+areaId
 								+"AND price >=1500"
 								+"AND genreId = "+genreId
-								+"AND reviewId = "+reviewId;
+								+"AND reviewAverage <1.0";
+						break;
+					}
+				//(地域〇,ジャンル〇,評価2)★★★
+				}else if(reviewId == 2) {
+					switch (price){
+					case 0:
+						sql = "SELECT * FROM bathIntegrationEntitiy "
+							+"WHERE areaId = "+areaId
+							+"AND genreId = "+genreId
+							+"AND reviewAverage BETWEEN 1.5 AND 3.0";
+						break;
+					case 1:
+						sql = "SELECT * FROM bathIntegrationEntitiy "
+							+"WHERE areaId = "+areaId
+							+"AND price <= 500"
+							+"AND genreId = "+genreId
+							+"AND reviewAverage BETWEEN 1.5 AND 3.0";
+						break;
+					case 2:
+						sql = "SELECT * FROM bathIntegrationEntitiy "
+								+"WHERE areaId = "+areaId
+								+"AND price BETWEEN 501 AND 999"
+								+"AND genreId = "+genreId
+								+"AND reviewAverage BETWEEN 1.5 AND 3.0";
+						break;
+					case 3:
+						sql = "SELECT * FROM bathIntegrationEntitiy "
+								+"WHERE areaId = "+areaId
+								+"AND price BETWEEN 1000 AND 1499"
+								+"AND genreId = "+genreId
+								+"AND reviewAverage BETWEEN 1.5 AND 3.0";
+						break;
+					case 4:
+						sql = "SELECT * FROM bathIntegrationEntitiy "
+								+"WHERE areaId = "+areaId
+								+"AND price >=1500"
+								+"AND genreId = "+genreId
+								+"AND reviewAverage BETWEEN 1.5 AND 3.0";
+						break;
+					}
+				//(地域〇,ジャンル〇,評価3)★★★
+				}else if(reviewId == 3) {
+					switch (price){
+					case 0:
+						sql = "SELECT * FROM bathIntegrationEntitiy "
+							+"WHERE areaId = "+areaId
+							+"AND genreId = "+genreId
+							+"AND reviewAverage BETWEEN 3.5 AND 5.0";
+						break;
+					case 1:
+						sql = "SELECT * FROM bathIntegrationEntitiy "
+							+"WHERE areaId = "+areaId
+							+"AND price <= 500"
+							+"AND genreId = "+genreId
+							+"AND reviewAverage BETWEEN 3.5 AND 5.0";
+						break;
+					case 2:
+						sql = "SELECT * FROM bathIntegrationEntitiy "
+								+"WHERE areaId = "+areaId
+								+"AND price BETWEEN 501 AND 999"
+								+"AND genreId = "+genreId
+								+"AND reviewAverage BETWEEN 3.5 AND 5.0";
+						break;
+					case 3:
+						sql = "SELECT * FROM bathIntegrationEntitiy "
+								+"WHERE areaId = "+areaId
+								+"AND price BETWEEN 1000 AND 1499"
+								+"AND genreId = "+genreId
+								+"AND reviewAverage BETWEEN 3.5 AND 5.0";
+						break;
+					case 4:
+						sql = "SELECT * FROM bathIntegrationEntitiy "
+								+"WHERE areaId = "+areaId
+								+"AND price >=1500"
+								+"AND genreId = "+genreId
+								+"AND reviewAverage BETWEEN 3.5 AND 5.0";
 						break;
 					}
 				//(地域〇,ジャンル〇,評価✕)★★★
@@ -212,39 +289,134 @@ public class TopPageDaoImpl implements TopPageDao {
 				}
 			//(地域〇,ジャンル✕)
 			}else if(genreId == 0) {
-				//(地域〇,ジャンル✕,評価〇)★★★
-				if(reviewId != 0) {
-					switch (price){
-					case 0:
-						sql = "SELECT * FROM bathIntegrationEntitiy "
-							+"WHERE areaId = "+areaId
-							+"AND reviewId = "+reviewId;
-						break;
-					case 1:
-						sql = "SELECT * FROM bathIntegrationEntitiy "
-							+"WHERE areaId = "+areaId
-							+"AND price <= 500"
-							+"AND reviewId = "+reviewId;
-						break;
-					case 2:
-						sql = "SELECT * FROM bathIntegrationEntitiy "
+				//(地域〇,ジャンル✕,評価1)★★★
+					if(reviewId == 1) {
+						
+						switch (price){
+						case 0:
+							sql = "SELECT * FROM bathIntegrationEntitiy "
 								+"WHERE areaId = "+areaId
-								+"AND price BETWEEN 501 AND 999"
-								+"AND reviewId = "+reviewId;
-						break;
-					case 3:
-						sql = "SELECT * FROM bathIntegrationEntitiy "
+								+"AND reviewAverage <1.0";
+							break;
+						case 1:
+							sql = "SELECT * FROM bathIntegrationEntitiy "
 								+"WHERE areaId = "+areaId
-								+"AND price BETWEEN 1000 AND 1499"
-								+"AND reviewId = "+reviewId;
-						break;
-					case 4:
-						sql = "SELECT * FROM bathIntegrationEntitiy "
+								+"AND price <= 500"
+								+"AND reviewAverage <1.0";
+							break;
+						case 2:
+							sql = "SELECT * FROM bathIntegrationEntitiy "
+									+"WHERE areaId = "+areaId
+									+"AND price BETWEEN 501 AND 999"
+									+"AND reviewAverage <1.0";
+							break;
+						case 3:
+							sql = "SELECT * FROM bathIntegrationEntitiy "
+									+"WHERE areaId = "+areaId
+									+"AND price BETWEEN 1000 AND 1499"
+									+"AND reviewAverage <1.0";
+							break;
+						case 4:
+							sql = "SELECT * FROM bathIntegrationEntitiy "
+									+"WHERE areaId = "+areaId
+									+"AND price >=1500"
+									+"AND reviewAverage <1.0";
+							break;
+						}
+					//(地域〇,ジャンル✕,評価2)★★★
+					}else if(reviewId == 2) {
+						switch (price){
+						case 0:
+							sql = "SELECT * FROM bathIntegrationEntitiy "
 								+"WHERE areaId = "+areaId
-								+"AND price >=1500"
-								+"AND reviewId = "+reviewId;
-						break;
-					}
+								+"AND reviewAverage BETWEEN 1.5 AND 3.0";
+							break;
+						case 1:
+							sql = "SELECT * FROM bathIntegrationEntitiy "
+								+"WHERE areaId = "+areaId
+								+"AND price <= 500"
+								+"AND reviewAverage BETWEEN 1.5 AND 3.0";
+							break;
+						case 2:
+							sql = "SELECT * FROM bathIntegrationEntitiy "
+									+"WHERE areaId = "+areaId
+									+"AND price BETWEEN 501 AND 999"
+									+"AND reviewAverage BETWEEN 1.5 AND 3.0";
+							break;
+						case 3:
+							sql = "SELECT * FROM bathIntegrationEntitiy "
+									+"WHERE areaId = "+areaId
+									+"AND price BETWEEN 1000 AND 1499"
+									+"AND reviewAverage BETWEEN 1.5 AND 3.0";
+							break;
+						case 4:
+							sql = "SELECT * FROM bathIntegrationEntitiy "
+									+"WHERE areaId = "+areaId
+									+"AND price >=1500"
+									+"AND reviewAverage BETWEEN 1.5 AND 3.0";
+							break;
+						}
+					//(地域〇,ジャンル✕,評価3)★★★
+					}else if(reviewId == 3) {
+						switch (price){
+						case 0:
+							sql = "SELECT * FROM bathIntegrationEntitiy "
+								+"WHERE areaId = "+areaId
+								+"AND reviewAverage BETWEEN 3.5 AND 5.0";
+							break;
+						case 1:
+							sql = "SELECT * FROM bathIntegrationEntitiy "
+								+"WHERE areaId = "+areaId
+								+"AND price <= 500"
+								+"AND reviewAverage BETWEEN 3.5 AND 5.0";
+							break;
+						case 2:
+							sql = "SELECT * FROM bathIntegrationEntitiy "
+									+"WHERE areaId = "+areaId
+									+"AND price BETWEEN 501 AND 999"
+									+"AND reviewAverage BETWEEN 3.5 AND 5.0";
+							break;
+						case 3:
+							sql = "SELECT * FROM bathIntegrationEntitiy "
+									+"WHERE areaId = "+areaId
+									+"AND price BETWEEN 1000 AND 1499"
+									+"AND reviewAverage BETWEEN 3.5 AND 5.0";
+							break;
+						case 4:
+							sql = "SELECT * FROM bathIntegrationEntitiy "
+									+"WHERE areaId = "+areaId
+									+"AND price >=1500"
+									+"AND reviewAverage BETWEEN 3.5 AND 5.0";
+							break;
+						}
+					//(地域〇,ジャンル✕,評価✕)★★★
+					}else if(reviewId == 0) {
+						switch (price){
+						case 0:
+							sql = "SELECT * FROM bathIntegrationEntitiy "
+								+"WHERE areaId = "+areaId;
+							break;
+						case 1:
+							sql = "SELECT * FROM bathIntegrationEntitiy "
+								+"WHERE areaId = "+areaId
+								+"AND price <= 500";
+							break;
+						case 2:
+							sql = "SELECT * FROM bathIntegrationEntitiy "
+									+"WHERE areaId = "+areaId
+									+"AND price BETWEEN 501 AND 999";
+							break;
+						case 3:
+							sql = "SELECT * FROM bathIntegrationEntitiy "
+									+"WHERE areaId = "+areaId
+									+"AND price BETWEEN 1000 AND 1499";
+							break;
+						case 4:
+							sql = "SELECT * FROM bathIntegrationEntitiy "
+									+"WHERE areaId = "+areaId
+									+"AND price >=1500";
+							break;
+						}
 				//(地域〇,ジャンル✕,評価✕)★★★
 				}else if(reviewId == 0) {
 					switch (price){
@@ -276,42 +448,108 @@ public class TopPageDaoImpl implements TopPageDao {
 				}
 			}
 		
-		//(地域✕)
+		//(地域✕)::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 		}else if(areaId == 0){
 			
 			//(地域✕,ジャンル〇)
 			if(genreId != 0) {
-				//(地域✕,ジャンル〇,評価〇)★★★
-				if(reviewId != 0) {
+				//(地域✕,ジャンル〇,評価1)★★★
+				if(reviewId == 1) {
 					switch (price){
 					case 0:
 						sql = "SELECT * FROM bathIntegrationEntitiy "
 							+"WHERE genreId = "+genreId
-							+"AND reviewId = "+reviewId;
+							+"AND review <1.0";
 						break;
 					case 1:
 						sql = "SELECT * FROM bathIntegrationEntitiy "
 							+"WHERE genreId = "+genreId
 							+"AND price <= 500"
-							+"AND reviewId = "+reviewId;
+							+"AND reviewAverage <1.0";
 						break;
 					case 2:
 						sql = "SELECT * FROM bathIntegrationEntitiy "
 								+"WHERE genreId = "+genreId
 								+"AND price BETWEEN 501 AND 999"
-								+"AND reviewId = "+reviewId;
+								+"AND reviewAverage <1.0";
 						break;
 					case 3:
 						sql = "SELECT * FROM bathIntegrationEntitiy "
 								+"WHERE genreId = "+genreId
-								+"AND price BETWEEN 1000 AND 1500"
-								+"AND reviewId = "+reviewId;
+								+"AND price BETWEEN 1000 AND 1499"
+								+"AND reviewAverage <1.0";
 						break;
 					case 4:
 						sql = "SELECT * FROM bathIntegrationEntitiy "
 								+"WHERE genreId = "+genreId
-								+"AND price >1500"
-								+"AND reviewId = "+reviewId;
+								+"AND price >=1500"
+								+"AND reviewAverage <1.0";
+						break;
+					}
+				//(地域✕,ジャンル〇,評価2)★★★
+				}else if(reviewId == 2) {
+					switch (price){
+					case 0:
+						sql = "SELECT * FROM bathIntegrationEntitiy "
+								+"WHERE genreId = "+genreId
+							+"AND reviewAverage BETWEEN 1.5 AND 3.0";
+						break;
+					case 1:
+						sql = "SELECT * FROM bathIntegrationEntitiy "
+								+"WHERE genreId = "+genreId
+							+"AND price <= 500"
+							+"AND reviewAverage BETWEEN 1.5 AND 3.0";
+						break;
+					case 2:
+						sql = "SELECT * FROM bathIntegrationEntitiy "
+								+"WHERE genreId = "+genreId
+								+"AND price BETWEEN 501 AND 999"
+								+"AND reviewAverage BETWEEN 1.5 AND 3.0";
+						break;
+					case 3:
+						sql = "SELECT * FROM bathIntegrationEntitiy "
+								+"WHERE genreId = "+genreId
+								+"AND price BETWEEN 1000 AND 1499"
+								+"AND reviewAverage BETWEEN 1.5 AND 3.0";
+						break;
+					case 4:
+						sql = "SELECT * FROM bathIntegrationEntitiy "
+								+"WHERE genreId = "+genreId
+								+"AND price >=1500"
+								+"AND reviewAverage BETWEEN 1.5 AND 3.0";
+						break;
+					}
+				//(地域✕,ジャンル〇,評価3)★★★
+				}else if(reviewId == 3) {
+					switch (price){
+					case 0:
+						sql = "SELECT * FROM bathIntegrationEntitiy "
+								+"WHERE genreId = "+genreId
+							+"AND reviewAverage BETWEEN 3.5 AND 5.0";
+						break;
+					case 1:
+						sql = "SELECT * FROM bathIntegrationEntitiy "
+								+"WHERE genreId = "+genreId
+							+"AND price <= 500"
+							+"AND reviewAverage BETWEEN 3.5 AND 5.0";
+						break;
+					case 2:
+						sql = "SELECT * FROM bathIntegrationEntitiy "
+								+"WHERE genreId = "+genreId
+								+"AND price BETWEEN 501 AND 999"
+								+"AND reviewAverage BETWEEN 3.5 AND 5.0";
+						break;
+					case 3:
+						sql = "SELECT * FROM bathIntegrationEntitiy "
+								+"WHERE genreId = "+genreId
+								+"AND price BETWEEN 1000 AND 1499"
+								+"AND reviewAverage BETWEEN 3.5 AND 5.0";
+						break;
+					case 4:
+						sql = "SELECT * FROM bathIntegrationEntitiy "
+								+"WHERE genreId = "+genreId
+								+"AND price >=1500"
+								+"AND reviewAverage BETWEEN 3.5 AND 5.0";
 						break;
 					}
 				//(地域✕,ジャンル〇,評価✕)★★★
@@ -319,11 +557,11 @@ public class TopPageDaoImpl implements TopPageDao {
 					switch (price){
 					case 0:
 						sql = "SELECT * FROM bathIntegrationEntitiy "
-							+"WHERE genreId = "+genreId;
+								+"WHERE genreId = "+genreId;
 						break;
 					case 1:
 						sql = "SELECT * FROM bathIntegrationEntitiy "
-							+"WHERE genreId = "+genreId
+								+"WHERE genreId = "+genreId
 							+"AND price <= 500";
 						break;
 					case 2:
@@ -345,35 +583,118 @@ public class TopPageDaoImpl implements TopPageDao {
 				}
 			//(地域✕,ジャンル✕)
 			}else if(genreId == 0) {
-				//(地域✕,ジャンル✕,評価〇)★★★
-				if(reviewId != 0) {
+				//(地域✕,ジャンル✕,評価1)★★★
+				if(reviewId == 1) {
 					switch (price){
 					case 0:
 						sql = "SELECT * FROM bathIntegrationEntitiy "
-							+"WHERE reviewId = "+reviewId;
+							+"WHERE reviewAverage <1.0";
 						break;
 					case 1:
 						sql = "SELECT * FROM bathIntegrationEntitiy "
-							+"WHERE reviewId = "+reviewId
+							+"WHERE price <= 500"
+							+"AND reviewAverage <1.0";
+						break;
+					case 2:
+						sql = "SELECT * FROM bathIntegrationEntitiy "
+								+"WHERE price BETWEEN 501 AND 999"
+								+"AND reviewAverage <1.0";
+						break;
+					case 3:
+						sql = "SELECT * FROM bathIntegrationEntitiy "
+								+"WHERE price BETWEEN 1000 AND 1499"
+								+"AND reviewAverage <1.0";
+						break;
+					case 4:
+						sql = "SELECT * FROM bathIntegrationEntitiy "
+								+"WHERE price >=1500"
+								+"AND reviewAverage <1.0";
+						break;
+					}
+				//(地域✕,ジャンル✕,評価2)★★★
+				}else if(reviewId == 2) {
+					switch (price){
+					case 0:
+						sql = "SELECT * FROM bathIntegrationEntitiy "
+							+"WHERE reviewAverage BETWEEN 1.5 AND 3.0";
+						break;
+					case 1:
+						sql = "SELECT * FROM bathIntegrationEntitiy "
+							+"WHERE price <= 500"
+							+"AND reviewAverage BETWEEN 1.5 AND 3.0";
+						break;
+					case 2:
+						sql = "SELECT * FROM bathIntegrationEntitiy "
+								+"WHERE price BETWEEN 501 AND 999"
+								+"AND reviewAverage BETWEEN 1.5 AND 3.0";
+						break;
+					case 3:
+						sql = "SELECT * FROM bathIntegrationEntitiy "
+								+"WHERE price BETWEEN 1000 AND 1499"
+								+"AND reviewAverage BETWEEN 1.5 AND 3.0";
+						break;
+					case 4:
+						sql = "SELECT * FROM bathIntegrationEntitiy "
+								+"WHERE price >=1500"
+								+"AND reviewAverage BETWEEN 1.5 AND 3.0";
+						break;
+					}
+				//(地域✕,ジャンル〇,評価3)★★★
+				}else if(reviewId == 3) {
+					switch (price){
+					case 0:
+						sql = "SELECT * FROM bathIntegrationEntitiy "
+							+"WHERE reviewAverage BETWEEN 3.5 AND 5.0";
+						break;
+					case 1:
+						sql = "SELECT * FROM bathIntegrationEntitiy "
+							+"WHERE price <= 500"
+							+"AND reviewAverage BETWEEN 3.5 AND 5.0";
+						break;
+					case 2:
+						sql = "SELECT * FROM bathIntegrationEntitiy "
+								+"WHERE price BETWEEN 501 AND 999"
+								+"AND reviewAverage BETWEEN 3.5 AND 5.0";
+						break;
+					case 3:
+						sql = "SELECT * FROM bathIntegrationEntitiy "
+								+"WHERE price BETWEEN 1000 AND 1499"
+								+"AND reviewAverage BETWEEN 3.5 AND 5.0";
+						break;
+					case 4:
+						sql = "SELECT * FROM bathIntegrationEntitiy "
+								+"WHERE price >=1500"
+								+"AND reviewAverage BETWEEN 3.5 AND 5.0";
+						break;
+					}
+				//(地域✕,ジャンル〇,評価✕)★★★
+				}else if(reviewId == 0) {
+					switch (price){
+					case 0:
+						sql = "SELECT * FROM bathIntegrationEntitiy "
+								+"WHERE genreId = "+genreId;
+						break;
+					case 1:
+						sql = "SELECT * FROM bathIntegrationEntitiy "
+								+"WHERE genreId = "+genreId
 							+"AND price <= 500";
 						break;
 					case 2:
 						sql = "SELECT * FROM bathIntegrationEntitiy "
-								+"WHERE reviewId = "+reviewId
+								+"WHERE genreId = "+genreId
 								+"AND price BETWEEN 501 AND 999";
 						break;
 					case 3:
 						sql = "SELECT * FROM bathIntegrationEntitiy "
-								+"WHERE reviewId = "+reviewId
+								+"WHERE genreId = "+genreId
 								+"AND price BETWEEN 1000 AND 1499";
 						break;
 					case 4:
 						sql = "SELECT * FROM bathIntegrationEntitiy "
-								+"WHERE reviewId = "+reviewId
+								+"WHERE genreId = "+genreId
 								+"AND price >=1500";
 						break;
 					}
-				
 				//(地域✕,ジャンル✕,評価✕)★★★
 				}else if(reviewId == 0) {
 					switch (price){
@@ -411,7 +732,7 @@ public class TopPageDaoImpl implements TopPageDao {
 			bathInfo.setBathIntegrationEntitiyId((int)result.get("bathIntegrationEntitiyId"));
 			bathInfo.setBathName((String)result.get("bathName"));
 			bathInfo.setAddress((String)result.get("address"));
-			bathInfo.setReviewId((int)result.get("reviewId"));
+			bathInfo.setReviewAverage((double)result.get("reviewAverage"));
 			
 			list.add(bathInfo);
 		}
