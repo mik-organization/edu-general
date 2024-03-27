@@ -109,6 +109,8 @@ public class TopPageDaoImpl implements TopPageDao {
 				+"OR bathIntegrationEntitiy.address LIKE '%"+keyWord+"%'"
 				+"OR comments LIKE '%"+keyWord+"%'";
 		
+		System.out.println(sql);
+		
 		List<Map<String, Object>> resultList = jdbcTemplate.queryForList(sql);
 		
 		List<BathIntegrationEntitiy> list = new ArrayList<BathIntegrationEntitiy>();

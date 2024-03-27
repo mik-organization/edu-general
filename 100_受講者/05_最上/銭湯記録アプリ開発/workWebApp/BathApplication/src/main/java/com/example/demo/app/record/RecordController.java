@@ -1,6 +1,7 @@
 package com.example.demo.app.record;
 
 import java.util.List;
+
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +15,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.example.demo.entity.BathInfo;
 import com.example.demo.entity.BathIntegrationEntitiy;
 import com.example.demo.service.RecordService;
 import com.example.demo.service.TopPageService;
@@ -34,35 +35,46 @@ public class RecordController {
 	}
 	
 	//新規登録画面を表示
-	@GetMapping("/addBathInfo")
-	public String addBthInfo(@ModelAttribute RecordFrom recordForm, Model model
-			) {
-		model.addAttribute("title", "新規登録");
-		return "addBath/addBathInfo";
-	}
+//	@GetMapping("/addBathInfo")
+//	public String addBthInfo(@ModelAttribute RecordFrom recordForm, Model model
+//			) {
+//		model.addAttribute("title", "新規登録");
+//		return "addBath/addBathInfo";
+//	}
 	
-	
+	//新規登録画面を表示
 	@PostMapping("/addBathInfo")
-	public String formGoBack(@ModelAttribute RecordFrom recordForm, Model model) {
+	public String addBthInfo(@ModelAttribute RecordFrom recordForm, Model model,
+			BindingResult result) {
+		
 		model.addAttribute("title", "新規登録");
+		
 		return "addBath/addBathInfo";
+	
 	}
 	
 	@PostMapping("/insert")
 	public String insert(
 		@Validated @ModelAttribute RecordFrom recordForm,
-		BindingResult result, Model model){
+		BindingResult result, Model model,RedirectAttributes redirectAttributes
+		){
 		
+//		if(result.hasErrors()) {
+//			model.addAttribute("title", "新規登録");
+//			model.addAttribute("recordForm", recordForm);
+//			return "addBath/addBathInfo";
+//		}
 		BathIntegrationEntitiy bathIntegrationEntitiy = makeBathtegrationEntitiy(recordForm,0);
-
 		recordService.insert(bathIntegrationEntitiy);
+		
+//		redirectAttributes.addFlashAttribute("insert","登録が完了しました");
 
 		return "redirect:/top";
 	}
 	
 	@GetMapping("/bath/update/{id}")
 	public String updateBathInfo(RecordFrom recordForm,@PathVariable("id") int id,
-			Model model) {
+			Model model,RedirectAttributes redirectAttributes) {
 		
 		Optional<BathIntegrationEntitiy> bathOpt = topPageService.getTopBath(id);
 //		List<Comment> commentlist = topPageService.getCommentList(id);
@@ -71,6 +83,7 @@ public class RecordController {
 		
 		if(recoFromOpt.isPresent()) {
 			recordForm = recoFromOpt.get();
+			
 		}
 		
 		model.addAttribute("recordForm",recordForm );
@@ -86,13 +99,14 @@ public class RecordController {
 	
 	@PostMapping("addBath/update")
 	public String updateBath(@Validated @ModelAttribute RecordFrom recordForm,
-			BindingResult result, @RequestParam("bathInfoId")int bathInfoId ){
+			BindingResult result, @RequestParam("bathInfoId")int bathInfoId,
+			Model model,RedirectAttributes redirectAttributes){
 		
 		BathIntegrationEntitiy bathIntegrationEntitiy = makeBathtegrationEntitiy(recordForm, bathInfoId);
 		
 		recordService.editBathInfo(bathIntegrationEntitiy);
-		
-		return "redirect:/top";
+		redirectAttributes.addFlashAttribute("complete","変更が完了しました");
+		return "redirect:/top/bath/"+bathInfoId;
 		
 	};
 	

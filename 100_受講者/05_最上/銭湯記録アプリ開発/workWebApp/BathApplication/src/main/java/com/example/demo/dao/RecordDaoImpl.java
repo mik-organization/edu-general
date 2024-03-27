@@ -131,13 +131,12 @@ public class RecordDaoImpl implements RecordDao {
 				bathIntegrationEntitiy.getReviewValue(),
 				bathIntegrationEntitiy.getRecordDate()
 				);
-		
 	}
 	
 	@Override
 	public void editBathInfo(BathIntegrationEntitiy bathInfo) {
 		 jdbcTemplate.update("UPDATE bathIntegrationEntitiy SET "
-				+ "bathName = ?, address = ?, openTime = ?, closeTime = ?, price = ?, tel = ?, roten = ?, sauna = ?, genreId = ?, areaId = ?, comments = ?, reviewId =?,reviewValue = ?"
+				+ "bathName = ?, address = ?, openTime = ?, closeTime = ?, price = ?, tel = ?, roten = ?, sauna = ?, genreId = ?, areaId = ?, comments = ?,reviewValue = ?"
 				+ "WHERE bathIntegrationEntitiyId = ?",
 				bathInfo.getBathName(),
 				bathInfo.getAddress(),
@@ -150,7 +149,7 @@ public class RecordDaoImpl implements RecordDao {
 				bathInfo.getGenreId(),
 				bathInfo.getAreaId(),
 				bathInfo.getComments(), 
-				bathInfo.getReviewId(), 
+//				bathInfo.getReviewId(), 
 				bathInfo.getReviewValue(), 
 				bathInfo.getBathIntegrationEntitiyId()); 
 		 
@@ -171,7 +170,7 @@ public class RecordDaoImpl implements RecordDao {
 					+ "genreId = ?, areaId = ?, reviewAverage = ? "
 					+ "WHERE bathId = ?",
 					bathInfo.getGenreId(),
-					bathInfo.getAreaId(),
+					bathInfo.getReviewValue(),
 					bathInfo.getReviewId(),
 					bathInfo.getBathIntegrationEntitiyId()); 
 //		 
@@ -179,12 +178,12 @@ public class RecordDaoImpl implements RecordDao {
 //			String commentsString = String.join(", ", commentsList);
 
 			jdbcTemplate.update("UPDATE comment SET "
-					+ "comment = ?, reviewId = ?, recordDate = ? "
+					+ "comment = ?, reviewValue = ?, recordDate = ? "
 					+ "WHERE commentId = ?",
 					
 //					commentsString,
 					bathInfo.getComments(),
-					bathInfo.getReviewId(),
+					bathInfo.getReviewValue(),
 					bathInfo.getRecordDate(),
 					bathInfo.getBathIntegrationEntitiyId()); 
 	}

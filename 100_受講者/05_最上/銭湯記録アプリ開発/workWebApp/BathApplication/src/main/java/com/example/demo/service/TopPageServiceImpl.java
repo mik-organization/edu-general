@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.dao.RecordDao;
@@ -29,20 +30,30 @@ public class TopPageServiceImpl implements TopPageService {
 	
 	@Override
 	public Optional<BathIntegrationEntitiy> getTopBath(int id){
-		return dao.getTopBath(id);
+		
+		//Optional<BathIntegrationEntitiy>　１件を取得でIDがなければ例外発生
+		try {
+			return dao.getTopBath(id);
+		}catch(EmptyResultDataAccessException e) {
+			throw new TopPageNotFoundException("指定された施設情報が存在しません。");
+		}
 	};
-//	@Override
-//	public List<Comment> getCommentList(int id){
-//		return dao.getCommentList(id);
-//	};
 	
 	@Override
 	public List<BathIntegrationEntitiy> getSearchBath(String arg){
+		if (dao.getSearchBath(arg).isEmpty()) {
+			throw new TopPageNotFoundException("検索キーワードに当てはまる施設情報はありません。");
+		}
 		return dao.getSearchBath(arg);
+		
 	};
 	
 	@Override
 	public List<BathIntegrationEntitiy> getChoiceBath(int areaId, int price, int genreId, int reviewId){
-		return dao.getChoiceBath(areaId, price, genreId, reviewId);
+		if (dao.getChoiceBath(areaId, price, genreId, reviewId).isEmpty()) {
+			throw new TopPageNotFoundException("絞り込みに当てはまる施設情報はありません。");
+		}
+			return  dao.getChoiceBath(areaId, price, genreId, reviewId);
+		
 	};
 }

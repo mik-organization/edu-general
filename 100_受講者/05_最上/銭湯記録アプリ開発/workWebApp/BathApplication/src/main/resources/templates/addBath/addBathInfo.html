@@ -12,8 +12,9 @@
 </form>
 <form  method="post" action="#"  th:action="@{/top/insert}"  th:object="${recordForm}">
 	<label for="bathName">施設名：</label>
-	<input id="bathName" name="bathName" type="text"  th:value="${bathName}">
-	
+	<input  id="bathName" name="bathName" type="text" th:value="${bathName}">
+<!-- 	<div th:if="${#fields.hasErrors('bathName')}" th:errors="*{bathName}">Name Error</div> -->
+
 	<label for="genreId">ジャンル：</label>
 	<select id="genreId"  name="genreId" >
 		<option value=1 >旅館</option>
@@ -90,7 +91,7 @@
 
 	
 	<input type="submit" value="登録">
-	
+	<input type="hidden" name="bathInfoId" th:value="${bathInfoId}">
 </form>
 </body>
 </html>

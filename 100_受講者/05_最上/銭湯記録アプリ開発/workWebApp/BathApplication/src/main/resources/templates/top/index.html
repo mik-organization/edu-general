@@ -3,14 +3,133 @@
 <head>
 <meta charset="UTF-8">
 <title th:text="${title}">Insert title here</title>
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+ 
+ <style>
+ .header-3 {
+  box-sizing: border-box;
+  width: 100%;
+  background-color: #def7ff;
+  
+}
+.logo{
+ color: #696969;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1024px;
+  height: 60px;
+  padding: 0 0.8em;
+  margin: 0 auto;
+  font-size: 1.2em;
+}
+
+.header-nav {
+  display: flex;
+  align-items: center;
+}
+
+.header-nav-item {
+  display: flex;
+  align-items: center;
+  margin-left: 16px;
+}
+
+.header-button {
+  box-sizing: border-box;
+  display: inline-block;
+  padding: 0.5em 1.2em;
+  font-size: 14px;
+  text-decoration: none;
+  cursor: pointer;
+  user-select: none;
+}
+
+.header-post {
+  font-weight: bold;
+  color: #fff;
+  background: #00b5ad;
+  border: 1px #00b5ad solid;
+  border-radius: 3px;
+}
+
+@media screen and (max-width: 480px) {
+  .header-post {
+    display: none;
+  }
+}
+
+
+
+
+img {
+  width: 2.6em;
+  min-height: 100px;
+}
+
+.card-3 {
+  width: 15em;
+  margin: 0 auto;
+  cursor: pointer;
+  border: 0.5px solid #e9eaea;
+  border-radius: 3px;
+  transition: 0.3s;
+  float: left;
+}
+
+.content-img {
+  padding: 0.4em 0;
+  text-align: center;
+  background: #e1f3ff;
+}
+
+.content {
+  padding: 0.4em 0;
+  
+}
+
+.title,
+.address,
+.post-day {
+  position: relative;
+  padding: 0 0.3em;
+  margin: 0;
+  font-size: 1em;
+  line-height: 1.5;
+}
+.address{
+  font-size: 0.8em;
+}
+
+.post-day {
+  padding: 0 0.3em;
+  font-size: 0.7em;
+  color: #777;
+}
+
+  </style>
+  
 </head>
 <body>
-<h1 th:text="${title}">title</h1>
+<header class="header-3">
+  <div class="header-inner">
+    <div class="logo">
+      <h1 th:text="${title}" >title</h1>
+    </div>
+    <nav class="header-nav">
+      <div class="header-nav-item">
+      <form method="post" th:action="@{/top/addBathInfo}">
+	 <input type="submit" value="登録" class="header-button header-post">
+		</form>
+      </div>
+     
+    </nav>
+  </div>
+</header>
 
-	<form method="post" th:action="@{/top/addBathInfo}">
-	 <input type="submit" value="登録">
-	</form>
-	
 	<form method="post" th:action="@{/top/search}">
 	<label for="keyWord"></label>
 	<input id="keyWord" name="keyWord" type="text"  th:value="${keyWord}">
@@ -56,6 +175,7 @@
 		</select>
 		<input type="submit" value="絞り込み">
 	</form>
+<!-- 
 <table>
 	<tr>
 		<th>name</th><th>住所</th><th>評価</th>
@@ -65,9 +185,37 @@
 		<td ><a th:href="@{/top/bath/{id}(id=${bathInfo.bathIntegrationEntitiyId})}"><span th:text = "${bathInfo.bathName}" >name</span></a></td>
 		<td ><a th:href="@{/top/bath/{id}(id=${bathInfo.bathIntegrationEntitiyId})}"><span th:text = "${bathInfo.address}">住所</span></a></td>
  		<td th:text = "${bathInfo.reviewAverage}">評価</td>
-		
-		
-	</tr>
+		</tr>
+ -->
+ <!--
+	<div class="card-1" th:each="bathInfo:${bathList}">
+  	<div class="content-img">
+    <img src="https://see-ss.com/img/card_img@2x.png" />
+  	</div>
+  	<p class="content-1"><a th:href="@{/top/bath/{id}(id=${bathInfo.bathIntegrationEntitiyId})}"><span th:text = "${bathInfo.bathName}" >name</span></a></p>
+  	<p class="content-2"><a th:href="@{/top/bath/{id}(id=${bathInfo.bathIntegrationEntitiyId})}"><span th:text = "${bathInfo.address}">住所</span></a></p>
+  	<p  class="content-2" th:text = "${bathInfo.reviewAverage}"></p>
+  	</div>
+ -->		
+	<div class="card-3" th:each="bathInfo:${bathList}">
+  <div class="content-img">
+    <img src="https://see-ss.com/img/card_img@2x.png" />
+  </div>
+  <div class="content">
+  <a th:href="@{/top/bath/{id}(id=${bathInfo.bathIntegrationEntitiyId})}">
+    <h3 class="title"  th:text = "${bathInfo.bathName}">
+      デザイン探しをスマートに。HTML/CSSスニペットまとめ。
+    </h3></a>
+    <a th:href="@{/top/bath/{id}(id=${bathInfo.bathIntegrationEntitiyId})}">
+     <h3 class="address"  th:text = "${bathInfo.address}">
+      デザイン探しをスマートに。HTML/CSSスニペットまとめ。
+    </h3></a>
+    <span class="post-day">
+     <p th:text = "${bathInfo.reviewAverage}"></p>
+    </span>
+  </div>
+</div>
+
 	
 </table>
 </body>

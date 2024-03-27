@@ -1,37 +1,68 @@
 package com.example.demo.app.record;
 
-import java.sql.Date;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.List;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Digits;
 
-//import jakarta.validation.constraints.NotNull;
+import java.sql.Date;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 public class RecordFrom {
-
+	
+	@Digits(integer = 1, fraction  =0)
 	private int bathIntegrationEntitiyId;
+	
+	@Digits(integer = 1, fraction  =0)
 	private int bathInfoId;
+	
+	@NotNull(message = "施設名を入力してください")
 	private String bathName;
+	
+	@NotNull(message = "住所を入力してください")
 	private String address;
+	
 	private int openTime;
 	private int closeTime;
 	private int price;
 	private String tel;
 	private boolean roten;
 	private boolean sauna;
+	
+	@Digits(integer = 1, fraction  =0)
 	private int bathId;
+	
 	private int genreId;
 	private int areaId;
 	private String comments;
 	private int reviewId;
+	
+	@NotNull(message = "訪れた日を設定してください")
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date recordDate;
 	private double reviewValue;
 	private double reviewAverage;
 	
-	private List<String>commentList;
+	public RecordFrom() {}
 	
-	
-	public RecordFrom() {
+	public RecordFrom(int bathIntegrationEntitiyId,
+			int bathInfoId,
+			String bathName,
+			String address,
+			int openTime,
+			int closeTime,
+			int price,
+			String tel,
+			boolean roten,
+			boolean sauna,
+			int bathId,
+			int genreId,
+			int areaId,
+			String comments,
+			int reviewId,
+			Date recordDate,
+			double reviewValue,
+			double reviewAverage			
+			) {
 		this.bathIntegrationEntitiyId = bathIntegrationEntitiyId;
 		this.bathInfoId = bathInfoId;
 		this.bathName = bathName;
@@ -48,7 +79,8 @@ public class RecordFrom {
 		this.comments = comments;
 		this.reviewId = reviewId;
 		this.recordDate = recordDate;
-		this.commentList = commentList;
+		this.reviewValue = reviewValue;
+		this.reviewAverage = reviewAverage;
 	}
 	
 	
@@ -136,51 +168,28 @@ public class RecordFrom {
 	public void setComments(String comments) {
 		this.comments = comments;
 	}
-	
 	public int getReviewId() {
 		return reviewId;
 	}
 	public void setReviewId(int reviewId) {
 		this.reviewId = reviewId;
 	}
-
 	public Date getRecordDate() {
 		return recordDate;
 	}
-
 	public void setRecordDate(Date recordDate) {
 		this.recordDate = recordDate;
 	}
-
 	public double getReviewValue() {
 		return reviewValue;
 	}
-
-
 	public void setReviewValue(double reviewValue) {
 		this.reviewValue = reviewValue;
 	}
-
-
 	public double getReviewAverage() {
 		return reviewAverage;
 	}
-
-
 	public void setReviewAverage(double reviewAverage) {
 		this.reviewAverage = reviewAverage;
 	}
-
-
-	public List<String> getCommentList() {
-		return commentList;
-	}
-
-
-	public void setCommentList(List<String> commentList) {
-		this.commentList = commentList;
-	}
-	
-	
-	
 }

@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.InitBinder;
 
+import com.example.demo.service.TopPageNotFoundException;
+
 
 /**
  * 全てのControllerで共通処理を定義
@@ -22,5 +24,16 @@ public class WebMvcControllerAdvice {
     @InitBinder
     public void initBinder(WebDataBinder dataBinder) {
         dataBinder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
-    }  
+    }
+    
+    @ExceptionHandler(EmptyResultDataAccessException.class)
+    public String handleException(EmptyResultDataAccessException e, Model model) {
+    	model.addAttribute("message", e);
+    	return "error/CustomPage";
+    }
+    @ExceptionHandler(TopPageNotFoundException.class)
+    public String handleException(TopPageNotFoundException e, Model model) {
+    	model.addAttribute("message", e);
+    	return "error/CustomPage";
+    }
 }

@@ -36,7 +36,7 @@ public class TopController {
 	public String index(Model model) {
 		List<BathIntegrationEntitiy> list = topPageService.getTopBathAll();
 		model.addAttribute("bathList",list);
-		model.addAttribute("title","top page");
+		model.addAttribute("title","銭湯レコード");
 		
 		return "top/index";
 	}

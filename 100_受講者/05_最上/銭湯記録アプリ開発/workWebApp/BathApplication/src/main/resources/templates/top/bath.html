@@ -8,6 +8,7 @@
 <form  method="GET" action="#"  th:action="@{/top}">
 	<input type="submit" value="TOP">
 </form>
+<p th:if="${complete}" th:text="${complete}"></p>
 <div th:each="bath:${bathList}" >
 <form method="GET" 
  th:action="@{'update/'+${bath.bathIntegrationEntitiyId}}">
