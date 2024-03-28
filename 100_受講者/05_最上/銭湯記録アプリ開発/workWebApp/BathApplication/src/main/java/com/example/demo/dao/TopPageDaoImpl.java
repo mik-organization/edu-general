@@ -48,7 +48,47 @@ public class TopPageDaoImpl implements TopPageDao {
 		}
 		return list;
 	}
-
+	@Override
+	public List<BathIntegrationEntitiy> getAreaRecommend(int num) {
+		String sql = "SELECT BathIntegrationEntitiyId, bathName, address, reviewAverage FROM BathIntegrationEntitiy WHERE areaId = " + num;
+		
+		List<Map<String, Object>> resultList = jdbcTemplate.queryForList(sql);
+		
+		List<BathIntegrationEntitiy> list = new ArrayList<BathIntegrationEntitiy>();
+		
+		for(Map<String, Object> result : resultList) {
+			BathIntegrationEntitiy bathInfo = new BathIntegrationEntitiy();
+			bathInfo.setBathIntegrationEntitiyId((int)result.get("bathIntegrationEntitiyId"));
+			bathInfo.setBathName((String)result.get("bathName"));
+			bathInfo.setAddress((String)result.get("address"));
+			bathInfo.setReviewAverage((double)result.get("reviewAverage"));
+			bathInfo.setAreaId(num);
+			
+			list.add(bathInfo);
+		}
+		return list;
+	}
+	
+	@Override
+	public List<BathIntegrationEntitiy> getGenreRecommend(int num) {
+		String sql = "SELECT BathIntegrationEntitiyId, bathName, address, reviewAverage FROM BathIntegrationEntitiy WHERE genreId = " + num;
+		
+		List<Map<String, Object>> resultList = jdbcTemplate.queryForList(sql);
+		
+		List<BathIntegrationEntitiy> list = new ArrayList<BathIntegrationEntitiy>();
+		
+		for(Map<String, Object> result : resultList) {
+			BathIntegrationEntitiy bathInfo = new BathIntegrationEntitiy();
+			bathInfo.setBathIntegrationEntitiyId((int)result.get("bathIntegrationEntitiyId"));
+			bathInfo.setBathName((String)result.get("bathName"));
+			bathInfo.setAddress((String)result.get("address"));
+			bathInfo.setReviewAverage((double)result.get("reviewAverage"));
+			bathInfo.setGenreId(num);
+			
+			list.add(bathInfo);
+		}
+		return list;
+	}
 	
 	//TopPageから施設名、住所をタップした時
 	public Optional<BathIntegrationEntitiy> getTopBath(int id){

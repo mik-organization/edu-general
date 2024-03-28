@@ -154,7 +154,7 @@ public class RecordController {
 		bathIntegrationEntitiy.setReviewValue(recordForm.getReviewValue());
 		bathIntegrationEntitiy.setRecordDate(recordForm.getRecordDate());
 		
-		System.out.println("comment:::::"+recordForm.getComments());
+		System.out.println("getAreaId:::::"+recordForm.getAreaId());
 		return bathIntegrationEntitiy;
 	}
 	

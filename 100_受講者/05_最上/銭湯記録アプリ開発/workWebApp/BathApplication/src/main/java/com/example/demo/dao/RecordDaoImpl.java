@@ -153,6 +153,8 @@ public class RecordDaoImpl implements RecordDao {
 				bathInfo.getReviewValue(), 
 				bathInfo.getBathIntegrationEntitiyId()); 
 		 
+		 System.out.println("+++++++:"+bathInfo.getAreaId());
+		 
 		 jdbcTemplate.update("UPDATE bathInfo SET "
 					+ "bathName = ?, address = ?, openTime = ?, closeTime = ?, price = ?, tel = ?, roten = ?, sauna = ? "
 					+ "WHERE bathInfoId = ?",
@@ -170,8 +172,8 @@ public class RecordDaoImpl implements RecordDao {
 					+ "genreId = ?, areaId = ?, reviewAverage = ? "
 					+ "WHERE bathId = ?",
 					bathInfo.getGenreId(),
+					bathInfo.getAreaId(),
 					bathInfo.getReviewValue(),
-					bathInfo.getReviewId(),
 					bathInfo.getBathIntegrationEntitiyId()); 
 //		 
 //			List<String> commentsList = bathInfo.getComments();

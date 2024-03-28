@@ -32,11 +32,36 @@ public class TopController {
 		this.topPageService = topPageService;
 	}
 	
+//	@GetMapping
+//	public String index(Model model) {
+//		List<BathIntegrationEntitiy> list = topPageService.getTopBathAll();
+//		model.addAttribute("bathList",list);
+//		model.addAttribute("title","銭湯レコード");
+//		
+//		return "top/index";
+//	}
+	
 	@GetMapping
-	public String index(Model model) {
-		List<BathIntegrationEntitiy> list = topPageService.getTopBathAll();
+	public String recommend(Model model) {
+		int[] str = {1, 2, 3, 4, 5, 6};
+		//乱数をnumへ代入
+		 int num =  (int) (Math.random() * (str.length));
+		
+		model.addAttribute("titleH2",str[num]);
+		List<BathIntegrationEntitiy> list = topPageService.getAreaRecommend(str[num]);
 		model.addAttribute("bathList",list);
+		
+		int[] genreId = {1, 2, 3, 4, 5};
+		//乱数をnumへ代入
+		int id =  (int) (Math.random() * (genreId.length));
+		model.addAttribute("titleGenre",genreId[id]);
+		List<BathIntegrationEntitiy> GenreList = topPageService.getGenreRecommend(genreId[id]);
+		model.addAttribute("genreList",GenreList);
+		
+		
 		model.addAttribute("title","銭湯レコード");
+		
+		
 		
 		return "top/index";
 	}

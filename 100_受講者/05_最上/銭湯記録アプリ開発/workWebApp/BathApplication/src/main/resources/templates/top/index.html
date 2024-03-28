@@ -3,115 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <title th:text="${title}">Insert title here</title>
- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
- 
- <style>
- .header-3 {
-  box-sizing: border-box;
-  width: 100%;
-  background-color: #def7ff;
-  
-}
-.logo{
- color: #696969;
-}
+<link rel="stylesheet" href="CSS/index_style.css" type="text/css">
 
-.header-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  max-width: 1024px;
-  height: 60px;
-  padding: 0 0.8em;
-  margin: 0 auto;
-  font-size: 1.2em;
-}
-
-.header-nav {
-  display: flex;
-  align-items: center;
-}
-
-.header-nav-item {
-  display: flex;
-  align-items: center;
-  margin-left: 16px;
-}
-
-.header-button {
-  box-sizing: border-box;
-  display: inline-block;
-  padding: 0.5em 1.2em;
-  font-size: 14px;
-  text-decoration: none;
-  cursor: pointer;
-  user-select: none;
-}
-
-.header-post {
-  font-weight: bold;
-  color: #fff;
-  background: #00b5ad;
-  border: 1px #00b5ad solid;
-  border-radius: 3px;
-}
-
-@media screen and (max-width: 480px) {
-  .header-post {
-    display: none;
-  }
-}
-
-
-
-
-img {
-  width: 2.6em;
-  min-height: 100px;
-}
-
-.card-3 {
-  width: 15em;
-  margin: 0 auto;
-  cursor: pointer;
-  border: 0.5px solid #e9eaea;
-  border-radius: 3px;
-  transition: 0.3s;
-  float: left;
-}
-
-.content-img {
-  padding: 0.4em 0;
-  text-align: center;
-  background: #e1f3ff;
-}
-
-.content {
-  padding: 0.4em 0;
-  
-}
-
-.title,
-.address,
-.post-day {
-  position: relative;
-  padding: 0 0.3em;
-  margin: 0;
-  font-size: 1em;
-  line-height: 1.5;
-}
-.address{
-  font-size: 0.8em;
-}
-
-.post-day {
-  padding: 0 0.3em;
-  font-size: 0.7em;
-  color: #777;
-}
-
-  </style>
-  
 </head>
 <body>
 <header class="header-3">
@@ -120,34 +13,42 @@ img {
       <h1 th:text="${title}" >title</h1>
     </div>
     <nav class="header-nav">
-      <div class="header-nav-item">
       <form method="post" th:action="@{/top/addBathInfo}">
-	 <input type="submit" value="登録" class="header-button header-post">
+      <div class="header-nav-item">
+	 <input type="submit" value="記録" class="header-button header-post">
+		</div>
 		</form>
-      </div>
-     
     </nav>
   </div>
 </header>
 
-	<form method="post" th:action="@{/top/search}">
-	<label for="keyWord"></label>
-	<input id="keyWord" name="keyWord" type="text"  th:value="${keyWord}">
-	<input type="submit" value="検索">
-	</form>
-	<br>
-	<form method="post" th:action="@{/top/choice}">
-		<label for="areaId">地域：</label>
- 		<select id="areaId"  name="areaId" >
- 			<option value=0 th:selected="${areaId} == 0" >--</option>
-			<option value=1 th:selected="${areaId} == 1" >札幌市内</option>
-			<option value=2 th:selected="${areaId} == 2" >道央</option>
-			<option value=3 th:selected="${areaId} == 3" >道北</option>
-			<option value=4 th:selected="${areaId} == 4" >道東</option>
-			<option value=5 th:selected="${areaId} == 5" >道南</option>
-			<option value=6 th:selected="${areaId} == 6" >北海道外</option>
-		</select>
-		<label for="price">価格：</label>
+<form class="form2" method="post" th:action="@{/top/search}">
+<label for="keyWord"></label>
+  <input id="keyWord" name="keyWord" type="text" th:value="${keyWord}" class="form2-input" placeholder="search" />
+  <button class="form2-button"><span class="dli-search"></span></button>
+  <input  class="form2-button2" type="submit" value="検索">
+</form>
+
+
+
+<form class="form3" method="post" th:action="@{/top/choice}">
+<div class="form_choice">
+<label class="label" for="areaId">地域：</label>
+<div class="cp_ipselect cp_sl02">
+<select id="areaId"  name="areaId">
+	<option value=0 th:selected="${areaId} == 0" >--</option>
+	<option value=1 th:selected="${areaId} == 1" >札幌市内</option>
+	<option value=2 th:selected="${areaId} == 2" >道央</option>
+	<option value=3 th:selected="${areaId} == 3" >道北</option>
+	<option value=4 th:selected="${areaId} == 4" >道東</option>
+	<option value=5 th:selected="${areaId} == 5" >道南</option>
+	<option value=6 th:selected="${areaId} == 6" >北海道外</option>
+</select>
+</div>
+
+
+<label class="label" for="price">価格：</label>
+<div class="cp_ipselect cp_sl02">
  		<select id="price"  name="price" >
  			<option value=0 th:selected="${price} == 0" >--</option>
 			<option value=1 th:selected="${price} == 1" >～500</option>
@@ -155,9 +56,12 @@ img {
 			<option value=3 th:selected="${price} == 3" >～1500</option>
 			<option value=4 th:selected="${price} == 4" >それ以上</option>
 		</select>
-		<input type="reset" value="リセット">
-		<br>
-		<label for="genreId">ジャンル：</label>
+		</div>
+	<input class=choice-button1  type="reset" value="条件を解除">	
+	</div>
+<div class="form_choice">
+	<label class="label" for="genreId">ジャンル：</label>
+	<div class="genre">
 		<select id="genreId"  name="genreId" >
 		<option value=0 th:selected="${genreId} == 0" >--</option>
 		<option value=1 th:selected="${genreId} == 1" >旅館</option>
@@ -166,57 +70,69 @@ img {
 		<option value=4 th:selected="${genreId} == 4" >スーパー銭湯</option>
 		<option value=5 th:selected="${genreId} == 5" >秘湯</option>
 		</select>
-	 <label for="reviewId">評価：</label>
+	</div>
+	
+	 <label class="label" for="reviewId">評価：</label>
+	 <div class="cp_ipselect cp_sl02">
  		<select id="reviewId"  name="reviewId" >
 		<option value=0 th:selected="${reviewId} == 0" >--</option>
  		<option value=1 th:selected="${reviewId} == 1" >～1.0</option>
 		<option value=2 th:selected="${reviewId} == 2" >～3.0</option>
 		<option value=3 th:selected="${reviewId} == 3" >～5.0</option>
 		</select>
-		<input type="submit" value="絞り込み">
-	</form>
-<!-- 
-<table>
-	<tr>
-		<th>name</th><th>住所</th><th>評価</th>
-	</tr>
-	<tr th:each="bathInfo:${bathList}">
-		
-		<td ><a th:href="@{/top/bath/{id}(id=${bathInfo.bathIntegrationEntitiyId})}"><span th:text = "${bathInfo.bathName}" >name</span></a></td>
-		<td ><a th:href="@{/top/bath/{id}(id=${bathInfo.bathIntegrationEntitiyId})}"><span th:text = "${bathInfo.address}">住所</span></a></td>
- 		<td th:text = "${bathInfo.reviewAverage}">評価</td>
-		</tr>
- -->
- <!--
-	<div class="card-1" th:each="bathInfo:${bathList}">
-  	<div class="content-img">
-    <img src="https://see-ss.com/img/card_img@2x.png" />
-  	</div>
-  	<p class="content-1"><a th:href="@{/top/bath/{id}(id=${bathInfo.bathIntegrationEntitiyId})}"><span th:text = "${bathInfo.bathName}" >name</span></a></p>
-  	<p class="content-2"><a th:href="@{/top/bath/{id}(id=${bathInfo.bathIntegrationEntitiyId})}"><span th:text = "${bathInfo.address}">住所</span></a></p>
-  	<p  class="content-2" th:text = "${bathInfo.reviewAverage}"></p>
-  	</div>
- -->		
-	<div class="card-3" th:each="bathInfo:${bathList}">
-  <div class="content-img">
-    <img src="https://see-ss.com/img/card_img@2x.png" />
-  </div>
-  <div class="content">
-  <a th:href="@{/top/bath/{id}(id=${bathInfo.bathIntegrationEntitiyId})}">
-    <h3 class="title"  th:text = "${bathInfo.bathName}">
-      デザイン探しをスマートに。HTML/CSSスニペットまとめ。
-    </h3></a>
-    <a th:href="@{/top/bath/{id}(id=${bathInfo.bathIntegrationEntitiyId})}">
-     <h3 class="address"  th:text = "${bathInfo.address}">
-      デザイン探しをスマートに。HTML/CSSスニペットまとめ。
-    </h3></a>
-    <span class="post-day">
-     <p th:text = "${bathInfo.reviewAverage}"></p>
-    </span>
-  </div>
+	</div>
+		<input  class=choice-button2  type="submit" value="絞り込み">
 </div>
+</form>
 
-	
-</table>
+<th:block th:switch="${titleH2}">
+  <h2 class="ttl_line2" th:case=1 th:text="札幌市内のおすすめ"></h2>
+  <h2  class="ttl_line2" th:case=2 th:text="道央地方のおすすめ"></h2>
+  <h2  class="ttl_line2" th:case=3 th:text="道北地方のおすすめ"></h2>
+  <h2  class="ttl_line2" th:case=4 th:text="道東地方のおすすめ"></h2>
+  <h2  class="ttl_line2" th:case=5 th:text="道南地方のおすすめ"></h2>
+  <h2  class="ttl_line2" th:case=6 th:text="北海道外のおすすめ"></h2>
+</th:block>
+
+ <div class="bath">	
+<div class="card-3" th:each="bathInfo:${bathList}">
+
+<a th:href="@{/top/bath/{id}(id=${bathInfo.bathIntegrationEntitiyId})}">
+		<div class="content-img" >	
+  			<img src="img/icon_027780_64.png" />
+	  	</div>
+  		<div class="content">
+		    <h3 class="title"  th:text = "${bathInfo.bathName}"></h3>
+    		<h3 class="address"  th:text = "${bathInfo.address}"></h3>
+   			<span class="star-rating" th:attr="data-rate=${bathInfo.reviewAverage}"></span>
+  		</div>
+  </a>	
+</div>
+</div>
+<br>
+
+<th:block class="titleGenre" th:switch="${titleGenre}">
+  <h2 class="ttl_line2" th:case=1 th:text="旅館のおすすめ"></h2>
+  <h2  class="ttl_line2" th:case=2 th:text="ホテルのおすすめ"></h2>
+  <h2  class="ttl_line2" th:case=3 th:text="銭湯のおすすめ"></h2>
+  <h2  class="ttl_line2" th:case=4 th:text="スーパー銭湯のおすすめ"></h2>
+  <h2  class="ttl_line2" th:case=5 th:text="秘湯のおすすめ"></h2>
+</th:block>
+ <div class="bath">	
+<div class="card-3" th:each="bathInfo:${genreList}">
+<a th:href="@{/top/bath/{id}(id=${bathInfo.bathIntegrationEntitiyId})}">
+		<div class="content-img" >	
+  			<img src="img/icon_027780_64.png" />
+	  	</div>
+  		<div class="content">
+		    <h3 class="title"  th:text = "${bathInfo.bathName}"></h3>
+    		<h3 class="address"  th:text = "${bathInfo.address}"></h3>
+   			<span class="star-rating" th:attr="data-rate=${bathInfo.reviewAverage}"></span>
+   <!--			<span class="post-day" th:text = "${bathInfo.reviewAverage}"></span> -->
+	</div>
+  	
+  </a>	
+</div>
+</div>
 </body>
 </html>

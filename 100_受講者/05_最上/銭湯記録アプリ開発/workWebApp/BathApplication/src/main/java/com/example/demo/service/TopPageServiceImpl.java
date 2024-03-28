@@ -29,6 +29,16 @@ public class TopPageServiceImpl implements TopPageService {
 	};
 	
 	@Override
+	public List<BathIntegrationEntitiy> getAreaRecommend(int num) {	 
+		return dao.getAreaRecommend(num);
+	};
+	
+	@Override
+	public List<BathIntegrationEntitiy> getGenreRecommend(int num) {	 
+		return dao.getGenreRecommend(num);
+	};
+	
+	@Override
 	public Optional<BathIntegrationEntitiy> getTopBath(int id){
 		
 		//Optional<BathIntegrationEntitiy>　１件を取得でIDがなければ例外発生

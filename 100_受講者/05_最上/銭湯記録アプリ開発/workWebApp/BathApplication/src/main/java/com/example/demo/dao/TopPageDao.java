@@ -12,6 +12,10 @@ public interface TopPageDao {
 	
 	List<BathIntegrationEntitiy> getTopBathAll();
 	
+	List<BathIntegrationEntitiy> getAreaRecommend(int num);
+	
+	List<BathIntegrationEntitiy> getGenreRecommend(int num);
+	
 	Optional<BathIntegrationEntitiy> getTopBath(int id);
 	
 //	List<Comment> getCommentList(int id);
