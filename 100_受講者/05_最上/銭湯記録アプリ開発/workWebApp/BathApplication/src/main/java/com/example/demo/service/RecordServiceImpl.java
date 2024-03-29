@@ -1,16 +1,11 @@
 package com.example.demo.service;
 
-import java.util.List;
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.dao.RecordDao;
-import com.example.demo.entity.Bath;
 import com.example.demo.entity.BathInfo;
 import com.example.demo.entity.BathIntegrationEntitiy;
-import com.example.demo.entity.Comment;
 
 @Service
 public class RecordServiceImpl implements RecordService {
@@ -26,17 +21,6 @@ public class RecordServiceImpl implements RecordService {
 		dao.createBathInfo(bathInfo);
 
 	}
-
-	@Override
-	public List<BathIntegrationEntitiy> getAll() {
-		return dao.getAll();
-	}
-	
-	
-	@Override
-	public Optional<BathIntegrationEntitiy> getTopBath(int id){
-		return dao.getTopBath(id);
-	};
 	
 	@Override
 	public void insert(BathIntegrationEntitiy bathIntegrationEntitiy) {

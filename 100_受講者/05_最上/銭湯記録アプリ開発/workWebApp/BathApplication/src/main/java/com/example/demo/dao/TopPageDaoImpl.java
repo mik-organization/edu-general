@@ -2,11 +2,7 @@ package com.example.demo.dao;
 
 import java.sql.Date;
 
-import java.sql.Timestamp;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -16,7 +12,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.example.demo.entity.BathIntegrationEntitiy;
-import com.example.demo.entity.Comment;
 
 @Repository
 public class TopPageDaoImpl implements TopPageDao {
@@ -110,36 +105,13 @@ public class TopPageDaoImpl implements TopPageDao {
 		bathInte.setGenreId((int)result.get("genreId"));
 		bathInte.setAreaId((int)result.get("areaId"));
 		bathInte.setComments((String)result.get("comments"));
-//		bathInte.setComments((List<String>) result.get("comments"));
 		bathInte.setReviewAverage((double)result.get("reviewAverage"));
 		bathInte.setRecordDate(((Date) result.get("recordDate")));
-		
-//		List<String> commentsList = new ArrayList<>();
-//		commentsList.add((String)result.get("comments")); // ここでString型のコメントをリストに追加
-//		bathInte.setComments(commentsList);
 		
 		Optional<BathIntegrationEntitiy> bathOpt = Optional.ofNullable(bathInte);
 		
 		return  bathOpt;
 	}
-	
-//	public List<Comment> getCommentList(int id){
-//		String sql = "SELECT comment, recordDate FROM comment WHERE bathInfoId = "+id;
-//		System.out.println("iddddddd:"+id);
-//		
-//		List<Map<String, Object>> resultList = jdbcTemplate.queryForList(sql);
-//		
-//		List<Comment> commentlist = new ArrayList<Comment>();
-//		
-//		for(Map<String, Object> result : resultList) {
-//			Comment comment = new Comment();
-//			comment.setComment((String)result.get("comment"));
-//			comment.setRecordDate((Date)result.get("recordDate"));
-//			commentlist.add(comment);
-//		}
-//		return commentlist;
-//		
-//	}
 	
 	//TopPageから検索
 	public List<BathIntegrationEntitiy> getSearchBath(String arg){
@@ -169,9 +141,7 @@ public class TopPageDaoImpl implements TopPageDao {
 
 	//TopPageから絞り込み
 	public List<BathIntegrationEntitiy> getChoiceBath(int areaId, int price, int genreId, int reviewId){
-//		StringBuilder sql = new StringBuilder("SELECT * FROM bathIntegrationEntitiy ");
 		String sql = null;
-		
 		
 		
 		//(地域〇)

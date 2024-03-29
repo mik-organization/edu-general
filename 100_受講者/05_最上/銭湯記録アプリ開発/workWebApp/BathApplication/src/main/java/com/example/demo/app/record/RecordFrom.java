@@ -1,6 +1,7 @@
 package com.example.demo.app.record;
 
 import jakarta.validation.constraints.NotNull;
+
 import jakarta.validation.constraints.Digits;
 
 import java.sql.Date;
@@ -37,7 +38,6 @@ public class RecordFrom {
 	private int reviewId;
 	
 	@NotNull(message = "訪れた日を設定してください")
-	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date recordDate;
 	private double reviewValue;
 	private double reviewAverage;

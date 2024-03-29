@@ -35,24 +35,14 @@ public class RecordController {
 	}
 	
 	//新規登録画面を表示
-//	@GetMapping("/addBathInfo")
-//	public String addBthInfo(@ModelAttribute RecordFrom recordForm, Model model
-//			) {
-//		model.addAttribute("title", "新規登録");
-//		return "addBath/addBathInfo";
-//	}
-	
-	//新規登録画面を表示
 	@PostMapping("/addBathInfo")
 	public String addBthInfo(@ModelAttribute RecordFrom recordForm, Model model,
 			BindingResult result) {
-		
 		model.addAttribute("title", "新規登録");
-		
 		return "addBath/addBathInfo";
-	
 	}
 	
+	//登録内容を送信
 	@PostMapping("/insert")
 	public String insert(
 		@Validated @ModelAttribute RecordFrom recordForm,
@@ -72,18 +62,17 @@ public class RecordController {
 		return "redirect:/top";
 	}
 	
+	//施設情報の更新画面を表示
 	@GetMapping("/bath/update/{id}")
 	public String updateBathInfo(RecordFrom recordForm,@PathVariable("id") int id,
 			Model model,RedirectAttributes redirectAttributes) {
 		
 		Optional<BathIntegrationEntitiy> bathOpt = topPageService.getTopBath(id);
-//		List<Comment> commentlist = topPageService.getCommentList(id);
 		
 		Optional<RecordFrom> recoFromOpt = bathOpt.map(t -> makeRecordFrom(t));
 		
 		if(recoFromOpt.isPresent()) {
 			recordForm = recoFromOpt.get();
-			
 		}
 		
 		model.addAttribute("recordForm",recordForm );
@@ -95,8 +84,7 @@ public class RecordController {
 		return "addBath/update";
 	}
 	
-	
-	
+	//施設情報変更内容を送信
 	@PostMapping("addBath/update")
 	public String updateBath(@Validated @ModelAttribute RecordFrom recordForm,
 			BindingResult result, @RequestParam("bathInfoId")int bathInfoId,
@@ -123,9 +111,7 @@ public class RecordController {
 			BindingResult result, @RequestParam("bathInfoId")int bathInfoId ){
 		
 		BathIntegrationEntitiy bathIntegrationEntitiy = makeComment(recordForm, bathInfoId);
-		
 		recordService.updateExComment(bathIntegrationEntitiy);
-		
 		return "redirect:/top";
 		
 	};
@@ -136,7 +122,6 @@ public class RecordController {
 			bathIntegrationEntitiy.setBathIntegrationEntitiyId(bathtegrationEntitiyId) ;
 		}
 		
-//		bathIntegrationEntitiy.setBathIntegrationEntitiyId(recordForm.getBathIntegrationEntitiyId());
 		bathIntegrationEntitiy.setBathInfoId(recordForm.getBathInfoId());
 		bathIntegrationEntitiy.setBathName(recordForm.getBathName());
 		bathIntegrationEntitiy.setAddress(recordForm.getAddress());
@@ -154,7 +139,7 @@ public class RecordController {
 		bathIntegrationEntitiy.setReviewValue(recordForm.getReviewValue());
 		bathIntegrationEntitiy.setRecordDate(recordForm.getRecordDate());
 		
-		System.out.println("getAreaId:::::"+recordForm.getAreaId());
+		System.out.println("getRecordDate:::::"+recordForm.getRecordDate());
 		return bathIntegrationEntitiy;
 	}
 	
@@ -176,7 +161,6 @@ public class RecordController {
 		recordFrom.setReviewId(bathInfo.getReviewId());
 		recordFrom.setReviewValue(bathInfo.getReviewValue());
 		recordFrom.setRecordDate(bathInfo.getRecordDate());
-		System.out.println("comment:::::"+bathInfo.getComments());
 		return recordFrom;
 	}
 	
@@ -186,12 +170,9 @@ public class RecordController {
 		
 		bathIntegrationEntitiy.setBathIntegrationEntitiyId(bathtegrationEntitiyId) ;
 		bathIntegrationEntitiy.setBathInfoId(recordForm.getBathInfoId());
-//		List<String> commentList = new ArrayList<>();
-//		commentList.add(recordForm.getComments());
 		bathIntegrationEntitiy.setComments(recordForm.getComments());
 		bathIntegrationEntitiy.setReviewValue(recordForm.getReviewValue());
 		bathIntegrationEntitiy.setRecordDate(recordForm.getRecordDate());
-		System.out.println("komennto@@@@@"+recordForm.getComments());
 		
 		return bathIntegrationEntitiy;
 	}

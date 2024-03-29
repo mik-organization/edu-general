@@ -3,17 +3,47 @@
 <head>
 <meta charset="UTF-8">
 <title th:text="${title}">Insert title here</title>
+<link th:href="@{/CSS/bath_style.css}" rel="stylesheet">
+
 </head>
 <body>
-<form  method="GET" action="#"  th:action="@{/top}">
-	<input type="submit" value="TOP">
-</form>
+
+<header class="header-3">
+  <div class="header-inner" th:each="bath:${bathList}">
+   <nav class="header-nav">
+    <form  method="GET" action="#" th:action="@{/top}">
+	<input type="submit" value="TOP"  class="header-button header-post_top">
+	</form>
+	 </nav>
+	 <div class="title">
+	 <th:block  th:switch="${bath.genreId}">
+ 	 <p class="titleGenre" th:case=1 th:text="旅館"></p>
+ 	 <p class="titleGenre" th:case=2 th:text="ホテル"></p>
+ 	 <p class="titleGenre" th:case=3 th:text="銭湯"></p>
+	 <p class="titleGenre" th:case=4 th:text="スーパー銭湯"></p>
+	 <p class="titleGenre" th:case=5 th:text="秘湯"></p>
+	</th:block>
+    <div class="logo">
+      <h1 th:text="${bath.bathName}" >title</h1>
+    </div>
+    </div>
+    <nav class="header-nav">
+      <form method="GET" 
+ 		th:action="@{'update/'+${bath.bathIntegrationEntitiyId}}">
+      <div class="header-nav-item">
+		<input type="submit" value="編集" class="header-button header-post">
+		</div>
+		</form>
+    </nav>
+  </div>
+</header>
+
+
 <p th:if="${complete}" th:text="${complete}"></p>
 <div th:each="bath:${bathList}" >
 <form method="GET" 
  th:action="@{'update/'+${bath.bathIntegrationEntitiyId}}">
-	<input type="submit" value="編集">
-		<p th:text = "${bath.genreId}" >ジャンル：</p><h1 th:text="${bath.bathName}">施設名</h1><br/>
+	
  		評価：<span th:text = "${bath.reviewAverage}" ></span><br/>		
  		訪れた日：<span th:text = "${bath.recordDate}" ></span><br/> 
 		場所：<span th:text = "${bath.address}"></span>
