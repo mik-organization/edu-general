@@ -1,1 +1,0 @@
-Script-22.spl → INTERSECT、EXCEPT
