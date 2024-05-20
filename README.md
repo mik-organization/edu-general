@@ -19,6 +19,7 @@ VS Marketplace リンク: https://marketplace.visualstudio.com/items?itemName=MS
   * exe、インストーラどちらでもOK
 * clibor https://chigusa-web.com/clibor/
 * rapture https://www.vector.co.jp/soft/dl/win95/art/se386376.html
+* winmerge https://winmerge.org/?lang=ja
 ## Git for Windowsをインストール
 * ここからダウンロード、インストール https://gitforwindows.org/ 
   * 基本的にデフォルトのままでOK
