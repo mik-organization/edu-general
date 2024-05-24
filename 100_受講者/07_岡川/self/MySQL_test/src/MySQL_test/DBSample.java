@@ -11,38 +11,39 @@ public class DBSample {
 	public static void main(String[] args) {
 		boolean isExit = true;
 
-		System.out.println("情報の閲覧:閲覧");
-		System.out.println("情報の追加:追加");
-		System.out.println("情報の削除:削除");
-		System.out.println("終了する  :exit");
+		System.out.println("1:情報の閲覧");
+		System.out.println("2:情報の追加");
+		System.out.println("3:情報の削除");
+		System.out.println("9:終了する");
 
-		for (int exit = 1; isExit; exit++) {
+		while (isExit == true) {
 
 			System.out.println();
 			System.out.print("希望する操作の入力：");
 			Scanner scan = new Scanner(System.in);
-			String select = scan.next();
+			int select = scan.nextInt();
 
 			switch (select) {
 
-			case "閲覧":
+			case 1:
 				DBSampleView view = new DBSampleView();
 				view.View();
 				break;
 
-			case "追加":
+			case 2:
 				DBSampleInput input = new DBSampleInput();
 				input.Input();
 				break;
 
-			case "削除":
+			case 3:
 				DBSampleDelete delete = new DBSampleDelete();
 				delete.Delete();
 				break;
 
-			case "exit":
+			case 9:
 				System.out.println("終了します。");
 				isExit = false;
+				scan.close();
 				break;
 
 			default:
