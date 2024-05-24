@@ -1,5 +1,3 @@
-create database sample;
-use sample;
 CREATE TABLE yasais(
 id varchar(4),
 name varchar(10),
