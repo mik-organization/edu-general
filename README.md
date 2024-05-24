@@ -128,10 +128,12 @@ VS Marketplace リンク: https://marketplace.visualstudio.com/items?itemName=le
 ## spring boot でhelloworld
 * https://qiita.com/momomo1998/items/37e48a3196b4761534c9
 
-## データベース（Postgresql）導入
-* https://qiita.com/momomo1998/items/ab1f0cc5ea8a632c7a68
-* https://qiita.com/momomo1998/items/1b9d453d44920fa05e39
-
+## データベース
+* Postgresql導入
+  * https://qiita.com/momomo1998/items/ab1f0cc5ea8a632c7a68
+  * https://qiita.com/momomo1998/items/1b9d453d44920fa05e39
+* MySQL インストール手順参考
+  * https://qiita.com/aki_number16/items/bff7aab79fb8c9657b62
 
 # 統合開発環境（IDE）インストール 
 ## java
