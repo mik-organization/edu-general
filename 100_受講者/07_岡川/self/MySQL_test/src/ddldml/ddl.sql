@@ -1,5 +1,5 @@
 CREATE TABLE yasais(
-id varchar(4),
-name varchar(10),
-値段 varchar(4)
+    id int,
+    name varchar(10),
+    値段 int
 )
