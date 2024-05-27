@@ -78,11 +78,11 @@ class DBSampleView {
 			rs = ps.executeQuery();
 
 			while (rs.next()) {
-				String Uid = rs.getString("id");
+				String uid = rs.getString("id");
 				String Uname = rs.getString("name");
 				String Upay = rs.getString("値段");
 
-				System.out.println(Uid + ":" + Uname + ":" + Upay + "円");
+				System.out.println(uid + ":" + Uname + ":" + Upay + "円");
 
 			}
 
