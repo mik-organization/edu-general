@@ -9,14 +9,14 @@ import java.util.Scanner;
 
 public class DBSample {
 	public static void main(String[] args) {
-		boolean isExit = true;
 
 		System.out.println("1:情報の閲覧");
 		System.out.println("2:情報の追加");
 		System.out.println("3:情報の削除");
 		System.out.println("9:終了する");
 
-		while (isExit == true) {
+		boolean isExit = true;
+		while (isExit) {
 
 			System.out.println();
 			System.out.print("希望する操作の入力：");
@@ -56,33 +56,28 @@ public class DBSample {
 
 class DBSampleView {
 	public void View() {
-		final String id = ("root");
-		final String Pass = ("9qg3ypnusql");
-		final String url = ("jdbc:mysql://localhost:3306/sample");
+		final String ID = ("root");
+		final String PASS = ("9qg3ypnusql");
+		final String URL = ("jdbc:mysql://localhost:3306/sample");
 
-		Connection con = null;
-		ResultSet rs = null;
-		//PreparedStatement ps =null;
-		//エラーになる為ここでの宣言はせず。
-
-		String sql = "SELECT * FROM yasais";
+		final String SQL = "SELECT * FROM yasais";
 
 		try {
 			//Class.forName("com.mysql.jdbc.Driver");
 			//調べると上記必要と記載あるが無くても実行出来た。
 			//必要な場合と不必要な場合の違いは解らず。
 
-			con = DriverManager.getConnection(url, id, Pass);
+			Connection con = DriverManager.getConnection(URL, ID, PASS);
 			System.out.println("接続成功");
-			PreparedStatement ps = con.prepareStatement(sql);
-			rs = ps.executeQuery();
+			PreparedStatement ps = con.prepareStatement(SQL);
+			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
-				String uid = rs.getString("id");
-				String Uname = rs.getString("name");
-				String Upay = rs.getString("値段");
+				String ids = rs.getString("id");
+				String name = rs.getString("name");
+				String pay = rs.getString("値段");
 
-				System.out.println(uid + ":" + Uname + ":" + Upay + "円");
+				System.out.println(ids + ":" + name + ":" + pay + "円");
 
 			}
 
@@ -95,31 +90,28 @@ class DBSampleView {
 
 class DBSampleInput {
 	public void Input() {
-		int ids = 0;
-		String name = null;
-		int price = 0;
 
-		final String id = ("root");
-		final String Pass = ("9qg3ypnusql");
-		final String url = ("jdbc:mysql://localhost:3306/sample");
+		final String ID = ("root");
+		final String PASS = ("9qg3ypnusql");
+		final String URL = ("jdbc:mysql://localhost:3306/sample");
 
-		String sqlInput = "insert into yasais values(?,?,?);";
+		String sqlinput = "insert into yasais values(?,?,?);";
 
 		try {
-			Connection con = DriverManager.getConnection(url, id, Pass);
+			Connection con = DriverManager.getConnection(URL, ID, PASS);
 			System.out.println("接続成功");
-			PreparedStatement ps = con.prepareStatement(sqlInput);
+			PreparedStatement ps = con.prepareStatement(sqlinput);
 
 			Scanner sc = new Scanner(System.in);
 
 			System.out.print("IDを入力：");
-			ids = Integer.parseInt(sc.nextLine());
+			int ids = Integer.parseInt(sc.nextLine());
 
 			System.out.print("商品名を入力：");
-			name = sc.nextLine();
+			String name = sc.nextLine();
 
 			System.out.print("値段を入力：");
-			price = Integer.parseInt(sc.nextLine());
+			int price = Integer.parseInt(sc.nextLine());
 
 			ps.setInt(1, ids);
 			ps.setString(2, name);
@@ -138,39 +130,36 @@ class DBSampleInput {
 
 class DBSampleDelete {
 	public void Delete() {
-		final String id = ("root");
-		final String Pass = ("9qg3ypnusql");
-		final String url = ("jdbc:mysql://localhost:3306/sample");
+		final String ID = ("root");
+		final String PASS = ("9qg3ypnusql");
+		final String URL = ("jdbc:mysql://localhost:3306/sample");
 
-		Connection con = null;
-		ResultSet rs = null;
-
-		String sql = "SELECT * FROM yasais";
-		String sqlD = "delete from yasais where name=?;";
+		final String SQL = "SELECT * FROM yasais";
+		String sqldelete = "delete from yasais where name=?;";
 
 		try {
-			con = DriverManager.getConnection(url, id, Pass);
+			Connection con = DriverManager.getConnection(URL, ID, PASS);
 			System.out.println("接続成功");
-			PreparedStatement ps = con.prepareStatement(sql);
-			rs = ps.executeQuery();
+			PreparedStatement ps = con.prepareStatement(SQL);
+			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
-				String Uid = rs.getString("id");
-				String Uname = rs.getString("name");
-				String Upay = rs.getString("値段");
+				String ids = rs.getString("id");
+				String name = rs.getString("name");
+				String pay = rs.getString("値段");
 
-				System.out.println(Uid + ":" + Uname + ":" + Upay + "円");
+				System.out.println(ids + ":" + name + ":" + pay + "円");
 
 			}
-			ps = con.prepareStatement(sqlD);
+			ps = con.prepareStatement(sqldelete);
 			Scanner sc = new Scanner(System.in);
 			System.out.print("消去する野菜を入力してください:");
-			String Dname = sc.nextLine();
+			String dname = sc.nextLine();
 
-			ps.setString(1, Dname);
+			ps.setString(1, dname);
 			ps.executeUpdate();
 
-			System.out.println(Dname + "の情報を削除しました。");
+			System.out.println(dname + "の情報を削除しました。");
 
 		} catch (SQLException e) {
 			System.out.println("接続失敗" + e.getMessage());
