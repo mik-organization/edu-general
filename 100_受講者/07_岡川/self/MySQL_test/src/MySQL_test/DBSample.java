@@ -1,15 +1,12 @@
 package MySQL_test;
 
-import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Scanner;
 
 public class DBSample {
 	public static void main(String[] args) {
-		boolean isExit = true;
+		var isExit = true;
 
 		System.out.println("1:情報の閲覧");
 		System.out.println("2:情報の追加");
@@ -20,23 +17,23 @@ public class DBSample {
 
 			System.out.println();
 			System.out.print("希望する操作の入力：");
-			Scanner scan = new Scanner(System.in);
-			int select = scan.nextInt();
+			var scan = new Scanner(System.in);
+			var select = scan.nextInt();
 
 			switch (select) {
 
 			case 1:
-				DBSampleView view = new DBSampleView();
+				var view = new DBSampleView();
 				view.View();
 				break;
 
 			case 2:
-				DBSampleInput input = new DBSampleInput();
+				var input = new DBSampleInput();
 				input.Input();
 				break;
 
 			case 3:
-				DBSampleDelete delete = new DBSampleDelete();
+				var delete = new DBSampleDelete();
 				delete.Delete();
 				break;
 
@@ -56,31 +53,27 @@ public class DBSample {
 
 class DBSampleView {
 	public void View() {
-		final String id = ("root");
-		final String Pass = ("9qg3ypnusql");
-		final String url = ("jdbc:mysql://localhost:3306/sample");
+		final var id = ("root");
+		final var Pass = ("9qg3ypnusql");
+		final var url = ("jdbc:mysql://localhost:3306/sample");
 
-		Connection con = null;
-		ResultSet rs = null;
-		//PreparedStatement ps =null;
-		//エラーになる為ここでの宣言はせず。
-
-		String sql = "SELECT * FROM yasais";
+		var sql = "SELECT * FROM vegetable";
 
 		try {
 			//Class.forName("com.mysql.jdbc.Driver");
 			//調べると上記必要と記載あるが無くても実行出来た。
 			//必要な場合と不必要な場合の違いは解らず。
 
-			con = DriverManager.getConnection(url, id, Pass);
+			var con = DriverManager.getConnection(url, id, Pass);
 			System.out.println("接続成功");
-			PreparedStatement ps = con.prepareStatement(sql);
-			rs = ps.executeQuery();
+			System.out.println();
+			var ps = con.prepareStatement(sql);
+			var rs = ps.executeQuery();
 
 			while (rs.next()) {
-				String Uid = rs.getString("id");
-				String Uname = rs.getString("name");
-				String Upay = rs.getString("値段");
+				var Uid = rs.getString("id");
+				var Uname = rs.getString("name");
+				var Upay = rs.getString("price");
 
 				System.out.println(Uid + ":" + Uname + ":" + Upay + "円");
 
@@ -95,31 +88,29 @@ class DBSampleView {
 
 class DBSampleInput {
 	public void Input() {
-		int ids = 0;
-		String name = null;
-		int price = 0;
 
-		final String id = ("root");
-		final String Pass = ("9qg3ypnusql");
-		final String url = ("jdbc:mysql://localhost:3306/sample");
+		final var id = ("root");
+		final var Pass = ("9qg3ypnusql");
+		final var url = ("jdbc:mysql://localhost:3306/sample");
 
-		String sqlInput = "insert into yasais values(?,?,?);";
+		var sqlInput = "insert into vegetable values(?,?,?);";
 
 		try {
-			Connection con = DriverManager.getConnection(url, id, Pass);
+			var con = DriverManager.getConnection(url, id, Pass);
 			System.out.println("接続成功");
-			PreparedStatement ps = con.prepareStatement(sqlInput);
+			System.out.println();
+			var ps = con.prepareStatement(sqlInput);
 
-			Scanner sc = new Scanner(System.in);
+			var sc = new Scanner(System.in);
 
 			System.out.print("IDを入力：");
-			ids = Integer.parseInt(sc.nextLine());
+			var ids = Integer.parseInt(sc.nextLine());
 
 			System.out.print("商品名を入力：");
-			name = sc.nextLine();
+			var name = sc.nextLine();
 
 			System.out.print("値段を入力：");
-			price = Integer.parseInt(sc.nextLine());
+			var price = Integer.parseInt(sc.nextLine());
 
 			ps.setInt(1, ids);
 			ps.setString(2, name);
@@ -138,34 +129,32 @@ class DBSampleInput {
 
 class DBSampleDelete {
 	public void Delete() {
-		final String id = ("root");
-		final String Pass = ("9qg3ypnusql");
-		final String url = ("jdbc:mysql://localhost:3306/sample");
+		final var id = ("root");
+		final var Pass = ("9qg3ypnusql");
+		final var url = ("jdbc:mysql://localhost:3306/sample");
 
-		Connection con = null;
-		ResultSet rs = null;
-
-		String sql = "SELECT * FROM yasais";
-		String sqlD = "delete from yasais where name=?;";
+		var sql = "SELECT * FROM vegetable";
+		var sqlD = "delete from vegetable where name=?;";
 
 		try {
-			con = DriverManager.getConnection(url, id, Pass);
+			var con = DriverManager.getConnection(url, id, Pass);
 			System.out.println("接続成功");
-			PreparedStatement ps = con.prepareStatement(sql);
-			rs = ps.executeQuery();
+			System.out.println();
+			var ps = con.prepareStatement(sql);
+			var rs = ps.executeQuery();
 
 			while (rs.next()) {
-				String Uid = rs.getString("id");
-				String Uname = rs.getString("name");
-				String Upay = rs.getString("値段");
+				var Uid = rs.getString("id");
+				var Uname = rs.getString("name");
+				var Upay = rs.getString("price");
 
 				System.out.println(Uid + ":" + Uname + ":" + Upay + "円");
 
 			}
 			ps = con.prepareStatement(sqlD);
-			Scanner sc = new Scanner(System.in);
+			var sc = new Scanner(System.in);
 			System.out.print("消去する野菜を入力してください:");
-			String Dname = sc.nextLine();
+			var Dname = sc.nextLine();
 
 			ps.setString(1, Dname);
 			ps.executeUpdate();
