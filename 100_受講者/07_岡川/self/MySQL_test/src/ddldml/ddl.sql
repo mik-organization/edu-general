@@ -1,5 +1,7 @@
-CREATE TABLE yasais(
+DROP DATABASE sample;
+CREATE DATABASE sample;
+CREATE TABLE vegetable(
     id int comment 'id',
-    name varchar(10) comment 'åå‰',
-    price int comment 'å€¤æ®µ'
+    name varchar(10) comment '–¼‘O',
+    price int comment '’l’i'
 )
