@@ -10,6 +10,15 @@
   * プロジェクト－プロパティ－javaのビルドパス－ライブラリ－jarの追加
   で、ダウンロードしたjarファイルを追加
 
+# git branchイメージ
+
+
+       issuexx  -> 
+        ↑         ↓
+main ->           main ->
+  ↓                       ↑
+  issue13 ->                    
+
 
   # mybatis
 
