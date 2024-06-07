@@ -1,9 +1,8 @@
-> 必要ソフトのインストール
-- Eclipse
+# 必要ソフトのインストール
 - MySQL
 - connecter/J
->　テーブル作成（MySQL）
-- DDL使用
-> コード作成（Java）
+# 開発環境構築（Eclipse前提）
+- テーブル作成（DDL使用）
+- gitからcloneしソースをインポート
 - connecter/J紐づけ
->動作確認
+# 操作方法
