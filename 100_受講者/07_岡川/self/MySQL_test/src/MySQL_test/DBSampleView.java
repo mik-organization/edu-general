@@ -5,9 +5,9 @@ import java.sql.SQLException;
 
 class DBSampleView {
 	public void View() {
-		final var ID = ("root");
-		final var PASS = ("9qg3ypnusql");
-		final var URL = ("jdbc:mysql://localhost:3306/sample");
+		final var ID = "root";
+		final var PASS = "9qg3ypnusql";
+		final var URL = "jdbc:mysql://localhost:3306/sample";
 
 		try {
 			//Class.forName("com.mysql.jdbc.Driver");
