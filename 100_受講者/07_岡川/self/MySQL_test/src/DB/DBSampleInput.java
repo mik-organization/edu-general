@@ -1,18 +1,13 @@
-package MySQL_test;
+package DB;
 
-import java.sql.DriverManager;
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-class DBSampleInput {
+public class DBSampleInput {
 	public void Input() {
-
-		final var ID = "root";
-		final var PASS = "9qg3ypnusql";
-		final var URL = "jdbc:mysql://localhost:3306/sample";
-
 		try {
-			var con = DriverManager.getConnection(URL, ID, PASS);
+			Connection con = BaseDao.getConnection();
 			System.out.println("接続成功");
 
 			var sc = new Scanner(System.in);

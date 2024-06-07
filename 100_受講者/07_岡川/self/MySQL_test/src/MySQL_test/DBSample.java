@@ -2,6 +2,10 @@ package MySQL_test;
 
 import java.util.Scanner;
 
+import DB.DBSampleDelete;
+import DB.DBSampleInput;
+import DB.DBSampleView;
+
 public class DBSample {
 	public static void main(String[] args) {
 		var isExit = true;
