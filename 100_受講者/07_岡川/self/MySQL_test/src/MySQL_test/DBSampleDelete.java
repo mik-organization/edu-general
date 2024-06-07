@@ -6,9 +6,9 @@ import java.util.Scanner;
 
 class DBSampleDelete {
 	public void Delete() {
-		final var ID = ("root");
-		final var PASS = ("9qg3ypnusql");
-		final var URL = ("jdbc:mysql://localhost:3306/sample");
+		final var ID = "root";
+		final var PASS = "9qg3ypnusql";
+		final var URL = "jdbc:mysql://localhost:3306/sample";
 
 		try {
 			var con = DriverManager.getConnection(URL, ID, PASS);
