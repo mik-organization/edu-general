@@ -1,4 +1,4 @@
-package DB;
+package MySQL_test.DB;
 
 import java.sql.Connection;
 import java.sql.SQLException;
