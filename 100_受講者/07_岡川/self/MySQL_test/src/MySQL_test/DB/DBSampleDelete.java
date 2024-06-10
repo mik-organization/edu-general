@@ -7,6 +7,7 @@ public class DBSampleDelete {
 	public void Delete() {
 
 		try {
+			var BaseDao = new BaseDao();
 			var con = BaseDao.getConnection();
 			System.out.println("接続成功");
 			BaseDao.TableView(con);

@@ -7,6 +7,7 @@ import java.util.Scanner;
 public class DBSampleInput {
 	public void Input() {
 		try {
+			var BaseDao = new BaseDao();
 			Connection con = BaseDao.getConnection();
 			System.out.println("接続成功");
 

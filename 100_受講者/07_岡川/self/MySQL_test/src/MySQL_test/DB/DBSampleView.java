@@ -5,6 +5,7 @@ import java.sql.SQLException;
 public class DBSampleView {
 	public void View() {
 		try {
+			var BaseDao = new BaseDao();
 			var con = BaseDao.getConnection();
 			System.out.println("接続成功");
 			BaseDao.TableView(con);

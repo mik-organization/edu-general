@@ -9,13 +9,13 @@ public class BaseDao {
 	static final String PASS = "9qg3ypnusql";
 	static final String URL = "jdbc:mysql://localhost:3306/sample";
 
-	public static Connection getConnection() throws SQLException {
+	public Connection getConnection() throws SQLException {
 
 		return DriverManager.getConnection(URL, ID, PASS);
 
 	}
 
-	public static void TableView(Connection con) {
+	public void TableView(Connection con) {
 		try {
 			final var SQL = "SELECT * FROM vegetable";
 			var ps = con.prepareStatement(SQL);
