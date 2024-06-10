@@ -4,13 +4,13 @@ import java.sql.SQLException;
 import java.util.Scanner;
 
 public class DBSampleDelete {
-	public void Delete() {
+	public void delete() {
 
 		try {
 			var BaseDao = new BaseDao();
 			var con = BaseDao.getConnection();
 			System.out.println("接続成功");
-			BaseDao.TableView(con);
+			BaseDao.tableView(con);
 
 			final var SQL_DELETE = "delete from vegetable where name=?;";
 			var ps = con.prepareStatement(SQL_DELETE);

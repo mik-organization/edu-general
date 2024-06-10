@@ -26,17 +26,17 @@ public class DBSample {
 
 			case 1:
 				var view = new DBSampleView();
-				view.View();
+				view.view();
 				break;
 
 			case 2:
 				var input = new DBSampleInput();
-				input.Input();
+				input.input();
 				break;
 
 			case 3:
 				var delete = new DBSampleDelete();
-				delete.Delete();
+				delete.delete();
 				break;
 
 			case 9:

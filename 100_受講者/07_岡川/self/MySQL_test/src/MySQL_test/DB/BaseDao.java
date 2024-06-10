@@ -15,7 +15,7 @@ public class BaseDao {
 
 	}
 
-	public void TableView(Connection con) {
+	public void tableView(Connection con) {
 		try {
 			final var SQL = "SELECT * FROM vegetable";
 			var ps = con.prepareStatement(SQL);

@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import java.util.Scanner;
 
 public class DBSampleInput {
-	public void Input() {
+	public void input() {
 		try {
 			var BaseDao = new BaseDao();
 			Connection con = BaseDao.getConnection();
