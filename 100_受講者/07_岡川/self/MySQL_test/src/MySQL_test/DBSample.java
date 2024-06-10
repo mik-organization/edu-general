@@ -4,13 +4,13 @@ import java.util.Scanner;
 
 public class DBSample {
 	public static void main(String[] args) {
-		var isExit = true;
 
 		System.out.println("1:情報の閲覧");
 		System.out.println("2:情報の追加");
 		System.out.println("3:情報の削除");
 		System.out.println("9:終了する");
 
+		var isExit = true;
 		while (isExit) {
 
 			System.out.println();

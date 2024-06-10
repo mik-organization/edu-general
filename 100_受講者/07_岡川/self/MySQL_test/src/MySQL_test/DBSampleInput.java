@@ -12,9 +12,6 @@ class DBSampleInput {
 		final var URL = "jdbc:mysql://localhost:3306/sample";
 
 		try {
-			var con = DriverManager.getConnection(URL, ID, PASS);
-			System.out.println("接続成功");
-
 			var sc = new Scanner(System.in);
 			System.out.print("IDを入力：");
 			var id = Integer.parseInt(sc.nextLine());
@@ -27,10 +24,11 @@ class DBSampleInput {
 
 			final var SQL_INPUT = "insert into vegetable(id,name,price) values(" + id + ",'" + name + "'," + price
 					+ ");";
+			var con = DriverManager.getConnection(URL, ID, PASS);
 			var ps = con.prepareStatement(SQL_INPUT);
-
 			ps.executeUpdate();
 
+			System.out.println("---接続成功---");
 			System.out.println("追加されたデータは以下の通りです。");
 			System.out.println(id + ":" + name + ":" + price + "円");
 
