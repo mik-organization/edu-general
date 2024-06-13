@@ -24,9 +24,9 @@ public class DBSampleInput {
 			final var SQL_INPUT = "insert into vegetable(id,name,price) values(" + id + ",'" + name + "'," + price
 					+ ");";
 			var ps = con.prepareStatement(SQL_INPUT);
-
 			ps.executeUpdate();
 
+			System.out.println("---接続成功---");
 			System.out.println("追加されたデータは以下の通りです。");
 			System.out.println(id + ":" + name + ":" + price + "円");
 

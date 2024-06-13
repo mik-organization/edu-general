@@ -20,6 +20,7 @@ public class BaseDao {
 			final var SQL = "SELECT * FROM vegetable";
 			var ps = con.prepareStatement(SQL);
 			var rs = ps.executeQuery();
+			System.out.println("---接続成功---");
 
 			while (rs.next()) {
 				var id = rs.getString("id");
