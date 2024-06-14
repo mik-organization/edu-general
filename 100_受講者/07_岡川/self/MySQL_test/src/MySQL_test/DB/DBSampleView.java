@@ -7,7 +7,6 @@ public class DBSampleView {
 		try {
 			var BaseDao = new BaseDao();
 			var con = BaseDao.getConnection();
-			System.out.println("接続成功");
 			BaseDao.tableView(con);
 		} catch (SQLException e) {
 			System.out.println("接続失敗" + e.getMessage());

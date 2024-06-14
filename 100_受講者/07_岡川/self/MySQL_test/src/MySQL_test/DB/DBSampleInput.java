@@ -6,12 +6,8 @@ import java.util.Scanner;
 
 public class DBSampleInput {
 	public void input() {
+		var sc = new Scanner(System.in);
 		try {
-			var BaseDao = new BaseDao();
-			Connection con = BaseDao.getConnection();
-			System.out.println("接続成功");
-
-			var sc = new Scanner(System.in);
 			System.out.print("IDを入力：");
 			var id = Integer.parseInt(sc.nextLine());
 
@@ -21,6 +17,8 @@ public class DBSampleInput {
 			System.out.print("値段を入力：");
 			var price = Integer.parseInt(sc.nextLine());
 
+			var BaseDao = new BaseDao();
+			Connection con = BaseDao.getConnection();
 			final var SQL_INPUT = "insert into vegetable(id,name,price) values(" + id + ",'" + name + "'," + price
 					+ ");";
 			var ps = con.prepareStatement(SQL_INPUT);
@@ -32,6 +30,7 @@ public class DBSampleInput {
 
 		} catch (SQLException e) {
 			System.out.println("接続失敗" + e.getMessage());
+			sc.close();
 		}
 	}
 }
