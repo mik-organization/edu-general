@@ -1,18 +1,13 @@
-package MySQL_test;
+package MySQL_test.DB;
 
-import java.sql.DriverManager;
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-class DBSampleInput {
-	public void Input() {
-
-		final var ID = "root";
-		final var PASS = "9qg3ypnusql";
-		final var URL = "jdbc:mysql://localhost:3306/sample";
-
+public class DBSampleInput {
+	public void input() {
+		var sc = new Scanner(System.in);
 		try {
-			var sc = new Scanner(System.in);
 			System.out.print("IDを入力：");
 			var id = Integer.parseInt(sc.nextLine());
 
@@ -22,9 +17,10 @@ class DBSampleInput {
 			System.out.print("値段を入力：");
 			var price = Integer.parseInt(sc.nextLine());
 
+			var BaseDao = new BaseDao();
+			Connection con = BaseDao.getConnection();
 			final var SQL_INPUT = "insert into vegetable(id,name,price) values(" + id + ",'" + name + "'," + price
 					+ ");";
-			var con = DriverManager.getConnection(URL, ID, PASS);
 			var ps = con.prepareStatement(SQL_INPUT);
 			ps.executeUpdate();
 
@@ -34,6 +30,7 @@ class DBSampleInput {
 
 		} catch (SQLException e) {
 			System.out.println("接続失敗" + e.getMessage());
+			sc.close();
 		}
 	}
 }

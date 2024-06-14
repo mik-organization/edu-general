@@ -1,20 +1,23 @@
-package MySQL_test;
+package MySQL_test.DB;
 
+import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-class DBSampleView {
-	public void View() {
-		final var ID = "root";
-		final var PASS = "9qg3ypnusql";
-		final var URL = "jdbc:mysql://localhost:3306/sample";
+public class BaseDao {
+	static final String ID = "root";
+	static final String PASS = "9qg3ypnusql";
+	static final String URL = "jdbc:mysql://localhost:3306/sample";
 
+	public Connection getConnection() throws SQLException {
+
+		return DriverManager.getConnection(URL, ID, PASS);
+
+	}
+
+	public void tableView(Connection con) {
 		try {
-			//Class.forName("com.mysql.jdbc.Driver");
-			//調べると上記必要と記載あるが無くても実行出来た。
-			//必要な場合と不必要な場合の違いは解らず。
 			final var SQL = "SELECT * FROM vegetable";
-			var con = DriverManager.getConnection(URL, ID, PASS);
 			var ps = con.prepareStatement(SQL);
 			var rs = ps.executeQuery();
 			System.out.println("---接続成功---");
@@ -25,12 +28,9 @@ class DBSampleView {
 				var pay = rs.getString("price");
 
 				System.out.println(id + ":" + name + ":" + pay + "円");
-
 			}
-
 		} catch (SQLException e) {
 			System.out.println("接続失敗" + e.getMessage());
 		}
-
 	}
 }
