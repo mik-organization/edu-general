@@ -50,6 +50,18 @@ git : 用語 'git' は、コマンドレット、関数、スクリプト ファ
 * リモートリポジトリ、ローカルリポジトリの連携イメージ
   ![リモートとローカルのリポジトリ連携](000_一般/03_git/git.png)
 * [Git イラスト解説](https://qiita.com/takecho123/items/f7b56d09a3de210f8f78)
+* branch運用イメージ
+  * イメージ
+  ```
+       1--->>>
+       |      |merge
+  main-------------------------------------------->>>
+         |        |                       A   
+         |        V  merge&confilict対応  |   
+         2--->>>---------------------------
+  ```
+
+
 ## スキルについて
 * [システム開発に関連するスキル](https://github.com/mik-organization/edu-general/blob/main/000_%E4%B8%80%E8%88%AC/02_%E9%96%A2%E9%80%A3%E3%82%B9%E3%82%AD%E3%83%AB.png)
 ## Markdown
