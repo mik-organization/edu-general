@@ -8,18 +8,24 @@
   https://github.co.jp/ 
 
 ## 下記をダウンロード、インストール
+### 必須
 * Visual Studio Code https://code.visualstudio.com/download
   * 下記日本語化拡張機能もインストール
   * 名前: Japanese Language Pack for Visual Studio Code 
 ID: MS-CEINTL.vscode-language-pack-ja 
 VS Marketplace リンク: https://marketplace.visualstudio.com/items?itemName=MS-CEINTL.vscode-language-pack-ja 
-
+* winmerge https://winmerge.org/?lang=ja
+### 強く推奨
 * サクラエディタ https://sakura-editor.github.io/
   * 最新版をダウンロード
   * exe、インストーラどちらでもOK
 * clibor https://chigusa-web.com/clibor/
+  *クリップボードの履歴管理＋定型文 
+  * 代替機能としてwin+vがあるが、定型文が無い
+### 任意
 * rapture https://www.vector.co.jp/soft/dl/win95/art/se386376.html
-* winmerge https://winmerge.org/?lang=ja
+  * スクリーンショットの便利ツール
+  * 代替ツールとしてwindows標準のsnipping toolがあるが、raptureの方が使い勝手が良い
 ## Git for Windowsをインストール
 * ここからダウンロード、インストール https://gitforwindows.org/ 
   * 基本的にデフォルトのままでOK
