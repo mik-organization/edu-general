@@ -2,7 +2,7 @@
 ## MySqlのインストール
   * mysqlインストール [参考サイト](https://qiita.com/aki_number16/items/bff7aab79fb8c9657b62)
     * version：8.4.2 LTS
-      ![](Readme_mysqlimages/Readme_mysql.png)  
+      ![alt text](Readme_mysqlimages/Readme_mysql.png)  
   * MySQL Configuratorを起動後
     * 基本はそのままnext
       ![alt text](Readme_mysqlimages/Readme_mysql-1.png)    
