@@ -31,7 +31,7 @@ VS Marketplace リンク: https://marketplace.visualstudio.com/items?itemName=MS
   * 最新版をダウンロード
   * exe、インストーラどちらでもOK
 * clibor https://chigusa-web.com/clibor/
-  *クリップボードの履歴管理＋定型文 
+  * クリップボードの履歴管理＋定型文 
   * 代替機能としてwin+vがあるが、定型文が無い
 ### 任意
 * rapture https://www.vector.co.jp/soft/dl/win95/art/se386376.html
