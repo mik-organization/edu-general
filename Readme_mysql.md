@@ -18,8 +18,8 @@
       ![alt text](Readme_mysqlimages/Readme_mysql-4.png)
       
     * データベースの追加、確認
-      コマンドは "create database mik;" に置き換える
-      コマンド実行後、"mik"が作成されていればOK
+      コマンドは "create database mik;" に置き換える  
+      コマンド実行後、"mik"が作成されていればOK  
       
       ![alt text](Readme_mysqlimages/Readme_mysql-5.png)
 ## A5のインストールと設定
@@ -35,7 +35,8 @@
     ![alt text](Readme_mysqlimages/Readme_mysql-7.png)
     
   * rootのパスワード。データベース名を選択
-    
+    データベースは"mik"を入力
+
     ![alt text](Readme_mysqlimages/Readme_mysql-8.png)
     
   * 別名を登録
