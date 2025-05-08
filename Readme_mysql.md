@@ -12,12 +12,14 @@
   * インストール後の確認
     * MySQL x.x Command Line Client を起動し、rootユーザのパスワードを入力してログインできればOK
       ![alt text](Readme_mysqlimages/Readme_mysql-3.png)
-  * データベース"bm"の作成
+  * データベース"mik"の作成
     * 現在の データベースの確認
       
       ![alt text](Readme_mysqlimages/Readme_mysql-4.png)
       
     * データベースの追加、確認
+      コマンドは "create database mik;" に置き換える
+      コマンド実行後、"mik"が作成されていればOK
       
       ![alt text](Readme_mysqlimages/Readme_mysql-5.png)
 ## A5のインストールと設定
