@@ -93,10 +93,6 @@ ID: shd101wyy.markdown-preview-enhanced
 VS Marketplace リンク: https://marketplace.visualstudio.com/items?itemName=shd101wyy.markdown-preview-enhanced 
   * 名前: markdownlint 
 ID: DavidAnson.vscode-markdownlint 
-VS Marketplace リンク: https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint 
-  * 名前: Paste Image 
-ID: mushan.vscode-paste-image 
-VS Marketplace リンク: https://marketplace.visualstudio.com/items?itemName=mushan.vscode-paste-image 
 * Markdownとは、文法について等々、ググって調べてみましょう。
 ## Qiita
 * Qiitaアカウントを作成しましょう。
