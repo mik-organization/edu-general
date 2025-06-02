@@ -16,14 +16,6 @@
 - github概要説明
 - github基本コマンド説明
 
-# 学習・環境構築
-## はじめに
-* 各ツールの保存先は下記にしましょう
-  * C:\Users\[各ユーザ名]\Documents\tools
-* 作業フォルダは下記にしましょう
-  * C:\Users\[各ユーザ名]\Documents\work
-* 会社のメールアドレスで、GitHubアカウントを作成しましょう　
-  https://github.co.jp/ 
 
 ## 下記をダウンロード、インストール
 ### 必須
