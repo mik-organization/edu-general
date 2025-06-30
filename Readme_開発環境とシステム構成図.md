@@ -16,9 +16,9 @@ graph TB
         PC --> IDE
         IDE --> LocalApp
         IDE --> WD
-        WD -->|git add<br/>変更をステージング| SA
-        SA -->|git commit<br/>履歴に記録| LR
-        LR -->|git checkout<br/>ファイルを復元| WD
+        WD -->|git add| SA
+        SA -->|git commit| LR
+        LR -->|git checkout| WD
     end
     
     subgraph "GitHub (クラウド)"
@@ -40,15 +40,15 @@ graph TB
         CONN3[API接続設定<br/>・エンドポイントURL<br/>・API Key<br/>・認証トークン]
     end
     
-    LR -.->|git push<br/>SSH/HTTPS認証| GH
-    GH -.->|git pull/fetch<br/>最新取得| LR
-    LocalApp -.->|API呼び出し<br/>HTTP/HTTPS| API
+    LR -.->|git push| GH
+    GH -.->|git pull| LR
+    LocalApp -.->|API呼び出し| API
     
-    GA -->|デプロイ自動化| WEB
-    GA -->|デプロイ自動化| API
+    GA -->|デプロイ| WEB
+    GA -->|デプロイ| API
     
-    WEB <-->|内部通信HTTP| API
-    API <-->|SQL/TCP| DB
+    WEB <-->|内部通信| API
+    API <-->|SQL| DB
     
     CONN1 -.-> LR
     CONN1 -.-> GH
