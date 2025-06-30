@@ -193,3 +193,22 @@ C:\Users\USER\Documents\work
 ### java
 * [spring bootでhelloworld ](https://fresopiya.com/2019/09/14/webhello/)
 
+# Eclipse環境構築
+## フォーマッタ
+- github ページ　https://github.com/google/google-java-format
+- https://github.com/google/google-java-format/releases  
+  ここから "google-java-format-eclipse-plugin-x.xx.x.jar"をダウンロード
+  - C:\pleiades\2024-09\eclipse\plugins に格納
+  - https://qiita.com/chenglin/items/b442a9ee5a44e274b185 に記載のある手順で設定
+  - C:\pleiades\2024-09\eclipse\eclipse.ini に下記を追記後、Eclipseを再起動
+  ```
+  --add-exports=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED
+  --add-exports=jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED
+  --add-exports=jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED
+  --add-exports=jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED
+  --add-exports=jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED
+  --add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED
+  ```
+
+
+
