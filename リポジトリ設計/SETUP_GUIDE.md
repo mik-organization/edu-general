@@ -5,7 +5,7 @@
 ## 前提条件
 
 ### システム要件
-- **OS**: Windows 10 (1909以降) または Windows 11
+- **OS**: Windows 10 (または Windows 11
 - **RAM**: 8GB以上推奨
 - **ディスク容量**: 10GB以上の空き容量
 - **ネットワーク**: インターネット接続（パッケージダウンロード用）
@@ -88,29 +88,6 @@ JRE Name: java-17-openjdk
 
 ## 2. プロジェクトセットアップ
 
-### 2.1 リポジトリのクローン
-1. PowerShell または Git Bash を開く
-2. 作業ディレクトリに移動
-   ```powershell
-   cd C:\workspace
-   ```
-3. リポジトリをクローン
-   ```powershell
-   git clone <repository-url>
-   cd library-management-system
-   ```
-
-### 2.2 Eclipse へのプロジェクトインポート
-
-#### Gradle プロジェクトとしてインポート
-1. Eclipse で `File` → `Import`
-2. `Gradle` → `Existing Gradle Project` を選択
-3. `Next` をクリック
-4. **Project root directory** でクローンしたフォルダを指定
-   ```
-   C:\workspace\library-management-system
-   ```
-5. `Finish` をクリック
 
 #### プロジェクト設定の確認
 1. プロジェクト右クリック → `Properties`
