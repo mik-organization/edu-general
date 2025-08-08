@@ -5,7 +5,11 @@
 ## 前提条件
 
 ### システム要件
+<<<<<<< HEAD
 - **OS**: Windows 10 または Windows 11
+=======
+- **OS**: Windows 10 (または Windows 11
+>>>>>>> 8b66408cee739ec818c71ba47e0b4d2a488f27e7
 - **RAM**: 8GB以上推奨
 - **ディスク容量**: 10GB以上の空き容量
 - **ネットワーク**: インターネット接続（パッケージダウンロード用）
@@ -87,15 +91,6 @@ JRE Name: java-17-openjdk
 ---
 
 ## 2. プロジェクトセットアップ
-
-### 2.1 プロジェクトのクローン
-1. `File` → `Import` → `Git` → `Projects from Git`
-2. `Clone URI` を選択
-3. リポジトリ URL を入力
-4. 認証情報を入力（必要な場合）
-5. ローカルディレクトリを指定
-6. `Import as general project` を選択
-
 ### 2.2 Gradle プロジェクトとして設定
 1. プロジェクト右クリック → `Configure` → `Add Gradle Nature`
 2. `Gradle` → `Refresh Gradle Project`
