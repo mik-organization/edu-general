@@ -5,7 +5,7 @@
 ## 前提条件
 
 ### システム要件
-- **OS**: Windows 10 (1909以降) または Windows 11
+- **OS**: Windows 10 または Windows 11
 - **RAM**: 8GB以上推奨
 - **ディスク容量**: 10GB以上の空き容量
 - **ネットワーク**: インターネット接続（パッケージダウンロード用）
@@ -13,7 +13,7 @@
 ### 必要なソフトウェア
 以下のソフトウェアが事前にインストールされている必要があります：
 - Git for Windows
-- Docker Desktop for Windows
+- MySQL 8.x
 - Java 17 (OpenJDK推奨)
 
 ---
@@ -88,29 +88,17 @@ JRE Name: java-17-openjdk
 
 ## 2. プロジェクトセットアップ
 
-### 2.1 リポジトリのクローン
-1. PowerShell または Git Bash を開く
-2. 作業ディレクトリに移動
-   ```powershell
-   cd C:\workspace
-   ```
-3. リポジトリをクローン
-   ```powershell
-   git clone <repository-url>
-   cd library-management-system
-   ```
+### 2.1 プロジェクトのクローン
+1. `File` → `Import` → `Git` → `Projects from Git`
+2. `Clone URI` を選択
+3. リポジトリ URL を入力
+4. 認証情報を入力（必要な場合）
+5. ローカルディレクトリを指定
+6. `Import as general project` を選択
 
-### 2.2 Eclipse へのプロジェクトインポート
-
-#### Gradle プロジェクトとしてインポート
-1. Eclipse で `File` → `Import`
-2. `Gradle` → `Existing Gradle Project` を選択
-3. `Next` をクリック
-4. **Project root directory** でクローンしたフォルダを指定
-   ```
-   C:\workspace\library-management-system
-   ```
-5. `Finish` をクリック
+### 2.2 Gradle プロジェクトとして設定
+1. プロジェクト右クリック → `Configure` → `Add Gradle Nature`
+2. `Gradle` → `Refresh Gradle Project`
 
 #### プロジェクト設定の確認
 1. プロジェクト右クリック → `Properties`
@@ -135,7 +123,7 @@ JRE Name: java-17-openjdk
    Dependencies:
    - Spring Web
    - Spring Data JPA
-   - PostgreSQL Driver
+   - MySQL Driver
    - Spring Boot DevTools
    - Spring Boot Actuator
    - Validation
@@ -175,7 +163,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     
     // Database
-    runtimeOnly 'org.postgresql:postgresql'
+    runtimeOnly 'com.mysql:mysql-connector-j'
     
     // Development
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
@@ -185,8 +173,7 @@ dependencies {
     
     // Testing
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testImplementation 'org.testcontainers:junit-jupiter'
-    testImplementation 'org.testcontainers:postgresql'
+    testImplementation 'com.h2database:h2' // テスト用インメモリDB
     
     // Annotation Processing
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
@@ -199,72 +186,63 @@ tasks.named('test') {
 
 ---
 
-## 3. データベース環境構築
+## 3. MySQL 環境構築
 
-### 3.1 Docker Desktop の確認
-1. Docker Desktop が起動していることを確認
-2. タスクトレイの Docker アイコンが `Running` 状態であることを確認
+### 3.1 MySQL サービスの確認
+1. Windows サービスで MySQL が起動していることを確認
+   ```powershell
+   Get-Service -Name MySQL*
+   ```
+2. サービスが停止している場合は起動
+   ```powershell
+   Start-Service -Name "MySQL80"
+   ```
 
-### 3.2 PostgreSQL 設定ファイルの作成
+### 3.2 データベースとユーザーの作成
 
-#### db/compose.yaml の作成
-```yaml
-version: '3.8'
-services:
-  postgres:
-    image: postgres:15
-    container_name: library_postgres
-    environment:
-      POSTGRES_DB: library_system
-      POSTGRES_USER: dev_user
-      POSTGRES_PASSWORD: dev_password
-    ports:
-      - "5432:5432"
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-      - ./scripts:/docker-entrypoint-initdb.d
-    restart: unless-stopped
+#### MySQL Command Line Client での操作
+```sql
+-- rootユーザーでログイン
+mysql -u root -p
 
-volumes:
-  postgres_data:
+-- データベース作成
+CREATE DATABASE library_system CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- 開発用ユーザー作成
+CREATE USER 'dev_user'@'localhost' IDENTIFIED BY 'dev_password';
+
+-- 権限付与
+GRANT ALL PRIVILEGES ON library_system.* TO 'dev_user'@'localhost';
+FLUSH PRIVILEGES;
+
+-- 確認
+SHOW DATABASES;
+USE library_system;
 ```
 
-#### 初期化スクリプトの作成
-`db/scripts/init-db.sql` を作成：
+### 3.3 初期化スクリプトの作成
+`sql/init/init-db.sql` を作成：
 ```sql
 -- 初期化スクリプト
-CREATE SCHEMA IF NOT EXISTS library;
+USE library_system;
 
--- データベースの初期設定
-SET timezone = 'Asia/Tokyo';
+-- 文字コード設定
+SET NAMES utf8mb4;
+SET CHARACTER SET utf8mb4;
+
+-- タイムゾーン設定（オプション）
+SET time_zone = '+09:00';
 ```
 
-### 3.3 PostgreSQL の起動確認
-1. PowerShell で db ディレクトリに移動
-   ```powershell
-   cd C:\workspace\library-management-system\db
-   ```
-2. Docker Compose で PostgreSQL を起動
-   ```powershell
-   docker compose up -d
-   ```
-3. コンテナの状態確認
-   ```powershell
-   docker compose ps
-   ```
-4. ログの確認
-   ```powershell
-   docker compose logs postgres
-   ```
-
-### 3.4 データベース接続テスト
+### 3.4 接続テスト
 ```powershell
-# PostgreSQL に接続
-docker compose exec postgres psql -U dev_user -d library_system
+# 開発用ユーザーで接続
+mysql -u dev_user -p -D library_system
 
-# 接続確認クエリ
-\l
-\q
+# 接続確認
+mysql> SELECT DATABASE();
+mysql> SHOW TABLES;
+mysql> exit
 ```
 
 ---
@@ -279,10 +257,10 @@ spring:
     name: library-management-system
   
   datasource:
-    url: jdbc:postgresql://localhost:5432/library_system
+    url: jdbc:mysql://localhost:3306/library_system?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Tokyo&characterEncoding=UTF-8
     username: dev_user
     password: dev_password
-    driver-class-name: org.postgresql.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
   
   jpa:
     hibernate:
@@ -290,11 +268,10 @@ spring:
     show-sql: true
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
+        dialect: org.hibernate.dialect.MySQL8Dialect
         format_sql: true
         jdbc:
-          lob:
-            non_contextual_creation: true
+          batch_size: 20
   
   devtools:
     restart:
@@ -309,6 +286,7 @@ logging:
   level:
     com.example.library: DEBUG
     org.springframework.web: DEBUG
+    org.hibernate.SQL: DEBUG
 
 management:
   endpoints:
@@ -402,10 +380,8 @@ logging:
 
 ### 6.2 アプリケーション起動テスト
 ```powershell
-# データベース起動
-cd db
-docker compose up -d
-cd ..
+# MySQLサービス確認
+Get-Service -Name MySQL*
 
 # アプリケーション起動
 .\gradlew.bat bootRun
@@ -442,15 +418,20 @@ cd ..
 3. Base URL を設定：`http://localhost:8080`
 
 ### 7.2 データベース管理ツール（オプション）
-#### pgAdmin のインストール
-1. [pgAdmin公式サイト](https://www.pgadmin.org/download/pgadmin-4-windows/) からダウンロード
-2. インストール後、新しいサーバーを追加：
+
+#### A5:SQL Mk-2 の設定
+※ セットアップ方法は別途提供されている Readme_mysql.md を参照
+
+#### MySQL Workbench のインストール（代替案）
+1. [MySQL公式サイト](https://dev.mysql.com/downloads/workbench/) からダウンロード
+2. インストール後、新しい接続を追加：
    ```
-   Host: localhost
-   Port: 5432
-   Database: library_system
+   Connection Name: Library System
+   Hostname: localhost
+   Port: 3306
    Username: dev_user
    Password: dev_password
+   Default Schema: library_system
    ```
 
 ---
@@ -469,20 +450,26 @@ echo $env:JAVA_HOME
 [Environment]::SetEnvironmentVariable("JAVA_HOME", "C:\Program Files\Eclipse Adoptium\jdk-17.x.x.x-hotspot", "User")
 ```
 
-#### Docker 関連
-**問題**: `Error response from daemon: driver failed programming external connectivity`
-```powershell
-# ポート5432が使用されているか確認
-netstat -an | findstr 5432
-
-# 使用プロセスを停止
-taskkill /F /PID <プロセスID>
+#### MySQL 関連
+**問題**: `Access denied for user 'dev_user'@'localhost'`
+```sql
+-- rootユーザーで再度権限付与
+GRANT ALL PRIVILEGES ON library_system.* TO 'dev_user'@'localhost';
+FLUSH PRIVILEGES;
 ```
 
-**問題**: Docker Desktop が起動しない
-1. Windows の仮想化機能が有効か確認
-2. WSL2 が正しくインストールされているか確認
-3. Docker Desktop を管理者権限で実行
+**問題**: `Communications link failure`
+```yaml
+# application.yml のURL設定を確認
+# useSSL=false と allowPublicKeyRetrieval=true を追加
+url: jdbc:mysql://localhost:3306/library_system?useSSL=false&allowPublicKeyRetrieval=true
+```
+
+**問題**: 文字化けが発生する
+```yaml
+# application.yml に文字エンコーディング設定を追加
+url: jdbc:mysql://localhost:3306/library_system?characterEncoding=UTF-8
+```
 
 #### Eclipse 関連
 **問題**: プロジェクトがインポートできない
@@ -508,15 +495,14 @@ gradle wrapper
 .\gradlew.bat bootRun --debug
 ```
 
-#### データベースログ
-```powershell
-cd db
-docker compose logs -f postgres
-```
+#### MySQLログ
+```sql
+-- エラーログの場所確認
+SHOW VARIABLES LIKE 'log_error';
 
-#### Docker システムログ
-```powershell
-docker system events
+-- 一般ログの有効化（デバッグ用）
+SET GLOBAL general_log = 'ON';
+SET GLOBAL general_log_file = 'C:/ProgramData/MySQL/MySQL Server 8.0/Data/general.log';
 ```
 
 ---
@@ -570,7 +556,7 @@ org.gradle.jvmargs=-Xmx2048m -XX:MaxPermSize=512m
 ### 学習リソース
 - [Spring Boot Reference Documentation](https://spring.io/projects/spring-boot#learn)
 - [Spring Data JPA Documentation](https://spring.io/projects/spring-data-jpa#learn)
-- [PostgreSQL Documentation](https://www.postgresql.org/docs/)
+- [MySQL Documentation](https://dev.mysql.com/doc/)
 - [Gradle User Manual](https://docs.gradle.org/current/userguide/userguide.html)
 
 ---

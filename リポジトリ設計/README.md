@@ -27,16 +27,15 @@ Spring Boot を使用した図書館管理システムの研修用プロジェ�
 - **Java 17** - プログラミング言語
 - **Spring Boot 3.x** - Webアプリケーションフレームワーク
 - **Spring Data JPA** - データアクセス
-- **PostgreSQL** - データベース
+- **MySQL 8.x** - データベース
 - **Gradle** - ビルドツール
 - **Eclipse IDE** - 統合開発環境
-- **Docker** - コンテナ環境（PostgreSQL用）
 
 ## 前提条件
 - Windows 10/11
 - Java 17
 - Eclipse IDE for Enterprise Java and Web Developers
-- Docker Desktop for Windows
+- MySQL 8.x
 - Git
 
 ## クイックスタート
@@ -46,11 +45,10 @@ Spring Boot を使用した図書館管理システムの研修用プロジェ�
    cd library-management-system
    ```
 
-2. **データベース起動**
-   ```powershell
-   cd db
-   docker compose up -d
-   cd ..
+2. **データベース作成**
+   ```sql
+   -- MySQL Command Line Client で実行
+   CREATE DATABASE library_system CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
    ```
 
 3. **アプリケーション起動**
@@ -68,11 +66,10 @@ library-management-system/
 ├── src/main/java/           # Javaソースコード
 ├── src/main/resources/      # 設定ファイル
 ├── src/test/java/           # テストコード
-├── db/                      # データベース関連
-│   ├── compose.yaml         # Docker設定
+├── sql/                     # データベース関連
 │   ├── ddl/                 # テーブル定義
 │   ├── dml/                 # データ投入
-│   └── scripts/             # 初期化スクリプト
+│   └── init/                # 初期化スクリプト
 ├── docs/                    # ドキュメント
 ├── build.gradle            # ビルド設定
 └── README.md               # このファイル
@@ -89,14 +86,11 @@ library-management-system/
 # アプリケーション起動
 .\gradlew.bat bootRun
 
-# データベース起動
-cd db && docker compose up -d
+# データベース接続確認（MySQL Command Line Client）
+mysql -u root -p
 
-# データベース停止
-cd db && docker compose stop
-
-# データベースリセット
-cd db && docker compose down -v && docker compose up -d
+# データベース選択
+USE library_system;
 ```
 
 ## API エンドポイント
@@ -118,10 +112,10 @@ cd db && docker compose down -v && docker compose up -d
 
 ## トラブルシューティング
 ### よくある問題
-1. **ポート5432が使用中エラー**
+1. **ポート3306が使用中エラー**
    ```powershell
-   netstat -an | findstr 5432
-   # 他のPostgreSQLプロセスを停止してください
+   netstat -an | findstr 3306
+   # 他のMySQLプロセスを停止してください
    ```
 
 2. **Gradleビルドエラー**
@@ -129,10 +123,13 @@ cd db && docker compose down -v && docker compose up -d
    .\gradlew.bat clean build
    ```
 
-3. **Dockerコンテナが起動しない**
+3. **MySQLサービスが起動しない**
    ```powershell
-   cd db
-   docker compose logs postgres
+   # サービスの状態確認
+   Get-Service -Name MySQL*
+   
+   # サービスの起動
+   Start-Service -Name "MySQL80"
    ```
 
 詳細なトラブルシューティングは[こちら](docs/development/TROUBLESHOOTING.md)を参照してください。
