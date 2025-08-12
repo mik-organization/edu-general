@@ -51,7 +51,9 @@ Spring Boot を使用した図書館管理システムの研修用プロジェ�
    CREATE DATABASE library_system CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
    ```
 
-3. **アプリケーション起動**
+3. **アプリケーション起動**  
+Eclipseからの起動でOK  
+コマンドで起動する場合は下記
    ```powershell
    .\gradlew.bat bootRun
    ```
