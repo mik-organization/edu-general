@@ -64,19 +64,21 @@ Eclipseからの起動でOK
 
 ## プロジェクト構成
 ```
-library-management-system/
-├── src/main/java/           # Javaソースコード
-├── src/main/resources/      # 設定ファイル
-├── src/test/java/           # テストコード
-├── sql/                     # データベース関連
-│   ├── ddl/                 # テーブル定義
-│   ├── dml/                 # データ投入
-│   └── init/                # 初期化スクリプト
-├── docs/                    # ドキュメント
-├── build.gradle            # ビルド設定
-└── README.md               # このファイル
+edu-xxx/
+├── docs/                        # ドキュメント
+├── README.md                    # このファイル
+└── library-management-system/
+    ├── src/main/java/           # Javaソースコード
+    ├── src/main/resources/      # 設定ファイル
+    ├── src/test/java/           # テストコード
+    ├── db/                      # データベース関連
+    │   ├── docker-compose.yml
+    │   └── sql/
+    │       ├── 01_create_tables.sql
+    │       ├── 02_insert_data.sql
+    │       └── 03_additional_setup.sql
+    └── build.gradle            # ビルド設定
 ```
-
 ## 開発用コマンド
 ```powershell
 # ビルド

@@ -39,6 +39,7 @@ cd C:\GitHubScripts
 # ラベル作成実行
 .\create-labels.ps1 -Owner "yourusername" -Repo "library-management-system"
 ```
+※-Owner はmik-organization
 
 ### 2.2 実行例
 ```powershell

@@ -24,10 +24,10 @@ services:
     image: mysql:8.0
     container_name: mysql_dev
     environment:
-      MYSQL_ROOT_PASSWORD: rootpassword
-      MYSQL_DATABASE: myapp
-      MYSQL_USER: appuser
-      MYSQL_PASSWORD: apppassword
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: mikdb
+      MYSQL_USER: mik
+      MYSQL_PASSWORD: mik
     ports:
       - "3306:3306"
     volumes:
@@ -46,7 +46,7 @@ volumes:
 **sql/01_create_tables.sql**
 ```sql
 -- データベースの選択
-USE myapp;
+USE mikdb;
 
 -- ユーザーテーブル作成
 CREATE TABLE users (
@@ -69,7 +69,7 @@ CREATE TABLE products (
 **sql/02_insert_data.sql**
 ```sql
 -- テストユーザーデータ挿入
-USE myapp;
+USE mikdb;
 
 INSERT INTO users (username, email) VALUES 
 ('admin', 'admin@example.com'),
