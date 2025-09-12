@@ -5,7 +5,7 @@ DockerでMySQL環境を作成し、初期化時に指定したDDL/DMLを自動�
 
 ## プロジェクト構造
 ```
-project/
+DB/
 ├── docker-compose.yml
 └── sql/
     ├── 01_create_tables.sql
