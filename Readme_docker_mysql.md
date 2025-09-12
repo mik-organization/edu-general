@@ -117,10 +117,10 @@ mkdir sql
 ### 4. 環境起動
 ```bash
 # バックグラウンドで起動
-docker-compose up -d
+docker　compose up -d
 
 # ログ確認
-docker-compose logs mysql
+docker　compose logs mysql
 ```
 
 ### 5. 接続確認
