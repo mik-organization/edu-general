@@ -182,17 +182,6 @@ https://my.visualstudio.com/Downloads?q=Visual%20Studio%202019
 * 推奨作業フォルダ 
 C:\Users\USER\Documents\work 
 
-  
-
-# 学習 
-## 参考サイト
-### MarkDown 
-* [Markdown記法チートシート](https://qiita.com/Qiita/items/c686397e4a0f4f11683d)
-* [Markdown記法](https://www.markdown.jp/syntax/) 
-
-### java
-* [spring bootでhelloworld ](https://fresopiya.com/2019/09/14/webhello/)
-
 # Eclipse環境構築
 ## フォーマッタ
 - github ページ　https://github.com/google/google-java-format
@@ -210,5 +199,15 @@ C:\Users\USER\Documents\work
   --add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED
   ```
 
+# Docker環境構築
+[Ubuntu Docker インストールガイド](./Readme_docker.md)
+
+# Mysql環境構築
+## Dockerで構築する場合
+前提： [Docker環境構築](#Docker環境構築)
+[Docker MySQL環境構築ガイド](./Readme_docker_mysql.md)
+
+## ローカルにインストールする場合
+[MySqlのインストールと設定](./Readme_mysql.md)
 
 
