@@ -18,22 +18,12 @@ wsl --terminate Ubuntu
 
 ## 2. バックアップ取得
 
-### 基本的なバックアップ
-```powershell
-# バックアップフォルダ作成
-New-Item -ItemType Directory -Path "C:\WSL-Backup" -Force
-
-# バックアップ実行（日付付きファイル名）
-$date = Get-Date -Format "yyyyMMdd"
-wsl --export Ubuntu "C:\WSL-Backup\ubuntu-backup-$date.tar"
-```
-
 ### 圧縮バックアップ（推奨）
 ```powershell
 # 一時ファイルとして出力後、圧縮
-wsl --export Ubuntu "C:\temp\ubuntu-backup.tar"
-Compress-Archive -Path "C:\temp\ubuntu-backup.tar" -DestinationPath "C:\WSL-Backup\ubuntu-backup-$date.zip"
-Remove-Item "C:\temp\ubuntu-backup.tar"
+wsl --export Ubuntu "ubuntu-backup.tar"
+Compress-Archive -Path "ubuntu-backup.tar" -DestinationPath "ubuntu-backup-$date.zip"
+Remove-Item "ubuntu-backup.tar"
 ```
 
 ## 3. 復元手順
